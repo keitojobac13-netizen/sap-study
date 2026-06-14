@@ -52,6 +52,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${geistSans.variable} h-full antialiased`}>
       <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4188335642202901" crossOrigin="anonymous" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-9T111GXMXW" />
         <script dangerouslySetInnerHTML={{ __html: `
           window.dataLayer = window.dataLayer || [];
