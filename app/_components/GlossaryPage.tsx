@@ -204,6 +204,26 @@ export default function GlossaryPage({ lang, toggleHref }: Props) {
             <p className="text-sm mt-1">{t.noResultsHint}</p>
           </div>
         ) : (
+          <>
+          {/* Mobile letter nav */}
+          <div className="lg:hidden mb-4">
+            <div className="flex flex-wrap gap-1">
+              {activeLetters.map((letter) => (
+                <button
+                  key={letter}
+                  onClick={() => scrollToSection(letter)}
+                  className={`px-2 py-1 text-xs font-bold rounded transition-colors ${
+                    activeLetter === letter
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-white border border-gray-200 text-gray-600 hover:bg-blue-50'
+                  }`}
+                >
+                  {letter}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="flex gap-6">
             {/* Sticky letter nav (desktop) */}
             <aside className="hidden lg:block w-16 flex-shrink-0">
@@ -229,25 +249,6 @@ export default function GlossaryPage({ lang, toggleHref }: Props) {
                 })}
               </div>
             </aside>
-
-            {/* Mobile letter nav */}
-            <div className="lg:hidden w-full mb-4">
-              <div className="flex flex-wrap gap-1">
-                {activeLetters.map((letter) => (
-                  <button
-                    key={letter}
-                    onClick={() => scrollToSection(letter)}
-                    className={`px-2 py-1 text-xs font-bold rounded transition-colors ${
-                      activeLetter === letter
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-white border border-gray-200 text-gray-600 hover:bg-blue-50'
-                    }`}
-                  >
-                    {letter}
-                  </button>
-                ))}
-              </div>
-            </div>
 
             {/* Term list */}
             <div className="flex-1 min-w-0 space-y-8">
@@ -337,6 +338,7 @@ export default function GlossaryPage({ lang, toggleHref }: Props) {
               })}
             </div>
           </div>
+          </>
         )}
       </div>
 

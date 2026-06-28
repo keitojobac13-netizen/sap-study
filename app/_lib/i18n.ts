@@ -1,5 +1,5 @@
 export type Language = 'ja' | 'en';
-export type ModuleKey = 'fi' | 'co' | 'sd' | 'mm' | 'pp';
+export type ModuleKey = 'fi' | 'co' | 'sd' | 'mm' | 'pp' | 'abap' | 'basis' | 'ps';
 
 type ModuleData = {
   fullName: string;
@@ -31,7 +31,7 @@ export const translations: Record<Language, Translation> = {
     hero: {
       badge: '無料学習サイト',
       title: 'SAPコンサルタントのための学習ポータル',
-      subtitle: 'FI・CO・SD・MM・PPの基礎から実務知識まで、体系的に学べます。日英対応の用語辞典も完備。',
+      subtitle: 'FI・CO・SD・MM・PP・ABAP・Basis・PSの基礎から実務知識まで、体系的に学べます。日英対応の用語辞典も完備。',
       ctaPrimary: '学習を始める',
       ctaSecondary: '用語辞典を見る',
     },
@@ -65,6 +65,21 @@ export const translations: Record<Language, Translation> = {
           description: '需要管理からMRP・製造指図・確認までの生産プロセスを学びます。',
           topics: ['需要管理・MRP', '製造指図作成', '製造確認', '実績原価'],
         },
+        abap: {
+          fullName: 'ABAP開発',
+          description: 'SAPの標準開発言語ABAPの基礎から実践までを学びます。',
+          topics: ['データ型・制御構文', '内部テーブル・Open SQL', 'モジュール化・OOP', 'ALV・デバッグ'],
+        },
+        basis: {
+          fullName: 'Basis（システム管理）',
+          description: 'SAPシステムの管理・運用の基礎を学びます。',
+          topics: ['システム構成', 'ユーザー・権限管理', 'トランスポート管理', 'バックグラウンドジョブ'],
+        },
+        ps: {
+          fullName: 'プロジェクト管理',
+          description: 'プロジェクトの計画・実行・決算の全体プロセスを学びます。',
+          topics: ['WBS・ネットワーク', 'プロジェクト計画', '実績管理', 'プロジェクト決済'],
+        },
       },
     },
     features: {
@@ -95,7 +110,7 @@ export const translations: Record<Language, Translation> = {
     hero: {
       badge: 'Free Learning Site',
       title: 'Learning Portal for SAP Consultants',
-      subtitle: 'Systematically learn FI, CO, SD, MM, and PP from basics to practical knowledge. Includes a bilingual terminology dictionary.',
+      subtitle: 'Systematically learn FI, CO, SD, MM, PP, ABAP, Basis, and PS from basics to practical knowledge. Includes a bilingual terminology dictionary.',
       ctaPrimary: 'Start Learning',
       ctaSecondary: 'Open Dictionary',
     },
@@ -128,6 +143,21 @@ export const translations: Record<Language, Translation> = {
           fullName: 'Production Planning',
           description: 'Learn the production process from demand management to MRP, production orders, and confirmation.',
           topics: ['Demand Mgmt. & MRP', 'Production Order Creation', 'Order Confirmation', 'Actual Costing'],
+        },
+        abap: {
+          fullName: 'ABAP Development',
+          description: 'Learn the fundamentals and practical use of SAP\'s standard development language ABAP.',
+          topics: ['Data Types & Control Flow', 'Internal Tables & Open SQL', 'Modularization & OOP', 'ALV & Debugging'],
+        },
+        basis: {
+          fullName: 'Basis (System Admin)',
+          description: 'Learn the fundamentals of SAP system administration and operations.',
+          topics: ['System Architecture', 'User & Authorization Mgmt.', 'Transport Management', 'Background Jobs'],
+        },
+        ps: {
+          fullName: 'Project System',
+          description: 'Learn the complete project process from planning to execution and settlement.',
+          topics: ['WBS & Networks', 'Project Planning', 'Actual Tracking', 'Project Settlement'],
         },
       },
     },
