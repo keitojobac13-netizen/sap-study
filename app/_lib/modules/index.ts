@@ -2,6 +2,8 @@ import type { ModuleContent, ModuleEnrichment } from '../learning-types';
 import { enrichModule } from '../learning-types';
 import type { Language, ModuleKey } from '../i18n';
 import { fiContent } from './fi-content';
+import { coContent } from './co-content';
+import { sdContent } from './sd-content';
 import { fi } from './fi';
 import { co } from './co';
 import { sd } from './sd';
@@ -26,6 +28,8 @@ const BASE: Record<ModuleKey, Record<Language, ModuleContent>> = {
  */
 const CONTENT: Partial<Record<ModuleKey, Record<Language, ModuleEnrichment>>> = {
   fi: fiContent,
+  co: coContent,
+  sd: sdContent,
 };
 
 const REGISTRY = Object.fromEntries(
