@@ -58,6 +58,37 @@ export type ModuleContent = {
   sections: Section[];
 };
 
+/**
+ * Expanded article text for a module, authored separately from its quizzes.
+ * Keyed by section id so the two files stay independently editable.
+ */
+export type SectionContent = {
+  summary: string;
+  body: Block[];
+  keywords?: string[];
+};
+
+export type ModuleEnrichment = {
+  intro: string[];
+  sections: Record<string, SectionContent>;
+};
+
+/** Fold authored article text into a module's base definition. */
+export function enrichModule(
+  base: ModuleContent,
+  enrichment: ModuleEnrichment | undefined
+): ModuleContent {
+  if (!enrichment) return base;
+  return {
+    ...base,
+    intro: enrichment.intro,
+    sections: base.sections.map((section) => {
+      const extra = enrichment.sections[section.id];
+      return extra ? { ...section, ...extra } : section;
+    }),
+  };
+}
+
 /** Paragraphs to render for a section, preferring the rich body. */
 export function sectionBlocks(section: Section): Block[] {
   if (section.body && section.body.length > 0) return section.body;
