@@ -53,14 +53,13 @@ const UI = {
   },
 } as const;
 
-type Props = { lang: Language; toggleHref: string };
+type Props = { lang: Language };
 
-export default function GlossaryPage({ lang, toggleHref }: Props) {
+export default function GlossaryPage({ lang }: Props) {
   const t = UI[lang];
   const [query, setQuery] = useState('');
   const [activeModule, setActiveModule] = useState<GlossaryModule | null>(null);
   const [activeLetter, setActiveLetter] = useState<string | null>(null);
-  const [expandedId, setExpandedId] = useState<string | null>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const filtered = glossaryTerms.filter((term) => {
@@ -112,25 +111,7 @@ export default function GlossaryPage({ lang, toggleHref }: Props) {
   const totalCount = filtered.length;
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14">
-            <a href={`/?lang=${lang}`} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors">
-              <span className="text-base">←</span>
-              <span>{lang === 'ja' ? 'ホームへ' : 'Back to Home'}</span>
-            </a>
-            <a
-              href={toggleHref}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-gray-700"
-            >
-              🌐 {t.langToggleLabel}
-            </a>
-          </div>
-        </div>
-      </header>
-
+    <div className="bg-gray-50 font-sans">
       {/* Hero */}
       <div className="bg-gradient-to-br from-gray-800 to-gray-900 text-white py-10 px-4">
         <div className="max-w-4xl mx-auto">
@@ -271,17 +252,15 @@ export default function GlossaryPage({ lang, toggleHref }: Props) {
 
                     <div className="space-y-2">
                       {terms.map((term) => {
-                        const isOpen = expandedId === term.id;
                         return (
-                          <div
+                          // <details> keeps every definition in the DOM even when
+                          // collapsed, so search engines read the whole glossary.
+                          <details
                             key={term.id}
-                            className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-colors"
+                            id={term.id}
+                            className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-colors scroll-mt-20"
                           >
-                            {/* Term header (always visible) */}
-                            <button
-                              className="w-full text-left px-4 py-3.5 flex items-start gap-3"
-                              onClick={() => setExpandedId(isOpen ? null : term.id)}
-                            >
+                            <summary className="w-full text-left px-4 py-3.5 flex items-start gap-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-start gap-2 flex-wrap">
                                   <span className="font-bold text-gray-900 text-sm sm:text-base leading-snug">
@@ -306,30 +285,25 @@ export default function GlossaryPage({ lang, toggleHref }: Props) {
                                     {mod}
                                   </span>
                                 ))}
-                                <span className={`ml-1 text-gray-400 text-sm transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>
+                                <span className="ml-1 text-gray-400 text-sm transition-transform duration-200 group-open:rotate-180">
                                   ▾
                                 </span>
                               </div>
-                            </button>
+                            </summary>
 
-                            {/* Expanded definition */}
-                            {isOpen && (
-                              <div className="border-t border-gray-100 px-4 pb-4 pt-3 bg-gray-50">
-                                <p className="text-sm text-gray-700 leading-relaxed">
-                                  {lang === 'ja' ? term.ja.definition : term.en.definition}
-                                </p>
-                                {/* Counter-language definition */}
-                                <details className="mt-3">
-                                  <summary className="text-xs text-blue-600 cursor-pointer hover:underline select-none">
-                                    {lang === 'ja' ? '英語で読む' : '日本語で読む'}
-                                  </summary>
-                                  <p className="text-sm text-gray-500 leading-relaxed mt-2 pl-2 border-l-2 border-gray-200">
-                                    {lang === 'ja' ? term.en.definition : term.ja.definition}
-                                  </p>
-                                </details>
-                              </div>
-                            )}
-                          </div>
+                            {/* Definition — always present in the HTML */}
+                            <div className="border-t border-gray-100 px-4 pb-4 pt-3 bg-gray-50">
+                              <p className="text-sm text-gray-700 leading-relaxed">
+                                {lang === 'ja' ? term.ja.definition : term.en.definition}
+                              </p>
+                              <p className="text-sm text-gray-500 leading-relaxed mt-3 pl-3 border-l-2 border-gray-200">
+                                <span className="block text-xs font-semibold text-gray-400 mb-1">
+                                  {lang === 'ja' ? 'English' : '日本語'}
+                                </span>
+                                {lang === 'ja' ? term.en.definition : term.ja.definition}
+                              </p>
+                            </div>
+                          </details>
                         );
                       })}
                     </div>
@@ -342,16 +316,6 @@ export default function GlossaryPage({ lang, toggleHref }: Props) {
         )}
       </div>
 
-      {/* Footer */}
-      <footer className="mt-16 border-t border-gray-200 py-6 px-4 text-center text-xs text-gray-400">
-        <p>{lang === 'ja' ? '© 2026 SAP学習ポータル' : '© 2026 SAP Study Portal'}</p>
-        <p className="mt-1 text-gray-300">SAP is a registered trademark of SAP SE. This site is not affiliated with SAP SE.</p>
-        <p className="mt-1">
-          <a href="/privacy" className="text-gray-400 hover:text-gray-600 transition-colors">
-            {lang === 'ja' ? 'プライバシーポリシー' : 'Privacy Policy'}
-          </a>
-        </p>
-      </footer>
     </div>
   );
 }
