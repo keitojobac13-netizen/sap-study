@@ -4,6 +4,8 @@ import type { Language, ModuleKey } from '../i18n';
 import { fiContent } from './fi-content';
 import { coContent } from './co-content';
 import { sdContent } from './sd-content';
+import { mmContent } from './mm-content';
+import { ppContent } from './pp-content';
 import { fi } from './fi';
 import { co } from './co';
 import { sd } from './sd';
@@ -30,6 +32,8 @@ const CONTENT: Partial<Record<ModuleKey, Record<Language, ModuleEnrichment>>> = 
   fi: fiContent,
   co: coContent,
   sd: sdContent,
+  mm: mmContent,
+  pp: ppContent,
 };
 
 const REGISTRY = Object.fromEntries(
