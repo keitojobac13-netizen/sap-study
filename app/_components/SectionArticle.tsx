@@ -5,7 +5,7 @@ import Breadcrumbs from './Breadcrumbs';
 import ArticleBody from './ArticleBody';
 import SectionQuizzes from './SectionQuizzes';
 import { translations, type Language, type ModuleKey } from '../_lib/i18n';
-import { getModule, getSection } from '../_lib/modules';
+import { getSection } from '../_lib/modules';
 import { sectionBlocks, sectionSummary } from '../_lib/learning-types';
 import { MODULE_STYLES } from '../_lib/module-style';
 import {

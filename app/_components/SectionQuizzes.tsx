@@ -233,6 +233,10 @@ export default function SectionQuizzes({ quizzes, lang, moduleKey, sectionId }: 
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    // Saved answers live in localStorage, which does not exist during SSR.
+    // The first render therefore has to match the server (all unanswered),
+    // and restoring progress can only happen once mounted.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStates(loadProgress(moduleKey, sectionId, lang, quizzes.length));
     setHydrated(true);
   }, [moduleKey, sectionId, lang, quizzes.length]);

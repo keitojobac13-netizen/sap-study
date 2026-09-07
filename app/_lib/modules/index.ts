@@ -66,21 +66,21 @@ export function getSectionIds(key: ModuleKey): string[] {
 }
 
 export function getSection(key: ModuleKey, lang: Language, sectionId: string) {
-  const module = REGISTRY[key][lang];
-  const index = module.sections.findIndex((s) => s.id === sectionId);
+  const mod = REGISTRY[key][lang];
+  const index = mod.sections.findIndex((s) => s.id === sectionId);
   if (index === -1) return null;
   return {
-    module,
-    section: module.sections[index],
+    module: mod,
+    section: mod.sections[index],
     index,
-    prev: index > 0 ? module.sections[index - 1] : null,
-    next: index < module.sections.length - 1 ? module.sections[index + 1] : null,
+    prev: index > 0 ? mod.sections[index - 1] : null,
+    next: index < mod.sections.length - 1 ? mod.sections[index + 1] : null,
   };
 }
 
 /** Every (module, section) pair, for sitemap and static params generation. */
 export function allSectionPaths(): { module: ModuleKey; section: string }[] {
-  return MODULE_KEYS.flatMap((module) =>
-    getSectionIds(module).map((section) => ({ module, section }))
+  return MODULE_KEYS.flatMap((key) =>
+    getSectionIds(key).map((section) => ({ module: key, section }))
   );
 }

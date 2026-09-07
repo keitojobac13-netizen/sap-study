@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const STORAGE_KEY = 'cookie_consent';
 
@@ -8,7 +9,10 @@ export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Consent lives in localStorage, which is unavailable during SSR, so the
+    // banner can only decide whether to show itself after hydration.
     if (!localStorage.getItem(STORAGE_KEY)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true);
     }
   }, []);
@@ -27,9 +31,9 @@ export default function CookieBanner() {
           当サイトはGoogle アナリティクス・AdSenseのためにCookieを使用します。
           サイトを利用することで同意したものとみなします。
           詳しくは
-          <a href="/privacy" className="text-blue-400 hover:underline ml-1">
+          <Link href="/privacy" className="text-blue-400 hover:underline ml-1">
             プライバシーポリシー
-          </a>
+          </Link>
           をご確認ください。
         </p>
         <button
