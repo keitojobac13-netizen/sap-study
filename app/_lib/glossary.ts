@@ -1,4 +1,7 @@
-export type GlossaryModule = 'FI' | 'CO' | 'SD' | 'MM' | 'PP';
+import { extraTerms } from './glossary-extra';
+import { techTerms } from './glossary-tech';
+
+export type GlossaryModule = 'FI' | 'CO' | 'SD' | 'MM' | 'PP' | 'ABAP' | 'BASIS' | 'PS';
 
 export type GlossaryTerm = {
   id: string;
@@ -27,7 +30,7 @@ export function getKanaRow(reading: string): KanaRow {
   return KANA_MAP[reading[0]] ?? 'あ';
 }
 
-export const glossaryTerms: GlossaryTerm[] = [
+const coreTerms: GlossaryTerm[] = [
   // ─── あ行 ───
   {
     id: 'atp',
@@ -1327,4 +1330,14 @@ export const glossaryTerms: GlossaryTerm[] = [
       definition: 'SAP\'s generic condition determination engine used across many business scenarios including pricing, account determination, output management, and tax calculation. Structured as a hierarchy: Condition Type → Access Sequence → Condition Table → Condition Record. Enables flexible business rule configuration. Widely used in SD pricing procedures and MM message control, among others.',
     },
   },
+];
+
+/**
+ * The published glossary: the original functional terms, the gap-filling
+ * additions, and the technical modules, combined into one list.
+ */
+export const glossaryTerms: GlossaryTerm[] = [
+  ...coreTerms,
+  ...extraTerms,
+  ...techTerms,
 ];

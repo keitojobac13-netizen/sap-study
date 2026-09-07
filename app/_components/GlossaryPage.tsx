@@ -16,9 +16,12 @@ const MODULE_COLORS: Record<GlossaryModule, string> = {
   SD: 'bg-orange-100 text-orange-700 border-orange-200',
   MM: 'bg-purple-100 text-purple-700 border-purple-200',
   PP: 'bg-cyan-100 text-cyan-700 border-cyan-200',
+  ABAP: 'bg-red-100 text-red-700 border-red-200',
+  BASIS: 'bg-amber-100 text-amber-700 border-amber-200',
+  PS: 'bg-teal-100 text-teal-700 border-teal-200',
 };
 
-const ALL_MODULES: GlossaryModule[] = ['FI', 'CO', 'SD', 'MM', 'PP'];
+const ALL_MODULES: GlossaryModule[] = ['FI', 'CO', 'SD', 'MM', 'PP', 'ABAP', 'BASIS', 'PS'];
 
 const EN_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -29,7 +32,7 @@ function getEnLetter(term: string): string {
 const UI = {
   ja: {
     title: 'SAP用語辞典',
-    subtitle: '財務・物流・生産にまたがるSAP主要用語を日英で解説',
+    subtitle: '財務・物流・生産から技術領域まで、SAP主要用語を日英で解説',
     searchPlaceholder: '用語を検索...',
     allModules: 'すべて',
     noResults: '該当する用語が見つかりません',
@@ -41,7 +44,7 @@ const UI = {
   },
   en: {
     title: 'SAP Terminology Dictionary',
-    subtitle: 'Key SAP terms across Finance, Logistics, and Production — explained in JP & EN',
+    subtitle: 'Key SAP terms across finance, logistics, production and the technical stack — in English and Japanese',
     searchPlaceholder: 'Search terms...',
     allModules: 'All',
     noResults: 'No terms found',

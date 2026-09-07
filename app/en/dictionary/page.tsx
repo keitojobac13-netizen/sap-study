@@ -6,7 +6,7 @@ import { glossaryTerms } from '../../_lib/glossary';
 import { dictionaryPath, alternatesFor } from '../../_lib/routes';
 
 export const metadata: Metadata = {
-  title: `SAP Glossary (${glossaryTerms.length} terms) | SAP Study Portal`,
+  title: { absolute: `SAP Glossary (${glossaryTerms.length} terms) | SAP Study Portal` },
   description: `${glossaryTerms.length} core SAP terms across FI, CO, SD, MM and PP, each defined in English and Japanese. Searchable alphabetically and filterable by module.`,
   alternates: alternatesFor('en', dictionaryPath),
 };

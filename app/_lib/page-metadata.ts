@@ -21,10 +21,11 @@ export function buildModuleMetadata(mod: ModuleContent, lang: Language): Metadat
       ? `全${mod.sections.length}セクション・${total}問の確認問題で体系的に学べます。`
       : `${mod.sections.length} sections and ${total} practice questions.`;
   const description = clamp(`${mod.description}${lang === 'ja' ? '' : ' '}${suffix}`);
+  // Absolute, so the root layout template does not append the site name twice.
   const title = `${mod.title} | ${SITE[lang]}`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     openGraph: {
       type: 'website',
@@ -46,7 +47,7 @@ export function buildSectionMetadata(
   const title = `${section.title} | ${mod.title} | ${SITE[lang]}`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: section.keywords,
     openGraph: {

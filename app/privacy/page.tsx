@@ -3,7 +3,7 @@ import PrivacyPage from '../_components/PrivacyPage';
 import { privacyPath, alternatesFor } from '../_lib/routes';
 
 export const metadata: Metadata = {
-  title: 'プライバシーポリシー | SAP学習ポータル',
+  title: { absolute: 'プライバシーポリシー | SAP学習ポータル' },
   description:
     'SAP学習ポータルのプライバシーポリシー。Cookie・Googleアナリティクス・Google AdSense・お問い合わせフォーム・学習進捗のブラウザ内保存について説明します。',
   alternates: alternatesFor('ja', privacyPath),
