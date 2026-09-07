@@ -6,6 +6,9 @@ import { coContent } from './co-content';
 import { sdContent } from './sd-content';
 import { mmContent } from './mm-content';
 import { ppContent } from './pp-content';
+import { abapContent } from './abap-content';
+import { basisContent } from './basis-content';
+import { psContent } from './ps-content';
 import { fi } from './fi';
 import { co } from './co';
 import { sd } from './sd';
@@ -34,6 +37,9 @@ const CONTENT: Partial<Record<ModuleKey, Record<Language, ModuleEnrichment>>> = 
   sd: sdContent,
   mm: mmContent,
   pp: ppContent,
+  abap: abapContent,
+  basis: basisContent,
+  ps: psContent,
 };
 
 const REGISTRY = Object.fromEntries(
