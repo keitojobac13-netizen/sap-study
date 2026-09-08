@@ -36,12 +36,16 @@ body {
   line-height: 1.9;
 }
 
-/* Keep punctuation from opening holes at the start of a wrapped line. */
+/* Keep punctuation from opening holes at the start of a wrapped line.
+   `break-word` rather than `anywhere`: both break a string too long for its
+   box, but only `anywhere` also lets a column shrink below its longest word,
+   which was splitting SAP codes (FI-GL, FI-AP) across lines in narrow table
+   cells. */
 :lang(ja) p,
 :lang(ja) li,
 :lang(ja) td {
   line-break: strict;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 ::selection {
