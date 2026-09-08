@@ -46,8 +46,8 @@ export default function ContactForm({ lang }: { lang: Language }) {
     return (
       <div className="text-center py-16">
         <div className="text-5xl mb-4">✉️</div>
-        <h2 className="text-xl font-bold text-gray-900 mb-2">{c.sentTitle}</h2>
-        <p className="text-sm text-gray-600">{c.sentBody}</p>
+        <h2 className="text-[1.2rem] font-bold text-ink tracking-tight mb-2">{c.sentTitle}</h2>
+        <p className="text-[0.88rem] text-ink-soft">{c.sentBody}</p>
       </div>
     );
   }
@@ -55,7 +55,7 @@ export default function ContactForm({ lang }: { lang: Language }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="name" className="block text-[0.82rem] font-medium text-ink-soft mb-2">
           {c.name}
         </label>
         <input
@@ -64,13 +64,13 @@ export default function ContactForm({ lang }: { lang: Language }) {
           name="name"
           required
           placeholder={c.namePlaceholder}
-          className="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
+          className="w-full px-3.5 h-11 text-[0.88rem] border border-rule rounded focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent bg-paper text-ink placeholder:text-ink-mute"
         />
-        <ValidationError field="name" prefix={c.name} errors={state.errors} className="mt-1 text-xs text-red-600" />
+        <ValidationError field="name" prefix={c.name} errors={state.errors} className="mt-1.5 text-[0.78rem] text-red-600" />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="email" className="block text-[0.82rem] font-medium text-ink-soft mb-2">
           {c.email}
         </label>
         <input
@@ -79,20 +79,20 @@ export default function ContactForm({ lang }: { lang: Language }) {
           name="email"
           required
           placeholder="example@email.com"
-          className="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
+          className="w-full px-3.5 h-11 text-[0.88rem] border border-rule rounded focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent bg-paper text-ink placeholder:text-ink-mute"
         />
-        <ValidationError field="email" prefix={c.email} errors={state.errors} className="mt-1 text-xs text-red-600" />
+        <ValidationError field="email" prefix={c.email} errors={state.errors} className="mt-1.5 text-[0.78rem] text-red-600" />
       </div>
 
       <div>
-        <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="category" className="block text-[0.82rem] font-medium text-ink-soft mb-2">
           {c.category}
         </label>
         <select
           id="category"
           name="category"
           required
-          className="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
+          className="w-full px-3.5 h-11 text-[0.88rem] border border-rule rounded focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent bg-paper text-ink placeholder:text-ink-mute"
         >
           <option value="">{c.categoryEmpty}</option>
           <option value="content">{c.categoryContent}</option>
@@ -102,7 +102,7 @@ export default function ContactForm({ lang }: { lang: Language }) {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="message" className="block text-[0.82rem] font-medium text-ink-soft mb-2">
           {c.message}
         </label>
         <textarea
@@ -111,9 +111,9 @@ export default function ContactForm({ lang }: { lang: Language }) {
           required
           rows={6}
           placeholder={c.messagePlaceholder}
-          className="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 resize-none"
+          className="w-full px-3.5 py-3 text-[0.88rem] border border-rule rounded focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent bg-paper text-ink placeholder:text-ink-mute resize-none"
         />
-        <ValidationError field="message" prefix={c.message} errors={state.errors} className="mt-1 text-xs text-red-600" />
+        <ValidationError field="message" prefix={c.message} errors={state.errors} className="mt-1.5 text-[0.78rem] text-red-600" />
       </div>
 
       <ValidationError errors={state.errors} className="text-sm text-red-600" />
@@ -121,7 +121,7 @@ export default function ContactForm({ lang }: { lang: Language }) {
       <button
         type="submit"
         disabled={state.submitting}
-        className="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-xl transition-colors text-sm"
+        className="w-full h-12 bg-ink hover:bg-ink-soft disabled:opacity-50 text-white font-semibold rounded transition-colors text-[0.85rem]"
       >
         {state.submitting ? c.submitting : c.submit}
       </button>

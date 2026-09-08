@@ -162,35 +162,35 @@ export default function AboutPage({ lang }: { lang: Language }) {
   };
 
   return (
-    <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
+    <div lang={lang} className="min-h-screen flex flex-col bg-paper">
       <SiteHeader lang={lang} switchPath={aboutPath(OTHER_LANG[lang])} />
 
       <main id="main" className="flex-1">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+        <div className="max-w-[44rem] mx-auto px-5 sm:px-8 py-12">
           <Breadcrumbs lang={lang} items={[{ label: c.title }]} />
 
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-5 mb-4">{c.title}</h1>
-          <p className="text-gray-700 leading-[1.9] text-sm sm:text-base">{c.lead}</p>
+          <h1 className="text-[1.9rem] sm:text-[2.3rem] font-bold text-ink tracking-tight leading-[1.3] mt-6 mb-5">{c.title}</h1>
+          <p className="text-ink-soft leading-[2] text-[0.95rem]">{c.lead}</p>
 
           {/* ─── Operator table ─── */}
-          <div className="mt-8 bg-white rounded-2xl border border-gray-200 overflow-hidden">
-            <dl className="divide-y divide-gray-100 text-sm">
+          <div className="mt-10">
+            <dl className="border-t border-rule text-[0.88rem]">
               {[
                 { label: c.operatorLabels.name, value: op.name },
                 { label: c.operatorLabels.location, value: op.location },
                 { label: c.operatorLabels.started, value: op.started },
               ].map(({ label, value }) => (
-                <div key={label} className="flex flex-col sm:flex-row gap-1 sm:gap-4 px-5 py-3.5">
-                  <dt className="sm:w-32 flex-shrink-0 font-semibold text-gray-500">{label}</dt>
-                  <dd className="text-gray-800">{value}</dd>
+                <div key={label} className="flex flex-col sm:flex-row gap-1 sm:gap-6 py-3.5 border-b border-rule">
+                  <dt className="sm:w-36 flex-shrink-0 text-ink-mute">{label}</dt>
+                  <dd className="text-ink">{value}</dd>
                 </div>
               ))}
-              <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 px-5 py-3.5">
-                <dt className="sm:w-32 flex-shrink-0 font-semibold text-gray-500">
+              <div className="flex flex-col sm:flex-row gap-1 sm:gap-6 py-3.5 border-b border-rule">
+                <dt className="sm:w-36 flex-shrink-0 text-ink-mute">
                   {c.operatorLabels.contact}
                 </dt>
                 <dd>
-                  <Link href={contactPath(lang)} className="text-blue-700 hover:underline font-medium">
+                  <Link href={contactPath(lang)} className="text-accent hover:underline underline-offset-2">
                     {c.contactLink}
                   </Link>
                 </dd>
@@ -202,13 +202,13 @@ export default function AboutPage({ lang }: { lang: Language }) {
           <div className="mt-10 space-y-10">
             {c.sections.map((section) => (
               <section key={section.heading}>
-                <h2 className="text-lg font-bold text-gray-900 mb-3">{section.heading}</h2>
+                <h2 className="text-[1.15rem] font-bold text-ink tracking-tight mb-4 pt-2">{section.heading}</h2>
                 <div className="space-y-4">
                   {section.paragraphs?.map((p, i) => (
-                    <p key={i} className="text-gray-700 leading-[1.9] text-sm sm:text-base">{p}</p>
+                    <p key={i} className="text-ink-soft leading-[2] text-[0.95rem]">{p}</p>
                   ))}
                   {section.list && (
-                    <ul className="list-disc pl-5 space-y-2 text-gray-700 leading-relaxed text-sm sm:text-base">
+                    <ul className="list-disc pl-6 space-y-2.5 text-ink-soft leading-[1.9] text-[0.92rem] marker:text-ink-mute">
                       {section.list.map((item, i) => <li key={i} className="pl-1">{item}</li>)}
                     </ul>
                   )}
@@ -218,24 +218,24 @@ export default function AboutPage({ lang }: { lang: Language }) {
           </div>
 
           {/* ─── Links ─── */}
-          <div className="mt-10 pt-8 border-t border-gray-200">
-            <p className="text-gray-700 leading-relaxed text-sm sm:text-base mb-4">{c.contactLead}</p>
+          <div className="mt-14 pt-8 border-t border-rule">
+            <p className="text-ink-soft leading-[1.9] text-[0.92rem] mb-5">{c.contactLead}</p>
             <div className="flex flex-wrap gap-3">
               <Link
                 href={contactPath(lang)}
-                className="inline-flex items-center px-5 py-2.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors text-sm"
+                className="inline-flex items-center px-5 h-11 bg-ink text-white font-semibold rounded hover:bg-ink-soft transition-colors text-[0.85rem]"
               >
                 {c.contactLink}
               </Link>
               <Link
                 href={privacyPath(lang)}
-                className="inline-flex items-center px-5 py-2.5 bg-white border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors text-sm"
+                className="inline-flex items-center px-5 h-11 border border-rule text-ink-soft font-semibold rounded hover:border-ink-mute hover:text-ink transition-colors text-[0.85rem]"
               >
                 {c.privacyLink}
               </Link>
               <Link
                 href={dictionaryPath(lang)}
-                className="inline-flex items-center px-5 py-2.5 bg-white border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors text-sm"
+                className="inline-flex items-center px-5 h-11 border border-rule text-ink-soft font-semibold rounded hover:border-ink-mute hover:text-ink transition-colors text-[0.85rem]"
               >
                 {c.glossaryLink}
               </Link>

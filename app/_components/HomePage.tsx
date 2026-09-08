@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
+import Icon from './Icon';
 import { translations, type Language } from '../_lib/i18n';
 import { MODULE_KEYS, getModule } from '../_lib/modules';
 import { MODULE_STYLES } from '../_lib/module-style';
@@ -21,19 +22,19 @@ const COPY = {
       'SAPは領域が広く、どこから手をつけるべきか迷いやすい分野です。このサイトは「読む → すぐ確認する」を1セクション単位で繰り返せるように構成しています。',
     steps: [
       {
-        title: '1. モジュールを選ぶ',
+        title: 'モジュールを選ぶ',
         text: '担当領域や興味のあるモジュールから始めてください。会計系ならFI・CO、業務系ならSD・MM・PP、技術系ならABAP・Basisが入口になります。',
       },
       {
-        title: '2. セクションを順に読む',
+        title: 'セクションを順に読む',
         text: '各モジュールは10セクションに分かれています。1セクションは5〜10分程度で読み切れる分量です。前のセクションの知識を前提に積み上がる順序で並んでいます。',
       },
       {
-        title: '3. 確認問題で定着させる',
+        title: '確認問題で定着させる',
         text: '各セクションの末尾に確認問題があります。〇×・4択・並べ替えの3形式で、すべての問題に解説がついています。回答状況はブラウザに保存されるため、途中で離脱しても続きから再開できます。',
       },
       {
-        title: '4. 用語を調べる',
+        title: '用語を調べる',
         text: '読んでいて引っかかった用語は、SAP用語辞典で日英どちらからでも引けます。モジュール別の絞り込みにも対応しています。',
       },
     ],
@@ -56,19 +57,19 @@ const COPY = {
       'SAP is a wide field and it is rarely obvious where to start. This site is built around a short loop: read one section, then check what you retained.',
     steps: [
       {
-        title: '1. Pick a module',
+        title: 'Pick a module',
         text: 'Start with the area you work in. FI and CO cover accounting, SD, MM and PP cover core business processes, and ABAP and Basis cover the technical side.',
       },
       {
-        title: '2. Read the sections in order',
+        title: 'Read the sections in order',
         text: 'Each module has ten sections, each a five to ten minute read. They are ordered so that later sections build on earlier ones.',
       },
       {
-        title: '3. Answer the quiz',
+        title: 'Answer the quiz',
         text: 'Every section ends with practice questions — true/false, multiple choice and ordering — each with a written explanation. Your answers are saved in your browser, so you can stop and pick up where you left off.',
       },
       {
-        title: '4. Look up terms',
+        title: 'Look up terms',
         text: 'The glossary covers SAP terminology in both English and Japanese, filterable by module.',
       },
     ],
@@ -114,104 +115,97 @@ export default function HomePage({ lang, termCount }: {
   };
 
   return (
-    <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
+    <div lang={lang} className="min-h-screen flex flex-col bg-paper">
       <SiteHeader lang={lang} switchPath={homePath(OTHER_LANG[lang])} />
 
       <main id="main" className="flex-1">
         {/* ─── Hero ─── */}
-        <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 text-white py-20 px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block bg-white/20 text-blue-50 text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide">
+        <section className="max-w-[80rem] mx-auto px-5 sm:px-8 pt-20 pb-16">
+          <div className="max-w-3xl">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-ink-mute mb-6">
               {t.hero.badge}
-            </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-5 text-balance">
+            </p>
+            <h1 className="text-[2.1rem] sm:text-[3rem] font-bold text-ink leading-[1.25] tracking-tight text-balance">
               {t.hero.title}
             </h1>
-            <p className="text-lg text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-ink-soft leading-[1.9] mt-6 text-[0.98rem] sm:text-[1.05rem] max-w-2xl">
               {t.hero.subtitle}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-wrap gap-3 mt-9">
               <a
                 href="#modules"
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-blue-700 font-semibold rounded-xl hover:bg-blue-50 transition-colors shadow-lg text-sm"
+                className="inline-flex items-center gap-2 px-5 h-11 bg-ink text-white text-[0.85rem] font-semibold rounded hover:bg-ink-soft transition-colors"
               >
                 {t.hero.ctaPrimary}
+                <Icon name="arrow-right" className="w-4 h-4" />
               </a>
               <Link
                 href={dictionaryPath(lang)}
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 border border-white/30 transition-colors text-sm"
+                className="inline-flex items-center gap-2 px-5 h-11 border border-rule text-ink-soft text-[0.85rem] font-semibold rounded hover:border-ink-mute hover:text-ink transition-colors"
               >
+                <Icon name="book" className="w-4 h-4" />
                 {t.hero.ctaSecondary}
               </Link>
             </div>
           </div>
+
+          {/* ─── Stats ─── */}
+          <h2 className="sr-only">{c.statsTitle}</h2>
+          <dl className="grid grid-cols-2 sm:grid-cols-4 mt-16 border-t border-rule">
+            {[
+              { n: MODULE_KEYS.length, label: c.stats.modules },
+              { n: totals.sections, label: c.stats.sections },
+              { n: totals.quizzes, label: c.stats.quizzes },
+              { n: termCount, label: c.stats.terms },
+            ].map(({ n, label }) => (
+              <div key={label} className="py-6 sm:border-r border-rule last:border-r-0 sm:pr-6">
+                <dd className="text-[1.9rem] font-bold text-ink tabular-nums leading-none">{n}</dd>
+                <dt className="text-[0.75rem] text-ink-mute mt-2">{label}</dt>
+              </div>
+            ))}
+          </dl>
         </section>
 
-        {/* ─── Stats ─── */}
-        <section className="bg-white border-b border-gray-200">
-          <div className="max-w-4xl mx-auto px-4 py-8">
-            <h2 className="sr-only">{c.statsTitle}</h2>
-            <dl className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-              {[
-                { n: MODULE_KEYS.length, label: c.stats.modules },
-                { n: totals.sections, label: c.stats.sections },
-                { n: totals.quizzes, label: c.stats.quizzes },
-                { n: termCount, label: c.stats.terms },
-              ].map(({ n, label }) => (
-                <div key={label}>
-                  <dd className="text-3xl font-bold text-blue-700">{n}</dd>
-                  <dt className="text-xs text-gray-500 mt-1">{label}</dt>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </section>
+        {/* ─── Modules ─── */}
+        <section id="modules" className="border-t border-rule bg-ground">
+          <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-16">
+            <h2 className="text-[1.5rem] sm:text-[1.8rem] font-bold text-ink tracking-tight">
+              {t.modules.sectionTitle}
+            </h2>
+            <p className="text-ink-mute text-[0.88rem] mt-2">{t.modules.sectionSubtitle}</p>
 
-        {/* ─── Module cards ─── */}
-        <section id="modules" className="py-16 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
-                {t.modules.sectionTitle}
-              </h2>
-              <p className="text-gray-500 text-sm sm:text-base">{t.modules.sectionSubtitle}</p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-px bg-rule mt-10 border border-rule">
               {MODULE_KEYS.map((key) => {
                 const meta = t.modules.items[key];
                 const mod = getModule(key, lang);
                 const style = MODULE_STYLES[key];
                 return (
-                  <article
-                    key={key}
-                    className={`${style.bg} ${style.border} border rounded-2xl p-6 hover:shadow-md transition-all duration-200 flex flex-col`}
-                  >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div
-                        className={`${style.badge} text-white font-bold text-sm w-12 h-12 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0`}
-                      >
+                  <article key={key} className="bg-paper p-6 flex flex-col">
+                    <p className="flex items-center gap-2.5 mb-3">
+                      <span className={`${style.badge} w-2 h-2 rounded-full flex-shrink-0`} />
+                      <span className="font-bold text-ink text-[0.95rem] tracking-tight">
                         {key.toUpperCase()}
-                      </div>
-                      <h3 className={`${style.text} font-bold text-lg leading-tight`}>
-                        <Link href={modulePath(lang, key)} className="hover:underline">
-                          {meta.fullName}
-                        </Link>
-                      </h3>
-                    </div>
-
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      </span>
+                    </p>
+                    <h3 className="font-semibold text-ink text-[0.95rem] leading-snug mb-2">
+                      <Link href={modulePath(lang, key)} className="hover:text-accent transition-colors">
+                        {meta.fullName}
+                      </Link>
+                    </h3>
+                    <p className="text-ink-soft text-[0.82rem] leading-[1.85] mb-5">
                       {meta.description}
                     </p>
 
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+                    <p className="text-[0.68rem] font-semibold text-ink-mute uppercase tracking-[0.08em] mb-2.5">
                       {c.sectionsPeek}
                     </p>
-                    <ul className="space-y-1.5 mb-5 flex-1">
+                    <ul className="space-y-2 mb-6 flex-1">
                       {mod.sections.slice(0, 4).map((s) => (
-                        <li key={s.id} className="text-sm text-gray-600 flex items-start gap-2">
-                          <span className={`${style.text} mt-0.5 flex-shrink-0`}>▸</span>
-                          <Link href={sectionPath(lang, key, s.id)} className="hover:underline leading-snug">
+                        <li key={s.id}>
+                          <Link
+                            href={sectionPath(lang, key, s.id)}
+                            className="text-[0.8rem] text-ink-soft hover:text-accent transition-colors leading-snug"
+                          >
                             {s.title}
                           </Link>
                         </li>
@@ -220,9 +214,10 @@ export default function HomePage({ lang, termCount }: {
 
                     <Link
                       href={modulePath(lang, key)}
-                      className={`${style.text} text-sm font-semibold hover:underline`}
+                      className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-accent hover:gap-2.5 transition-all"
                     >
                       {t.modules.learnMore}
+                      <Icon name="arrow-right" className="w-3.5 h-3.5" />
                     </Link>
                   </article>
                 );
@@ -232,34 +227,42 @@ export default function HomePage({ lang, termCount }: {
         </section>
 
         {/* ─── How to use ─── */}
-        <section className="bg-white py-16 px-4 border-y border-gray-100">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">{c.howTitle}</h2>
-            <p className="text-gray-600 leading-[1.9] mb-10 text-sm sm:text-base">{c.howLead}</p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {c.steps.map((step) => (
-                <div key={step.title}>
-                  <h3 className="font-semibold text-gray-900 mb-2 text-base">{step.title}</h3>
-                  <p className="text-sm text-gray-600 leading-[1.9]">{step.text}</p>
-                </div>
-              ))}
+        <section className="border-t border-rule">
+          <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-16">
+            <div className="max-w-3xl">
+              <h2 className="text-[1.5rem] sm:text-[1.8rem] font-bold text-ink tracking-tight">
+                {c.howTitle}
+              </h2>
+              <p className="text-ink-soft leading-[1.9] mt-4 text-[0.95rem]">{c.howLead}</p>
             </div>
+
+            <ol className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 mt-12 max-w-5xl">
+              {c.steps.map((step, i) => (
+                <li key={step.title}>
+                  <p className="font-mono text-[0.7rem] tabular-nums text-ink-mute tracking-[0.1em] mb-2">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h3 className="font-semibold text-ink text-[0.95rem] mb-2 pt-2 border-t border-rule">
+                    {step.title}
+                  </h3>
+                  <p className="text-[0.85rem] text-ink-soft leading-[1.9]">{step.text}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
         {/* ─── Features ─── */}
-        <section className="py-16 px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-12">
+        <section className="border-t border-rule bg-ground">
+          <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-16">
+            <h2 className="text-[1.5rem] sm:text-[1.8rem] font-bold text-ink tracking-tight">
               {t.features.sectionTitle}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8 mt-10">
               {t.features.items.map((item) => (
-                <div key={item.title} className="text-center">
-                  <div className="text-4xl mb-4">{item.icon}</div>
-                  <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">{item.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
+                <div key={item.title} className="pt-4 border-t border-rule">
+                  <h3 className="font-semibold text-ink mb-2 text-[0.9rem]">{item.title}</h3>
+                  <p className="text-[0.82rem] text-ink-soft leading-[1.85]">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -267,36 +270,45 @@ export default function HomePage({ lang, termCount }: {
         </section>
 
         {/* ─── Bilingual ─── */}
-        <section className="bg-white py-16 px-4 border-y border-gray-100">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">{c.bilingualTitle}</h2>
-            <p className="text-gray-600 leading-[1.9] text-sm sm:text-base">{c.bilingualText}</p>
+        <section className="border-t border-rule">
+          <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-16">
+            <div className="max-w-2xl">
+              <h2 className="text-[1.3rem] sm:text-[1.5rem] font-bold text-ink tracking-tight">
+                {c.bilingualTitle}
+              </h2>
+              <p className="text-ink-soft leading-[1.9] mt-4 text-[0.9rem]">{c.bilingualText}</p>
+            </div>
           </div>
         </section>
 
-        {/* ─── Dictionary CTA ─── */}
-        <section id="dictionary" className="bg-gradient-to-br from-gray-800 to-gray-900 text-white py-16 px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block bg-white/15 text-gray-200 text-xs font-semibold px-3 py-1 rounded-full mb-5 tracking-wide">
-              {t.dictionary.badge}
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t.dictionary.sectionTitle}</h2>
-            <p className="text-gray-300 mb-8 leading-relaxed text-sm sm:text-base">
-              {t.dictionary.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                href={dictionaryPath(lang)}
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-sm"
-              >
-                📖 {t.dictionary.button}
-              </Link>
-              <Link
-                href={aboutPath(lang)}
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 border border-white/30 transition-colors text-sm"
-              >
-                {c.aboutCta}
-              </Link>
+        {/* ─── Dictionary ─── */}
+        <section id="dictionary" className="border-t border-rule bg-ink text-white">
+          <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-16">
+            <div className="max-w-2xl">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-white/50 mb-5">
+                {t.dictionary.badge}
+              </p>
+              <h2 className="text-[1.5rem] sm:text-[1.9rem] font-bold tracking-tight leading-tight">
+                {t.dictionary.sectionTitle}
+              </h2>
+              <p className="text-white/70 mt-4 leading-[1.9] text-[0.9rem]">
+                {t.dictionary.description}
+              </p>
+              <div className="flex flex-wrap gap-3 mt-8">
+                <Link
+                  href={dictionaryPath(lang)}
+                  className="inline-flex items-center gap-2 px-5 h-11 bg-white text-ink text-[0.85rem] font-semibold rounded hover:bg-white/90 transition-colors"
+                >
+                  <Icon name="book" className="w-4 h-4" />
+                  {t.dictionary.button}
+                </Link>
+                <Link
+                  href={aboutPath(lang)}
+                  className="inline-flex items-center px-5 h-11 border border-white/25 text-white text-[0.85rem] font-semibold rounded hover:bg-white/10 transition-colors"
+                >
+                  {c.aboutCta}
+                </Link>
+              </div>
             </div>
           </div>
         </section>

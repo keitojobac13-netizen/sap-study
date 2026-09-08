@@ -51,40 +51,40 @@ export default function ContactPage({ lang }: { lang: Language }) {
   const c = COPY[lang];
 
   return (
-    <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
+    <div lang={lang} className="min-h-screen flex flex-col bg-paper">
       <SiteHeader lang={lang} switchPath={contactPath(OTHER_LANG[lang])} />
 
       <main id="main" className="flex-1">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
+        <div className="max-w-[44rem] mx-auto px-5 sm:px-8 py-12">
           <Breadcrumbs lang={lang} items={[{ label: c.title }]} />
 
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-5 mb-3">{c.title}</h1>
-          <p className="text-gray-700 leading-[1.9] text-sm sm:text-base">{c.lead}</p>
+          <h1 className="text-[1.9rem] sm:text-[2.3rem] font-bold text-ink tracking-tight leading-[1.3] mt-6 mb-5">{c.title}</h1>
+          <p className="text-ink-soft leading-[2] text-[0.95rem]">{c.lead}</p>
 
           <section className="mt-8">
-            <h2 className="text-base font-bold text-gray-900 mb-3">{c.topicsTitle}</h2>
-            <ul className="list-disc pl-5 space-y-1.5 text-sm text-gray-700 leading-relaxed">
+            <h2 className="text-[1.05rem] font-bold text-ink tracking-tight mb-4">{c.topicsTitle}</h2>
+            <ul className="list-disc pl-6 space-y-2 text-[0.9rem] text-ink-soft leading-[1.9] marker:text-ink-mute">
               {c.topics.map((topic) => <li key={topic} className="pl-1">{topic}</li>)}
             </ul>
           </section>
 
-          <div className="mt-8 bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+          <div className="mt-10 pt-8 border-t border-rule">
             <ContactForm lang={lang} />
           </div>
 
-          <aside className="mt-6 rounded-xl border border-gray-200 bg-white p-5">
-            <h2 className="font-semibold text-sm text-gray-900 mb-1.5">{c.noteTitle}</h2>
-            <p className="text-sm text-gray-600 leading-relaxed">{c.noteText}</p>
+          <aside className="mt-10 border-l-2 border-l-rule pl-4">
+            <h2 className="font-semibold text-[0.88rem] text-ink mb-1.5">{c.noteTitle}</h2>
+            <p className="text-[0.88rem] text-ink-soft leading-[1.9]">{c.noteText}</p>
           </aside>
 
-          <p className="mt-6 text-sm text-gray-500">
+          <p className="mt-8 text-[0.85rem] text-ink-mute leading-[1.9]">
             {c.privacyNote}
-            <Link href={privacyPath(lang)} className="text-blue-700 hover:underline">
+            <Link href={privacyPath(lang)} className="text-accent hover:underline underline-offset-2">
               {c.privacyLink}
             </Link>
             {c.privacyNoteAfter}
             {' '}
-            <Link href={aboutPath(lang)} className="text-blue-700 hover:underline">
+            <Link href={aboutPath(lang)} className="text-accent hover:underline underline-offset-2">
               {c.aboutLink}
             </Link>
           </p>

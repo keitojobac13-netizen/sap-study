@@ -230,7 +230,7 @@ function Paragraph({ para, lang }: { para: Para; lang: Language }) {
 
   const anchor =
     para.link === 'contact' ? (
-      <Link href={contactPath(lang)} className="text-blue-600 hover:underline">
+      <Link href={contactPath(lang)} className="text-accent hover:underline underline-offset-2">
         {para.label}
       </Link>
     ) : (
@@ -238,7 +238,7 @@ function Paragraph({ para, lang }: { para: Para; lang: Language }) {
         href={EXTERNAL[para.link]}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-blue-600 hover:underline"
+        className="text-accent hover:underline underline-offset-2"
       >
         {para.label}
       </a>
@@ -251,28 +251,28 @@ export default function PrivacyPage({ lang }: { lang: Language }) {
   const c = CONTENT[lang];
 
   return (
-    <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
+    <div lang={lang} className="min-h-screen flex flex-col bg-paper">
       <SiteHeader lang={lang} switchPath={privacyPath(OTHER_LANG[lang])} />
 
       <main id="main" className="flex-1">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+        <div className="max-w-[44rem] mx-auto px-5 sm:px-8 py-12">
           <Breadcrumbs lang={lang} items={[{ label: c.title }]} />
 
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-5 mb-2">{c.title}</h1>
-          <p className="text-sm text-gray-500 mb-8">
+          <h1 className="text-[1.9rem] sm:text-[2.3rem] font-bold text-ink tracking-tight leading-[1.3] mt-6 mb-3">{c.title}</h1>
+          <p className="text-[0.82rem] text-ink-mute mb-10">
             {c.updated}：{PRIVACY_UPDATED[lang]}
           </p>
 
-          <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 space-y-8 text-sm text-gray-700 leading-relaxed">
+          <div className="space-y-10 text-[0.9rem] text-ink-soft leading-[1.95]">
             {c.sections.map((section) => (
               <section key={section.heading}>
-                <h2 className="text-base font-bold text-gray-900 mb-3">{section.heading}</h2>
+                <h2 className="text-[1.05rem] font-bold text-ink tracking-tight mb-3 pt-2 border-t border-rule">{section.heading}</h2>
                 <div className="space-y-2">
                   {section.paragraphs.map((para, i) => (
                     <Paragraph key={i} para={para} lang={lang} />
                   ))}
                   {section.list && (
-                    <ul className="mt-2 space-y-1.5 list-disc pl-5">
+                    <ul className="mt-3 space-y-2 list-disc pl-6 marker:text-ink-mute">
                       {section.list.map((item) => <li key={item}>{item}</li>)}
                     </ul>
                   )}

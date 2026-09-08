@@ -19,36 +19,34 @@ export default function GlobalNotFound() {
       <body className="min-h-full">
         <main
           id="main"
-          className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4 font-sans"
+          className="min-h-screen bg-paper flex flex-col items-center justify-center px-5"
         >
           <div className="text-center max-w-md">
-            <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <span className="text-white font-bold text-lg tracking-tight">SAP</span>
-            </div>
-            <p className="text-6xl font-bold text-gray-300 mb-2">404</p>
-            <h1 className="text-xl font-semibold text-gray-800 mb-2">
+            <p className="font-bold text-ink text-[0.95rem] tracking-tight mb-10">SAP</p>
+            <p className="font-mono text-[0.75rem] tabular-nums tracking-[0.2em] text-ink-mute mb-4">404</p>
+            <h1 className="text-[1.6rem] font-bold text-ink tracking-tight mb-3">
               ページが見つかりません
             </h1>
-            <p className="text-sm text-gray-600 mb-1">Page not found</p>
-            <p className="text-sm text-gray-600 mb-8">
+            <p className="text-[0.85rem] text-ink-mute mb-1">Page not found</p>
+            <p className="text-[0.9rem] text-ink-soft leading-[1.9] mb-9">
               お探しのページは存在しないか、移動した可能性があります。
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/"
-                className="px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors text-sm"
+                className="inline-flex items-center justify-center px-5 h-11 bg-ink text-white font-semibold rounded hover:bg-ink-soft transition-colors text-[0.85rem]"
               >
                 ホームへ戻る
               </Link>
               <Link
                 href="/dictionary"
-                className="px-6 py-2.5 bg-white border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors text-sm"
+                className="inline-flex items-center justify-center px-5 h-11 border border-rule text-ink-soft font-semibold rounded hover:border-ink-mute hover:text-ink transition-colors text-[0.85rem]"
               >
                 用語辞典を見る
               </Link>
             </div>
-            <p className="mt-8 text-sm text-gray-600">
-              <Link href="/en" className="text-blue-700 hover:underline">
+            <p className="mt-10 text-[0.85rem] text-ink-mute">
+              <Link href="/en" className="text-accent hover:underline underline-offset-2">
                 English version
               </Link>
             </p>

@@ -288,7 +288,7 @@ export default function SectionQuizzes({ quizzes, lang, moduleKey, sectionId }: 
               onClick={handleReset}
               className="text-[0.75rem] px-3 py-1.5 rounded border border-rule text-ink-soft hover:border-ink-mute hover:text-ink font-medium transition-colors"
             >
-              ↺ {ui.retry}
+              {ui.retry}
             </button>
           </div>
         )}

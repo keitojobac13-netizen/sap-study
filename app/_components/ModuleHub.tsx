@@ -2,6 +2,7 @@ import Link from 'next/link';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
 import Breadcrumbs from './Breadcrumbs';
+import Icon from './Icon';
 import { translations, type Language, type ModuleKey } from '../_lib/i18n';
 import { getModule } from '../_lib/modules';
 import { sectionSummary } from '../_lib/learning-types';
@@ -81,35 +82,34 @@ export default function ModuleHub({ moduleKey, lang }: {
   };
 
   return (
-    <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
+    <div lang={lang} className="min-h-screen flex flex-col bg-paper">
       <SiteHeader lang={lang} switchPath={modulePath(OTHER_LANG[lang], moduleKey)} />
 
       <main id="main" className="flex-1">
         {/* ─── Module header ─── */}
-        <div className={`${style.bg} border-b ${style.border}`}>
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+        <div className="border-b border-rule">
+          <div className="max-w-[52rem] mx-auto px-5 sm:px-8 py-12">
             <Breadcrumbs
               lang={lang}
               items={[{ label: mod.title }]}
             />
 
-            <div className="flex items-center gap-4 mt-5 mb-5">
-              <div className={`${style.badge} text-white font-bold w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm flex-shrink-0 text-lg`}>
+            <p className="flex items-center gap-2.5 mt-8 mb-3">
+              <span className={`${style.badge} w-2 h-2 rounded-full flex-shrink-0`} />
+              <span className="font-bold text-ink text-[0.85rem] tracking-[0.06em]">
                 {moduleKey.toUpperCase()}
-              </div>
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
-                  {mod.title}
-                </h1>
-                <p className="text-sm text-gray-500 mt-1">
-                  {mod.sections.length} {l.sectionCount} ・ {totalQuizzes} {l.totalQuiz}
-                </p>
-              </div>
-            </div>
+              </span>
+            </p>
+            <h1 className="text-[1.9rem] sm:text-[2.3rem] font-bold text-ink leading-[1.3] tracking-tight">
+              {mod.title}
+            </h1>
+            <p className="font-mono text-[0.72rem] tabular-nums text-ink-mute mt-3">
+              {mod.sections.length} {l.sectionCount} · {totalQuizzes} {l.totalQuiz}
+            </p>
 
-            <div className="space-y-4 max-w-3xl">
+            <div className="space-y-5 max-w-2xl mt-7">
               {intro.map((para, i) => (
-                <p key={i} className="text-gray-700 leading-[1.9] text-sm sm:text-base">
+                <p key={i} className="text-ink-soft leading-[2] text-[0.95rem]">
                   {para}
                 </p>
               ))}
@@ -119,7 +119,7 @@ export default function ModuleHub({ moduleKey, lang }: {
               {meta.topics.map((topic) => (
                 <span
                   key={topic}
-                  className={`text-xs font-medium px-3 py-1.5 rounded-full bg-white/70 ${style.text} border ${style.border}`}
+                  className="text-[0.75rem] text-ink-soft px-2.5 py-1 rounded border border-rule bg-ground"
                 >
                   {topic}
                 </span>
@@ -128,36 +128,37 @@ export default function ModuleHub({ moduleKey, lang }: {
 
             <Link
               href={sectionPath(lang, moduleKey, mod.sections[0].id)}
-              className={`inline-flex items-center gap-2 mt-7 px-6 py-3 ${style.badge} text-white font-semibold rounded-xl hover:opacity-90 transition-opacity text-sm shadow-sm`}
+              className="inline-flex items-center gap-2 mt-8 px-5 h-11 bg-ink text-white font-semibold rounded hover:bg-ink-soft transition-colors text-[0.85rem]"
             >
-              {l.start} →
+              {l.start}
+              <Icon name="arrow-right" className="w-4 h-4" />
             </Link>
           </div>
         </div>
 
         {/* ─── Section list ─── */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">{l.sections}</h2>
-          <p className="text-sm text-gray-500 mb-6">{l.sectionsLead}</p>
+        <section className="max-w-[52rem] mx-auto px-5 sm:px-8 py-14">
+          <h2 className="text-[1.3rem] font-bold text-ink tracking-tight">{l.sections}</h2>
+          <p className="text-[0.85rem] text-ink-mute mt-2 mb-8">{l.sectionsLead}</p>
 
-          <ol className="space-y-3">
+          <ol className="border-t border-rule">
             {mod.sections.map((s, i) => (
               <li key={s.id}>
                 <Link
                   href={sectionPath(lang, moduleKey, s.id)}
-                  className="group flex gap-4 bg-white rounded-2xl border border-gray-200 p-5 hover:border-gray-300 hover:shadow-md transition-all"
+                  className="group flex gap-5 py-5 border-b border-rule hover:bg-ground transition-colors -mx-3 px-3"
                 >
-                  <span className={`${style.bg} ${style.text} font-bold text-sm w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    {i + 1}
+                  <span className="font-mono text-[0.72rem] tabular-nums text-ink-mute pt-1 flex-shrink-0">
+                    {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block font-semibold text-gray-900 group-hover:text-blue-700 transition-colors">
+                    <span className="block font-semibold text-ink text-[0.95rem] group-hover:text-accent transition-colors">
                       {s.title}
                     </span>
-                    <span className="block text-sm text-gray-500 leading-relaxed mt-1">
+                    <span className="block text-[0.85rem] text-ink-soft leading-[1.85] mt-1.5">
                       {sectionSummary(s)}
                     </span>
-                    <span className="block text-xs text-gray-500 mt-2">
+                    <span className="block font-mono text-[0.7rem] text-ink-mute mt-2.5">
                       {s.quizzes.length} {l.quizCount}
                     </span>
                   </span>
@@ -168,18 +169,19 @@ export default function ModuleHub({ moduleKey, lang }: {
         </section>
 
         {/* ─── Related ─── */}
-        <section className="border-t border-gray-200 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">{l.relatedTitle}</h2>
+        <section className="border-t border-rule bg-ground">
+          <div className="max-w-[52rem] mx-auto px-5 sm:px-8 py-12">
+            <h2 className="text-[1.1rem] font-bold text-ink tracking-tight mb-4">{l.relatedTitle}</h2>
 
             <Link
               href={dictionaryPath(lang)}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:underline"
+              className="inline-flex items-center gap-2 text-[0.85rem] font-semibold text-accent hover:underline underline-offset-2"
             >
-              📖 {l.dictionary}
+              <Icon name="book" className="w-4 h-4" />
+              {l.dictionary}
             </Link>
 
-            <h3 className="text-sm font-semibold text-gray-500 mt-8 mb-3">{l.otherModules}</h3>
+            <h3 className="text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-ink-mute mt-10 mb-3">{l.otherModules}</h3>
             <div className="flex flex-wrap gap-2">
               {otherModules.map((key) => {
                 const s = MODULE_STYLES[key];
@@ -187,9 +189,11 @@ export default function ModuleHub({ moduleKey, lang }: {
                   <Link
                     key={key}
                     href={modulePath(lang, key)}
-                    className={`text-sm font-medium px-4 py-2 rounded-lg ${s.bg} ${s.text} border ${s.border} hover:shadow-sm transition-shadow`}
+                    className="inline-flex items-center gap-2 text-[0.8rem] px-3 py-2 rounded border border-rule bg-paper text-ink-soft hover:border-ink-mute hover:text-ink transition-colors"
                   >
-                    {key.toUpperCase()} — {t.modules.items[key].fullName}
+                    <span className={`${s.badge} w-1.5 h-1.5 rounded-full flex-shrink-0`} />
+                    <span className="font-semibold">{key.toUpperCase()}</span>
+                    <span className="text-ink-mute">{t.modules.items[key].fullName}</span>
                   </Link>
                 );
               })}

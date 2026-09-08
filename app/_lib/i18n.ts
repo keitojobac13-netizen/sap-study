@@ -38,7 +38,7 @@ export const translations: Record<Language, Translation> = {
     modules: {
       sectionTitle: '学習モジュール',
       sectionSubtitle: 'SAPの主要モジュールをわかりやすく解説します',
-      learnMore: '学習する →',
+      learnMore: '学習する',
       items: {
         fi: {
           fullName: '財務会計',
@@ -117,7 +117,7 @@ export const translations: Record<Language, Translation> = {
     modules: {
       sectionTitle: 'Learning Modules',
       sectionSubtitle: 'Clear explanations of major SAP modules',
-      learnMore: 'Learn More →',
+      learnMore: 'Learn more',
       items: {
         fi: {
           fullName: 'Financial Accounting',

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div lang="ja" className="min-h-screen flex flex-col bg-gray-50">
+    <div lang="ja" className="min-h-screen flex flex-col bg-paper">
       <SiteHeader lang="ja" switchPath={dictionaryPath('en')} />
       <main id="main" className="flex-1">
         <GlossaryPage lang="ja" />

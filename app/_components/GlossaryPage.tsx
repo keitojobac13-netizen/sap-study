@@ -8,16 +8,17 @@ import {
   type GlossaryModule,
 } from '../_lib/glossary';
 import type { Language } from '../_lib/i18n';
+import Icon from './Icon';
 
 const MODULE_COLORS: Record<GlossaryModule, string> = {
-  FI: 'bg-blue-100 text-blue-700 border-blue-200',
-  CO: 'bg-emerald-100 text-emerald-700 border-emerald-200',
-  SD: 'bg-orange-100 text-orange-700 border-orange-200',
-  MM: 'bg-purple-100 text-purple-700 border-purple-200',
-  PP: 'bg-cyan-100 text-cyan-700 border-cyan-200',
-  ABAP: 'bg-red-100 text-red-700 border-red-200',
-  BASIS: 'bg-amber-100 text-amber-700 border-amber-200',
-  PS: 'bg-teal-100 text-teal-700 border-teal-200',
+  FI: 'text-blue-700 border-blue-200 bg-blue-50/60',
+  CO: 'text-emerald-700 border-emerald-200 bg-emerald-50/60',
+  SD: 'text-orange-700 border-orange-200 bg-orange-50/60',
+  MM: 'text-purple-700 border-purple-200 bg-purple-50/60',
+  PP: 'text-cyan-700 border-cyan-200 bg-cyan-50/60',
+  ABAP: 'text-red-700 border-red-200 bg-red-50/60',
+  BASIS: 'text-amber-700 border-amber-200 bg-amber-50/60',
+  PS: 'text-teal-700 border-teal-200 bg-teal-50/60',
 };
 
 const ALL_MODULES: GlossaryModule[] = ['FI', 'CO', 'SD', 'MM', 'PP', 'ABAP', 'BASIS', 'PS'];
@@ -119,41 +120,44 @@ export default function GlossaryPage({ lang }: Props) {
   const totalCount = filtered.length;
 
   return (
-    <div className="bg-gray-50 font-sans">
+    <div className="bg-paper">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-gray-800 to-gray-900 text-white py-10 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-3xl">📖</span>
-            <h1 className="text-2xl sm:text-3xl font-bold">{t.title}</h1>
-          </div>
-          <p className="text-gray-300 text-sm sm:text-base">{t.subtitle}</p>
+      <div className="border-b border-rule">
+        <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-12">
+          <h1 className="text-[1.9rem] sm:text-[2.3rem] font-bold text-ink tracking-tight leading-tight">
+            {t.title}
+          </h1>
+          <p className="text-ink-soft text-[0.9rem] sm:text-[0.95rem] mt-3 max-w-2xl leading-[1.9]">
+            {t.subtitle}
+          </p>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-8">
         {/* Search + Filter bar */}
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 mb-6 flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row gap-3 mb-8">
           {/* Search */}
           <div className="flex-1 relative">
             <label htmlFor="glossary-search" className="sr-only">{t.searchLabel}</label>
-            <span aria-hidden="true" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-base">🔍</span>
+            <span aria-hidden="true" className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-mute">
+              <Icon name="search" className="w-4 h-4" />
+            </span>
             <input
               id="glossary-search"
               type="search"
               value={query}
               onChange={(e) => { setQuery(e.target.value); setActiveLetter(null); }}
               placeholder={t.searchPlaceholder}
-              className="w-full pl-9 pr-9 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
+              className="w-full pl-9 pr-9 h-11 text-[0.88rem] border border-rule rounded focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent bg-paper text-ink placeholder:text-ink-mute"
             />
             {query && (
               <button
                 type="button"
                 onClick={() => setQuery('')}
                 aria-label={t.clearSearch}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 text-sm"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-mute hover:text-ink"
               >
-                <span aria-hidden="true">✕</span>
+                <Icon name="close" className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
@@ -164,8 +168,8 @@ export default function GlossaryPage({ lang }: Props) {
               aria-pressed={activeModule === null}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-colors ${
                 activeModule === null
-                  ? 'bg-gray-800 text-white border-gray-800'
-                  : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                  ? 'bg-ink text-white border-ink'
+                  : 'bg-paper text-ink-soft border-rule hover:border-ink-mute'
               }`}
             >
               {t.allModules}
@@ -178,7 +182,7 @@ export default function GlossaryPage({ lang }: Props) {
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-colors ${
                   activeModule === mod
                     ? MODULE_COLORS[mod] + ' border-current'
-                    : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                    : 'bg-paper text-ink-soft border-rule hover:border-ink-mute'
                 }`}
               >
                 {mod}
@@ -188,15 +192,14 @@ export default function GlossaryPage({ lang }: Props) {
         </div>
 
         {/* Count */}
-        <div className="text-xs text-gray-500 mb-4 px-1">
+        <div className="font-mono text-[0.72rem] tabular-nums text-ink-mute mb-5">
           {t.termCount(totalCount)}
         </div>
 
         {totalCount === 0 ? (
-          <div className="text-center py-20 text-gray-500">
-            <div className="text-4xl mb-3">🔍</div>
-            <p className="font-medium text-gray-600">{t.noResults}</p>
-            <p className="text-sm mt-1">{t.noResultsHint}</p>
+          <div className="text-center py-24 border-y border-rule">
+            <p className="font-semibold text-ink text-[0.95rem]">{t.noResults}</p>
+            <p className="text-[0.85rem] text-ink-mute mt-2">{t.noResultsHint}</p>
           </div>
         ) : (
           <>
@@ -207,10 +210,10 @@ export default function GlossaryPage({ lang }: Props) {
                 <button
                   key={letter}
                   onClick={() => scrollToSection(letter)}
-                  className={`px-2 py-1 text-xs font-bold rounded transition-colors ${
+                  className={`px-2 py-1 text-[0.72rem] font-bold rounded transition-colors ${
                     activeLetter === letter
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-white border border-gray-200 text-gray-600 hover:bg-blue-50'
+                      ? 'bg-ink text-white'
+                      : 'bg-paper border border-rule text-ink-soft hover:border-ink-mute'
                   }`}
                 >
                   {letter}
@@ -230,12 +233,12 @@ export default function GlossaryPage({ lang }: Props) {
                       key={letter}
                       disabled={!has}
                       onClick={() => has && scrollToSection(letter)}
-                      className={`h-7 text-xs font-bold rounded-md transition-colors ${
+                      className={`h-7 text-[0.72rem] font-bold rounded transition-colors ${
                         activeLetter === letter
-                          ? 'bg-blue-600 text-white'
+                          ? 'bg-ink text-white'
                           : has
-                          ? 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
-                          : 'text-gray-300 cursor-default'
+                          ? 'text-ink-soft hover:bg-ground hover:text-accent'
+                          : 'text-rule cursor-default'
                       }`}
                     >
                       {letter}
@@ -257,14 +260,12 @@ export default function GlossaryPage({ lang }: Props) {
                   >
                     {/* Section header */}
                     <div className="flex items-center gap-3 mb-3 scroll-mt-20">
-                      <div className="w-9 h-9 bg-gray-800 text-white rounded-xl flex items-center justify-center font-bold text-sm flex-shrink-0">
-                        {letter}
-                      </div>
-                      <div className="h-px flex-1 bg-gray-200" />
-                      <span className="text-xs text-gray-500">{terms.length}</span>
+                      <span className="font-bold text-ink text-[0.95rem] flex-shrink-0 w-6">{letter}</span>
+                      <div className="h-px flex-1 bg-rule" />
+                      <span className="font-mono text-[0.7rem] tabular-nums text-ink-mute">{terms.length}</span>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="border-t border-rule">
                       {terms.map((term) => {
                         return (
                           // <details> keeps every definition in the DOM even when
@@ -272,20 +273,20 @@ export default function GlossaryPage({ lang }: Props) {
                           <details
                             key={term.id}
                             id={term.id}
-                            className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-colors scroll-mt-20"
+                            className="group border-b border-rule scroll-mt-20"
                           >
-                            <summary className="w-full text-left px-4 py-3.5 flex items-start gap-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                            <summary className="w-full text-left py-3.5 px-2 -mx-2 flex items-start gap-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-ground transition-colors">
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-start gap-2 flex-wrap">
-                                  <span className="font-bold text-gray-900 text-sm sm:text-base leading-snug">
+                                  <span className="font-semibold text-ink text-[0.92rem] leading-snug">
                                     {lang === 'ja' ? term.ja.term : term.en.term}
                                   </span>
-                                  <span className="text-xs text-gray-500 leading-snug mt-0.5">
+                                  <span className="text-[0.78rem] text-ink-mute leading-snug mt-0.5">
                                     {lang === 'ja' ? term.en.term : term.ja.term}
                                   </span>
                                 </div>
                                 {lang === 'ja' && (
-                                  <div className="text-xs text-gray-500 mt-0.5">
+                                  <div className="text-[0.72rem] text-ink-mute mt-1">
                                     {t.reading}{term.ja.reading}
                                   </div>
                                 )}
@@ -294,24 +295,24 @@ export default function GlossaryPage({ lang }: Props) {
                                 {term.modules.map((mod) => (
                                   <span
                                     key={mod}
-                                    className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${MODULE_COLORS[mod]}`}
+                                    className={`text-[0.68rem] font-semibold px-1.5 py-0.5 rounded border ${MODULE_COLORS[mod]}`}
                                   >
                                     {mod}
                                   </span>
                                 ))}
-                                <span className="ml-1 text-gray-500 text-sm transition-transform duration-200 group-open:rotate-180">
-                                  ▾
+                                <span className="ml-1 text-ink-mute transition-transform duration-200 group-open:rotate-90">
+                                  <Icon name="arrow-right" className="w-3.5 h-3.5" />
                                 </span>
                               </div>
                             </summary>
 
                             {/* Definition — always present in the HTML */}
-                            <div className="border-t border-gray-100 px-4 pb-4 pt-3 bg-gray-50">
-                              <p className="text-sm text-gray-700 leading-relaxed">
+                            <div className="pb-5 pt-1 pr-2">
+                              <p className="text-[0.88rem] text-ink-soft leading-[1.95]">
                                 {lang === 'ja' ? term.ja.definition : term.en.definition}
                               </p>
-                              <p className="text-sm text-gray-500 leading-relaxed mt-3 pl-3 border-l-2 border-gray-200">
-                                <span className="block text-xs font-semibold text-gray-500 mb-1">
+                              <p className="text-[0.85rem] text-ink-mute leading-[1.9] mt-4 pl-4 border-l border-rule">
+                                <span className="block text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-ink-mute mb-1.5">
                                   {lang === 'ja' ? 'English' : '日本語'}
                                 </span>
                                 {lang === 'ja' ? term.en.definition : term.ja.definition}
