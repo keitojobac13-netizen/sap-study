@@ -8,6 +8,18 @@ const NOTE_STYLES: Record<string, { rule: string; icon: IconName; tint: string }
 };
 
 /**
+ * A short ASCII token like FI-GL, GR/IR or FB50. Latin text may break after a
+ * hyphen or a slash, and a table column is never narrower than its widest
+ * unbreakable piece — so on a phone the code column collapsed and set "FI-GL"
+ * as "FI-" over "GL". The header row already sets `whitespace-nowrap` for the
+ * same reason, and the wrapper's `overflow-x-auto` absorbs a table that then
+ * runs wide.
+ */
+function isShortCode(cell: string): boolean {
+  return cell.length <= 14 && /^[A-Za-z0-9/._()-]+$/.test(cell);
+}
+
+/**
  * Renders article content on the server so the full text ships in the
  * initial HTML. No client JS, no interaction gating — crawlers and
  * readers see exactly the same words.
@@ -78,7 +90,12 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                       {block.rows.map((row, j) => (
                         <tr key={j} className="border-b border-rule-soft last:border-0 align-top">
                           {row.map((cell, k) => (
-                            <td key={k} className="px-3 py-2.5 text-ink-soft leading-[1.8]">
+                            <td
+                              key={k}
+                              className={`px-3 py-2.5 text-ink-soft leading-[1.8]${
+                                isShortCode(cell) ? ' whitespace-nowrap' : ''
+                              }`}
+                            >
                               {cell}
                             </td>
                           ))}
