@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { geistSans } from '../_lib/fonts';
+import { geistSans, zenKaku } from '../_lib/fonts';
 import { type Language } from '../_lib/i18n';
 import CookieBanner from './CookieBanner';
 
@@ -21,7 +21,7 @@ export default function RootShell({ lang, children }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang={lang} className={`${geistSans.variable} h-full antialiased`}>
+    <html lang={lang} className={`${geistSans.variable} ${zenKaku.variable} h-full antialiased`}>
       <head>
         <script
           async
@@ -32,7 +32,7 @@ export default function RootShell({ lang, children }: {
       <body className="min-h-full">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-blue-600 focus:text-white focus:text-sm focus:font-semibold focus:shadow-lg"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-accent focus:text-white focus:text-sm focus:font-semibold focus:shadow-lg"
         >
           {SKIP_LABEL[lang]}
         </a>

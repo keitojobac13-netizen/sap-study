@@ -4,6 +4,7 @@ import SiteFooter from './SiteFooter';
 import Breadcrumbs from './Breadcrumbs';
 import ArticleBody from './ArticleBody';
 import SectionQuizzes from './SectionQuizzes';
+import Icon from './Icon';
 import { translations, type Language, type ModuleKey } from '../_lib/i18n';
 import { getSection } from '../_lib/modules';
 import { sectionBlocks, sectionSummary } from '../_lib/learning-types';
@@ -21,29 +22,28 @@ import {
 const LABELS = {
   ja: {
     toc: 'このモジュールの目次',
+    tocMobile: '目次',
     sectionNav: 'セクション間の移動',
-    tocMobile: '目次を開く',
     prev: '前のセクション',
     next: '次のセクション',
     backToModule: 'モジュールの目次へ戻る',
-    position: 'セクション',
-    of: '/',
     dictionary: 'わからない用語は SAP用語辞典 で調べられます。',
-    freeNote: 'このページは無料で公開しています。',
   },
   en: {
     toc: 'Sections in this module',
+    tocMobile: 'Contents',
     sectionNav: 'Section navigation',
-    tocMobile: 'Open contents',
     prev: 'Previous',
     next: 'Next',
     backToModule: 'Back to module contents',
-    position: 'Section',
-    of: 'of',
     dictionary: 'Unfamiliar term? Look it up in the SAP glossary.',
-    freeNote: 'This page is free to read.',
   },
 } as const;
+
+/** Two digits, so the sidebar numbers align into a column. */
+function num(i: number) {
+  return String(i + 1).padStart(2, '0');
+}
 
 export default function SectionArticle({ moduleKey, sectionId, lang }: {
   moduleKey: ModuleKey;
@@ -82,7 +82,7 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
   };
 
   const toc = (
-    <ol className="space-y-1">
+    <ol className="space-y-0.5">
       {mod.sections.map((s, i) => {
         const isCurrent = i === index;
         return (
@@ -90,18 +90,16 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
             <Link
               href={sectionPath(lang, moduleKey, s.id)}
               aria-current={isCurrent ? 'page' : undefined}
-              className={`flex items-start gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+              className={`flex gap-3 py-1.5 pl-3 -ml-px border-l text-[0.8rem] leading-snug transition-colors ${
                 isCurrent
-                  ? `${style.bg} ${style.text} font-semibold border ${style.border}`
-                  : 'text-gray-700 hover:bg-gray-100'
+                  ? 'border-l-accent text-ink font-semibold'
+                  : 'border-l-rule text-ink-mute hover:border-l-ink-mute hover:text-ink-soft'
               }`}
             >
-              <span className={`w-5 h-5 rounded-full border flex items-center justify-center text-xs flex-shrink-0 mt-px ${
-                isCurrent ? `${style.badge} border-transparent text-white` : 'border-gray-300 text-gray-500'
-              }`}>
-                {i + 1}
+              <span className="font-mono text-[0.7rem] pt-px tabular-nums flex-shrink-0 opacity-70">
+                {num(i)}
               </span>
-              <span className="leading-snug">{s.title}</span>
+              <span>{s.title}</span>
             </Link>
           </li>
         );
@@ -110,22 +108,23 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
   );
 
   return (
-    <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
+    <div lang={lang} className="min-h-screen flex flex-col bg-paper">
       <SiteHeader lang={lang} switchPath={sectionPath(OTHER_LANG[lang], moduleKey, sectionId)} />
 
-      <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 flex gap-8">
+      <div className="max-w-[80rem] mx-auto w-full px-5 sm:px-8 flex gap-12 flex-1">
         {/* ─── Desktop table of contents ─── */}
-        <aside className="hidden lg:block w-64 flex-shrink-0">
+        <aside className="hidden lg:block w-60 flex-shrink-0 pt-10">
           <div className="sticky top-24">
-            <h2 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3 px-3">
-              {l.toc}
-            </h2>
+            <p className="flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-ink-mute mb-4 pl-3">
+              <span className={`w-1.5 h-1.5 rounded-full ${style.badge}`} />
+              {mod.title}
+            </p>
             <nav aria-label={l.toc}>{toc}</nav>
           </div>
         </aside>
 
-        <main id="main" className="flex-1 min-w-0 space-y-8">
-          <div>
+        <main id="main" className="flex-1 min-w-0 pt-10 pb-4">
+          <div className="max-w-[42rem] mx-auto">
             <Breadcrumbs
               lang={lang}
               items={[
@@ -134,78 +133,93 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
               ]}
             />
 
-            <p className="text-xs text-gray-500 mt-4 mb-1">
-              {l.position} {index + 1} {l.of} {mod.sections.length}
-            </p>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
-              {section.title}
-            </h1>
-            {summary && (
-              <p className="text-gray-600 leading-relaxed mt-3 text-sm sm:text-base">
-                {summary}
+            <div>
+              <p className="font-mono text-[0.72rem] tabular-nums text-ink-mute mt-8 mb-2 tracking-[0.1em]">
+                {num(index)} / {num(mod.sections.length - 1)}
               </p>
-            )}
+              <h1 className="text-[1.7rem] sm:text-[2.05rem] font-bold text-ink leading-[1.35] tracking-tight">
+                {section.title}
+              </h1>
+              {summary && (
+                <p className="text-ink-soft leading-[1.9] mt-4 text-[0.95rem] sm:text-base">
+                  {summary}
+                </p>
+              )}
+
+              {/* ─── Narrow-screen table of contents (no JS needed) ─── */}
+              <details className="lg:hidden mt-8 border-y border-rule">
+                <summary className="flex items-center justify-between px-1 py-3 text-[0.8rem] font-semibold text-ink-soft cursor-pointer select-none list-none">
+                  {l.tocMobile}
+                  <Icon name="arrow-right" className="w-3.5 h-3.5" />
+                </summary>
+                <nav aria-label={l.toc} className="pb-3">{toc}</nav>
+              </details>
+
+              <hr className="border-rule my-10" />
+
+              <article>
+                <ArticleBody blocks={blocks} />
+              </article>
+
+              <p className="mt-12 pt-5 border-t border-rule-soft text-[0.8rem] text-ink-mute flex items-start gap-2">
+                <Icon name="book" className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <Link href={dictionaryPath(lang)} className="text-accent hover:underline underline-offset-2">
+                  {l.dictionary}
+                </Link>
+              </p>
+            </div>
+
+            {/* ─── Quizzes ─── */}
+            <div className="mt-14">
+              <SectionQuizzes
+                quizzes={section.quizzes}
+                lang={lang}
+                moduleKey={moduleKey}
+                sectionId={sectionId}
+              />
+            </div>
+
+            {/* ─── Prev / next ─── */}
+            <nav
+              className="mt-14 pt-6 border-t border-rule grid grid-cols-1 sm:grid-cols-2 gap-6"
+              aria-label={l.sectionNav}
+            >
+              {prev ? (
+                <Link href={sectionPath(lang, moduleKey, prev.id)} className="group">
+                  <span className="flex items-center gap-1.5 text-[0.72rem] text-ink-mute mb-1.5">
+                    <Icon name="arrow-left" className="w-3.5 h-3.5" />
+                    {l.prev}
+                  </span>
+                  <span className="block text-[0.9rem] font-medium text-ink-soft group-hover:text-accent transition-colors leading-snug">
+                    {prev.title}
+                  </span>
+                </Link>
+              ) : (
+                <span />
+              )}
+              {next ? (
+                <Link href={sectionPath(lang, moduleKey, next.id)} className="group sm:text-right">
+                  <span className="flex items-center gap-1.5 text-[0.72rem] text-ink-mute mb-1.5 sm:justify-end">
+                    {l.next}
+                    <Icon name="arrow-right" className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="block text-[0.9rem] font-medium text-ink-soft group-hover:text-accent transition-colors leading-snug">
+                    {next.title}
+                  </span>
+                </Link>
+              ) : (
+                <Link href={modulePath(lang, moduleKey)} className="group sm:text-right">
+                  <span className="flex items-center gap-1.5 text-[0.72rem] text-ink-mute mb-1.5 sm:justify-end">
+                    {l.backToModule}
+                    <Icon name="arrow-up" className="w-3.5 h-3.5" />
+                  </span>
+                  <span className="block text-[0.9rem] font-medium text-ink-soft group-hover:text-accent transition-colors leading-snug">
+                    {mod.title}
+                  </span>
+                </Link>
+              )}
+            </nav>
           </div>
-
-          {/* ─── Mobile table of contents (no JS needed) ─── */}
-          <details className="lg:hidden bg-white rounded-2xl border border-gray-200 overflow-hidden">
-            <summary className="px-4 py-3 text-sm font-semibold text-gray-700 cursor-pointer select-none">
-              {l.tocMobile}
-            </summary>
-            <nav aria-label={l.toc} className="px-2 pb-3">{toc}</nav>
-          </details>
-
-          {/* ─── Article ─── */}
-          <article className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-8 shadow-sm">
-            <ArticleBody blocks={blocks} />
-
-            <p className="mt-8 pt-5 border-t border-gray-100 text-sm text-gray-500">
-              📖{' '}
-              <Link href={dictionaryPath(lang)} className="text-blue-700 hover:underline font-medium">
-                {l.dictionary}
-              </Link>
-            </p>
-          </article>
-
-          {/* ─── Quizzes ─── */}
-          <SectionQuizzes
-            quizzes={section.quizzes}
-            lang={lang}
-            moduleKey={moduleKey}
-            sectionId={sectionId}
-          />
-
-          {/* ─── Prev / next ─── */}
-          <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2" aria-label={l.sectionNav}>
-            {prev ? (
-              <Link
-                href={sectionPath(lang, moduleKey, prev.id)}
-                className="bg-white rounded-xl border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm transition-all"
-              >
-                <span className="block text-xs text-gray-500 mb-1">← {l.prev}</span>
-                <span className="block text-sm font-semibold text-gray-900">{prev.title}</span>
-              </Link>
-            ) : (
-              <span />
-            )}
-            {next ? (
-              <Link
-                href={sectionPath(lang, moduleKey, next.id)}
-                className="bg-white rounded-xl border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm transition-all sm:text-right"
-              >
-                <span className="block text-xs text-gray-500 mb-1">{l.next} →</span>
-                <span className="block text-sm font-semibold text-gray-900">{next.title}</span>
-              </Link>
-            ) : (
-              <Link
-                href={modulePath(lang, moduleKey)}
-                className="bg-white rounded-xl border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm transition-all sm:text-right"
-              >
-                <span className="block text-xs text-gray-500 mb-1">↑</span>
-                <span className="block text-sm font-semibold text-gray-900">{l.backToModule}</span>
-              </Link>
-            )}
-          </nav>
         </main>
       </div>
 

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
-import { geistSans } from './_lib/fonts';
+import { geistSans, zenKaku } from './_lib/fonts';
 
 export const metadata: Metadata = {
   title: 'ページが見つかりません | SAP Study Portal',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
  */
 export default function GlobalNotFound() {
   return (
-    <html lang="ja" className={`${geistSans.variable} h-full antialiased`}>
+    <html lang="ja" className={`${geistSans.variable} ${zenKaku.variable} h-full antialiased`}>
       <body className="min-h-full">
         <main
           id="main"

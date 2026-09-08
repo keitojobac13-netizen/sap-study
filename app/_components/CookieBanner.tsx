@@ -48,19 +48,19 @@ export default function CookieBanner({ lang }: { lang: Language }) {
     <div
       role="region"
       aria-label={c.label}
-      className="fixed bottom-0 left-0 right-0 z-[100] bg-gray-900 border-t border-gray-700 px-4 py-4 shadow-xl"
+      className="fixed bottom-0 left-0 right-0 z-[100] bg-paper border-t border-rule px-5 sm:px-8 py-4 shadow-[0_-8px_24px_-16px_rgba(28,25,23,0.3)]"
     >
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
-        <p className="text-sm text-gray-300 flex-1 leading-relaxed">
+      <div className="max-w-[80rem] mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <p className="text-[0.8rem] text-ink-soft flex-1 leading-relaxed">
           {c.body}
-          <Link href={privacyPath(lang)} className="text-blue-400 hover:underline mx-1">
+          <Link href={privacyPath(lang)} className="text-accent hover:underline underline-offset-2 mx-1">
             {c.link}
           </Link>
           {c.tail}
         </p>
         <button
           onClick={accept}
-          className="flex-shrink-0 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors"
+          className="flex-shrink-0 px-5 py-2 bg-ink hover:bg-ink-soft text-white text-[0.8rem] font-semibold rounded transition-colors"
         >
           {c.accept}
         </button>

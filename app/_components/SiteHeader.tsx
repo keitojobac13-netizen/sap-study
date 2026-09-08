@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Icon from './Icon';
 import { translations, type Language } from '../_lib/i18n';
 import {
   homePath,
@@ -39,58 +40,58 @@ export default function SiteHeader({ lang, switchPath }: {
   ];
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
-          <Link href={homePath(lang)} className="flex items-center gap-2.5 min-w-0">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-xs tracking-tight">SAP</span>
-            </div>
-            <span className="font-semibold text-gray-900 text-sm sm:text-base leading-tight truncate">
+    <header className="bg-paper border-b border-rule sticky top-0 z-50">
+      <div className="max-w-[80rem] mx-auto px-5 sm:px-8">
+        <div className="flex items-center justify-between h-14 gap-4">
+          <Link
+            href={homePath(lang)}
+            className="flex items-baseline gap-2 min-w-0 group"
+          >
+            <span className="font-bold text-ink text-[0.95rem] tracking-tight whitespace-nowrap group-hover:text-accent transition-colors">
+              SAP
+            </span>
+            <span className="text-ink-mute text-[0.8rem] truncate">
               {t.siteName}
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-7" aria-label={l.nav}>
+          <nav className="hidden md:flex items-center gap-6" aria-label={l.nav}>
             {links.map(({ label, href }) => (
               <Link
                 key={label}
                 href={href}
-                className="text-sm text-gray-600 hover:text-blue-600 transition-colors font-medium whitespace-nowrap"
+                className="text-[0.8rem] text-ink-soft hover:text-accent transition-colors whitespace-nowrap"
               >
                 {label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-1.5 flex-shrink-0">
             <Link
               href={toggleHref}
               hrefLang={other}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-gray-700"
+              className="flex items-center gap-1.5 px-2.5 h-8 text-[0.75rem] font-medium text-ink-soft border border-rule rounded hover:border-ink-mute hover:text-ink transition-colors"
             >
-              🌐 {t.langToggle}
+              <Icon name="globe" className="w-3.5 h-3.5" />
+              {t.langToggle}
             </Link>
 
             {/* ─── Narrow-screen menu ─── */}
-            <details className="md:hidden relative group">
-              <summary className="list-none flex items-center justify-center w-9 h-9 rounded-lg border border-gray-300 text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors">
+            <details className="md:hidden relative">
+              <summary className="list-none flex items-center justify-center w-8 h-8 rounded border border-rule text-ink-soft cursor-pointer hover:border-ink-mute transition-colors">
                 <span className="sr-only">{l.menu}</span>
-                <span aria-hidden="true" className="flex flex-col gap-[3px]">
-                  <span className="block w-4 h-0.5 bg-current rounded-full" />
-                  <span className="block w-4 h-0.5 bg-current rounded-full" />
-                  <span className="block w-4 h-0.5 bg-current rounded-full" />
-                </span>
+                <Icon name="menu" className="w-4 h-4" />
               </summary>
               <nav
                 aria-label={l.nav}
-                className="absolute right-0 top-full mt-2 w-56 bg-white border border-gray-200 rounded-xl shadow-lg py-2"
+                className="absolute right-0 top-full mt-1.5 w-52 bg-paper border border-rule rounded shadow-[0_8px_24px_-12px_rgba(28,25,23,0.25)] py-1"
               >
                 {links.map(({ label, href }) => (
                   <Link
                     key={label}
                     href={href}
-                    className="block px-4 py-2.5 text-sm text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+                    className="block px-4 py-2.5 text-[0.85rem] text-ink-soft hover:bg-ground hover:text-ink transition-colors"
                   >
                     {label}
                   </Link>

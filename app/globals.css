@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Latin first: Geist carries no CJK glyphs, so Japanese falls straight
+     through to Zen Kaku Gothic New and then the reader's own system face. */
+  --font-sans: var(--font-latin), var(--font-jp);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Warm neutrals. Tailwind's default cool grays read as dashboard chrome;
+     this site is 150,000 characters of prose and sits better on a warm
+     ground, closer to paper. */
+  --color-ink: #1c1917;
+  --color-ink-soft: #44403c;
+  --color-ink-mute: #6f6862;
+  --color-rule: #e4e1dd;
+  --color-rule-soft: #f2f0ee;
+  --color-paper: #ffffff;
+  --color-ground: #faf9f7;
+
+  /* A single accent, deliberately clear of all eight module colours
+     (blue, emerald, orange, purple, cyan, red, amber, teal) so module
+     identity stays the only thing colour is used to say. */
+  --color-accent: #4338ca;
+  --color-accent-soft: #eef1fd;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Japanese runs without inter-word spaces, so it needs a looser default
+   leading than Latin copy to stay readable at length. */
+:lang(ja) {
+  line-height: 1.9;
+}
+
+/* Keep punctuation from opening holes at the start of a wrapped line. */
+:lang(ja) p,
+:lang(ja) li,
+:lang(ja) td {
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+
+::selection {
+  background: var(--color-accent-soft);
 }

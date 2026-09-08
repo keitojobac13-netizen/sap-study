@@ -28,17 +28,17 @@ export default function Breadcrumbs({ lang, items }: {
   };
 
   return (
-    <nav aria-label="Breadcrumb" className="text-xs text-gray-500">
+    <nav aria-label="Breadcrumb" className="text-[0.72rem] text-ink-mute">
       <ol className="flex flex-wrap items-center gap-1.5">
         {trail.map((crumb, i) => (
           <li key={i} className="flex items-center gap-1.5 min-w-0">
-            {i > 0 && <span aria-hidden className="text-gray-300">/</span>}
+            {i > 0 && <span aria-hidden className="text-rule">/</span>}
             {crumb.href ? (
-              <Link href={crumb.href} className="hover:text-blue-600 transition-colors">
+              <Link href={crumb.href} className="hover:text-accent transition-colors">
                 {crumb.label}
               </Link>
             ) : (
-              <span className="text-gray-700 font-medium truncate">{crumb.label}</span>
+              <span className="text-ink-soft truncate">{crumb.label}</span>
             )}
           </li>
         ))}
