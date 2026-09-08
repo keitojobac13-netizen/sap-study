@@ -165,7 +165,7 @@ export default function AboutPage({ lang }: { lang: Language }) {
     <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
       <SiteHeader lang={lang} switchPath={aboutPath(OTHER_LANG[lang])} />
 
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
           <Breadcrumbs lang={lang} items={[{ label: c.title }]} />
 

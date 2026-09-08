@@ -102,7 +102,7 @@ function FourChoiceQuizView({ quiz, state, onAnswer }: {
         } else if (isSelected) {
           cls += 'border-red-300 bg-red-50 text-red-700';
         } else {
-          cls += 'border-gray-200 bg-gray-50 text-gray-400';
+          cls += 'border-gray-200 bg-gray-50 text-gray-500';
         }
         return (
           <button key={i} className={cls} onClick={() => !state.answered && onAnswer(i)} disabled={state.answered}>
@@ -110,7 +110,7 @@ function FourChoiceQuizView({ quiz, state, onAnswer }: {
               !state.answered ? 'border-gray-300 text-gray-500' :
               isCorrect ? 'border-green-500 bg-green-500 text-white' :
               isSelected ? 'border-red-400 bg-red-400 text-white' :
-              'border-gray-300 text-gray-400'
+              'border-gray-300 text-gray-500'
             }`}>
               {['A', 'B', 'C', 'D'][i]}
             </span>

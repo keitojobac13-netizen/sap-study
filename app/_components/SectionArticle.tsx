@@ -8,6 +8,7 @@ import { translations, type Language, type ModuleKey } from '../_lib/i18n';
 import { getSection } from '../_lib/modules';
 import { sectionBlocks, sectionSummary } from '../_lib/learning-types';
 import { MODULE_STYLES } from '../_lib/module-style';
+import { SITE_OPERATOR, ARTICLES_UPDATED } from '../_lib/site-info';
 import {
   BASE_URL,
   homePath,
@@ -20,6 +21,7 @@ import {
 const LABELS = {
   ja: {
     toc: 'このモジュールの目次',
+    sectionNav: 'セクション間の移動',
     tocMobile: '目次を開く',
     prev: '前のセクション',
     next: '次のセクション',
@@ -31,6 +33,7 @@ const LABELS = {
   },
   en: {
     toc: 'Sections in this module',
+    sectionNav: 'Section navigation',
     tocMobile: 'Open contents',
     prev: 'Previous',
     next: 'Next',
@@ -67,6 +70,9 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
     inLanguage: lang === 'ja' ? 'ja-JP' : 'en-US',
     isAccessibleForFree: true,
     articleSection: mod.title,
+    datePublished: ARTICLES_UPDATED,
+    dateModified: ARTICLES_UPDATED,
+    author: { '@type': 'Person', name: SITE_OPERATOR[lang].name },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     publisher: {
       '@type': 'Organization',
@@ -91,7 +97,7 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
               }`}
             >
               <span className={`w-5 h-5 rounded-full border flex items-center justify-center text-xs flex-shrink-0 mt-px ${
-                isCurrent ? `${style.badge} border-transparent text-white` : 'border-gray-300 text-gray-400'
+                isCurrent ? `${style.badge} border-transparent text-white` : 'border-gray-300 text-gray-500'
               }`}>
                 {i + 1}
               </span>
@@ -118,7 +124,7 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
           </div>
         </aside>
 
-        <main className="flex-1 min-w-0 space-y-8">
+        <main id="main" className="flex-1 min-w-0 space-y-8">
           <div>
             <Breadcrumbs
               lang={lang}
@@ -170,13 +176,13 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
           />
 
           {/* ─── Prev / next ─── */}
-          <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2" aria-label={l.next}>
+          <nav className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2" aria-label={l.sectionNav}>
             {prev ? (
               <Link
                 href={sectionPath(lang, moduleKey, prev.id)}
                 className="bg-white rounded-xl border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm transition-all"
               >
-                <span className="block text-xs text-gray-400 mb-1">← {l.prev}</span>
+                <span className="block text-xs text-gray-500 mb-1">← {l.prev}</span>
                 <span className="block text-sm font-semibold text-gray-900">{prev.title}</span>
               </Link>
             ) : (
@@ -187,7 +193,7 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
                 href={sectionPath(lang, moduleKey, next.id)}
                 className="bg-white rounded-xl border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm transition-all sm:text-right"
               >
-                <span className="block text-xs text-gray-400 mb-1">{l.next} →</span>
+                <span className="block text-xs text-gray-500 mb-1">{l.next} →</span>
                 <span className="block text-sm font-semibold text-gray-900">{next.title}</span>
               </Link>
             ) : (
@@ -195,7 +201,7 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
                 href={modulePath(lang, moduleKey)}
                 className="bg-white rounded-xl border border-gray-200 p-4 hover:border-gray-300 hover:shadow-sm transition-all sm:text-right"
               >
-                <span className="block text-xs text-gray-400 mb-1">↑</span>
+                <span className="block text-xs text-gray-500 mb-1">↑</span>
                 <span className="block text-sm font-semibold text-gray-900">{l.backToModule}</span>
               </Link>
             )}

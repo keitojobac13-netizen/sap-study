@@ -78,7 +78,7 @@ export default function SiteFooter({ lang }: { lang: Language }) {
 
         <div className="mt-10 pt-6 border-t border-gray-800 text-xs text-center space-y-1">
           <p>{t.footer.copyright}</p>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-500 leading-relaxed">
             SAP is a registered trademark of SAP SE.<br />
             This site is an independent learning resource and is not affiliated with SAP SE.
           </p>

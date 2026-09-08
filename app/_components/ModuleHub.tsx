@@ -84,7 +84,7 @@ export default function ModuleHub({ moduleKey, lang }: {
     <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
       <SiteHeader lang={lang} switchPath={modulePath(OTHER_LANG[lang], moduleKey)} />
 
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         {/* ─── Module header ─── */}
         <div className={`${style.bg} border-b ${style.border}`}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
@@ -157,7 +157,7 @@ export default function ModuleHub({ moduleKey, lang }: {
                     <span className="block text-sm text-gray-500 leading-relaxed mt-1">
                       {sectionSummary(s)}
                     </span>
-                    <span className="block text-xs text-gray-400 mt-2">
+                    <span className="block text-xs text-gray-500 mt-2">
                       {s.quizzes.length} {l.quizCount}
                     </span>
                   </span>

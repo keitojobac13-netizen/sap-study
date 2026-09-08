@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
-import { translations, type Language, type ModuleKey } from '../_lib/i18n';
+import { translations, type Language } from '../_lib/i18n';
 import { MODULE_KEYS, getModule } from '../_lib/modules';
 import { MODULE_STYLES } from '../_lib/module-style';
 import {
@@ -117,7 +117,7 @@ export default function HomePage({ lang, termCount }: {
     <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
       <SiteHeader lang={lang} switchPath={homePath(OTHER_LANG[lang])} />
 
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         {/* ─── Hero ─── */}
         <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 text-white py-20 px-4">
           <div className="max-w-4xl mx-auto text-center">
@@ -204,7 +204,7 @@ export default function HomePage({ lang, termCount }: {
                       {meta.description}
                     </p>
 
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
                       {c.sectionsPeek}
                     </p>
                     <ul className="space-y-1.5 mb-5 flex-1">

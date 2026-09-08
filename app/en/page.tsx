@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import HomePage from '../_components/HomePage';
 import { glossaryTerms } from '../_lib/glossary';
 import { homePath, alternatesFor } from '../_lib/routes';
+import { OG_IMAGES } from '../_lib/og-image';
 
 export const metadata: Metadata = {
   title: { absolute: 'SAP Study Portal — Free SAP learning resource' },
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     title: 'SAP Study Portal | Free SAP learning resource',
     description:
       'A free, bilingual SAP learning site covering FI, CO, SD, MM, PP, ABAP, Basis and PS.',
+    images: OG_IMAGES,
   },
 };
 

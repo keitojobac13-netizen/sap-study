@@ -15,7 +15,7 @@ export default function PageEn() {
   return (
     <div lang="en" className="min-h-screen flex flex-col bg-gray-50">
       <SiteHeader lang="en" switchPath={dictionaryPath('ja')} />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <GlossaryPage lang="en" />
       </main>
       <SiteFooter lang="en" />

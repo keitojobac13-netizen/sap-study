@@ -27,3 +27,12 @@ export const SITE_OPERATOR: Record<Language, {
     started: 'June 2026',
   },
 };
+
+/**
+ * When the section articles were last rewritten. Google wants `datePublished`
+ * and `dateModified` on an `Article`, and the site has no per-article dates,
+ * so one honest site-wide date stands in for all of them.
+ *
+ * Bump this whenever the article bodies change substantially.
+ */
+export const ARTICLES_UPDATED = '2026-09-07';

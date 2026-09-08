@@ -6,7 +6,6 @@ import {
   getKanaRow,
   KANA_ROWS,
   type GlossaryModule,
-  type KanaRow,
 } from '../_lib/glossary';
 import type { Language } from '../_lib/i18n';
 
@@ -41,6 +40,9 @@ const UI = {
     reading: '読み：',
     relatedModules: '関連モジュール',
     langToggleLabel: 'EN',
+    searchLabel: '用語を検索',
+    clearSearch: '検索条件を消去',
+    moduleFilterLabel: 'モジュールで絞り込む',
   },
   en: {
     title: 'SAP Terminology Dictionary',
@@ -53,6 +55,9 @@ const UI = {
     reading: 'Reading: ',
     relatedModules: 'Related modules',
     langToggleLabel: 'JP',
+    searchLabel: 'Search terms',
+    clearSearch: 'Clear search',
+    moduleFilterLabel: 'Filter by module',
   },
 } as const;
 
@@ -131,9 +136,11 @@ export default function GlossaryPage({ lang }: Props) {
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 mb-6 flex flex-col sm:flex-row gap-3">
           {/* Search */}
           <div className="flex-1 relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-base">🔍</span>
+            <label htmlFor="glossary-search" className="sr-only">{t.searchLabel}</label>
+            <span aria-hidden="true" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-base">🔍</span>
             <input
-              type="text"
+              id="glossary-search"
+              type="search"
               value={query}
               onChange={(e) => { setQuery(e.target.value); setActiveLetter(null); }}
               placeholder={t.searchPlaceholder}
@@ -141,17 +148,20 @@ export default function GlossaryPage({ lang }: Props) {
             />
             {query && (
               <button
+                type="button"
                 onClick={() => setQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-sm"
+                aria-label={t.clearSearch}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 text-sm"
               >
-                ✕
+                <span aria-hidden="true">✕</span>
               </button>
             )}
           </div>
           {/* Module filter */}
-          <div className="flex items-center gap-1.5 flex-wrap">
+          <div role="group" aria-label={t.moduleFilterLabel} className="flex items-center gap-1.5 flex-wrap">
             <button
               onClick={() => setActiveModule(null)}
+              aria-pressed={activeModule === null}
               className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-colors ${
                 activeModule === null
                   ? 'bg-gray-800 text-white border-gray-800'
@@ -164,6 +174,7 @@ export default function GlossaryPage({ lang }: Props) {
               <button
                 key={mod}
                 onClick={() => setActiveModule(activeModule === mod ? null : mod)}
+                aria-pressed={activeModule === mod}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-colors ${
                   activeModule === mod
                     ? MODULE_COLORS[mod] + ' border-current'
@@ -182,7 +193,7 @@ export default function GlossaryPage({ lang }: Props) {
         </div>
 
         {totalCount === 0 ? (
-          <div className="text-center py-20 text-gray-400">
+          <div className="text-center py-20 text-gray-500">
             <div className="text-4xl mb-3">🔍</div>
             <p className="font-medium text-gray-600">{t.noResults}</p>
             <p className="text-sm mt-1">{t.noResultsHint}</p>
@@ -250,7 +261,7 @@ export default function GlossaryPage({ lang }: Props) {
                         {letter}
                       </div>
                       <div className="h-px flex-1 bg-gray-200" />
-                      <span className="text-xs text-gray-400">{terms.length}</span>
+                      <span className="text-xs text-gray-500">{terms.length}</span>
                     </div>
 
                     <div className="space-y-2">
@@ -269,12 +280,12 @@ export default function GlossaryPage({ lang }: Props) {
                                   <span className="font-bold text-gray-900 text-sm sm:text-base leading-snug">
                                     {lang === 'ja' ? term.ja.term : term.en.term}
                                   </span>
-                                  <span className="text-xs text-gray-400 leading-snug mt-0.5">
+                                  <span className="text-xs text-gray-500 leading-snug mt-0.5">
                                     {lang === 'ja' ? term.en.term : term.ja.term}
                                   </span>
                                 </div>
                                 {lang === 'ja' && (
-                                  <div className="text-xs text-gray-400 mt-0.5">
+                                  <div className="text-xs text-gray-500 mt-0.5">
                                     {t.reading}{term.ja.reading}
                                   </div>
                                 )}
@@ -288,7 +299,7 @@ export default function GlossaryPage({ lang }: Props) {
                                     {mod}
                                   </span>
                                 ))}
-                                <span className="ml-1 text-gray-400 text-sm transition-transform duration-200 group-open:rotate-180">
+                                <span className="ml-1 text-gray-500 text-sm transition-transform duration-200 group-open:rotate-180">
                                   ▾
                                 </span>
                               </div>
@@ -300,7 +311,7 @@ export default function GlossaryPage({ lang }: Props) {
                                 {lang === 'ja' ? term.ja.definition : term.en.definition}
                               </p>
                               <p className="text-sm text-gray-500 leading-relaxed mt-3 pl-3 border-l-2 border-gray-200">
-                                <span className="block text-xs font-semibold text-gray-400 mb-1">
+                                <span className="block text-xs font-semibold text-gray-500 mb-1">
                                   {lang === 'ja' ? 'English' : '日本語'}
                                 </span>
                                 {lang === 'ja' ? term.en.definition : term.ja.definition}

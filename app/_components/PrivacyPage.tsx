@@ -254,12 +254,12 @@ export default function PrivacyPage({ lang }: { lang: Language }) {
     <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
       <SiteHeader lang={lang} switchPath={privacyPath(OTHER_LANG[lang])} />
 
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
           <Breadcrumbs lang={lang} items={[{ label: c.title }]} />
 
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-5 mb-2">{c.title}</h1>
-          <p className="text-sm text-gray-400 mb-8">
+          <p className="text-sm text-gray-500 mb-8">
             {c.updated}：{PRIVACY_UPDATED[lang]}
           </p>
 

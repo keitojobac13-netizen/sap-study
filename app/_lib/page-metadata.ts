@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { Language } from './i18n';
 import type { ModuleContent, Section } from './learning-types';
 import { sectionSummary } from './learning-types';
+import { OG_IMAGES } from './og-image';
 
 const SITE = { ja: 'SAP学習ポータル', en: 'SAP Study Portal' } as const;
 
@@ -33,8 +34,9 @@ export function buildModuleMetadata(mod: ModuleContent, lang: Language): Metadat
       siteName: SITE[lang],
       title,
       description,
+      images: OG_IMAGES,
     },
-    twitter: { card: 'summary_large_image', title, description },
+    twitter: { card: 'summary_large_image', title, description, images: OG_IMAGES },
   };
 }
 
@@ -56,11 +58,13 @@ export function buildSectionMetadata(
       siteName: SITE[lang],
       title: `${section.title} | ${mod.title}`,
       description,
+      images: OG_IMAGES,
     },
     twitter: {
       card: 'summary_large_image',
       title: `${section.title} | ${mod.title}`,
       description,
+      images: OG_IMAGES,
     },
   };
 }

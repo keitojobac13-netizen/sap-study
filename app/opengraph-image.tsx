@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-const MODULES = ['FI', 'CO', 'SD', 'MM', 'PP'];
+const MODULES = ['FI', 'CO', 'SD', 'MM', 'PP', 'ABAP', 'Basis', 'PS'];
 
 export default function OGImage() {
   return new ImageResponse(
@@ -76,7 +76,7 @@ export default function OGImage() {
                 borderRadius: 10,
                 padding: '8px 20px',
                 color: 'white',
-                fontSize: 24,
+                fontSize: 22,
                 fontWeight: 700,
               }}
             >
