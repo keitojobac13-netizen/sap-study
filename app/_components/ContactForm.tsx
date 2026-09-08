@@ -2,6 +2,7 @@
 
 import { useForm, ValidationError } from '@formspree/react';
 import { type Language } from '../_lib/i18n';
+import Icon from './Icon';
 
 const COPY = {
   ja: {
@@ -45,7 +46,7 @@ export default function ContactForm({ lang }: { lang: Language }) {
   if (state.succeeded) {
     return (
       <div className="text-center py-16">
-        <div className="text-5xl mb-4">✉️</div>
+        <Icon name="mail" className="w-8 h-8 mx-auto mb-4 text-accent" />
         <h2 className="text-[1.2rem] font-bold text-ink tracking-tight mb-2">{c.sentTitle}</h2>
         <p className="text-[0.88rem] text-ink-soft">{c.sentBody}</p>
       </div>

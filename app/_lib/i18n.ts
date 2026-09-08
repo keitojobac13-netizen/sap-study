@@ -18,7 +18,7 @@ type Translation = {
     learnMore: string;
     items: Record<ModuleKey, ModuleData>;
   };
-  features: { sectionTitle: string; items: { icon: string; title: string; description: string }[] };
+  features: { sectionTitle: string; items: { title: string; description: string }[] };
   dictionary: { sectionTitle: string; description: string; button: string; badge: string };
   footer: { description: string; links: { modules: string; dictionary: string; about: string }; copyright: string };
 };
@@ -85,10 +85,10 @@ export const translations: Record<Language, Translation> = {
     features: {
       sectionTitle: 'このサイトの特徴',
       items: [
-        { icon: '📚', title: '体系的な学習コンテンツ', description: 'SAPの基本概念からトランザクション操作まで、初心者でもわかるように体系的に解説します' },
-        { icon: '🌐', title: '日英バイリンガル対応', description: '日本語・英語を切り替えて学習。グローバルプロジェクトの実務でも活用できます' },
-        { icon: '📖', title: 'SAP用語辞典', description: '業務用語・技術用語を日英対応で収録。現場でわからない用語をすぐに検索できます' },
-        { icon: '🆓', title: '完全無料', description: '登録不要・無料でお使いいただけます。広告収入によって運営されています' },
+        { title: '体系的な学習コンテンツ', description: 'SAPの基本概念からトランザクション操作まで、初心者でもわかるように体系的に解説します' },
+        { title: '日英バイリンガル対応', description: '日本語・英語を切り替えて学習。グローバルプロジェクトの実務でも活用できます' },
+        { title: 'SAP用語辞典', description: '業務用語・技術用語を日英対応で収録。現場でわからない用語をすぐに検索できます' },
+        { title: '完全無料', description: '登録不要・無料でお使いいただけます。広告収入によって運営されています' },
       ],
     },
     dictionary: {
@@ -164,10 +164,10 @@ export const translations: Record<Language, Translation> = {
     features: {
       sectionTitle: 'Features',
       items: [
-        { icon: '📚', title: 'Structured Learning', description: 'Step-by-step explanations from SAP concepts to transactions, designed for beginners' },
-        { icon: '🌐', title: 'Bilingual Support', description: 'Switch between Japanese and English. Perfect for global project environments' },
-        { icon: '📖', title: 'SAP Dictionary', description: 'Business and technical terms in JP/EN. Look up unfamiliar terms instantly in the field' },
-        { icon: '🆓', title: 'Completely Free', description: 'No registration required, free to use. Supported by advertising revenue' },
+        { title: 'Structured Learning', description: 'Step-by-step explanations from SAP concepts to transactions, designed for beginners' },
+        { title: 'Bilingual Support', description: 'Switch between Japanese and English. Perfect for global project environments' },
+        { title: 'SAP Dictionary', description: 'Business and technical terms in JP/EN. Look up unfamiliar terms instantly in the field' },
+        { title: 'Completely Free', description: 'No registration required, free to use. Supported by advertising revenue' },
       ],
     },
     dictionary: {

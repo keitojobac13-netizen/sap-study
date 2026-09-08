@@ -5,83 +5,73 @@ export const contentType = 'image/png';
 
 const MODULES = ['FI', 'CO', 'SD', 'MM', 'PP', 'ABAP', 'Basis', 'PS'];
 
+/**
+ * Set on the same warm paper as the site, so a shared link looks like the
+ * page it opens. The indigo is the site accent; the modules are a plain
+ * ruled row rather than badges, matching the home page's restraint.
+ */
 export default function OGImage() {
   return new ImageResponse(
     (
       <div
         style={{
-          background: 'linear-gradient(135deg, #1d4ed8 0%, #4338ca 100%)',
+          background: '#faf9f7',
           width: '100%',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
           justifyContent: 'center',
-          padding: '80px',
+          padding: '96px',
           fontFamily: 'sans-serif',
         }}
       >
-        {/* Logo */}
         <div
           style={{
-            background: 'white',
-            borderRadius: 20,
-            width: 88,
-            height: 88,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: 48,
+            gap: 16,
+            color: '#4338ca',
+            fontSize: 26,
+            fontWeight: 700,
+            letterSpacing: 2,
+            marginBottom: 40,
           }}
         >
-          <span style={{ color: '#1d4ed8', fontWeight: 900, fontSize: 28, letterSpacing: -1 }}>
-            SAP
-          </span>
+          <div style={{ width: 40, height: 3, background: '#4338ca' }} />
+          SAPSTUDY.JP
         </div>
 
-        {/* Title */}
         <div
           style={{
-            color: 'white',
-            fontSize: 72,
+            color: '#1c1917',
+            fontSize: 84,
             fontWeight: 900,
-            textAlign: 'center',
-            marginBottom: 16,
             lineHeight: 1.1,
+            letterSpacing: -2,
+            marginBottom: 20,
           }}
         >
           SAP学習ポータル
         </div>
 
-        {/* Subtitle */}
-        <div
-          style={{
-            color: 'rgba(255,255,255,0.75)',
-            fontSize: 28,
-            textAlign: 'center',
-            marginBottom: 56,
-          }}
-        >
-          Free SAP Study Portal — Bilingual JP / EN
+        <div style={{ color: '#44403c', fontSize: 32, marginBottom: 64 }}>
+          Free, bilingual JP / EN learning for SAP consultants
         </div>
 
-        {/* Module badges */}
-        <div style={{ display: 'flex', gap: 16 }}>
+        <div
+          style={{
+            display: 'flex',
+            gap: 28,
+            paddingTop: 32,
+            borderTop: '1px solid #e4e1dd',
+            color: '#6f6862',
+            fontSize: 24,
+            fontWeight: 700,
+            letterSpacing: 1,
+          }}
+        >
           {MODULES.map((m) => (
-            <div
-              key={m}
-              style={{
-                background: 'rgba(255,255,255,0.15)',
-                border: '1px solid rgba(255,255,255,0.3)',
-                borderRadius: 10,
-                padding: '8px 20px',
-                color: 'white',
-                fontSize: 22,
-                fontWeight: 700,
-              }}
-            >
-              {m}
-            </div>
+            <div key={m}>{m}</div>
           ))}
         </div>
       </div>
