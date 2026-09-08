@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import AboutPage from '../_components/AboutPage';
-import { aboutPath, alternatesFor } from '../_lib/routes';
+import AboutPage from '@/app/_components/AboutPage';
+import { aboutPath, alternatesFor } from '@/app/_lib/routes';
 
 export const metadata: Metadata = {
   title: { absolute: '運営者情報 | SAP学習ポータル' },

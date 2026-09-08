@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import SiteHeader from '../_components/SiteHeader';
-import SiteFooter from '../_components/SiteFooter';
-import GlossaryPage from '../_components/GlossaryPage';
-import { glossaryTerms } from '../_lib/glossary';
-import { dictionaryPath, alternatesFor } from '../_lib/routes';
+import SiteHeader from '@/app/_components/SiteHeader';
+import SiteFooter from '@/app/_components/SiteFooter';
+import GlossaryPage from '@/app/_components/GlossaryPage';
+import { glossaryTerms } from '@/app/_lib/glossary';
+import { dictionaryPath, alternatesFor } from '@/app/_lib/routes';
 
 export const metadata: Metadata = {
   title: { absolute: `SAP用語辞典（${glossaryTerms.length}語）| SAP学習ポータル` },
@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <div lang="ja" className="min-h-screen flex flex-col bg-gray-50">
       <SiteHeader lang="ja" switchPath={dictionaryPath('en')} />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <GlossaryPage lang="ja" />
       </main>
       <SiteFooter lang="ja" />

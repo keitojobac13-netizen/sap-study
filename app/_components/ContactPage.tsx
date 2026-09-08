@@ -54,7 +54,7 @@ export default function ContactPage({ lang }: { lang: Language }) {
     <div lang={lang} className="min-h-screen flex flex-col bg-gray-50 font-sans">
       <SiteHeader lang={lang} switchPath={contactPath(OTHER_LANG[lang])} />
 
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
           <Breadcrumbs lang={lang} items={[{ label: c.title }]} />
 
@@ -69,7 +69,7 @@ export default function ContactPage({ lang }: { lang: Language }) {
           </section>
 
           <div className="mt-8 bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
-            <ContactForm />
+            <ContactForm lang={lang} />
           </div>
 
           <aside className="mt-6 rounded-xl border border-gray-200 bg-white p-5">

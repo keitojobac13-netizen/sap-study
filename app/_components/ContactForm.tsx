@@ -1,42 +1,77 @@
 'use client';
 
 import { useForm, ValidationError } from '@formspree/react';
+import { type Language } from '../_lib/i18n';
 
-export default function ContactForm() {
+const COPY = {
+  ja: {
+    sentTitle: '送信しました',
+    sentBody: 'お問い合わせありがとうございます。内容を確認の上、ご返信いたします。',
+    name: 'お名前',
+    namePlaceholder: '山田 太郎',
+    email: 'メールアドレス',
+    category: 'お問い合わせ種別',
+    categoryEmpty: '選択してください',
+    categoryContent: 'コンテンツの誤り・修正依頼',
+    categoryFeature: '機能のご要望',
+    categoryOther: 'その他',
+    message: 'メッセージ',
+    messagePlaceholder: 'お問い合わせ内容をご記入ください',
+    submit: '送信する',
+    submitting: '送信中...',
+  },
+  en: {
+    sentTitle: 'Message sent',
+    sentBody: 'Thanks for getting in touch. We will read your message and reply.',
+    name: 'Name',
+    namePlaceholder: 'Jane Doe',
+    email: 'Email address',
+    category: 'Topic',
+    categoryEmpty: 'Please choose one',
+    categoryContent: 'Correction or factual error',
+    categoryFeature: 'Feature request',
+    categoryOther: 'Something else',
+    message: 'Message',
+    messagePlaceholder: 'Tell us what you need',
+    submit: 'Send',
+    submitting: 'Sending…',
+  },
+} as const;
+
+export default function ContactForm({ lang }: { lang: Language }) {
   const [state, handleSubmit] = useForm('xrevolqn');
+  const c = COPY[lang];
 
   if (state.succeeded) {
     return (
       <div className="text-center py-16">
         <div className="text-5xl mb-4">✉️</div>
-        <h2 className="text-xl font-bold text-gray-900 mb-2">送信しました</h2>
-        <p className="text-sm text-gray-500">お問い合わせありがとうございます。内容を確認の上、ご返信いたします。</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-2">{c.sentTitle}</h2>
+        <p className="text-sm text-gray-600">{c.sentBody}</p>
       </div>
     );
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      {/* お名前 */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">
-          お名前
+          {c.name}
         </label>
         <input
           id="name"
           type="text"
           name="name"
           required
-          placeholder="山田 太郎"
+          placeholder={c.namePlaceholder}
           className="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
         />
-        <ValidationError field="name" prefix="お名前" errors={state.errors} className="mt-1 text-xs text-red-600" />
+        <ValidationError field="name" prefix={c.name} errors={state.errors} className="mt-1 text-xs text-red-600" />
       </div>
 
-      {/* メールアドレス */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
-          メールアドレス
+          {c.email}
         </label>
         <input
           id="email"
@@ -46,13 +81,12 @@ export default function ContactForm() {
           placeholder="example@email.com"
           className="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
         />
-        <ValidationError field="email" prefix="メールアドレス" errors={state.errors} className="mt-1 text-xs text-red-600" />
+        <ValidationError field="email" prefix={c.email} errors={state.errors} className="mt-1 text-xs text-red-600" />
       </div>
 
-      {/* お問い合わせ種別 */}
       <div>
         <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1.5">
-          お問い合わせ種別
+          {c.category}
         </label>
         <select
           id="category"
@@ -60,30 +94,28 @@ export default function ContactForm() {
           required
           className="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
         >
-          <option value="">選択してください</option>
-          <option value="content">コンテンツの誤り・修正依頼</option>
-          <option value="feature">機能のご要望</option>
-          <option value="other">その他</option>
+          <option value="">{c.categoryEmpty}</option>
+          <option value="content">{c.categoryContent}</option>
+          <option value="feature">{c.categoryFeature}</option>
+          <option value="other">{c.categoryOther}</option>
         </select>
       </div>
 
-      {/* メッセージ */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">
-          メッセージ
+          {c.message}
         </label>
         <textarea
           id="message"
           name="message"
           required
           rows={6}
-          placeholder="お問い合わせ内容をご記入ください"
+          placeholder={c.messagePlaceholder}
           className="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 resize-none"
         />
-        <ValidationError field="message" prefix="メッセージ" errors={state.errors} className="mt-1 text-xs text-red-600" />
+        <ValidationError field="message" prefix={c.message} errors={state.errors} className="mt-1 text-xs text-red-600" />
       </div>
 
-      {/* フォームレベルエラー */}
       <ValidationError errors={state.errors} className="text-sm text-red-600" />
 
       <button
@@ -91,7 +123,7 @@ export default function ContactForm() {
         disabled={state.submitting}
         className="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-xl transition-colors text-sm"
       >
-        {state.submitting ? '送信中...' : '送信する'}
+        {state.submitting ? c.submitting : c.submit}
       </button>
     </form>
   );

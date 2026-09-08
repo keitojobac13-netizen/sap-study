@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import ContactPage from '../_components/ContactPage';
-import { contactPath, alternatesFor } from '../_lib/routes';
+import ContactPage from '@/app/_components/ContactPage';
+import { contactPath, alternatesFor } from '@/app/_lib/routes';
 
 export const metadata: Metadata = {
   title: { absolute: 'お問い合わせ | SAP学習ポータル' },

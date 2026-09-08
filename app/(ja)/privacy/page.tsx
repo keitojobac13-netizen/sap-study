@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import PrivacyPage from '../_components/PrivacyPage';
-import { privacyPath, alternatesFor } from '../_lib/routes';
+import PrivacyPage from '@/app/_components/PrivacyPage';
+import { privacyPath, alternatesFor } from '@/app/_lib/routes';
 
 export const metadata: Metadata = {
   title: { absolute: 'プライバシーポリシー | SAP学習ポータル' },

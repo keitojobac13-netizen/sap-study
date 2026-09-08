@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import SectionArticle from '../../_components/SectionArticle';
-import { allSectionPaths, isModuleKey, getSection } from '../../_lib/modules';
-import { sectionPath, alternatesFor } from '../../_lib/routes';
-import { buildSectionMetadata } from '../../_lib/page-metadata';
+import SectionArticle from '@/app/_components/SectionArticle';
+import { allSectionPaths, isModuleKey, getSection } from '@/app/_lib/modules';
+import { sectionPath, alternatesFor } from '@/app/_lib/routes';
+import { buildSectionMetadata } from '@/app/_lib/page-metadata';
 
 export const dynamicParams = false;
 

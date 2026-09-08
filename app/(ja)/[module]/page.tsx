@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import ModuleHub from '../_components/ModuleHub';
-import { MODULE_KEYS, isModuleKey, getModule } from '../_lib/modules';
-import { modulePath, alternatesFor } from '../_lib/routes';
-import { buildModuleMetadata } from '../_lib/page-metadata';
+import ModuleHub from '@/app/_components/ModuleHub';
+import { MODULE_KEYS, isModuleKey, getModule } from '@/app/_lib/modules';
+import { modulePath, alternatesFor } from '@/app/_lib/routes';
+import { buildModuleMetadata } from '@/app/_lib/page-metadata';
 
 export const dynamicParams = false;
 

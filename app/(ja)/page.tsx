@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import HomePage from './_components/HomePage';
-import { glossaryTerms } from './_lib/glossary';
-import { homePath, alternatesFor } from './_lib/routes';
+import HomePage from '@/app/_components/HomePage';
+import { glossaryTerms } from '@/app/_lib/glossary';
+import { homePath, alternatesFor } from '@/app/_lib/routes';
 
 export const metadata: Metadata = {
   alternates: alternatesFor('ja', homePath),
