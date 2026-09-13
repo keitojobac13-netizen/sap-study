@@ -10,6 +10,10 @@ import { abapContent } from './abap-content';
 import { basisContent } from './basis-content';
 import { psContent } from './ps-content';
 import { fiQuizzes } from './fi-quizzes';
+import { coQuizzes } from './co-quizzes';
+import { sdQuizzes } from './sd-quizzes';
+import { mmQuizzes } from './mm-quizzes';
+import { ppQuizzes } from './pp-quizzes';
 import { fi } from './fi';
 import { co } from './co';
 import { sd } from './sd';
@@ -52,6 +56,10 @@ type ExtraQuizzes = Record<string, Quiz[]>;
 
 const EXTRA_QUIZZES: Partial<Record<ModuleKey, Record<Language, ExtraQuizzes>>> = {
   fi: fiQuizzes,
+  co: coQuizzes,
+  sd: sdQuizzes,
+  mm: mmQuizzes,
+  pp: ppQuizzes,
 };
 
 function withExtraQuizzes(mod: ModuleContent, extra: ExtraQuizzes | undefined): ModuleContent {
