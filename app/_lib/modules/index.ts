@@ -1,4 +1,4 @@
-import type { ModuleContent, ModuleEnrichment } from '../learning-types';
+import type { ModuleContent, ModuleEnrichment, Quiz } from '../learning-types';
 import { enrichModule } from '../learning-types';
 import type { Language, ModuleKey } from '../i18n';
 import { fiContent } from './fi-content';
@@ -9,6 +9,7 @@ import { ppContent } from './pp-content';
 import { abapContent } from './abap-content';
 import { basisContent } from './basis-content';
 import { psContent } from './ps-content';
+import { fiQuizzes } from './fi-quizzes';
 import { fi } from './fi';
 import { co } from './co';
 import { sd } from './sd';
@@ -42,12 +43,34 @@ const CONTENT: Partial<Record<ModuleKey, Record<Language, ModuleEnrichment>>> = 
   ps: psContent,
 };
 
+/**
+ * Additional practice questions, kept in `<module>-quizzes.ts` keyed by
+ * section id and appended after the originals. Appending (never inserting)
+ * keeps readers' saved answers aligned with the questions they belong to.
+ */
+type ExtraQuizzes = Record<string, Quiz[]>;
+
+const EXTRA_QUIZZES: Partial<Record<ModuleKey, Record<Language, ExtraQuizzes>>> = {
+  fi: fiQuizzes,
+};
+
+function withExtraQuizzes(mod: ModuleContent, extra: ExtraQuizzes | undefined): ModuleContent {
+  if (!extra) return mod;
+  return {
+    ...mod,
+    sections: mod.sections.map((section) => {
+      const added = extra[section.id];
+      return added ? { ...section, quizzes: [...section.quizzes, ...added] } : section;
+    }),
+  };
+}
+
 const REGISTRY = Object.fromEntries(
   (Object.keys(BASE) as ModuleKey[]).map((key) => [
     key,
     {
-      ja: enrichModule(BASE[key].ja, CONTENT[key]?.ja),
-      en: enrichModule(BASE[key].en, CONTENT[key]?.en),
+      ja: withExtraQuizzes(enrichModule(BASE[key].ja, CONTENT[key]?.ja), EXTRA_QUIZZES[key]?.ja),
+      en: withExtraQuizzes(enrichModule(BASE[key].en, CONTENT[key]?.en), EXTRA_QUIZZES[key]?.en),
     },
   ])
 ) as Record<ModuleKey, Record<Language, ModuleContent>>;

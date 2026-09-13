@@ -63,7 +63,9 @@ function loadProgress(moduleKey: string, sectionId: string, lang: Language, coun
     const raw = localStorage.getItem(storageKey(moduleKey, sectionId, lang));
     if (!raw) return blank;
     const parsed = JSON.parse(raw) as QuizState[];
-    if (Array.isArray(parsed) && parsed.length === count) return parsed;
+    // Questions are only ever appended, so a shorter saved list is progress
+    // from before the section grew: keep those answers, add blanks after.
+    if (Array.isArray(parsed) && parsed.length <= count) return [...parsed, ...blank.slice(parsed.length)];
   } catch {}
   return blank;
 }
