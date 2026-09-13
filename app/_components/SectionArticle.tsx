@@ -4,6 +4,7 @@ import SiteFooter from './SiteFooter';
 import Breadcrumbs from './Breadcrumbs';
 import ArticleBody from './ArticleBody';
 import SectionQuizzes from './SectionQuizzes';
+import WaitlistForm from './WaitlistForm';
 import Icon from './Icon';
 import { translations, type Language, type ModuleKey } from '../_lib/i18n';
 import { getSection } from '../_lib/modules';
@@ -177,6 +178,10 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
                 moduleKey={moduleKey}
                 sectionId={sectionId}
               />
+            </div>
+
+            <div className="mt-12">
+              <WaitlistForm lang={lang} source={`${moduleKey}/${sectionId}`} />
             </div>
 
             {/* ─── Prev / next ─── */}

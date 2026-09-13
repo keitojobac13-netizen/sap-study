@@ -5,7 +5,7 @@ import Breadcrumbs from './Breadcrumbs';
 import type { Language } from '../_lib/i18n';
 import { contactPath, privacyPath, OTHER_LANG } from '../_lib/routes';
 
-export const PRIVACY_UPDATED = { ja: '2026年9月7日', en: '7 September 2026' } as const;
+export const PRIVACY_UPDATED = { ja: '2026年9月13日', en: '13 September 2026' } as const;
 
 type Para = string | { link: 'contact' | 'google' | 'googleAds' | 'formspree'; before: string; label: string; after: string };
 type Section = { heading: string; paragraphs: Para[]; list?: string[] };
@@ -35,6 +35,7 @@ const CONTENT: Record<Language, { title: string; updated: string; sections: Sect
           'Googleアナリティクスによる匿名の利用状況データ',
           'Google AdSenseによる広告配信のためのCookieおよび識別子',
           'お問い合わせフォームにご入力いただいた内容（お名前・メールアドレス・本文）',
+          '有料版のお知らせ登録でご入力いただいたメールアドレス',
         ],
       },
       {
@@ -76,16 +77,16 @@ const CONTENT: Record<Language, { title: string; updated: string; sections: Sect
         ],
       },
       {
-        heading: '7. お問い合わせフォームについて',
+        heading: '7. お問い合わせフォーム・有料版のお知らせ登録について',
         paragraphs: [
-          '当サイトのお問い合わせフォームは、外部サービスであるFormspreeを利用して送信内容を運営者に転送しています。入力された内容は同サービスのサーバーを経由します。',
+          '当サイトのお問い合わせフォームおよび有料版のお知らせ登録は、外部サービスであるFormspreeを利用して送信内容を運営者に転送しています。入力された内容は同サービスのサーバーを経由します。',
           {
             link: 'formspree',
             before: '同サービスにおける情報の取り扱いについては、',
             label: 'Formspreeのプライバシーポリシー',
             after: 'をご確認ください。',
           },
-          'いただいた内容は、お問い合わせへの対応およびサイト改善の目的にのみ利用します。',
+          'いただいた内容は、お問い合わせへの対応およびサイト改善の目的にのみ利用します。有料版のお知らせ登録でいただいたメールアドレスは、有料版公開のお知らせにのみ利用します。',
         ],
       },
       {
@@ -138,6 +139,7 @@ const CONTENT: Record<Language, { title: string; updated: string; sections: Sect
           'Anonymous usage data via Google Analytics',
           'Cookies and identifiers used by Google AdSense to serve advertising',
           'Whatever you enter in the contact form (name, email address, message)',
+          'The email address you give when signing up to hear about the paid version',
         ],
       },
       {
@@ -179,16 +181,16 @@ const CONTENT: Record<Language, { title: string; updated: string; sections: Sect
         ],
       },
       {
-        heading: '7. The contact form',
+        heading: '7. The contact form and paid version sign-up',
         paragraphs: [
-          'The contact form uses Formspree, an external service, to forward your message to the site operator. What you submit passes through that service’s servers.',
+          'The contact form and the paid version sign-up use Formspree, an external service, to forward what you submit to the site operator. It passes through that service’s servers.',
           {
             link: 'formspree',
             before: 'For how they handle that data, see ',
             label: 'Formspree’s Privacy Policy',
             after: '.',
           },
-          'Messages are used only to respond to your enquiry and to improve the site.',
+          'Messages are used only to respond to your enquiry and to improve the site. Email addresses given at sign-up are used only to announce the paid version.',
         ],
       },
       {
