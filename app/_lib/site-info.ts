@@ -16,13 +16,13 @@ export const SITE_OPERATOR: Record<Language, {
   foundingDate: '2026-06-22',
   ja: {
     siteName: 'SAP学習ポータル',
-    name: 'Keito',
+    name: 'kei',
     location: '日本',
     started: '2026年6月',
   },
   en: {
     siteName: 'SAP Study Portal',
-    name: 'Keito',
+    name: 'kei',
     location: 'Japan',
     started: 'June 2026',
   },

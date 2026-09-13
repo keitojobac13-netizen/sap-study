@@ -1,5 +1,6 @@
 import { extraTerms } from './glossary-extra';
 import { techTerms } from './glossary-tech';
+import { moreTerms } from './glossary-more';
 
 export type GlossaryModule = 'FI' | 'CO' | 'SD' | 'MM' | 'PP' | 'ABAP' | 'BASIS' | 'PS';
 
@@ -1340,4 +1341,5 @@ export const glossaryTerms: GlossaryTerm[] = [
   ...coreTerms,
   ...extraTerms,
   ...techTerms,
+  ...moreTerms,
 ];
