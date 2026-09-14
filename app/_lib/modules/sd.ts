@@ -353,7 +353,7 @@ export const sd: Record<'ja' | 'en', ModuleContent> = {
             choices: [
               '販売組織＋流通チャネル＋得意先価格設定手順指示子＋伝票価格設定手順指示子',
               '会社コード＋販売組織',
-              '品目カテゴリ＋得意先グループ',
+              '明細カテゴリ＋得意先グループ',
               '受注タイプ＋請求タイプ',
             ],
             correctIndex: 0,
@@ -550,7 +550,7 @@ export const sd: Record<'ja' | 'en', ModuleContent> = {
         content: [
           'VF04（Billing Due List）は出荷済みで未請求の伝票を一覧表示し、一括で請求書を作成します。',
           'VF11は請求書のキャンセルに使用し、逆仕訳がFIに自動転記されます。',
-          '勘定決定（Account Determination）はコンディション技術を使用し、請求時のGL勘定を自動決定します。',
+          '勘定決定（Account Determination）は条件テクニックを使用し、請求時のGL勘定を自動決定します。',
           'SD月次処理では未処理の出荷・請求の確認、売上レポートの確認、次期への繰越設定などを行います。',
         ],
         quizzes: [
@@ -582,7 +582,7 @@ export const sd: Record<'ja' | 'en', ModuleContent> = {
               '出荷条件',
             ],
             correctIndex: 1,
-            explanation: '勘定決定はコンディション技術を使用し、売上・税金等のGL勘定を自動決定します。',
+            explanation: '勘定決定は条件テクニックを使用し、売上・税金等のGL勘定を自動決定します。',
           },
           {
             type: 'ox',

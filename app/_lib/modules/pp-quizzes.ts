@@ -16,7 +16,7 @@ export const ppQuizzes: Record<Language, Record<string, Quiz[]>> = {
         type: 'ox',
         question: '組立受注生産（ATO）では、部品までを見込みで準備しておき、受注を受けてから最終組立を行う。',
         correct: true,
-        explanation: '正しいです。見込生産と個別生産の中間で、部品の調達リードタイムを短縮しながら、受注に合わせた組立ができます。',
+        explanation: '正しいです。見込生産と受注生産の中間で、部品の調達リードタイムを短縮しながら、受注に合わせた組立ができます。',
       },
       {
         type: 'ox',
@@ -27,9 +27,9 @@ export const ppQuizzes: Record<Language, Record<string, Quiz[]>> = {
       {
         type: 'four-choice',
         question: 'PPとSDの接点として最も適切なものはどれか。',
-        choices: ['受注が個別生産の所要量としてMRPに引き渡される', '請求伝票が製造指図を作成する', '出荷ポイントが作業場所を決める', '条件レコードが部品表を決める'],
+        choices: ['受注が受注生産の所要量としてMRPに引き渡される', '請求伝票が製造指図を作成する', '出荷ポイントが作業場所を決める', '条件レコードが部品表を決める'],
         correctIndex: 0,
-        explanation: '受注の数量と納期はMRPの所要量になります。個別生産では受注ごとに計画され、見込生産では計画独立所要量を消費します。',
+        explanation: '受注の数量と納期はMRPの所要量になります。受注生産では受注ごとに計画され、見込生産では計画独立所要量を消費します。',
       },
     ],
     'bom-routing': [

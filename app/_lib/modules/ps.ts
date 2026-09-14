@@ -325,7 +325,7 @@ export const ps: Record<'ja' | 'en', ModuleContent> = {
             type: 'ox',
             question: 'プロジェクトの実績原価は、購買・会計・管理会計の処理から自動的に収集される。',
             correct: true,
-            explanation: '正しいです。MM（入庫・請求照合）、FI（費用計上）、CO（活動配賦・間接費計算）などの処理からプロジェクトに実績原価が自動計上されます。',
+            explanation: '正しいです。MM（入庫・請求書照合）、FI（費用計上）、CO（活動配賦・間接費計算）などの処理からプロジェクトに実績原価が自動計上されます。',
           },
           {
             type: 'four-choice',

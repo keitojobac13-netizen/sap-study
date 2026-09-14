@@ -57,8 +57,8 @@ export const translations: Record<Language, Translation> = {
         },
         mm: {
           fullName: '購買・在庫管理',
-          description: '購買依頼から入庫・請求照合までの調達プロセスを学びます。',
-          topics: ['購買依頼・発注', '入庫処理', '請求照合', '在庫管理'],
+          description: '購買依頼から入庫・請求書照合までの調達プロセスを学びます。',
+          topics: ['購買依頼・発注', '入庫処理', '請求書照合', '在庫管理'],
         },
         pp: {
           fullName: '生産管理',

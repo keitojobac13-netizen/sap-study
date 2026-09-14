@@ -13,7 +13,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           'PP（Production Planning）は生産計画・製造指図・実績管理を担うモジュールです。',
           '主要プロセスは需要計画→MRP実行→計画手配→製造指図→製造確認→原価計算の流れです。',
           'PPはMM（部品調達）・CO（実績原価）・SD（需要引き）・PM（設備保全）と連携します。',
-          '生産タイプとして個別生産（MTO）・見込生産（MTS）・繰り返し製造がサポートされます。',
+          '生産タイプとして受注生産（MTO）・見込生産（MTS）・繰返生産がサポートされます。',
         ],
         quizzes: [
           {
@@ -49,12 +49,12 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'four-choice',
-            question: '個別生産（MTO：Make to Order）の特徴はどれですか？',
+            question: '受注生産（MTO：Make to Order）の特徴はどれですか？',
             choices: [
               '在庫から出荷する',
               '需要予測で生産計画を立てる',
               '受注を受けてから製造を開始し、特定受注に紐付ける',
-              '繰り返し製造ラインで連続生産する',
+              '繰返生産ラインで連続生産する',
             ],
             correctIndex: 2,
             explanation: 'MTOは受注紐付き製造で、製造コストが特定の受注明細に集計されます。',
@@ -130,7 +130,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
         title: 'MRP・製造指図',
         content: [
           'MRP（Material Requirements Planning）はMD01/MD02で実行し、需要に対する部品所要量と生産量を計算します。',
-          'MRP実行後に計画手配（Planned Order）が生成され、MD04（在庫/所要量リスト）で確認できます。',
+          'MRP実行後に計画手配（Planned Order）が生成され、MD04（在庫/所要量一覧）で確認できます。',
           '計画手配はCO41で製造指図（Production Order）に変換され、材料引き当て・能力確認が行われます。',
           '製造指図の作成はCO01で手動作成することも可能です。',
         ],
@@ -184,7 +184,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           '製造確認はCO11Nで行い、製造指図に対する実際の作業時間・生産数量を報告します。',
           '製造確認により材料実消費量・活動実績が製造指図に集計され、実績原価が計算されます。',
           '入庫確認はMIGOまたはCO11N（同時入庫オプション）で行い、製品の在庫計上を行います。',
-          '製造指図の完了確認（TECO）後に差異分析・原価精算（CO88）が実行されます。',
+          '製造指図の完了確認（TECO）後に差異分析・原価決済（CO88）が実行されます。',
         ],
         quizzes: [
           {
@@ -202,10 +202,10 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'four-choice',
-            question: '製造指図の精算（Settlement）に使用するトランザクションはどれですか？',
+            question: '製造指図の決済（Settlement）に使用するトランザクションはどれですか？',
             choices: ['CO11N', 'CO88', 'KKS2', 'KKAO'],
             correctIndex: 1,
-            explanation: 'CO88（Order Settlement）で製造指図の実績原価を製品や原価センタに精算します。',
+            explanation: 'CO88（Order Settlement）で製造指図の実績原価を製品や原価センタに決済します。',
           },
           {
             type: 'ox',
@@ -227,10 +227,10 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'ordering',
-            question: '製造完了から原価精算までの流れを正しい順序に並べてください。',
-            items: ['CO88精算', 'CO11N確認', '差異分析（KKS2）', '製品入庫（MIGO）', 'TECO（技術的完了）'],
+            question: '製造完了から原価決済までの流れを正しい順序に並べてください。',
+            items: ['CO88決済', 'CO11N確認', '差異分析（KKS2）', '製品入庫（MIGO）', 'TECO（技術的完了）'],
             correctOrder: [1, 3, 4, 2, 0],
-            explanation: 'CO11N確認→製品入庫→TECO→差異分析→CO88精算の順です。',
+            explanation: 'CO11N確認→製品入庫→TECO→差異分析→CO88決済の順です。',
           },
         ],
       },
@@ -339,7 +339,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
               '特殊調達キー',
               'バッチ管理必須フラグと棚卸管理タイプ',
               '評価クラス',
-              'MRP方式',
+              'MRPタイプ',
             ],
             correctIndex: 1,
             explanation: 'バッチ管理必須フラグと棚卸管理タイプ（FEFO対応）を品目マスタで設定します。',
@@ -421,7 +421,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
         content: [
           '需要管理はMD61で計画独立所要量（PIR：Planned Independent Requirements）を登録し、MRPの需要入力とします。',
           'PIRには品目・プラント・計画数量・計画日付が含まれ、見込生産（MTS）計画の基礎となります。',
-          'MRP方式（MRP Type）はPD（MRP）・VB（再発注点）・ND（計画なし）等から選択します。',
+          'MRPタイプ（MRP Type）はPD（MRP）・VB（再発注点）・ND（計画なし）等から選択します。',
           '受注依存所要量（Customer Independent Requirements）はSDの受注からMRPに直接取り込まれます。',
         ],
         quizzes: [
@@ -440,19 +440,19 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'four-choice',
-            question: 'MRP方式「PD」の説明として正しいものはどれですか？',
+            question: 'MRPタイプ「PD」の説明として正しいものはどれですか？',
             choices: [
               '再発注点方式で在庫が基準量を下回ったとき計画を立てる',
-              'MRP方式でBOM展開・所要量計算を行う標準的な方式',
+              'MRPタイプでBOM展開・所要量計算を行う標準的な方式',
               '計画を実行しない',
               'カンバン方式で自動補充する',
             ],
             correctIndex: 1,
-            explanation: 'PD（MRP）はBOM展開と正味所要量計算を行う標準的なMRP方式です。',
+            explanation: 'PD（MRP）はBOM展開と正味所要量計算を行う標準的なMRPタイプです。',
           },
           {
             type: 'ox',
-            question: '個別生産（MTO）ではPIRではなく受注（Sales Order）がMRPの需要源となる。',
+            question: '受注生産（MTO）ではPIRではなく受注（Sales Order）がMRPの需要源となる。',
             correct: true,
             explanation: 'MTO方式では受注明細が需要源となり、特定受注に紐付いた製造指図が生成されます。',
           },
@@ -486,7 +486,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
             type: 'four-choice',
             question: '製造指図のリリース（REL）操作の効果として正しいものはどれですか？',
             choices: [
-              '製造指図が自動精算される',
+              '製造指図が自動決済される',
               '材料出庫や能力確認が有効化され製造作業が開始できる',
               '製造指図がアーカイブされる',
               '製造指図の変更がロックされる',
@@ -514,9 +514,9 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'ox',
-            question: 'CLSD（クローズ）ステータスになると製造指図は変更も精算もできなくなる。',
+            question: 'CLSD（クローズ）ステータスになると製造指図は変更も決済もできなくなる。',
             correct: true,
-            explanation: 'CLSDは最終ステータスであり、それ以降の変更・精算は一切できません。',
+            explanation: 'CLSDは最終ステータスであり、それ以降の変更・決済は一切できません。',
           },
           {
             type: 'four-choice',
@@ -538,10 +538,10 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
         id: 'pp-period-end',
         title: 'PP期末処理',
         content: [
-          'PP期末処理では製造指図の仕掛品（WIP）計算（KKAX/KKAO）・差異計算（KKS2/KKS1）・精算（CO88）を行います。',
+          'PP期末処理では製造指図の仕掛品（WIP）計算（KKAX/KKAO）・差異計算（KKS2/KKS1）・決済（CO88）を行います。',
           'KKS1は製造指図の実績原価・標準原価の差異を一括計算するトランザクションです。KKAOは仕掛品の一括計算です。',
           'WIP（仕掛品）は月末時点で完了していない製造指図のコストを資産として計上する処理です。',
-          'PP期末処理の完了後にCO月次処理（精算・差異分析）と連携してFIへ転記されます。',
+          'PP期末処理の完了後にCO月次処理（決済・差異分析）と連携してFIへ転記されます。',
         ],
         quizzes: [
           {
@@ -559,7 +559,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'four-choice',
-            question: '製造指図の精算（Settlement）で原価が最終的に振り替えられる先はどれですか？',
+            question: '製造指図の決済（Settlement）で原価が最終的に振り替えられる先はどれですか？',
             choices: [
               '購買組織',
               '品目（製品在庫）または受注',
@@ -567,17 +567,17 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
               '利益センタ',
             ],
             correctIndex: 1,
-            explanation: 'CO88精算では製造指図の実績原価が製品在庫勘定（MTS）または受注（MTO）に振り替えられます。',
+            explanation: 'CO88決済では製造指図の実績原価が製品在庫勘定（MTS）または受注（MTO）に振り替えられます。',
           },
           {
             type: 'ox',
-            question: 'PP期末処理の順序は差異計算→WIP計算→精算（CO88）が正しい。',
+            question: 'PP期末処理の順序は差異計算→WIP計算→決済（CO88）が正しい。',
             correct: false,
-            explanation: '正しい順序はWIP計算→差異計算→精算（CO88）です。WIPを先に確定してから差異を計算します。',
+            explanation: '正しい順序はWIP計算→差異計算→決済（CO88）です。WIPを先に確定してから差異を計算します。',
           },
           {
             type: 'four-choice',
-            question: 'CO88（製造指図精算）を実行するタイミングとして正しいものはどれですか？',
+            question: 'CO88（製造指図決済）を実行するタイミングとして正しいものはどれですか？',
             choices: [
               '製造指図リリース直後',
               '製造確認（CO11N）と同時',
@@ -590,9 +590,9 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'ordering',
             question: 'PP期末処理の主要手順を正しい順序に並べてください。',
-            items: ['CO88精算', '差異計算（KKS1）', 'FIへの転記確認', 'TECO（技術的完了）', 'WIP計算'],
+            items: ['CO88決済', '差異計算（KKS1）', 'FIへの転記確認', 'TECO（技術的完了）', 'WIP計算'],
             correctOrder: [3, 4, 1, 0, 2],
-            explanation: 'TECO→WIP計算→差異計算→CO88精算→FIへの転記確認の順です。',
+            explanation: 'TECO→WIP計算→差異計算→CO88決済→FIへの転記確認の順です。',
           },
         ],
       },

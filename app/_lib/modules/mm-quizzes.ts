@@ -71,7 +71,7 @@ export const mmQuizzes: Record<Language, Record<string, Quiz[]>> = {
       },
       {
         type: 'four-choice',
-        question: 'サービスの調達に使う発注の品目カテゴリはどれか。',
+        question: 'サービスの調達に使う発注の明細カテゴリはどれか。',
         choices: ['D', 'K', 'L', 'U'],
         correctIndex: 0,
         explanation: 'Dはサービスです。Kはコンサインメント、Lは外注加工、Uは在庫転送に使います。',
@@ -100,7 +100,7 @@ export const mmQuizzes: Record<Language, Record<string, Quiz[]>> = {
       },
       {
         type: 'ox',
-        question: 'GR基準請求照合を使うと、請求書は入庫ごとに照合され、入庫前の請求書は計上できない。',
+        question: 'GR基準請求書照合を使うと、請求書は入庫ごとに照合され、入庫前の請求書は計上できない。',
         correct: true,
         explanation: '正しいです。入庫と請求書を1対1で照合するため、分割納入の品目などで照合の精度が上がります。',
       },
@@ -193,14 +193,14 @@ export const mmQuizzes: Record<Language, Record<string, Quiz[]>> = {
       },
       {
         type: 'ox',
-        question: 'スケジュール契約では、納入のたびに個別の発注を作らず、納入日程行で日付と数量を指示する。',
+        question: '期間発注契約では、納入のたびに個別の発注を作らず、納入日程行で日付と数量を指示する。',
         correct: true,
         explanation: '正しいです。継続的に同じ品目を納入してもらう場合に、発注の作成を省いて納入の指示だけを出せます。',
       },
       {
         type: 'four-choice',
         question: '契約（数量契約・金額契約）を参照して発行する個々の発注を何と呼ぶか。',
-        choices: ['契約に対する呼出（リリースオーダ）', '購買依頼', '見積依頼', '在庫転送発注'],
+        choices: ['契約に対する呼出（リリースオーダ）', '購買依頼', '見積依頼', '在庫転送オーダー'],
         correctIndex: 0,
         explanation: '契約を参照して作成する発注は契約に対する呼出（リリースオーダ）と呼ばれ、契約の残数量や残金額が消し込まれていきます。',
       },

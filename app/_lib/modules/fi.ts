@@ -274,7 +274,7 @@ export const fi: Record<'ja' | 'en', ModuleContent> = {
             question: '直接FIで仕入先請求書を転記するトランザクションコードはどれか。',
             choices: ['MIRO', 'FB60', 'F-28', 'FBL1N'],
             correctIndex: 1,
-            explanation: 'FB60は仕入先請求書の直接FI転記に使用します。MIROはMM連携（3点照合）での請求照合、F-28は得意先からの入金処理、FBL1Nは仕入先元帳照会です。',
+            explanation: 'FB60は仕入先請求書の直接FI転記に使用します。MIROはMM連携（3ウェイマッチング）での請求書照合、F-28は得意先からの入金処理、FBL1Nは仕入先元帳照会です。',
           },
           {
             type: 'ordering',
