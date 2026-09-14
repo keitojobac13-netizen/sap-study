@@ -339,15 +339,15 @@ const coreTerms: GlossaryTerm[] = [
   },
   {
     id: 'pir',
-    modules: ['PP'],
+    modules: ['PP', 'SD'],
     ja: {
       term: '計画独立所要量（PIR）',
       reading: 'けいかくどくりつしょようりょう',
-      definition: 'Planned Independent Requirements。見込生産（MTS）におけるMRPへの需要入力。MD61で品目・プラント・計画数量・計画期間を登録する。受注確定前の需要予測・販売計画を基に作成され、MRP実行時に計画手配（製造計画）の生成トリガーとなる。個別生産（MTO）では受注そのものが需要源となるためPIRは使用しない。',
+      definition: '受注が入る前の需要予測を、品目・数量・時期で登録したもの。MD61で登録する。所要量タイプは計画戦略によって決まり、見込生産の戦略10や、最終組立を伴う計画の戦略40などで扱いが異なる。受注が入るとその分だけ消費され、予測と受注の二重計上を防ぐ。販売計画や需要予測の結果をMRPに引き渡す入り口となる。',
     },
     en: {
-      term: 'PIR (Planned Independent Requirements)',
-      definition: 'The demand input to MRP for Make-to-Stock (MTS) production. Entered in MD61 with material, plant, planned quantity, and planning period. Created from demand forecasts or sales plans before actual orders are received. Triggers the generation of planned orders when MRP is executed. MTO production uses actual sales orders as demand instead of PIRs.',
+      term: 'PIR (Planned Independent Requirement)',
+      definition: 'A demand forecast entered by material, quantity and date before sales orders arrive, maintained in MD61. Its requirements type follows the planning strategy, so make-to-stock strategy 10 and strategy 40, planning with final assembly, treat it differently. Incoming sales orders consume it, avoiding forecast and orders being planned twice. It is how sales plans and forecasts enter MRP.',
     },
   },
   {

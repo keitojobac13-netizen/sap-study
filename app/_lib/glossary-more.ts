@@ -496,19 +496,6 @@ export const moreTerms: GlossaryTerm[] = [
     },
   },
   {
-    id: 'planned-independent-requirement',
-    modules: ['PP', 'SD'],
-    ja: {
-      term: '計画独立所要量',
-      reading: 'けいかくどくりつしょようりょう',
-      definition: '受注が入る前の需要予測を、品目・数量・時期で登録したもの。MD61で登録する。所要量タイプは計画方針によって決まり、見込生産の方針10や、組立を受注後に行う方針40などで扱いが異なる。受注が入るとその分だけ消費され、予測と受注の二重計上を防ぐ。販売計画や需要予測の結果をMRPに引き渡す入り口となる。',
-    },
-    en: {
-      term: 'Planned Independent Requirement',
-      definition: 'A demand forecast entered by material, quantity and date before sales orders arrive, maintained in MD61. Its requirements type follows the planning strategy, so make-to-stock strategy 10 and strategy 40, planning with final assembly, treat it differently. Incoming sales orders consume it, avoiding forecast and orders being planned twice. It is how sales plans and forecasts enter MRP.',
-    },
-  },
-  {
     id: 'exception-message',
     modules: ['PP', 'MM'],
     ja: {
