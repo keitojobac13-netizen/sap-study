@@ -158,10 +158,10 @@ export const mm: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'four-choice',
-            question: '発注タイプ（NB：標準発注）に加え、外注加工に使用される発注タイプはどれですか？',
-            choices: ['UB', 'FO', 'ZB', 'RFQ'],
+            question: '外注加工の購買発注で使う、発注タイプと明細カテゴリの組み合わせはどれですか？',
+            choices: ['UB＋明細カテゴリU', 'NB＋明細カテゴリL', 'FO＋明細カテゴリD', 'NB＋明細カテゴリK'],
             correctIndex: 1,
-            explanation: 'FO（フレームワーク発注/枠契約参照発注）も使用されますが、外注加工はサービス発注（タイプNB+アイテムカテゴリD）が一般的です。なお標準的には発注タイプNBで品目カテゴリDを使用します。',
+            explanation: '外注加工は標準の発注タイプNBに明細カテゴリLを指定します。UBは在庫転送オーダー、FOは枠発注、Kはコンサインメント、Dはサービスです。',
           },
           {
             type: 'ordering',

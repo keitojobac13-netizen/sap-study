@@ -512,14 +512,14 @@ export const fi: Record<'ja' | 'en', ModuleContent> = {
             type: 'ox',
             question: 'SAPでは複数の為替レートタイプを管理でき、目的（会計・管理会計・グループ報告など）に応じて使い分けることができる。',
             correct: true,
-            explanation: 'その通りです。SAPでは為替レートタイプ（例：M=平均レート、B=買いレート、G=グループレートなど）を複数管理でき、用途に応じて適切なタイプを選択して使用します。',
+            explanation: 'その通りです。SAPでは為替レートタイプ（例：M=平均レート、B=銀行売レート、G=銀行買レートなど）を複数管理でき、用途に応じて適切なタイプを選択して使用します。',
           },
           {
             type: 'four-choice',
             question: 'SAPで為替レートをメンテナンス（登録・変更）するトランザクションコードはどれか。',
             choices: ['OB08', 'FB50', 'F-02', 'OB09'],
             correctIndex: 0,
-            explanation: 'OB08は為替レートテーブルのメンテナンスに使用します。期末の外貨評価前に期末レートをOB08で登録する必要があります。FB50は一般転記、F-02は一般仕訳、OB09は为替レートタイプの設定です。',
+            explanation: 'OB08は為替レートテーブルのメンテナンスに使用します。期末の外貨評価前に期末レートをOB08で登録する必要があります。FB50は一般転記、F-02は一般仕訳、OB09は為替レートタイプの設定です。',
           },
           {
             type: 'ox',
@@ -1043,7 +1043,7 @@ export const fi: Record<'ja' | 'en', ModuleContent> = {
             type: 'ox',
             question: 'SAP supports multiple exchange rate types, which can be used for different purposes such as accounting, controlling, and group reporting.',
             correct: true,
-            explanation: 'Correct. SAP manages multiple exchange rate types (e.g., M = average rate, B = buying rate, G = group rate) that can be applied for different purposes. The appropriate type is selected based on the business requirement.',
+            explanation: 'Correct. SAP manages multiple exchange rate types (e.g., M = average rate, B = bank selling rate, G = bank buying rate) that can be applied for different purposes. The appropriate type is selected based on the business requirement.',
           },
           {
             type: 'four-choice',

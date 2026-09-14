@@ -226,9 +226,9 @@ export const sd: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'four-choice',
             question: '請求書をFIに転記する際に使用される標準請求タイプはどれですか？',
-            choices: ['F1（標準請求）', 'OR（標準受注）', 'RE（返品）', 'LF（出荷）'],
+            choices: ['F2（請求書）', 'OR（標準受注）', 'RE（返品）', 'LF（出荷）'],
             correctIndex: 0,
-            explanation: 'F1が標準請求書タイプです。FIへの転記はこの請求タイプ設定に基づきます。',
+            explanation: 'F2が標準の請求書タイプです（F1は受注関連請求）。ORは受注タイプ、REは返品の受注タイプ、LFは出荷タイプです。',
           },
           {
             type: 'ordering',
@@ -838,9 +838,9 @@ export const sd: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'four-choice',
             question: 'Which billing type is used for standard invoice posting to FI?',
-            choices: ['F1 (Standard Invoice)', 'OR (Standard Order)', 'RE (Returns)', 'LF (Delivery)'],
+            choices: ['F2 (Invoice)', 'OR (Standard Order)', 'RE (Returns)', 'LF (Delivery)'],
             correctIndex: 0,
-            explanation: 'F1 is the standard billing type for invoices. FI posting is based on this billing type configuration.',
+            explanation: 'F2 is the standard invoice billing type (F1 is order-related billing). OR is a sales order type, RE the returns order type and LF a delivery type.',
           },
           {
             type: 'ordering',

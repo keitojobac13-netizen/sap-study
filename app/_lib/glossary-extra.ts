@@ -116,11 +116,11 @@ export const extraTerms: GlossaryTerm[] = [
     ja: {
       term: '為替レートタイプ',
       reading: 'かわせれーとたいぷ',
-      definition: '目的に応じて使い分ける為替レートの区分。M（標準換算レート、日常の転記に使う既定値）、B（銀行買レート）、G（銀行売レート）、P（計画レート）などがある。レートはOB08で、レートタイプ・通貨ペア・有効開始日の組み合わせで登録する。該当日付のレートが未登録だと外貨建伝票の転記がエラーで止まるため、月初の登録は定型作業として組み込む必要がある。',
+      definition: '目的に応じて使い分ける為替レートの区分。M（標準換算レート、日常の転記に使う既定値）、B（銀行売レート）、G（銀行買レート）、P（計画レート）などがある。レートはOB08で、レートタイプ・通貨ペア・有効開始日の組み合わせで登録する。該当日付のレートが未登録だと外貨建伝票の転記がエラーで止まるため、月初の登録は定型作業として組み込む必要がある。',
     },
     en: {
       term: 'Exchange Rate Type',
-      definition: 'The category distinguishing rates used for different purposes: M for standard translation and everyday posting, B for the bank buying rate, G for the selling rate, P for planning. Rates are maintained in OB08 by type, currency pair and validity date. A missing rate stops foreign currency postings outright, so loading rates at the start of each month has to be a fixed routine.',
+      definition: 'The category distinguishing rates used for different purposes: M for standard translation and everyday posting, B for the bank selling rate, G for the buying rate, P for planning. Rates are maintained in OB08 by type, currency pair and validity date. A missing rate stops foreign currency postings outright, so loading rates at the start of each month has to be a fixed routine.',
     },
   },
   {

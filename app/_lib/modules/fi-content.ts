@@ -975,8 +975,8 @@ export const fiContent: Record<Language, ModuleEnrichment> = {
             headers: ['タイプ', '名称', '主な用途'],
             rows: [
               ['M', '標準換算レート（平均）', '日常の伝票転記。既定値'],
-              ['B', '銀行買レート', '外貨を売却する取引の評価'],
-              ['G', '銀行売レート', '外貨を購入する取引の評価'],
+              ['B', '銀行売レート', '外貨を購入する取引の評価'],
+              ['G', '銀行買レート', '外貨を売却する取引の評価'],
               ['P', '計画レート', '予算作成、計画値の換算'],
             ],
           },
@@ -2009,8 +2009,8 @@ export const fiContent: Record<Language, ModuleEnrichment> = {
             headers: ['Type', 'Name', 'Typical use'],
             rows: [
               ['M', 'Standard translation (average)', 'Everyday document posting; the default'],
-              ['B', 'Bank buying rate', 'Valuing transactions where currency is sold'],
-              ['G', 'Bank selling rate', 'Valuing transactions where currency is bought'],
+              ['B', 'Bank selling rate', 'Valuing transactions where currency is bought'],
+              ['G', 'Bank buying rate', 'Valuing transactions where currency is sold'],
               ['P', 'Planning rate', 'Budgeting and translating plan figures'],
             ],
           },

@@ -479,7 +479,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           '製造指図はCRTD（作成済）→REL（リリース済）→PCNF（部分確認済）→CNF（完全確認済）→TECO（技術的完了）→CLSD（クローズ）のステータスで進みます。',
           'リリース（REL）により材料出庫・能力確認が有効化され、製造作業が開始できます。',
           'CO02で製造指図を変更し、数量・日付・コンポーネントを修正できます。',
-          'TECO後は入庫・出庫等の在庫動作は行えなくなりますが、精算（CO88）は可能です。',
+          'TECOにすると未処理の予約・購買依頼・能力所要量が削除され、指図はMRPの対象外になります。標準では入出庫や確認はTECO後も転記でき、止めたい場合はステータスプロファイルなどで制御します。',
         ],
         quizzes: [
           {
@@ -502,15 +502,15 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'four-choice',
-            question: 'TECO（技術的完了）後に実行できる操作はどれですか？',
+            question: '製造指図をTECO（技術的完了）にしたときの効果として正しいものはどれですか？',
             choices: [
-              'MIGO入庫',
-              '製造確認（CO11N）',
-              'CO88による精算',
-              '材料出庫',
+              '製造指図が自動的に決済される',
+              '製造指図がアーカイブされる',
+              '未処理の予約や購買依頼が削除され、MRPの対象外になる',
+              '以降は一切の転記ができなくなる',
             ],
             correctIndex: 2,
-            explanation: 'TECO後は在庫操作・確認はできませんが、CO88による原価精算は可能です。',
+            explanation: 'TECOで残りの予約・購買依頼・能力所要量が削除され、MRPの対象外になります。決済は別途CO88で行い、転記を一切止めるのはクローズ（CLSD）です。',
           },
           {
             type: 'ox',
@@ -538,8 +538,8 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
         id: 'pp-period-end',
         title: 'PP期末処理',
         content: [
-          'PP期末処理では製造指図の差異計算（KKS2/KKAO）・仕掛品（WIP）計算・精算（CO88）を行います。',
-          'KKAOは製造指図の実績原価・標準原価の差異を一括計算するトランザクションです。',
+          'PP期末処理では製造指図の仕掛品（WIP）計算（KKAX/KKAO）・差異計算（KKS2/KKS1）・精算（CO88）を行います。',
+          'KKS1は製造指図の実績原価・標準原価の差異を一括計算するトランザクションです。KKAOは仕掛品の一括計算です。',
           'WIP（仕掛品）は月末時点で完了していない製造指図のコストを資産として計上する処理です。',
           'PP期末処理の完了後にCO月次処理（精算・差異分析）と連携してFIへ転記されます。',
         ],
@@ -547,9 +547,9 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'four-choice',
             question: '製造指図の差異計算に使用するトランザクションはどれですか？',
-            choices: ['CO88', 'KKAO', 'CO11N', 'MD01'],
+            choices: ['CO88', 'KKS1', 'CO11N', 'MD01'],
             correctIndex: 1,
-            explanation: 'KKAOで製造指図の実績vs標準の差異を一括計算します。個別はKKS2です。',
+            explanation: 'KKS1で製造指図の実績vs標準の差異を一括計算します。個別はKKS2です。',
           },
           {
             type: 'ox',
@@ -562,12 +562,12 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
             question: '製造指図の精算（Settlement）で原価が最終的に振り替えられる先はどれですか？',
             choices: [
               '購買組織',
-              '品目（製品在庫）または原価センタ',
+              '品目（製品在庫）または受注',
               '販売エリア',
               '利益センタ',
             ],
             correctIndex: 1,
-            explanation: 'CO88精算では製造指図の実績原価が製品在庫勘定（MTS）または原価センタ（MTO）に振り替えられます。',
+            explanation: 'CO88精算では製造指図の実績原価が製品在庫勘定（MTS）または受注（MTO）に振り替えられます。',
           },
           {
             type: 'ox',
@@ -590,7 +590,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'ordering',
             question: 'PP期末処理の主要手順を正しい順序に並べてください。',
-            items: ['CO88精算', '差異計算（KKAO）', 'FIへの転記確認', 'TECO（技術的完了）', 'WIP計算'],
+            items: ['CO88精算', '差異計算（KKS1）', 'FIへの転記確認', 'TECO（技術的完了）', 'WIP計算'],
             correctOrder: [3, 4, 1, 0, 2],
             explanation: 'TECO→WIP計算→差異計算→CO88精算→FIへの転記確認の順です。',
           },
@@ -1066,7 +1066,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           'A Production Order progresses through statuses: CRTD (Created) → REL (Released) → PCNF (Partially Confirmed) → CNF (Confirmed) → TECO (Technically Complete) → CLSD (Closed).',
           'The REL (Release) status enables material issues and capacity confirmations, allowing manufacturing to start.',
           'Production Orders are changed with CO02 to modify quantities, dates, or components.',
-          'After TECO, no goods movements are possible, but settlement (CO88) can still be executed.',
+          'TECO deletes open reservations, purchase requisitions and capacity requirements and removes the order from MRP. In the standard system goods movements and confirmations can still be posted afterwards; blocking them requires a status profile or similar control.',
         ],
         quizzes: [
           {
@@ -1089,10 +1089,10 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'four-choice',
-            question: 'Which operation can still be performed after TECO?',
-            choices: ['MIGO Goods Receipt', 'Production Confirmation (CO11N)', 'CO88 Settlement', 'Material Issue'],
+            question: 'What happens when a production order is set to TECO (Technically Complete)?',
+            choices: ['The order is settled automatically', 'The order is archived', 'Open reservations and purchase requisitions are deleted and the order leaves MRP', 'No further postings of any kind are allowed'],
             correctIndex: 2,
-            explanation: 'After TECO, goods movements and confirmations are blocked, but CO88 cost settlement is still possible.',
+            explanation: 'TECO deletes remaining reservations, purchase requisitions and capacity requirements, taking the order out of MRP. Settlement is still a separate CO88 step, and blocking all postings is what CLSD (Closed) does.',
           },
           {
             type: 'ox',
@@ -1120,8 +1120,8 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
         id: 'pp-period-end',
         title: 'PP Period-End Processing',
         content: [
-          'PP period-end processing includes variance calculation (KKS2/KKAO), WIP (Work in Process) calculation, and settlement (CO88).',
-          'KKAO performs batch variance calculation across production orders, comparing actual vs. standard costs.',
+          'PP period-end processing includes WIP (Work in Process) calculation (KKAX/KKAO), variance calculation (KKS2/KKS1), and settlement (CO88).',
+          'KKS1 performs collective variance calculation across production orders, comparing actual vs. standard costs. KKAO is collective WIP calculation.',
           'WIP calculation capitalizes the costs of production orders not yet complete at month-end as an asset.',
           'PP period-end results feed into CO month-end processing (settlement, variance analysis) and post to FI.',
         ],
@@ -1129,9 +1129,9 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'four-choice',
             question: 'Which transaction is used for batch variance calculation across production orders?',
-            choices: ['CO88', 'KKAO', 'CO11N', 'MD01'],
+            choices: ['CO88', 'KKS1', 'CO11N', 'MD01'],
             correctIndex: 1,
-            explanation: 'KKAO performs batch variance calculation for production orders. KKS2 does individual orders.',
+            explanation: 'KKS1 performs collective variance calculation for production orders. KKS2 does individual orders.',
           },
           {
             type: 'ox',
@@ -1144,12 +1144,12 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
             question: 'Where are production order costs ultimately transferred during CO88 settlement?',
             choices: [
               'Purchasing Organization',
-              'Finished Goods inventory or Cost Center',
+              'Finished Goods inventory or Sales Order',
               'Sales Area',
               'Profit Center',
             ],
             correctIndex: 1,
-            explanation: 'CO88 transfers actual costs to finished goods inventory (MTS) or cost centers (MTO).',
+            explanation: 'CO88 transfers actual costs to finished goods inventory (MTS) or the sales order (MTO).',
           },
           {
             type: 'ox',
@@ -1172,7 +1172,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'ordering',
             question: 'Arrange the PP period-end processing steps in the correct order.',
-            items: ['CO88 Settlement', 'Variance Calculation (KKAO)', 'FI Posting Verification', 'TECO (Technically Complete)', 'WIP Calculation'],
+            items: ['CO88 Settlement', 'Variance Calculation (KKS1)', 'FI Posting Verification', 'TECO (Technically Complete)', 'WIP Calculation'],
             correctOrder: [3, 4, 1, 0, 2],
             explanation: 'TECO → WIP Calculation → Variance Calculation → CO88 Settlement → FI Posting Verification.',
           },

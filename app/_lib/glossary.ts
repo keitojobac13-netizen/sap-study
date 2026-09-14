@@ -369,11 +369,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '購買発注',
       reading: 'こうばいはっちゅう',
-      definition: '仕入先に対する正式な発注書を表すMM伝票。ME21Nで作成し、品目・数量・価格・納期・仕入先が記載される。発注タイプNB（標準）・UB（STO）・FO（枠契約参照）等がある。会社の購買ポリシーに応じてリリース戦略（承認フロー）が適用される。入庫（MIGO）・請求照合（MIRO）の元伝票となる。',
+      definition: '仕入先に対する正式な発注書を表すMM伝票。ME21Nで作成し、品目・数量・価格・納期・仕入先が記載される。発注タイプNB（標準）・UB（STO）・FO（枠発注）等がある。会社の購買ポリシーに応じてリリース戦略（承認フロー）が適用される。入庫（MIGO）・請求照合（MIRO）の元伝票となる。',
     },
     en: {
       term: 'Purchase Order (PO)',
-      definition: 'An MM document representing a formal order to a vendor, created in ME21N with material, quantity, price, delivery date, and vendor. Document types include NB (standard), UB (STO), and FO (outline agreement reference). A Release Strategy (approval workflow) may apply based on company purchasing policy. The PO is the reference document for goods receipt (MIGO) and invoice verification (MIRO).',
+      definition: 'An MM document representing a formal order to a vendor, created in ME21N with material, quantity, price, delivery date, and vendor. Document types include NB (standard), UB (STO), and FO (framework order). A Release Strategy (approval workflow) may apply based on company purchasing policy. The PO is the reference document for goods receipt (MIGO) and invoice verification (MIRO).',
     },
   },
   {
@@ -434,11 +434,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '製品原価計算',
       reading: 'せいひんげんかけいさん',
-      definition: 'COの製品原価計算（CO-PC）コンポーネント。製品の標準原価を計算し（CK11N）、原価見積をリリース（CK24）することで品目マスタの標準価格が更新される。製造指図の実績原価と標準原価の差異が差異分析（KKS2/KKAO）で計算され、CO88精算で製品在庫や原価センタに振り替えられる。',
+      definition: 'COの製品原価計算（CO-PC）コンポーネント。製品の標準原価を計算し（CK11N）、原価見積をリリース（CK24）することで品目マスタの標準価格が更新される。製造指図の実績原価と標準原価の差異が差異分析（KKS2/KKS1）で計算され、CO88精算で製品在庫や原価センタに振り替えられる。',
     },
     en: {
       term: 'Product Costing',
-      definition: 'The CO-PC (Product Cost Controlling) component. Standard costs are calculated (CK11N) and the cost estimate is released (CK24) to update the standard price in the material master. Variances between actual and standard costs on production orders are calculated in variance analysis (KKS2/KKAO) and settled to finished goods stock or cost centers via CO88.',
+      definition: 'The CO-PC (Product Cost Controlling) component. Standard costs are calculated (CK11N) and the cost estimate is released (CK24) to update the standard price in the material master. Variances between actual and standard costs on production orders are calculated in variance analysis (KKS2/KKS1) and settled to finished goods stock or cost centers via CO88.',
     },
   },
   {
@@ -540,11 +540,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '枠契約',
       reading: 'わくけいやく',
-      definition: '仕入先との長期購買合意を記録するMM伝票の総称。数量契約（Contract：ME31K）と期間発注契約（Scheduling Agreement：ME31L）の2種類がある。数量契約は特定数量・価格の購入合意、期間発注契約は詳細な納入スケジュールを管理する。枠契約参照の発注はFOタイプで作成され、合意条件が自動引継ぎされる。',
+      definition: '仕入先との長期購買合意を記録するMM伝票の総称。数量契約（Contract：ME31K）と期間発注契約（Scheduling Agreement：ME31L）の2種類がある。数量契約は特定数量・価格の購入合意、期間発注契約は詳細な納入スケジュールを管理する。契約を参照する発注（契約に対する呼出）は標準の発注タイプNBで作成し、契約の価格などの条件が引き継がれる。',
     },
     en: {
       term: 'Outline Agreement',
-      definition: 'The collective term for MM documents that record long-term purchase agreements with vendors. Two types: Contract (quantity-based, created with ME31K) and Scheduling Agreement (time-based delivery schedule, created with ME31L). Contracts record agreed quantities and prices; Scheduling Agreements manage detailed delivery schedules. Purchase orders referencing outline agreements use document type FO.',
+      definition: 'The collective term for MM documents that record long-term purchase agreements with vendors. Two types: Contract (quantity-based, created with ME31K) and Scheduling Agreement (time-based delivery schedule, created with ME31L). Contracts record agreed quantities and prices; Scheduling Agreements manage detailed delivery schedules. Release orders against a contract are standard purchase orders (document type NB) created with reference to it, inheriting its conditions.',
     },
   },
   // ─── ら行 ───
@@ -634,11 +634,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '得意先マスタ',
       reading: 'とくいさきますた',
-      definition: '販売取引の相手先（得意先）情報を管理するマスタデータ。一般データ（名称・住所）・会社コードデータ（照合勘定・支払条件）・販売エリアデータ（出荷条件・価格グループ）の3階層で構成される。XD01（全データ）またはVD01（販売エリアのみ）で作成する。得意先グループは勘定決定・統計分析に使用される。',
+      definition: '販売取引の相手先（得意先）情報を管理するマスタデータ。一般データ（名称・住所）・会社コードデータ（照合勘定・支払条件）・販売エリアデータ（出荷条件・価格グループ）の3階層で構成される。XD01（全データ）またはVD01（販売エリアのみ）で作成する。売上の勘定決定には販売エリアデータの勘定設定グループが使用される。',
     },
     en: {
       term: 'Customer Master',
-      definition: 'Master data that manages information about customers (business partners for sales transactions). Organized in three levels: General Data (name, address), Company Code Data (reconciliation account, payment terms), and Sales Area Data (shipping conditions, pricing group). Created with XD01 (all data) or VD01 (Sales Area data only). Customer Group is used for account determination and reporting.',
+      definition: 'Master data that manages information about customers (business partners for sales transactions). Organized in three levels: General Data (name, address), Company Code Data (reconciliation account, payment terms), and Sales Area Data (shipping conditions, pricing group). Created with XD01 (all data) or VD01 (Sales Area data only). Revenue account determination uses the account assignment group in the Sales Area Data.',
     },
   },
   {
@@ -647,7 +647,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '評価クラス',
       reading: 'ひょうかくらす',
-      definition: '品目マスタに設定するコードで、在庫移動・入出庫時のGL勘定を自動決定する勘定決定（Automatic Account Determination）の基準となる。品目タイプに紐付いた評価クラスの設定により、原材料・製品・半製品等の在庫がそれぞれ異なるGL勘定に転記される。TXXXAで勘定決定をカスタマイズする。',
+      definition: '品目マスタに設定するコードで、在庫移動・入出庫時のGL勘定を自動決定する勘定決定（Automatic Account Determination）の基準となる。品目タイプに紐付いた評価クラスの設定により、原材料・製品・半製品等の在庫がそれぞれ異なるGL勘定に転記される。OBYCで勘定決定をカスタマイズする。',
     },
     en: {
       term: 'Valuation Class',
@@ -686,11 +686,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '差異分析',
       reading: 'さいぶんせき',
-      definition: '製造指図の標準原価と実績原価の差異を計算・分析するCO機能。個別実行はKKS2、一括実行はKKAO（またはKKS1）を使用する。差異は価格差異（原価率の相違）・数量差異（実際投入量と標準投入量の相違）等に分類される。差異はCO88精算時にFIへ振り替えられる。',
+      definition: '製造指図の標準原価と実績原価の差異を計算・分析するCO機能。個別実行はKKS2、一括実行はKKS1を使用する。差異は価格差異（原価率の相違）・数量差異（実際投入量と標準投入量の相違）等に分類される。差異はCO88精算時にFIへ振り替えられる。',
     },
     en: {
       term: 'Variance Analysis',
-      definition: 'A CO function that calculates and analyzes the difference between standard and actual costs on production orders. Individual execution uses KKS2; batch execution uses KKAO (or KKS1). Variances are classified into price variances (cost rate differences), quantity variances (actual vs. standard input quantity), etc. Variances are transferred to FI during CO88 settlement.',
+      definition: 'A CO function that calculates and analyzes the difference between standard and actual costs on production orders. Individual execution uses KKS2; collective execution uses KKS1. Variances are classified into price variances (cost rate differences), quantity variances (actual vs. standard input quantity), etc. Variances are transferred to FI during CO88 settlement.',
     },
   },
   {
@@ -699,11 +699,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '内部指図',
       reading: 'ないぶさしず',
-      definition: 'CO管理会計における特定プロジェクト・イベント・設備の原価を収集・追跡するオブジェクト。KO01で作成し、予算管理（可用性管理）・承認フロー・精算先（原価センタ・利益センタ・GL勘定）の設定が可能。ステータス管理により「計画中（PLAN）→リリース（REL）→技術的完了（TECO）→クローズ（CLSD）」の段階で管理される。',
+      definition: 'CO管理会計における特定プロジェクト・イベント・設備の原価を収集・追跡するオブジェクト。KO01で作成し、予算管理（可用性管理）・承認フロー・精算先（原価センタ・利益センタ・GL勘定）の設定が可能。ステータス管理により「作成済（CRTD）→リリース（REL）→技術的完了（TECO）→クローズ（CLSD）」の段階で管理される。',
     },
     en: {
       term: 'Internal Order',
-      definition: 'A CO object used to collect and track costs for specific projects, events, or equipment. Created in KO01 with optional budget management (availability control), approval workflow, and settlement receivers (cost centers, profit centers, GL accounts). Managed through status stages: PLAN → REL (Released) → TECO (Technically Complete) → CLSD (Closed).',
+      definition: 'A CO object used to collect and track costs for specific projects, events, or equipment. Created in KO01 with optional budget management (availability control), approval workflow, and settlement receivers (cost centers, profit centers, GL accounts). Managed through status stages: CRTD (Created) → REL (Released) → TECO (Technically Complete) → CLSD (Closed).',
     },
   },
   {
@@ -716,7 +716,7 @@ const coreTerms: GlossaryTerm[] = [
     },
     en: {
       term: 'Invoice Verification',
-      definition: 'The MM process of verifying vendor invoices against the Purchase Order and Goods Receipt before posting to accounts payable. Performed in MIRO; invoices within price and quantity tolerances are automatically approved. Invoices exceeding tolerances receive a billing block, which must be manually released (e.g., via MRBR). Three-way matching is complete when the GR/IR clearing account balance reaches zero.',
+      definition: 'The MM process of verifying vendor invoices against the Purchase Order and Goods Receipt before posting to accounts payable. Performed in MIRO; invoices within price and quantity tolerances are automatically approved. Invoices exceeding tolerances receive a payment block, which must be manually released (e.g., via MRBR). Three-way matching is complete when the GR/IR clearing account balance reaches zero.',
     },
   },
   {
@@ -738,11 +738,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '入庫',
       reading: 'にゅうこ',
-      definition: '物品を在庫として受け入れるMMの処理。MIGOで実施し、移動タイプによって処理の種類（PO入庫101・返品入庫122・製造指図からの入庫101等）が決まる。入庫時に在庫が増加し、PO参照の場合はGR/IR照合勘定とのGL転記が自動実行される。PPでは製造指図完了後の製品入庫処理にも使用される。',
+      definition: '物品を在庫として受け入れるMMの処理。MIGOで実施し、移動タイプによって処理の種類（PO入庫101・製造指図からの入庫101等）が決まる。仕入先への返品は移動タイプ122で処理する。入庫時に在庫が増加し、PO参照の場合はGR/IR照合勘定とのGL転記が自動実行される。PPでは製造指図完了後の製品入庫処理にも使用される。',
     },
     en: {
       term: 'Goods Receipt (GR)',
-      definition: 'An MM process that accepts materials into inventory, executed in MIGO. The movement type determines the type of receipt (101 for PO GR, 122 for returns, 101 for production order GR, etc.). Stock increases at receipt; for PO references, automatic GL posting to the GR/IR clearing account occurs. In PP, also used to receive finished goods after production order completion.',
+      definition: 'An MM process that accepts materials into inventory, executed in MIGO. The movement type determines the type of receipt (101 for a GR against a purchase order or a production order, etc.; 122 returns goods to the vendor). Stock increases at receipt; for PO references, automatic GL posting to the GR/IR clearing account occurs. In PP, also used to receive finished goods after production order completion.',
     },
   },
   {
@@ -764,7 +764,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: 'FEFO（先期限切れ先出し）',
       reading: 'ふぇふぉ',
-      definition: 'First Expiry First Out。バッチ管理品目の在庫引き当て戦略の一つ。有効期限（使用期限・消費期限）が最も早いバッチを優先的に出庫・引き当てる。食品・医薬品・化学品など有効期限管理が重要な業界で必須の機能。品目マスタでバッチ管理必須フラグとSLED（棚卸有効期限）を有効化し、バッチ検索戦略でFEFOを設定する。',
+      definition: 'First Expiry First Out。バッチ管理品目の在庫引き当て戦略の一つ。有効期限（使用期限・消費期限）が最も早いバッチを優先的に出庫・引き当てる。食品・医薬品・化学品など有効期限管理が重要な業界で必須の機能。品目マスタでバッチ管理必須フラグとSLED（有効期限）を有効化し、バッチ検索戦略でFEFOを設定する。',
     },
     en: {
       term: 'FEFO (First Expiry First Out)',
@@ -881,7 +881,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '資産会計',
       reading: 'しさんかいけい',
-      definition: 'FIの固定資産管理サブモジュール（FI-AA）。固定資産の取得・減価償却・廃棄・売却を管理する。AS01で資産マスタを作成し、减価償却キー（Dep. Key）・耐用年数・簿価を設定する。AFAB（減価償却実行）で定期的に減価償却を計上し、FIのGL勘定に自動転記する。S/4HANAではAFABはバックグラウンドジョブとして実行される。',
+      definition: 'FIの固定資産管理サブモジュール（FI-AA）。固定資産の取得・減価償却・廃棄・売却を管理する。AS01で資産マスタを作成し、減価償却キー（Dep. Key）・耐用年数・簿価を設定する。AFAB（減価償却実行）で定期的に減価償却を計上し、FIのGL勘定に自動転記する。S/4HANAではAFABはバックグラウンドジョブとして実行される。',
     },
     en: {
       term: 'Asset Accounting (FI-AA)',
@@ -920,11 +920,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '製品部門',
       reading: 'せいひんぶもん',
-      definition: '製品ラインやサービスカテゴリを分類するSDの組織単位。販売組織・流通チャネルと組み合わせて販売エリアを形成する。製品部門ごとに異なる価格条件・得意先マスタデータを設定できる。品目マスタの基本データ（販売組織データ1）で各品目に製品部門を割り当てる。',
+      definition: '製品ラインやサービスカテゴリを分類するSDの組織単位。販売組織・流通チャネルと組み合わせて販売エリアを形成する。製品部門ごとに異なる価格条件・得意先マスタデータを設定できる。品目マスタの基本データ1で各品目に製品部門を割り当てる。',
     },
     en: {
       term: 'Division',
-      definition: 'An SD organizational unit that classifies product lines or service categories. Combined with Sales Organization and Distribution Channel to form a Sales Area. Different pricing conditions and customer master data can be configured per Division. Each material is assigned to a Division in the material master Sales Organization Data 1 view.',
+      definition: 'An SD organizational unit that classifies product lines or service categories. Combined with Sales Organization and Distribution Channel to form a Sales Area. Different pricing conditions and customer master data can be configured per Division. Each material is assigned to a Division in the material master Basic Data 1 view.',
     },
   },
   {
@@ -946,11 +946,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: 'TECO（技術的完了）',
       reading: 'てこ',
-      definition: 'Technically Complete。製造指図・内部指図の製造作業が完了したことを示すステータス。TECOになると入庫・出庫等の在庫操作は行えなくなるが、原価精算（CO88）は実行可能。TECO後にCO88精算・差異分析を行い、その後CLSDステータスへ移行する。指図のライフサイクル管理における重要なマイルストーン。',
+      definition: 'Technically Complete。製造指図・内部指図の製造作業が完了したことを示すステータス。TECOにすると未処理の予約・購買依頼・能力所要量が削除され、MRPの対象外になる。標準では入出庫や確認はその後も転記でき、止めたい場合はステータスプロファイルなどで制御する。TECO後に差異計算とCO88決済を行い、その後CLSDステータスへ移行する。指図のライフサイクル管理における重要なマイルストーン。',
     },
     en: {
       term: 'TECO (Technically Complete)',
-      definition: 'A status applied to production orders and internal orders indicating that the physical/technical work is finished. After TECO, inventory movements (goods issues and receipts) are blocked, but cost settlement (CO88) can still be executed. The normal flow after TECO is CO88 settlement followed by variance analysis, then transition to CLSD (Closed) status. A key milestone in the order lifecycle.',
+      definition: 'A status applied to production orders and internal orders indicating that the physical/technical work is finished. TECO deletes open reservations, purchase requisitions and capacity requirements and removes the order from MRP. In the standard system goods movements and confirmations can still be posted afterwards; blocking them requires a status profile or similar control. The normal flow after TECO is variance calculation followed by CO88 settlement, then transition to CLSD (Closed) status. A key milestone in the order lifecycle.',
     },
   },
   {
@@ -1038,7 +1038,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '減価償却',
       reading: 'げんかしょうきゃく',
-      definition: '固定資産の取得原価を耐用年数にわたって費用配分する会計処理。SAPではAFABトランザクションで月次に実行する。減価償却方法（定額法・定率法等）と耐用年数は減価償却キー（Depreciation Key）で設定される。S/4HANAではAFABはバックグラウンドジョブとして定期実行される。計上されたは減価償却費はP&Lに計上され、資産の帳簿価額が減少する。',
+      definition: '固定資産の取得原価を耐用年数にわたって費用配分する会計処理。SAPではAFABトランザクションで月次に実行する。減価償却方法（定額法・定率法等）と耐用年数は減価償却キー（Depreciation Key）で設定される。S/4HANAではAFABはバックグラウンドジョブとして定期実行される。計上された減価償却費はP&Lに計上され、資産の帳簿価額が減少する。',
     },
     en: {
       term: 'Depreciation',
@@ -1129,11 +1129,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '受注タイプ',
       reading: 'じゅちゅうたいぷ',
-      definition: 'SD販売伝票の種類を決定するコード。受注タイプにより出荷・請求・価格設定の動作が制御される。代表的な受注タイプ：OR（標準受注）・RE（返品）・CR（クレジットメモ依頼）・DR（デビットメモ依頼）・RO（修理依頼）。VOV8でカスタマイズされ、リリースブロック・請求ブロック・ATPチェック有否等を設定できる。',
+      definition: 'SD販売伝票の種類を決定するコード。受注タイプにより出荷・請求・価格設定の動作が制御される。代表的な受注タイプ：OR（標準受注）・RE（返品）・CR（クレジットメモ依頼）・DR（デビットメモ依頼）・RO（即時受注）。VOV8でカスタマイズされ、リリースブロック・請求ブロック・ATPチェック有否等を設定できる。',
     },
     en: {
       term: 'Order Type (SD)',
-      definition: 'A code that determines the type of SD sales document, controlling shipping, billing, and pricing behavior. Key order types: OR (standard order), RE (returns), CR (credit memo request), DR (debit memo request), RO (repair order). Customized in VOV8, where settings such as billing block, release block, and ATP check requirements are configured.',
+      definition: 'A code that determines the type of SD sales document, controlling shipping, billing, and pricing behavior. Key order types: OR (standard order), RE (returns), CR (credit memo request), DR (debit memo request), RO (rush order). Customized in VOV8, where settings such as billing block, release block, and ATP check requirements are configured.',
     },
   },
   {
@@ -1142,11 +1142,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '明細カテゴリ（SD）',
       reading: 'めいさいかてごりー',
-      definition: '受注明細の動作（出荷・請求・原価計算）を制御するSDの分類コード。受注タイプと品目カテゴリグループ（品目マスタで設定）の組み合わせで自動決定される。TAN（標準品目）・TANN（無償品目）・TAD（サービス）・TAB（個別受注品）などが代表例。明細カテゴリにより在庫引き当て・ATPチェック・原価計算の有無が決まる。',
+      definition: '受注明細の動作（出荷・請求・原価計算）を制御するSDの分類コード。受注タイプと品目カテゴリグループ（品目マスタで設定）の組み合わせで自動決定される。TAN（標準品目）・TANN（無償品目）・TAD（サービス）・TAK（受注生産品）などが代表例。明細カテゴリにより在庫引き当て・ATPチェック・原価計算の有無が決まる。',
     },
     en: {
       term: 'Item Category (SD)',
-      definition: 'A classification code that controls how a sales order line item behaves for delivery, billing, and costing. Automatically determined from the combination of Order Type and Item Category Group (set in the material master). Key examples: TAN (standard item), TANN (free-of-charge item), TAD (service), TAB (make-to-order item). Determines whether ATP, stock reservation, and costing apply to the line.',
+      definition: 'A classification code that controls how a sales order line item behaves for delivery, billing, and costing. Automatically determined from the combination of Order Type and Item Category Group (set in the material master). Key examples: TAN (standard item), TANN (free-of-charge item), TAD (service), TAK (make-to-order item). Determines whether ATP, stock reservation, and costing apply to the line.',
     },
   },
   {
@@ -1168,7 +1168,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '出荷条件',
       reading: 'しゅっかじょうけん',
-      definition: '製品の配送方法（輸送モード・梱包条件等）を定義するSDのコード。得意先マスタの販売エリアデータに設定され、受注時に自動引継ぎされる。出荷条件は出荷ポイント（Shipping Point）の決定ロジックに使用され、どの出荷場所から出庫するかを制御する。出荷ポイントは出荷条件・積み込み地域・出荷場所条件の組み合わせで決定される。',
+      definition: '製品の配送方法（輸送モード・梱包条件等）を定義するSDのコード。得意先マスタの販売エリアデータに設定され、受注時に自動引継ぎされる。出荷条件は出荷ポイント（Shipping Point）の決定ロジックに使用され、どの出荷場所から出庫するかを制御する。出荷ポイントは出荷条件・積込グループ・出荷プラントの組み合わせで決定される。',
     },
     en: {
       term: 'Shipping Conditions',
@@ -1246,11 +1246,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '個別生産（MTO）',
       reading: 'こべつせいさん',
-      definition: 'Make to Order。得意先受注を受けてから製造を開始し、特定の受注明細に紐付けて製造・出荷する生産方式。製造コストは特定受注に集計され、受注紐付きの特殊在庫として管理される。カスタマイズ品・高価格品・リードタイムが長い製品に適している。SAPでは品目マスタの個別仕入ポイントに特別調達キー（コード20等）を設定して実装する。',
+      definition: 'Make to Order。得意先受注を受けてから製造を開始し、特定の受注明細に紐付けて製造・出荷する生産方式。製造コストは特定受注に集計され、受注紐付きの特殊在庫として管理される。カスタマイズ品・高価格品・リードタイムが長い製品に適している。SAPでは品目マスタのMRP 3ビューで計画戦略グループ（戦略20など）を設定して実装する。',
     },
     en: {
       term: 'Make to Order (MTO)',
-      definition: 'A production strategy where manufacturing starts only after a customer order is received, with the production order directly linked to a specific sales order line. Manufacturing costs are collected against the specific sales order; finished goods are managed as sales-order stock. Suited for customized products, high-value items, and long lead-time goods. Implemented in SAP via the Special Procurement Key (e.g., code 20) in the material master MRP views.',
+      definition: 'A production strategy where manufacturing starts only after a customer order is received, with the production order directly linked to a specific sales order line. Manufacturing costs are collected against the specific sales order; finished goods are managed as sales-order stock. Suited for customized products, high-value items, and long lead-time goods. Implemented in SAP via the strategy group (for example strategy 20) in the material master MRP 3 view.',
     },
   },
   {
@@ -1298,11 +1298,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '得意先グループ',
       reading: 'とくいさきぐるーぷ',
-      definition: '得意先を分類するSDコード。得意先マスタ（一般データ）に設定し、勘定決定・価格設定・統計分析・与信管理の分類基準として使用される。例：得意先グループ01（大手小売）・02（卸売業者）など業態別に分類する。得意先グループは与信限度額の設定根拠にはならず（与信エリア・FD32で管理）、あくまで分類・分析目的で使用される。',
+      definition: '得意先を分類するSDコード。得意先マスタの販売エリアデータに設定し、価格設定・統計分析・与信管理の分類基準として使用される。例：得意先グループ01（大手小売）・02（卸売業者）など業態別に分類する。得意先グループは与信限度額の設定根拠にはならず（与信エリア・FD32で管理）、あくまで分類・分析目的で使用される。',
     },
     en: {
       term: 'Customer Group',
-      definition: 'An SD code that classifies customers, set in the customer master General Data. Used as a classification basis for account determination, pricing, statistical analysis, and credit management grouping. Examples: Group 01 (large retailers), Group 02 (wholesalers), categorized by business type. Customer Group does not directly set credit limits (managed via Credit Control Area in FD32); it serves as a classification and analysis attribute.',
+      definition: 'An SD code that classifies customers, set in the customer master Sales Area Data. Used as a classification basis for pricing, statistical analysis, and credit management grouping. Examples: Group 01 (large retailers), Group 02 (wholesalers), categorized by business type. Customer Group does not directly set credit limits (managed via Credit Control Area in FD32); it serves as a classification and analysis attribute.',
     },
   },
   {
@@ -1311,11 +1311,11 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '繰り返し製造',
       reading: 'くりかえしせいぞう',
-      definition: 'Repetitive Manufacturing。同一製品を連続的に大量生産する生産方式に対応するPP機能。製造指図単位ではなく生産ラインと期間ベースで生産を管理する。REM（Repetitive Manufacturing）では製造指図の代わりにREM生産計画明細（REM Reporting Backflush）を使用し、バックフラッシュ確認で実績を一括登録する。自動車・電子機器などライン生産に適している。',
+      definition: 'Repetitive Manufacturing。同一製品を連続的に大量生産する生産方式に対応するPP機能。製造指図単位ではなく生産ラインと期間ベースで生産を管理する。製造指図を使わず、製造バージョンごとの期間別計画数量（ランスケジュール数量）で計画し、MFBFの確認入力で製品の入庫と部品の消費（バックフラッシュ）をまとめて登録する。原価は製品原価コレクタに集計される。自動車・電子機器などライン生産に適している。',
     },
     en: {
       term: 'Repetitive Manufacturing',
-      definition: 'A PP production mode designed for continuous, high-volume production of the same product on a production line. Manages production by line and time period rather than individual production orders. Uses REM production planning lines and backflush confirmations (REM Reporting Backflush) instead of discrete production orders, enabling bulk actual postings. Suited for automotive, electronics, and other line production environments.',
+      definition: 'A PP production mode designed for continuous, high-volume production of the same product on a production line. Manages production by line and time period rather than individual production orders. Instead of discrete production orders, it plans run schedule quantities per production version and period, and backflush confirmations in MFBF post the goods receipt and component consumption together. Costs are collected on a product cost collector. Suited for automotive, electronics, and other line production environments.',
     },
   },
   {
