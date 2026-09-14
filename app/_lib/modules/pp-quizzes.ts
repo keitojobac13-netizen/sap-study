@@ -8,7 +8,7 @@ export const ppQuizzes: Record<Language, Record<string, Quiz[]>> = {
       {
         type: 'four-choice',
         question: '化学・食品・医薬品などのプロセス産業で、製造指図の代わりに使う指図はどれか。',
-        choices: ['プロセス指図', '内部指図', '保守指図', '計画指図'],
+        choices: ['プロセス指図', '内部指図', '保守指図', '計画手配'],
         correctIndex: 0,
         explanation: 'プロセス指図です。作業手順の代わりにマスタレシピ、作業場所の代わりに資源を使います。',
       },
@@ -22,7 +22,7 @@ export const ppQuizzes: Record<Language, Record<string, Quiz[]>> = {
         type: 'ox',
         question: 'MRPは自社で製造する品目の計画だけでなく、外部から調達する品目の購買依頼も作成する。',
         correct: true,
-        explanation: '正しいです。調達タイプが外部調達の品目には購買依頼（または外部調達用の計画指図）が作成され、MMの購買に引き継がれます。',
+        explanation: '正しいです。調達タイプが外部調達の品目には購買依頼（または外部調達用の計画手配）が作成され、MMの購買に引き継がれます。',
       },
       {
         type: 'four-choice',
@@ -85,14 +85,14 @@ export const ppQuizzes: Record<Language, Record<string, Quiz[]>> = {
         type: 'ox',
         question: 'MRPの正味所要量計算では、所要量から利用可能な在庫と入庫予定を差し引いて、不足する数量を求める。',
         correct: true,
-        explanation: '正しいです。この不足数量に対して、ロットサイズを考慮した計画指図や購買依頼が作成されます。',
+        explanation: '正しいです。この不足数量に対して、ロットサイズを考慮した計画手配や購買依頼が作成されます。',
       },
       {
         type: 'four-choice',
-        question: 'MRPが作成した計画指図のうち、購買依頼に変換するのはどのような品目か。',
+        question: 'MRPが作成した計画手配のうち、購買依頼に変換するのはどのような品目か。',
         choices: ['外部から調達する品目', '自社で製造する品目', '計画対象外の品目', 'バッチ管理対象の品目'],
         correctIndex: 0,
-        explanation: '外部調達品目の計画指図は購買依頼に変換され、購買発注につながります。自社製造品目の計画指図は製造指図に変換します。',
+        explanation: '外部調達品目の計画手配は購買依頼に変換され、購買発注につながります。自社製造品目の計画手配は製造指図に変換します。',
       },
     ],
     'production-confirmation': [

@@ -200,9 +200,9 @@ export const mmQuizzes: Record<Language, Record<string, Quiz[]>> = {
       {
         type: 'four-choice',
         question: '契約（数量契約・金額契約）を参照して発行する個々の発注を何と呼ぶか。',
-        choices: ['個別呼出（リリースオーダ）', '購買依頼', '見積依頼', '在庫転送発注'],
+        choices: ['契約に対する呼出（リリースオーダ）', '購買依頼', '見積依頼', '在庫転送発注'],
         correctIndex: 0,
-        explanation: '契約を参照して作成する発注は個別呼出（リリースオーダ）と呼ばれ、契約の残数量や残金額が消し込まれていきます。',
+        explanation: '契約を参照して作成する発注は契約に対する呼出（リリースオーダ）と呼ばれ、契約の残数量や残金額が消し込まれていきます。',
       },
     ],
     'special-procurement': [

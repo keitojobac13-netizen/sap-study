@@ -343,7 +343,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '計画独立所要量（PIR）',
       reading: 'けいかくどくりつしょようりょう',
-      definition: 'Planned Independent Requirements。見込生産（MTS）におけるMRPへの需要入力。MD61で品目・プラント・計画数量・計画期間を登録する。受注確定前の需要予測・販売計画を基に作成され、MRP実行時に計画指図（製造計画）の生成トリガーとなる。個別生産（MTO）では受注そのものが需要源となるためPIRは使用しない。',
+      definition: 'Planned Independent Requirements。見込生産（MTS）におけるMRPへの需要入力。MD61で品目・プラント・計画数量・計画期間を登録する。受注確定前の需要予測・販売計画を基に作成され、MRP実行時に計画手配（製造計画）の生成トリガーとなる。個別生産（MTO）では受注そのものが需要源となるためPIRは使用しない。',
     },
     en: {
       term: 'PIR (Planned Independent Requirements)',
@@ -460,7 +460,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '製造指図',
       reading: 'せいぞうさしず',
-      definition: '製品を製造するための指示と実績収集の単位。CO01で作成またはCO41で計画指図から変換する。CRTD（作成済）→REL（リリース）→CNF（確認済）→TECO（技術的完了）→CLSD（クローズ）のステータスで進む。実績の材料出庫・活動数量・製造確認（CO11N）が集計され、CO88精算で実績原価が最終的に振り替えられる。',
+      definition: '製品を製造するための指示と実績収集の単位。CO01で作成またはCO41で計画手配から変換する。CRTD（作成済）→REL（リリース）→CNF（確認済）→TECO（技術的完了）→CLSD（クローズ）のステータスで進む。実績の材料出庫・活動数量・製造確認（CO11N）が集計され、CO88精算で実績原価が最終的に振り替えられる。',
     },
     en: {
       term: 'Production Order',
@@ -526,7 +526,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: 'MRP（所要量計画）',
       reading: 'えむあーるぴー',
-      definition: 'Material Requirements Planning。需要（受注・PIR）に対してBOM展開を行い、製造および調達の所要量を自動計算するPP/MMの計画機能。MD01（全品目バッチ実行）またはMD02（品目別単体実行）で実施。結果はMD04（在庫/所要量リスト）で確認でき、計画指図・購買依頼が自動生成される。',
+      definition: 'Material Requirements Planning。需要（受注・PIR）に対してBOM展開を行い、製造および調達の所要量を自動計算するPP/MMの計画機能。MD01（全品目バッチ実行）またはMD02（品目別単体実行）で実施。結果はMD04（在庫/所要量リスト）で確認でき、計画手配・購買依頼が自動生成される。',
     },
     en: {
       term: 'MRP (Material Requirements Planning)',
@@ -801,9 +801,9 @@ const coreTerms: GlossaryTerm[] = [
     id: 'planned-order',
     modules: ['PP', 'MM'],
     ja: {
-      term: '計画指図',
-      reading: 'けいかくさしず',
-      definition: 'MRP実行後に自動生成される製造・調達の計画単位。製造品目には製造計画指図、購買品目には購買依頼が生成される。MD04（在庫/所要量リスト）で確認でき、CO41で製造指図に変換するか、購買依頼の場合はME57/ME59Nで発注に変換する。まだ確定していない暫定計画のため、修正・削除が可能。',
+      term: '計画手配',
+      reading: 'けいかくてはい',
+      definition: 'MRP実行後に自動生成される製造・調達の計画単位。製造品目には計画手配、購買品目には購買依頼が生成される。MD04（在庫/所要量リスト）で確認でき、CO41で製造指図に変換するか、購買依頼の場合はME57/ME59Nで発注に変換する。まだ確定していない暫定計画のため、修正・削除が可能。',
     },
     en: {
       term: 'Planned Order',
@@ -1259,7 +1259,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: 'MRP方式',
       reading: 'えむあーるぴーほうしき',
-      definition: '品目マスタのMRPデータ画面で設定するMRP計画方法コード。PD（MRP：BOM展開・正味所要量計算の標準方式）・VB（再発注点：在庫が基準量を下回ったとき計画指図を自動生成）・ND（計画なし：MRPの対象外）が代表的。品目の調達特性・需要変動パターンに応じて適切なMRP方式を選択することが計画精度向上の鍵となる。',
+      definition: '品目マスタのMRPデータ画面で設定するMRP計画方法コード。PD（MRP：BOM展開・正味所要量計算の標準方式）・VB（再発注点：在庫が基準量を下回ったとき計画手配を自動生成）・ND（計画なし：MRPの対象外）が代表的。品目の調達特性・需要変動パターンに応じて適切なMRP方式を選択することが計画精度向上の鍵となる。',
     },
     en: {
       term: 'MRP Type',
@@ -1272,7 +1272,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '能力計画',
       reading: 'のうりょくけいかく',
-      definition: '作業場所（Work Center）の稼働能力に対して製造指図・計画指図の負荷（ロード）を管理するPP機能。CM01（能力評価）で作業場所ごとのキャパシティとロードを確認する。無限能力計画（能力制約なしのスケジューリング）と有限能力計画（能力制約を考慮したスケジューリング）の2モードがある。能力超過（オーバーロード）の発見と製造計画の調整が主な目的。',
+      definition: '作業場所（Work Center）の稼働能力に対して製造指図・計画手配の負荷（ロード）を管理するPP機能。CM01（能力評価）で作業場所ごとのキャパシティとロードを確認する。無限能力計画（能力制約なしのスケジューリング）と有限能力計画（能力制約を考慮したスケジューリング）の2モードがある。能力超過（オーバーロード）の発見と製造計画の調整が主な目的。',
     },
     en: {
       term: 'Capacity Planning',

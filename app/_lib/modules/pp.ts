@@ -11,7 +11,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
         title: 'PPモジュール概要',
         content: [
           'PP（Production Planning）は生産計画・製造指図・実績管理を担うモジュールです。',
-          '主要プロセスは需要計画→MRP実行→計画指図→製造指図→製造確認→原価計算の流れです。',
+          '主要プロセスは需要計画→MRP実行→計画手配→製造指図→製造確認→原価計算の流れです。',
           'PPはMM（部品調達）・CO（実績原価）・SD（需要引き）・PM（設備保全）と連携します。',
           '生産タイプとして個別生産（MTO）・見込生産（MTS）・繰り返し製造がサポートされます。',
         ],
@@ -19,9 +19,9 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'four-choice',
             question: 'PPの主要プロセスで「MRP実行」の後に続く工程はどれですか？',
-            choices: ['製造確認', '需要計画', '計画指図（Planned Order）の生成', '原価計算'],
+            choices: ['製造確認', '需要計画', '計画手配（Planned Order）の生成', '原価計算'],
             correctIndex: 2,
-            explanation: 'MRP実行後に計画指図（Planned Order）が生成され、その後製造指図に変換されます。',
+            explanation: 'MRP実行後に計画手配（Planned Order）が生成され、その後製造指図に変換されます。',
           },
           {
             type: 'ox',
@@ -130,8 +130,8 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
         title: 'MRP・製造指図',
         content: [
           'MRP（Material Requirements Planning）はMD01/MD02で実行し、需要に対する部品所要量と生産量を計算します。',
-          'MRP実行後に計画指図（Planned Order）が生成され、MD04（在庫/所要量リスト）で確認できます。',
-          '計画指図はCO41で製造指図（Production Order）に変換され、材料引き当て・能力確認が行われます。',
+          'MRP実行後に計画手配（Planned Order）が生成され、MD04（在庫/所要量リスト）で確認できます。',
+          '計画手配はCO41で製造指図（Production Order）に変換され、材料引き当て・能力確認が行われます。',
           '製造指図の作成はCO01で手動作成することも可能です。',
         ],
         quizzes: [
@@ -144,22 +144,22 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'ox',
-            question: 'MRP実行後に生成される計画指図はMD04で確認できる。',
+            question: 'MRP実行後に生成される計画手配はMD04で確認できる。',
             correct: true,
-            explanation: 'MD04（Stock/Requirements List）でMRP結果（計画指図・購買依頼等）を確認できます。',
+            explanation: 'MD04（Stock/Requirements List）でMRP結果（計画手配・購買依頼等）を確認できます。',
           },
           {
             type: 'four-choice',
-            question: '計画指図を製造指図に変換するトランザクションはどれですか？',
+            question: '計画手配を製造指図に変換するトランザクションはどれですか？',
             choices: ['CO01', 'CO41', 'MD02', 'CO11N'],
             correctIndex: 1,
-            explanation: 'CO41（Convert Planned Order）で計画指図を製造指図に変換します。',
+            explanation: 'CO41（Convert Planned Order）で計画手配を製造指図に変換します。',
           },
           {
             type: 'ox',
             question: '製造指図はCO01でも手動作成できる。',
             correct: true,
-            explanation: 'CO01で直接製造指図を手動作成することも可能です。計画指図からの変換（CO41）と両方使用されます。',
+            explanation: 'CO01で直接製造指図を手動作成することも可能です。計画手配からの変換（CO41）と両方使用されます。',
           },
           {
             type: 'four-choice',
@@ -171,9 +171,9 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'ordering',
             question: 'MRPから製造指図までの流れを正しい順序に並べてください。',
-            items: ['製造指図（CO41変換）', 'MRP実行（MD01/MD02）', '計画指図生成', 'MD04で確認', '需要入力（MD61）'],
+            items: ['製造指図（CO41変換）', 'MRP実行（MD01/MD02）', '計画手配生成', 'MD04で確認', '需要入力（MD61）'],
             correctOrder: [4, 1, 2, 3, 0],
-            explanation: '需要入力→MRP実行→計画指図生成→MD04で確認→製造指図変換の順です。',
+            explanation: '需要入力→MRP実行→計画手配生成→MD04で確認→製造指図変換の順です。',
           },
         ],
       },
@@ -266,9 +266,9 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'ox',
-            question: '能力計画の対象は製造指図だけでなく、計画指図（Planned Order）も含まれる。',
+            question: '能力計画の対象は製造指図だけでなく、計画手配（Planned Order）も含まれる。',
             correct: true,
-            explanation: '計画指図もCM01等の能力計画に含められ、将来の負荷予測に使用できます。',
+            explanation: '計画手配もCM01等の能力計画に含められ、将来の負荷予測に使用できます。',
           },
           {
             type: 'four-choice',
@@ -466,9 +466,9 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'ordering',
             question: '需要管理からMRP実行までの流れを正しい順序に並べてください。',
-            items: ['MRP実行（MD01）', '販売計画の収集', 'MD04で結果確認', 'PIR登録（MD61）', '計画指図生成'],
+            items: ['MRP実行（MD01）', '販売計画の収集', 'MD04で結果確認', 'PIR登録（MD61）', '計画手配生成'],
             correctOrder: [1, 3, 0, 4, 2],
-            explanation: '販売計画の収集→PIR登録→MRP実行→計画指図生成→MD04で結果確認の順です。',
+            explanation: '販売計画の収集→PIR登録→MRP実行→計画手配生成→MD04で結果確認の順です。',
           },
         ],
       },
