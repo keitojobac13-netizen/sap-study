@@ -1663,7 +1663,7 @@ export const mmContent: Record<Language, ModuleEnrichment> = {
 
       'vendor-master': {
         summary:
-          'How the SAP supplier (vendor) master is structured, including the S/4HANA business partner, what a purchasing organisation is for, and how supplier evaluation works.',
+          'How the SAP supplier (vendor) master is structured, the S/4HANA business partner, purchasing organisations and supplier evaluation.',
         keywords: ['vendor master', 'purchasing organisation', 'purchasing group', 'business partner', 'vendor evaluation'],
         body: [
           {
