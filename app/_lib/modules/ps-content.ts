@@ -1164,7 +1164,7 @@ export const psContent: Record<Language, ModuleEnrichment> = {
     sections: {
       'ps-overview': {
         summary:
-          'What PS is used for, the two structures it offers, and how it connects to the other modules.',
+          'What SAP PS (Project System) is used for, its two structures — the WBS and the network — and how it connects to the other modules.',
         keywords: ['SAP PS', 'project management', 'WBS', 'network', 'project definition'],
         body: [
           {

@@ -21,7 +21,11 @@ export function buildModuleMetadata(mod: ModuleContent, lang: Language): Metadat
     lang === 'ja'
       ? `全${mod.sections.length}セクション・${total}問の確認問題で体系的に学べます。`
       : `${mod.sections.length} sections and ${total} practice questions.`;
-  const description = clamp(`${mod.description}${lang === 'ja' ? '' : ' '}${suffix}`);
+  // Some English module descriptions lack a closing period; add one so the
+  // appended sentence does not run on.
+  const base =
+    lang === 'en' && !/[.!?]$/.test(mod.description) ? `${mod.description}.` : mod.description;
+  const description = clamp(`${base}${lang === 'ja' ? '' : ' '}${suffix}`);
   // Absolute, so the root layout template does not append the site name twice.
   const title = `${mod.title} | ${SITE[lang]}`;
 

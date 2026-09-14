@@ -815,7 +815,7 @@ export const mmContent: Record<Language, ModuleEnrichment> = {
 
       'special-procurement': {
         summary:
-          'コンサインメント在庫、外注加工、在庫転送オーダーという3つの特殊な調達形態と、それぞれの在庫・会計上の扱いを解説します。',
+          'コンサインメントとは何か。コンサインメント在庫・外注加工・在庫転送オーダーという3つの特殊な調達形態と、それぞれの在庫・会計上の扱いを解説します。',
         keywords: ['コンサインメント', '外注加工', 'STO', '在庫転送オーダー', '特殊在庫', '支給品'],
         body: [
           {
@@ -1663,7 +1663,7 @@ export const mmContent: Record<Language, ModuleEnrichment> = {
 
       'vendor-master': {
         summary:
-          'The layers of the vendor master, what a purchasing organisation is for, and how vendor evaluation works.',
+          'How the SAP supplier (vendor) master is structured, including the S/4HANA business partner, what a purchasing organisation is for, and how supplier evaluation works.',
         keywords: ['vendor master', 'purchasing organisation', 'purchasing group', 'business partner', 'vendor evaluation'],
         body: [
           {

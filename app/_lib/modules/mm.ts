@@ -397,7 +397,7 @@ export const mm: Record<'ja' | 'en', ModuleContent> = {
       },
       {
         id: 'special-procurement',
-        title: '特殊調達（コンサインメント・STO）',
+        title: 'コンサインメント・外注加工・在庫転送オーダー（特殊調達）',
         content: [
           'コンサインメント在庫は仕入先所有の在庫をプラントに保管し、使用時点で支払が発生します。',
           'コンサインメントは発注タイプNB＋明細カテゴリKで処理し、移動タイプ411Kで使用引当します。',
@@ -845,7 +845,7 @@ export const mm: Record<'ja' | 'en', ModuleContent> = {
       },
       {
         id: 'vendor-master',
-        title: 'Vendor Master and Purchasing Organization',
+        title: 'Supplier (Vendor) Master and Purchasing Organization',
         content: [
           'Vendor Master records are created with MK01 (purchasing data only) or XK01 (all data).',
           'The Vendor Master has three levels: General Data, Company Code Data, and Purchasing Organization Data.',

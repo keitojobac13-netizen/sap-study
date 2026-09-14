@@ -1288,7 +1288,7 @@ export const basisContent: Record<Language, ModuleEnrichment> = {
     sections: {
       'basis-overview': {
         summary:
-          'What Basis is responsible for, the three-tier architecture, work processes, and the three-system landscape.',
+          'What SAP Basis is and what it is responsible for, the three-tier architecture, work processes, and the three-system landscape.',
         keywords: ['SAP Basis', 'NetWeaver', 'three-tier', 'work process', 'instance', 'dispatcher'],
         body: [
           {

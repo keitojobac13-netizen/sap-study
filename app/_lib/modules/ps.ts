@@ -515,7 +515,7 @@ export const ps: Record<'ja' | 'en', ModuleContent> = {
     sections: [
       {
         id: 'ps-overview',
-        title: 'PS Module Overview',
+        title: 'What is SAP PS (Project System)?',
         content: [
           'PS (Project System) is the SAP module for project management. It covers project planning, budget management, schedule management, actual tracking, and settlement processing. It is widely used in project-based industries such as construction, engineering, IT, and research & development.',
           'PS integrates with many modules including CO (Controlling), MM (Materials Management), PP (Production Planning), FI (Financial Accounting), and HR (Human Resources). Project procurement integrates with MM, project costs are managed in CO, and project settlement posts to FI. PS plays a cross-module integration role.',

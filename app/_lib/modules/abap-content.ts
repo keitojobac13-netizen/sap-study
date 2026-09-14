@@ -1269,7 +1269,7 @@ export const abapContent: Record<Language, ModuleEnrichment> = {
     sections: {
       'abap-overview': {
         summary:
-          'What ABAP is for, its relationship to SAP standard code, how custom development is classified, and how the language has evolved.',
+          'What SAP ABAP is and what it is used for, how it relates to SAP standard code, how custom development is classified, and how the language has evolved.',
         keywords: ['ABAP', 'SAP development', 'add-on', 'enhancement', 'ABAP Cloud', 'clean core'],
         body: [
           {

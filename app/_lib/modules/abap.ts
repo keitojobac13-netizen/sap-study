@@ -564,7 +564,7 @@ export const abap: Record<'ja' | 'en', ModuleContent> = {
     sections: [
       {
         id: 'abap-overview',
-        title: 'What is ABAP?',
+        title: 'What is SAP ABAP?',
         content: [
           'ABAP (Advanced Business Application Programming) is a proprietary programming language developed by SAP. Most of SAP ERP is built in ABAP, and it is also used for add-on development and customization. ABAP has a COBOL-like syntax and is specifically designed for business application development.',
           'ABAP programs run on the SAP Application Server. Source code is stored in the database and interpreted/executed by the ABAP runtime environment. ABAP has several program types including Reports, Module Pools, Function Modules, and Classes.',
