@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { translations, type Language } from '../_lib/i18n';
 import { MODULE_KEYS } from '../_lib/modules';
+import { visibleArticles } from '../_lib/articles';
 import {
+  articlesPath,
   modulePath,
   dictionaryPath,
   aboutPath,
@@ -76,6 +78,9 @@ export default function SiteFooter({ lang }: { lang: Language }) {
             <ul className="space-y-2.5 text-[0.8rem]">
               {[
                 { label: l.dictionary, href: dictionaryPath(lang) },
+                ...(lang === 'ja' && visibleArticles().length > 0
+                  ? [{ label: 'コラム', href: articlesPath() }]
+                  : []),
                 { label: l.about, href: aboutPath(lang) },
                 { label: l.contact, href: contactPath(lang) },
                 { label: l.privacy, href: privacyPath(lang) },

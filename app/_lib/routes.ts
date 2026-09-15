@@ -40,6 +40,15 @@ export function privacyPath(lang: Language) {
   return `${localePrefix(lang)}/privacy`;
 }
 
+/** Columns are Japanese only, so these take no language. */
+export function articlesPath() {
+  return '/articles';
+}
+
+export function articlePath(slug: string) {
+  return `/articles/${slug}`;
+}
+
 export const OTHER_LANG: Record<Language, Language> = { ja: 'en', en: 'ja' };
 
 /** canonical + hreflang metadata for a path that exists in both languages. */

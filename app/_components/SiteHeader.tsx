@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Icon from './Icon';
 import { translations, type Language } from '../_lib/i18n';
+import { visibleArticles } from '../_lib/articles';
 import {
   homePath,
+  articlesPath,
   dictionaryPath,
   aboutPath,
   contactPath,
@@ -35,6 +37,10 @@ export default function SiteHeader({ lang, switchPath }: {
   const links = [
     { label: t.nav.modules, href: `${homePath(lang)}#modules` },
     { label: t.nav.dictionary, href: dictionaryPath(lang) },
+    // Columns are Japanese only, and hidden until one is published.
+    ...(lang === 'ja' && visibleArticles().length > 0
+      ? [{ label: 'コラム', href: articlesPath() }]
+      : []),
     { label: l.about, href: aboutPath(lang) },
     { label: l.contact, href: contactPath(lang) },
   ];

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { MODULE_KEYS, allSectionPaths } from './_lib/modules';
+import { publishedArticles } from './_lib/articles';
 import type { Language } from './_lib/i18n';
 import {
   BASE_URL,
@@ -10,6 +11,8 @@ import {
   aboutPath,
   contactPath,
   privacyPath,
+  articlesPath,
+  articlePath,
 } from './_lib/routes';
 
 type PathFn = (lang: Language) => string;
@@ -39,7 +42,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: privacyPath, priority: 0.3, changeFrequency: 'yearly' },
   ];
 
-  return entries.flatMap(({ path, priority, changeFrequency }) =>
+  // Columns exist in Japanese only, so they carry no hreflang pair.
+  const columns: MetadataRoute.Sitemap = publishedArticles().map((a) => ({
+    url: `${BASE_URL}${articlePath(a.slug)}`,
+    lastModified: new Date(a.updatedAt ?? a.publishedAt),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+  if (columns.length > 0) {
+    columns.unshift({ url: `${BASE_URL}${articlesPath()}`, lastModified, changeFrequency: 'weekly', priority: 0.7 });
+  }
+
+  const localized = entries.flatMap(({ path, priority, changeFrequency }) =>
     (['ja', 'en'] as const).map((lang) => ({
       url: `${BASE_URL}${path(lang)}`,
       lastModified,
@@ -54,4 +68,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     }))
   );
+
+  return [...localized, ...columns];
 }
