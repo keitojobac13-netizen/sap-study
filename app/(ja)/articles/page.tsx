@@ -5,9 +5,9 @@ import { visibleArticles } from '@/app/_lib/articles';
 import { BASE_URL, articlesPath } from '@/app/_lib/routes';
 
 export const metadata: Metadata = {
-  title: { absolute: 'SAPコラム｜キャリア・フリーランス・S/4HANA・認定資格 | SAP学習ポータル' },
+  title: { absolute: 'SAP用語の解説・違いの比較 | SAP学習ポータル' },
   description:
-    'SAPコンサルタントのキャリア、フリーランスの働き方、S/4HANA移行の動向、SAP認定資格の勉強法など、モジュール解説とは別に知っておきたい話題をまとめたコラムです。',
+    'コンサインメント、転記日付と伝票日付の違い、クレジットメモとデビットメモなど、SAPの現場でよく調べられる用語を1テーマ1記事で解説します。',
   alternates: { canonical: `${BASE_URL}${articlesPath()}` },
 };
 

@@ -20,7 +20,7 @@ export default function ColumnIndexPage() {
             コラム
           </h1>
           <p className="text-ink-soft leading-[1.9] mt-4 text-[0.95rem] sm:text-base">
-            SAPコンサルタントのキャリア、フリーランスとしての働き方、S/4HANA移行の動向、認定資格の勉強法など、モジュールの解説とは別に知っておきたい話題をまとめています。
+            SAPの現場でよく調べられる用語や、混同しやすい2つの用語の違いを、1テーマ1記事で解説しています。モジュールごとの体系的な解説とあわせて読むと、理解が深まります。
           </p>
 
           <hr className="border-rule my-10" />

@@ -1,10 +1,16 @@
 import type { Block } from '../learning-types';
+import { consignment } from './consignment';
+import { documentDatePostingDate } from './document-date-posting-date';
+import { creditMemoDebitMemo } from './credit-memo-debit-memo';
+import { backflush } from './backflush';
+import { ricefw } from './ricefw';
+import { sapModules } from './sap-modules';
+import { goodsIssueShipping } from './goods-issue-shipping';
 
 /**
- * Standalone columns: career, freelance, S/4HANA and certification topics
- * that do not belong to a single module. Japanese only — they are written for
- * the Japanese job market, and the affiliate programmes they may link to are
- * Japanese too.
+ * Standalone columns that answer one search question each — a term, a
+ * difference between two terms, or an overview that spans modules. Japanese
+ * only: the topics come from the Japanese queries in Search Console.
  *
  * Articles are written ahead of time as drafts. A draft renders under
  * `next dev` so it can be proofread in the real layout, but a production build
@@ -12,13 +18,12 @@ import type { Block } from '../learning-types';
  * one-line change: set `status: 'published'` and a `publishedAt` date.
  */
 
-export type ArticleCategory = 'career' | 'freelance' | 's4hana' | 'certification';
+export type ArticleCategory = 'term' | 'compare' | 'overview';
 
 export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
-  career: 'キャリア',
-  freelance: 'フリーランス',
-  s4hana: 'S/4HANA・動向',
-  certification: '認定資格',
+  term: '用語解説',
+  compare: '違いの比較',
+  overview: '全体像',
 };
 
 export type RelatedLink = { label: string; href: string };
@@ -44,7 +49,15 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'draft' })
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
-const ARTICLES: ColumnArticle[] = [];
+const ARTICLES: ColumnArticle[] = [
+  consignment,
+  documentDatePostingDate,
+  creditMemoDebitMemo,
+  backflush,
+  ricefw,
+  sapModules,
+  goodsIssueShipping,
+];
 
 const SHOW_DRAFTS = process.env.NODE_ENV === 'development';
 
