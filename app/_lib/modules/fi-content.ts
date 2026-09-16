@@ -321,7 +321,7 @@ export const fiContent: Record<Language, ModuleEnrichment> = {
 
       'fi-journal': {
         summary:
-          '会計伝票の構造、入力トランザクションの使い分け、伝票日付と転記日付の違い、保留伝票と取消処理までを実務の流れに沿って解説します。',
+          '転記日付（転記日）とは、伝票を会計帳簿に載せる日付で、どの会計期間の数字になるかを決めます。伝票日付との違い、FB50などの入力方法、保留伝票と取消まで解説します。',
         keywords: ['仕訳伝票', 'FB50', 'FB03', 'FB08', '転記日付', '保留伝票', 'BKPF', 'BSEG'],
         body: [
           {
@@ -433,7 +433,7 @@ export const fiContent: Record<Language, ModuleEnrichment> = {
 
       'fi-payment-terms': {
         summary:
-          '支払条件が定義する支払期限と現金割引、その起算日となる支払基準日の決まり方、支払ブロックの使いどころを解説します。',
+          '支払基準日とは、支払期日と現金割引の期間を数え始める起算日です。支払条件で決まる支払期日・現金割引の仕組みと、基準日の決まり方、支払ブロックを解説します。',
         keywords: ['支払条件', '支払基準日', 'Baseline Date', '現金割引', '支払ブロック', 'ZTERM'],
         body: [
           {

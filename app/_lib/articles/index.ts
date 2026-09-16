@@ -1,8 +1,4 @@
 import type { Block } from '../learning-types';
-import { sapConsultantCareer } from './sap-consultant-career';
-import { sapFreelance } from './sap-freelance';
-import { s4hana2027 } from './s4hana-2027';
-import { sapCertification } from './sap-certification';
 
 /**
  * Standalone columns: career, freelance, S/4HANA and certification topics
@@ -48,7 +44,7 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'draft' })
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
-const ARTICLES: ColumnArticle[] = [sapConsultantCareer, sapFreelance, s4hana2027, sapCertification];
+const ARTICLES: ColumnArticle[] = [];
 
 const SHOW_DRAFTS = process.env.NODE_ENV === 'development';
 

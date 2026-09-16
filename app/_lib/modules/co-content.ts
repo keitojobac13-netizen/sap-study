@@ -298,7 +298,7 @@ export const coContent: Record<Language, ModuleEnrichment> = {
 
       'co-internal-order': {
         summary:
-          '内部指図が原価センタと補完しあう理由、実指図と統計指図の違い、決済という考え方までを解説します。',
+          '内部指図とは、イベントや設備投資など始まりと終わりがある活動ごとに原価を集計する仕組みです。原価センタとの使い分け、実指図と統計指図の違い、決済を解説します。',
         keywords: ['内部指図', 'Internal Order', '統計指図', '実指図', '決済', 'KO01', 'KO88'],
         body: [
           {
