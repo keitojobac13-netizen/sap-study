@@ -32,6 +32,13 @@ const CONTENT: Record<Language, {
       'SAP学習ポータル（sapstudy.jp）は、SAPをこれから学ぶ人と、実務で扱いながら知識を整理したい人のための無料の学習サイトです。このページでは、誰がどのような方針でサイトを運営しているかを説明します。',
     sections: [
       {
+        heading: '運営者について',
+        paragraphs: [
+          '運営者の kei は、SAP FI（財務会計）のコンサルタントとして、4年間実務に携わっています。',
+          'FIのページとコラムには、実務で経験したことや、現場でよく受ける質問への答えを順次反映していきます。FI以外のモジュールは専門外のため、SAPの公式ドキュメントと標準的な業務プロセスを確認しながら執筆しています。',
+        ],
+      },
+      {
         heading: 'サイトを作った理由',
         paragraphs: [
           'SAPは導入企業が多い一方で、体系的に学べる日本語の入門資料が驚くほど少ない領域です。公式のドキュメントは正確ですが分量が多く、前提知識がないと読み進めるのが難しい。かといって断片的なブログ記事だけでは、モジュール間のつながりが見えてきません。',
@@ -87,6 +94,13 @@ const CONTENT: Record<Language, {
     lead:
       'SAP Study Portal (sapstudy.jp) is a free learning site for people starting out with SAP and for practitioners who want to consolidate what they already know. This page explains who runs it and on what principles.',
     sections: [
+      {
+        heading: 'About the operator',
+        paragraphs: [
+          'The site is run by kei, who has worked for four years as an SAP FI (Financial Accounting) consultant.',
+          'Lessons from that work, and answers to questions that often come up on projects, are being added to the FI pages and the Japanese columns over time. The other modules are outside that specialism, so they are written against SAP documentation and standard business processes.',
+        ],
+      },
       {
         heading: 'Why this site exists',
         paragraphs: [
