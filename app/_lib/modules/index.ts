@@ -81,7 +81,7 @@ function withExtraQuizzes(mod: ModuleContent, extra: ExtraQuizzes | undefined): 
  * body, and skipped while the column is still a draft.
  */
 const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string>>> = {
-  fi: { 'fi-journal': 'document-date-posting-date' },
+  fi: { 'fi-overview': 'fi-beginner-pitfalls', 'fi-journal': 'document-date-posting-date' },
   sd: { 'returns-credit': 'credit-memo-debit-memo', 'shipping-billing': 'goods-issue-shipping' },
   mm: { 'special-procurement': 'consignment' },
   pp: { 'production-confirmation': 'backflush' },

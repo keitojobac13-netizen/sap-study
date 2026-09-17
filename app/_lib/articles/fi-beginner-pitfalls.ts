@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const fiBeginnerPitfalls: ColumnArticle = {
   slug: 'fi-beginner-pitfalls',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-17',
   category: 'overview',
   title: '新人FIコンサルがつまずくポイント｜元帳・債権債務・固定資産の領域別に現役コンサルが解説',
   summary:

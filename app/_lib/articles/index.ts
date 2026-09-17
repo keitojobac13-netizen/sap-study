@@ -51,6 +51,7 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  fiBeginnerPitfalls,
   consignment,
   documentDatePostingDate,
   creditMemoDebitMemo,
@@ -58,7 +59,6 @@ const ARTICLES: ColumnArticle[] = [
   ricefw,
   sapModules,
   goodsIssueShipping,
-  fiBeginnerPitfalls,
 ];
 
 const SHOW_DRAFTS = process.env.NODE_ENV === 'development';
