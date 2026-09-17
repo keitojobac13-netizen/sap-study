@@ -5,6 +5,7 @@ import Icon from './Icon';
 import { translations, type Language } from '../_lib/i18n';
 import { MODULE_KEYS, getModule } from '../_lib/modules';
 import { MODULE_STYLES } from '../_lib/module-style';
+import { CATEGORY_LABELS, visibleArticles } from '../_lib/articles';
 import {
   BASE_URL,
   homePath,
@@ -12,6 +13,8 @@ import {
   sectionPath,
   dictionaryPath,
   aboutPath,
+  articlesPath,
+  articlePath,
   OTHER_LANG,
 } from '../_lib/routes';
 
@@ -94,6 +97,9 @@ export default function HomePage({ lang, termCount }: {
 }) {
   const t = translations[lang];
   const c = COPY[lang];
+
+  // Columns are Japanese only.
+  const columns = lang === 'ja' ? visibleArticles().slice(0, 4) : [];
 
   const totals = MODULE_KEYS.reduce(
     (acc, key) => {
@@ -225,6 +231,47 @@ export default function HomePage({ lang, termCount }: {
             </div>
           </div>
         </section>
+
+        {/* ─── Columns (Japanese only) ─── */}
+        {columns.length > 0 && (
+          <section className="border-t border-rule">
+            <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-16">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <h2 className="text-[1.5rem] sm:text-[1.8rem] font-bold text-ink tracking-tight">
+                    コラム
+                  </h2>
+                  <p className="text-ink-mute text-[0.88rem] mt-2">
+                    現場でよく調べられる用語や、混同しやすい用語の違いを1テーマずつ解説しています。
+                  </p>
+                </div>
+                <Link
+                  href={articlesPath()}
+                  className="inline-flex items-center gap-1.5 text-[0.85rem] font-semibold text-accent hover:gap-2.5 transition-all"
+                >
+                  コラムをすべて見る
+                  <Icon name="arrow-right" className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 mt-8 border-t border-rule">
+                {columns.map((a) => (
+                  <li key={a.slug} className="py-5 border-b border-rule-soft">
+                    <p className="text-[0.72rem] text-ink-mute tracking-[0.06em] mb-1.5">
+                      {CATEGORY_LABELS[a.category]}
+                    </p>
+                    <Link
+                      href={articlePath(a.slug)}
+                      className="font-semibold text-ink text-[0.95rem] leading-snug hover:text-accent transition-colors"
+                    >
+                      {a.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {/* ─── How to use ─── */}
         <section className="border-t border-rule">
