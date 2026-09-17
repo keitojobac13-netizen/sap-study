@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const consignment: ColumnArticle = {
   slug: 'consignment',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-17',
   category: 'term',
   title: 'コンサインメントとは？意味・在庫と会計の流れ・SAPでの処理をわかりやすく解説',
   summary:

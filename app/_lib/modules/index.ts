@@ -1,6 +1,8 @@
 import type { ModuleContent, ModuleEnrichment, Quiz } from '../learning-types';
 import { enrichModule } from '../learning-types';
 import type { Language, ModuleKey } from '../i18n';
+import { getArticle } from '../articles';
+import { articlePath } from '../routes';
 import { fiContent } from './fi-content';
 import { coContent } from './co-content';
 import { sdContent } from './sd-content';
@@ -73,11 +75,43 @@ function withExtraQuizzes(mod: ModuleContent, extra: ExtraQuizzes | undefined): 
   };
 }
 
+/**
+ * Columns that go deeper on a topic a section only touches. Japanese only,
+ * like the columns themselves. The link is appended to the end of the section
+ * body, and skipped while the column is still a draft.
+ */
+const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string>>> = {
+  fi: { 'fi-journal': 'document-date-posting-date' },
+  sd: { 'returns-credit': 'credit-memo-debit-memo', 'shipping-billing': 'goods-issue-shipping' },
+  mm: { 'special-procurement': 'consignment' },
+  pp: { 'production-confirmation': 'backflush' },
+  abap: { 'abap-overview': 'ricefw' },
+};
+
+function withArticleLinks(mod: ModuleContent, links: Record<string, string> | undefined): ModuleContent {
+  if (!links) return mod;
+  return {
+    ...mod,
+    sections: mod.sections.map((section) => {
+      const slug = links[section.id];
+      const article = slug ? getArticle(slug) : undefined;
+      if (!article || !section.body) return section;
+      return {
+        ...section,
+        body: [...section.body, { type: 'link', href: articlePath(article.slug), label: article.title }],
+      };
+    }),
+  };
+}
+
 const REGISTRY = Object.fromEntries(
   (Object.keys(BASE) as ModuleKey[]).map((key) => [
     key,
     {
-      ja: withExtraQuizzes(enrichModule(BASE[key].ja, CONTENT[key]?.ja), EXTRA_QUIZZES[key]?.ja),
+      ja: withArticleLinks(
+        withExtraQuizzes(enrichModule(BASE[key].ja, CONTENT[key]?.ja), EXTRA_QUIZZES[key]?.ja),
+        SECTION_ARTICLES[key]
+      ),
       en: withExtraQuizzes(enrichModule(BASE[key].en, CONTENT[key]?.en), EXTRA_QUIZZES[key]?.en),
     },
   ])

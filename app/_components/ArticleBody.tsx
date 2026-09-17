@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Icon, { type IconName } from './Icon';
 import type { Block } from '../_lib/learning-types';
 
@@ -132,6 +133,18 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                   <code>{block.code}</code>
                 </pre>
               </figure>
+            );
+
+          case 'link':
+            return (
+              <p key={i} className="border-l-2 border-l-rule pl-4 py-1 my-2 text-[0.9rem] leading-[1.9]">
+                <span className="block text-[0.72rem] font-semibold text-ink-mute tracking-[0.06em] mb-0.5">
+                  {block.text ?? 'あわせて読みたい'}
+                </span>
+                <Link href={block.href} className="text-accent font-semibold underline underline-offset-4 decoration-accent/40 hover:decoration-accent">
+                  {block.label}
+                </Link>
+              </p>
             );
         }
       })}

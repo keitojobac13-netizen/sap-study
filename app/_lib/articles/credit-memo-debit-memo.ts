@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const creditMemoDebitMemo: ColumnArticle = {
   slug: 'credit-memo-debit-memo',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-17',
   category: 'compare',
   title: 'クレジットメモとデビットメモの違いとは？意味・仕訳・SAPでの処理をわかりやすく解説',
   summary:

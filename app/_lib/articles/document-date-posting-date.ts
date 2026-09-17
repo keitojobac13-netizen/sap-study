@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const documentDatePostingDate: ColumnArticle = {
   slug: 'document-date-posting-date',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-17',
   category: 'compare',
   title: '転記日付と伝票日付の違いとは？SAPの3つの日付（入力日付を含む）をわかりやすく解説',
   summary:

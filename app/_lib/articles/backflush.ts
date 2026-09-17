@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const backflush: ColumnArticle = {
   slug: 'backflush',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-17',
   category: 'term',
   title: 'バックフラッシュとは？生産管理での意味とSAPでの設定・エラー対応（COGI）を解説',
   summary:

@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const ricefw: ColumnArticle = {
   slug: 'ricefw',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-17',
   category: 'term',
   title: 'RICEFWとは？SAPのアドオン開発の6分類と使う技術・開発言語をわかりやすく解説',
   summary:

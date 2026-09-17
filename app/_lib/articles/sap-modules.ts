@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const sapModules: ColumnArticle = {
   slug: 'sap-modules',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-17',
   category: 'overview',
   title: 'SAPのモジュール一覧｜FI・CO・SD・MM・PPなど主要モジュールの役割とつながりを解説',
   summary:
@@ -124,7 +125,7 @@ export const sapModules: ColumnArticle = {
     },
     {
       type: 'p',
-      text: 'また、旧世代の SAP ERP 6.0（ECC）の標準保守は2027年末に終了する予定のため、多くの企業が S/4HANA への移行を進めています。これから学ぶなら、S/4HANA を前提にした知識を身につけるのがおすすめです。',
+      text: 'また、旧世代の SAP ERP 6.0（ECC）の標準保守は、拡張パッケージ（EhP）6〜8でも2027年末に終了します（EhP5以前は2025年末に終了済み）。そのため、多くの企業が S/4HANA への移行を進めています。これから学ぶなら、S/4HANA を前提にした知識を身につけるのがおすすめです。',
     },
     { type: 'h', text: 'まとめ' },
     {

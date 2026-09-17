@@ -33,7 +33,9 @@ export type Block =
   | { type: 'list'; ordered?: boolean; items: string[] }
   | { type: 'table'; caption?: string; headers: string[]; rows: string[][] }
   | { type: 'note'; variant: 'tip' | 'warn' | 'info'; title: string; text: string }
-  | { type: 'code'; caption?: string; code: string };
+  | { type: 'code'; caption?: string; code: string }
+  /** A pointer to another page on the site, e.g. a column that goes deeper. */
+  | { type: 'link'; href: string; label: string; text?: string };
 
 export type Section = {
   id: string;

@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const goodsIssueShipping: ColumnArticle = {
   slug: 'goods-issue-shipping',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-17',
   category: 'compare',
   title: '出庫と出荷の違いとは？意味とSAPの出庫転記（Post Goods Issue）をわかりやすく解説',
   summary:
