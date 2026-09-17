@@ -6,6 +6,7 @@ import { backflush } from './backflush';
 import { ricefw } from './ricefw';
 import { sapModules } from './sap-modules';
 import { goodsIssueShipping } from './goods-issue-shipping';
+import { fiBeginnerPitfalls } from './fi-beginner-pitfalls';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -57,6 +58,7 @@ const ARTICLES: ColumnArticle[] = [
   ricefw,
   sapModules,
   goodsIssueShipping,
+  fiBeginnerPitfalls,
 ];
 
 const SHOW_DRAFTS = process.env.NODE_ENV === 'development';
