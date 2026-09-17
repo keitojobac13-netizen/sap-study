@@ -31,23 +31,21 @@ export type Block =
   | { type: 'p'; text: string }
   | { type: 'h'; text: string }
   | { type: 'list'; ordered?: boolean; items: string[] }
-  | { type: 'table'; caption?: string; headers: string[]; rows: string[][] }
+  /** `stack` sets each row as a card on a phone, for tables with long text in three or more columns. */
+  | { type: 'table'; caption?: string; headers: string[]; rows: string[][]; stack?: boolean }
   | { type: 'note'; variant: 'tip' | 'warn' | 'info'; title: string; text: string }
   | { type: 'code'; caption?: string; code: string }
   /** A pointer to another page on the site, e.g. a column that goes deeper. */
   | { type: 'link'; href: string; label: string; text?: string }
-  /**
-   * A left-to-right flow diagram, one row per path. Each step is a box; an
-   * `emphasis` step is drawn in the accent colour, a `blocked` row ends in a
-   * cross instead of reaching its last box.
-   */
-  | { type: 'flow'; caption?: string; rows: FlowRow[]; note?: string };
+  /** A hand-drawn figure from `_components/figures`. Write `|` in the caption at the allowed line breaks. */
+  | { type: 'figure'; name: FigureName; caption: string; note?: string };
 
-export type FlowRow = {
-  label?: string;
-  steps: { text: string; sub?: string; emphasis?: boolean }[];
-  blocked?: boolean;
-};
+export type FigureName =
+  | 'ledger-stack'
+  | 'standard-hub'
+  | 'control-account'
+  | 'auc-phases'
+  | 'depreciation-lanes';
 
 export type Section = {
   id: string;

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Icon, { type IconName } from './Icon';
+import Figure from './figures/FiFigures';
+import Phrase from './Phrase';
 import type { Block } from '../_lib/learning-types';
 
 const NOTE_STYLES: Record<string, { rule: string; icon: IconName; tint: string }> = {
@@ -37,7 +39,7 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
             return (
               <h2
                 key={i}
-                className="text-[1.15rem] sm:text-[1.3rem] font-bold text-ink leading-snug tracking-tight pt-8 mt-2 first:pt-0 first:mt-0"
+                className="text-[1.15rem] sm:text-[1.3rem] font-bold text-ink leading-snug tracking-tight pt-8 mt-2 first:pt-0 first:mt-0 [word-break:auto-phrase]"
               >
                 {block.text}
               </h2>
@@ -45,14 +47,14 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
 
           case 'p':
             return (
-              <p key={i} className="text-[0.95rem] sm:text-base text-ink-soft leading-[2]">
+              <p key={i} className="text-[0.95rem] sm:text-base text-ink-soft leading-[2] text-pretty">
                 {block.text}
               </p>
             );
 
           case 'list': {
             const cls =
-              'space-y-2.5 text-[0.95rem] sm:text-base text-ink-soft leading-[1.9] pl-6 marker:text-ink-mute';
+              'space-y-2.5 text-[0.95rem] sm:text-base text-ink-soft leading-[1.9] pl-6 marker:text-ink-mute text-pretty';
             return block.ordered ? (
               <ol key={i} className={`list-decimal ${cls}`}>
                 {block.items.map((item, j) => <li key={j} className="pl-1.5">{item}</li>)}
@@ -64,7 +66,10 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
             );
           }
 
-          case 'table':
+          case 'table': {
+            // On a phone a stacked table drops its header row and sets each
+            // row as a card: the first cell as a title, the rest labelled.
+            const st = block.stack;
             return (
               <figure key={i} className="space-y-2 py-2">
                 {block.caption && (
@@ -72,9 +77,9 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                     {block.caption}
                   </figcaption>
                 )}
-                <div className="overflow-x-auto border-y border-rule">
-                  <table className="w-full text-[0.85rem] border-collapse">
-                    <thead>
+                <div className={`border-y border-rule ${st ? 'sm:overflow-x-auto' : 'overflow-x-auto'}`}>
+                  <table className={`w-full text-[0.85rem] border-collapse [word-break:auto-phrase]${st ? ' max-sm:block' : ''}`}>
+                    <thead className={st ? 'max-sm:hidden' : undefined}>
                       <tr>
                         {block.headers.map((h, j) => (
                           <th
@@ -87,14 +92,24 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                         ))}
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className={st ? 'max-sm:block' : undefined}>
                       {block.rows.map((row, j) => (
-                        <tr key={j} className="border-b border-rule-soft last:border-0 align-top">
+                        <tr
+                          key={j}
+                          className={`border-b border-rule-soft last:border-0 align-top${st ? ' max-sm:block max-sm:py-2' : ''}`}
+                        >
                           {row.map((cell, k) => (
                             <td
                               key={k}
-                              className={`px-3 py-2.5 text-ink-soft leading-[1.8]${
+                              data-label={st && k > 0 ? block.headers[k] : undefined}
+                              className={`px-3 py-2.5 text-ink-soft leading-[1.8] text-pretty${
                                 isShortCode(cell) ? ' whitespace-nowrap' : ''
+                              }${
+                                st
+                                  ? k === 0
+                                    ? ' max-sm:block max-sm:pb-1 max-sm:font-semibold max-sm:text-ink'
+                                    : ' max-sm:block max-sm:py-1 max-sm:before:block max-sm:before:content-[attr(data-label)] max-sm:before:text-[0.72rem] max-sm:before:font-semibold max-sm:before:text-ink-mute'
+                                  : ''
                               }`}
                             >
                               {cell}
@@ -107,6 +122,7 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                 </div>
               </figure>
             );
+          }
 
           case 'note': {
             const style = NOTE_STYLES[block.variant] ?? NOTE_STYLES.info;
@@ -116,7 +132,7 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                   <Icon name={style.icon} className="w-3.5 h-3.5 flex-shrink-0" />
                   {block.title}
                 </p>
-                <p className="text-ink-soft text-[0.9rem] leading-[1.9]">{block.text}</p>
+                <p className="text-ink-soft text-[0.9rem] leading-[1.9] text-pretty">{block.text}</p>
               </aside>
             );
           }
@@ -135,59 +151,17 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
               </figure>
             );
 
-          case 'flow':
+          case 'figure':
             return (
-              <figure key={i} className="py-2">
-                {block.caption && (
-                  <figcaption className="text-[0.72rem] font-semibold text-ink-mute uppercase tracking-[0.06em] mb-3">
-                    {block.caption}
-                  </figcaption>
-                )}
-                <div className="border border-rule bg-ground p-4 sm:p-5 space-y-5">
-                  {block.rows.map((row, j) => (
-                    <div key={j}>
-                      {row.label && (
-                        <p className="text-[0.78rem] font-semibold text-ink mb-2">{row.label}</p>
-                      )}
-                      <ol className="flex flex-col sm:flex-row sm:items-stretch gap-1.5 sm:gap-0">
-                        {row.steps.map((step, k) => {
-                          const last = k === row.steps.length - 1;
-                          const cut = row.blocked && last;
-                          return (
-                            <li key={k} className="flex flex-col sm:flex-row sm:items-stretch sm:flex-1 min-w-0">
-                              {k > 0 && (
-                                <span
-                                  aria-hidden
-                                  className={`self-center sm:px-1.5 py-0.5 sm:py-0 text-[0.95rem] leading-none ${
-                                    cut ? 'text-amber-700 font-bold' : 'text-ink-mute'
-                                  }`}
-                                >
-                                  {cut ? '×' : <><span className="sm:hidden">↓</span><span className="hidden sm:inline">→</span></>}
-                                </span>
-                              )}
-                              <div
-                                className={`flex-1 min-w-0 px-3 py-2 text-center border bg-paper flex flex-col justify-center ${
-                                  cut
-                                    ? 'border-dashed border-amber-500 text-ink-mute'
-                                    : step.emphasis
-                                      ? 'border-accent text-accent'
-                                      : 'border-rule text-ink'
-                                }`}
-                              >
-                                <span className="block text-[0.82rem] font-semibold leading-snug">{step.text}</span>
-                                {step.sub && (
-                                  <span className="block text-[0.72rem] text-ink-mute leading-snug mt-0.5">{step.sub}</span>
-                                )}
-                              </div>
-                            </li>
-                          );
-                        })}
-                      </ol>
-                    </div>
-                  ))}
+              <figure key={i} id={block.name} className="py-2 scroll-mt-20">
+                <figcaption className="text-[0.78rem] font-semibold text-ink tracking-[0.02em] mb-3">
+                  <Phrase text={block.caption} />
+                </figcaption>
+                <div className="border border-rule bg-ground p-4 sm:p-6">
+                  <Figure name={block.name} />
                 </div>
                 {block.note && (
-                  <p className="text-[0.8rem] text-ink-mute leading-[1.8] mt-2">{block.note}</p>
+                  <p className="text-[0.82rem] text-ink-soft leading-[1.85] mt-2.5 text-pretty">{block.note}</p>
                 )}
               </figure>
             );
