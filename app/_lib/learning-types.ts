@@ -35,7 +35,19 @@ export type Block =
   | { type: 'note'; variant: 'tip' | 'warn' | 'info'; title: string; text: string }
   | { type: 'code'; caption?: string; code: string }
   /** A pointer to another page on the site, e.g. a column that goes deeper. */
-  | { type: 'link'; href: string; label: string; text?: string };
+  | { type: 'link'; href: string; label: string; text?: string }
+  /**
+   * A left-to-right flow diagram, one row per path. Each step is a box; an
+   * `emphasis` step is drawn in the accent colour, a `blocked` row ends in a
+   * cross instead of reaching its last box.
+   */
+  | { type: 'flow'; caption?: string; rows: FlowRow[]; note?: string };
+
+export type FlowRow = {
+  label?: string;
+  steps: { text: string; sub?: string; emphasis?: boolean }[];
+  blocked?: boolean;
+};
 
 export type Section = {
   id: string;

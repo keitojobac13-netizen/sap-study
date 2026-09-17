@@ -68,6 +68,37 @@ export const fiBeginnerPitfalls: ColumnArticle = {
       ],
     },
     {
+      type: 'flow',
+      caption: '図1　仕訳がどの元帳に入るか',
+      rows: [
+        {
+          label: '両方の基準に共通の仕訳（売上・仕入など）',
+          steps: [
+            { text: '仕訳' },
+            { text: '元帳グループ', sub: '指定しない' },
+            { text: 'すべての元帳', sub: '0L（IFRS）と 2L（日本基準）', emphasis: true },
+          ],
+        },
+        {
+          label: 'IFRSだけの調整仕訳',
+          steps: [
+            { text: '仕訳' },
+            { text: '元帳グループ', sub: 'IFRSの元帳を指定' },
+            { text: '0L（IFRS）だけ', emphasis: true },
+          ],
+        },
+        {
+          label: '日本基準だけの調整仕訳',
+          steps: [
+            { text: '仕訳' },
+            { text: '元帳グループ', sub: '日本基準の元帳を指定' },
+            { text: '2L（日本基準）だけ', emphasis: true },
+          ],
+        },
+      ],
+      note: '0LをIFRS、2Lを日本基準とした場合の例です。どの基準をリーディング元帳にするか、追加の元帳にどのIDを付けるかは会社によって異なります。',
+    },
+    {
       type: 'h',
       text: '目的から設定へ、対応表を作る',
     },
@@ -86,6 +117,37 @@ export const fiBeginnerPitfalls: ColumnArticle = {
         ['会社コード通貨以外の通貨でも報告したい', '元帳ごとの通貨の設定（グループ通貨などの追加通貨）'],
         ['基準によって決算期を変えたい', '追加の元帳に、別の会計年度バリアントを割り当てる'],
       ],
+    },
+    {
+      type: 'flow',
+      caption: '図2　会計基準を軸にしたつながり',
+      rows: [
+        {
+          label: '固定資産（IFRS）',
+          steps: [
+            { text: '評価エリア', sub: 'IFRS用' },
+            { text: '会計基準', sub: 'IFRS', emphasis: true },
+            { text: '元帳', sub: '0L' },
+          ],
+        },
+        {
+          label: '固定資産（日本基準）',
+          steps: [
+            { text: '評価エリア', sub: '日本基準用' },
+            { text: '会計基準', sub: '日本基準', emphasis: true },
+            { text: '元帳', sub: '2L' },
+          ],
+        },
+        {
+          label: '外貨評価',
+          steps: [
+            { text: '外貨評価の評価エリア' },
+            { text: '会計基準', emphasis: true },
+            { text: 'その基準の元帳' },
+          ],
+        },
+      ],
+      note: '固定資産の評価エリアと外貨評価の評価エリアは、名前は同じでも別の設定です。どちらも会計基準を通して元帳につながる、という形は共通しています。',
     },
     {
       type: 'note',
@@ -115,6 +177,30 @@ export const fiBeginnerPitfalls: ColumnArticle = {
           '転記期間バリアント（OB52）で、勘定タイプごとに転記できる期間を開け閉めする。通常の12か月の後ろにある特別期間は、決算整理の仕訳を分けて記録するために使う',
         ],
       ],
+    },
+
+    {
+      type: 'flow',
+      caption: '図3　統制勘定への転記',
+      rows: [
+        {
+          label: '補助元帳から転記する（正しい流れ）',
+          steps: [
+            { text: '得意先への請求', sub: '補助元帳（債権）' },
+            { text: '統制勘定', sub: '売掛金', emphasis: true },
+            { text: '総勘定元帳' },
+          ],
+        },
+        {
+          label: '仕訳入力で売掛金に直接転記しようとする',
+          blocked: true,
+          steps: [
+            { text: '仕訳入力', sub: 'FB50など' },
+            { text: '統制勘定', sub: '売掛金' },
+          ],
+        },
+      ],
+      note: '統制勘定の残高は、必ず補助元帳の明細の合計と一致します。そのため、補助元帳を通らない転記はできません。',
     },
 
     { type: 'h', text: '債権債務：消込と支払プログラム' },
@@ -158,7 +244,35 @@ export const fiBeginnerPitfalls: ColumnArticle = {
     },
     {
       type: 'p',
-      text: 'S/4HANAでは、評価エリアを会計基準に対応づけることで、固定資産の取引がその基準の元帳にリアルタイムで転記されます。「IFRSの評価エリア → IFRSの会計基準 → IFRSの元帳」という1本の線で見ると、元帳の設定と固定資産の設定が一気につながります。',
+      text: 'S/4HANAでは、評価エリアを会計基準に対応づけることで、固定資産の取引がその基準の元帳にリアルタイムで転記されます。図2の「IFRSの評価エリア → IFRSの会計基準 → IFRSの元帳」という1本の線で見ると、元帳の設定と固定資産の設定が一気につながります。',
+    },
+    {
+      type: 'flow',
+      caption: '図4　建設仮勘定から本勘定へ',
+      rows: [
+        {
+          steps: [
+            { text: '建設中の支出', sub: '発注・請求書など' },
+            { text: '建設仮勘定の資産', emphasis: true },
+            { text: '決済', sub: 'AIAB・AIBU' },
+            { text: '本来の資産', sub: '建物・機械装置など' },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'flow',
+      caption: '図5　減価償却の「計算」と「転記」',
+      rows: [
+        {
+          steps: [
+            { text: '取得などの取引' },
+            { text: '計画値の計算', sub: '資産ごと・評価エリアごと' },
+            { text: '減価償却計算実行', sub: 'AFAB', emphasis: true },
+            { text: '総勘定元帳に転記' },
+          ],
+        },
+      ],
     },
     {
       type: 'table',

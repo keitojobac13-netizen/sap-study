@@ -135,6 +135,63 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
               </figure>
             );
 
+          case 'flow':
+            return (
+              <figure key={i} className="py-2">
+                {block.caption && (
+                  <figcaption className="text-[0.72rem] font-semibold text-ink-mute uppercase tracking-[0.06em] mb-3">
+                    {block.caption}
+                  </figcaption>
+                )}
+                <div className="border border-rule bg-ground p-4 sm:p-5 space-y-5">
+                  {block.rows.map((row, j) => (
+                    <div key={j}>
+                      {row.label && (
+                        <p className="text-[0.78rem] font-semibold text-ink mb-2">{row.label}</p>
+                      )}
+                      <ol className="flex flex-col sm:flex-row sm:items-stretch gap-1.5 sm:gap-0">
+                        {row.steps.map((step, k) => {
+                          const last = k === row.steps.length - 1;
+                          const cut = row.blocked && last;
+                          return (
+                            <li key={k} className="flex flex-col sm:flex-row sm:items-stretch sm:flex-1 min-w-0">
+                              {k > 0 && (
+                                <span
+                                  aria-hidden
+                                  className={`self-center sm:px-1.5 py-0.5 sm:py-0 text-[0.95rem] leading-none ${
+                                    cut ? 'text-amber-700 font-bold' : 'text-ink-mute'
+                                  }`}
+                                >
+                                  {cut ? '×' : <><span className="sm:hidden">↓</span><span className="hidden sm:inline">→</span></>}
+                                </span>
+                              )}
+                              <div
+                                className={`flex-1 min-w-0 px-3 py-2 text-center border bg-paper flex flex-col justify-center ${
+                                  cut
+                                    ? 'border-dashed border-amber-500 text-ink-mute'
+                                    : step.emphasis
+                                      ? 'border-accent text-accent'
+                                      : 'border-rule text-ink'
+                                }`}
+                              >
+                                <span className="block text-[0.82rem] font-semibold leading-snug">{step.text}</span>
+                                {step.sub && (
+                                  <span className="block text-[0.72rem] text-ink-mute leading-snug mt-0.5">{step.sub}</span>
+                                )}
+                              </div>
+                            </li>
+                          );
+                        })}
+                      </ol>
+                    </div>
+                  ))}
+                </div>
+                {block.note && (
+                  <p className="text-[0.8rem] text-ink-mute leading-[1.8] mt-2">{block.note}</p>
+                )}
+              </figure>
+            );
+
           case 'link':
             return (
               <p key={i} className="border-l-2 border-l-rule pl-4 py-1 my-2 text-[0.9rem] leading-[1.9]">
