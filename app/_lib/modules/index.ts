@@ -1,7 +1,7 @@
 import type { ModuleContent, ModuleEnrichment, Quiz } from '../learning-types';
 import { enrichModule } from '../learning-types';
 import type { Language, ModuleKey } from '../i18n';
-import { getArticle } from '../articles';
+import { cardTitle, getArticle } from '../articles';
 import { articlePath } from '../routes';
 import { fiContent } from './fi-content';
 import { coContent } from './co-content';
@@ -81,11 +81,18 @@ function withExtraQuizzes(mod: ModuleContent, extra: ExtraQuizzes | undefined): 
  * body, and skipped while the column is still a draft.
  */
 const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string>>> = {
-  fi: { 'fi-overview': 'fi-beginner-pitfalls', 'fi-journal': 'document-date-posting-date' },
+  fi: {
+    'fi-overview': 'fi-beginner-pitfalls',
+    'fi-journal': 'document-date-posting-date',
+    'fi-ap': 'f110-payment-medium',
+    'fi-ar': 'bp-cvi-error',
+  },
+  co: { 'co-product-costing': 'ck24-mark-release' },
   sd: { 'returns-credit': 'credit-memo-debit-memo', 'shipping-billing': 'goods-issue-shipping' },
   mm: { 'special-procurement': 'consignment' },
   pp: { 'production-confirmation': 'backflush' },
-  abap: { 'abap-overview': 'ricefw' },
+  abap: { 'abap-overview': 'ricefw', 'abap-debugging-error': 'addon-tracing' },
+  basis: { 'basis-user-auth': 'sap-error-triage' },
 };
 
 function withArticleLinks(mod: ModuleContent, links: Record<string, string> | undefined): ModuleContent {
@@ -98,7 +105,7 @@ function withArticleLinks(mod: ModuleContent, links: Record<string, string> | un
       if (!article || !section.body) return section;
       return {
         ...section,
-        body: [...section.body, { type: 'link', href: articlePath(article.slug), label: article.title }],
+        body: [...section.body, { type: 'link', href: articlePath(article.slug), label: cardTitle(article) }],
       };
     }),
   };
