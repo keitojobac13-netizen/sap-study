@@ -5,12 +5,11 @@ import Icon from './Icon';
 import { translations, type Language } from '../_lib/i18n';
 import { MODULE_KEYS, getModule } from '../_lib/modules';
 import { MODULE_STYLES } from '../_lib/module-style';
-import { CATEGORY_LABELS, visibleArticles } from '../_lib/articles';
+import { CATEGORY_LABELS, cardTitle, visibleArticles } from '../_lib/articles';
 import {
   BASE_URL,
   homePath,
   modulePath,
-  sectionPath,
   dictionaryPath,
   aboutPath,
   articlesPath,
@@ -48,7 +47,8 @@ const COPY = {
       quizzes: '確認問題',
       terms: '用語',
     },
-    sectionsPeek: '主なセクション',
+    /** `{n}` はセクション数に置き換わります。 */
+    moduleScale: '{n}セクション',
     aboutCta: 'このサイトについて',
     bilingualTitle: '日本語と英語で読める',
     bilingualText:
@@ -83,7 +83,7 @@ const COPY = {
       quizzes: 'practice questions',
       terms: 'glossary terms',
     },
-    sectionsPeek: 'Selected sections',
+    moduleScale: '{n} sections',
     aboutCta: 'About this site',
     bilingualTitle: 'Written in English and Japanese',
     bilingualText:
@@ -126,28 +126,47 @@ export default function HomePage({ lang, termCount }: {
 
       <main id="main" className="flex-1">
         {/* ─── Hero ─── */}
-        <section className="max-w-[80rem] mx-auto px-5 sm:px-8 pt-20 pb-16">
+        <section className="max-w-[80rem] mx-auto px-5 sm:px-8 pt-12 pb-12">
           <div className="max-w-3xl">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-ink-mute mb-6">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-ink-mute mb-4">
               {t.hero.badge}
             </p>
-            <h1 className="text-[2.1rem] sm:text-[3rem] font-bold text-ink leading-[1.25] tracking-tight text-balance">
+            <h1 className="text-[1.75rem] sm:text-[2.35rem] font-bold text-ink leading-[1.4] tracking-tight">
               {t.hero.title}
             </h1>
-            <p className="text-ink-soft leading-[1.9] mt-6 text-[0.98rem] sm:text-[1.05rem] max-w-2xl">
+            <p className="text-ink-soft leading-[1.9] mt-4 text-[0.95rem] sm:text-[1rem] max-w-2xl">
               {t.hero.subtitle}
             </p>
-            <div className="flex flex-wrap gap-3 mt-9">
+            {/* One filled button only. On the Japanese home page it points at
+                the columns, which is what most readers arrive for; the modules
+                and the glossary stay one plain link away. */}
+            <div className="flex flex-wrap gap-3 mt-7">
+              {columns.length > 0 ? (
+                <Link
+                  href={articlesPath()}
+                  className="inline-flex items-center gap-2 px-5 h-11 bg-ink text-white text-[0.85rem] font-semibold rounded hover:bg-ink-soft transition-colors"
+                >
+                  コラムを読む
+                  <Icon name="arrow-right" className="w-4 h-4" />
+                </Link>
+              ) : (
+                <a
+                  href="#modules"
+                  className="inline-flex items-center gap-2 px-5 h-11 bg-ink text-white text-[0.85rem] font-semibold rounded hover:bg-ink-soft transition-colors"
+                >
+                  {t.hero.ctaPrimary}
+                  <Icon name="arrow-right" className="w-4 h-4" />
+                </a>
+              )}
               <a
                 href="#modules"
-                className="inline-flex items-center gap-2 px-5 h-11 bg-ink text-white text-[0.85rem] font-semibold rounded hover:bg-ink-soft transition-colors"
+                className="inline-flex items-center gap-2 px-5 h-11 border border-rule text-ink-soft text-[0.85rem] font-semibold rounded hover:border-ink-mute hover:text-ink transition-colors"
               >
-                {t.hero.ctaPrimary}
-                <Icon name="arrow-right" className="w-4 h-4" />
+                {lang === 'ja' ? 'モジュールから学ぶ' : t.hero.ctaPrimary}
               </a>
               <Link
                 href={dictionaryPath(lang)}
-                className="inline-flex items-center gap-2 px-5 h-11 border border-rule text-ink-soft text-[0.85rem] font-semibold rounded hover:border-ink-mute hover:text-ink transition-colors"
+                className="inline-flex items-center gap-2 px-5 h-11 text-ink-mute text-[0.85rem] font-semibold rounded hover:text-ink transition-colors"
               >
                 <Icon name="book" className="w-4 h-4" />
                 {t.hero.ctaSecondary}
@@ -156,83 +175,27 @@ export default function HomePage({ lang, termCount }: {
           </div>
 
           {/* ─── Stats ─── */}
+          {/* One compact line, aligned with the text column: the scale of the
+              site is worth a glance, not a quarter of the first screen. */}
           <h2 className="sr-only">{c.statsTitle}</h2>
-          <dl className="grid grid-cols-2 sm:grid-cols-4 mt-16 border-t border-rule">
+          <dl className="max-w-3xl flex flex-wrap items-baseline gap-x-7 gap-y-2 mt-10 pt-5 border-t border-rule">
             {[
               { n: MODULE_KEYS.length, label: c.stats.modules },
               { n: totals.sections, label: c.stats.sections },
               { n: totals.quizzes, label: c.stats.quizzes },
               { n: termCount, label: c.stats.terms },
             ].map(({ n, label }) => (
-              <div key={label} className="py-6 sm:border-r border-rule last:border-r-0 sm:pr-6">
-                <dd className="text-[1.9rem] font-bold text-ink tabular-nums leading-none">{n}</dd>
-                <dt className="text-[0.75rem] text-ink-mute mt-2">{label}</dt>
+              <div key={label} className="flex items-baseline gap-1.5">
+                <dd className="text-[1.05rem] font-bold text-ink tabular-nums">{n}</dd>
+                <dt className="text-[0.8rem] text-ink-mute">{label}</dt>
               </div>
             ))}
           </dl>
         </section>
 
-        {/* ─── Modules ─── */}
-        <section id="modules" className="border-t border-rule bg-ground">
-          <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-16">
-            <h2 className="text-[1.5rem] sm:text-[1.8rem] font-bold text-ink tracking-tight">
-              {t.modules.sectionTitle}
-            </h2>
-            <p className="text-ink-mute text-[0.88rem] mt-2">{t.modules.sectionSubtitle}</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-px bg-rule mt-10 border border-rule">
-              {MODULE_KEYS.map((key) => {
-                const meta = t.modules.items[key];
-                const mod = getModule(key, lang);
-                const style = MODULE_STYLES[key];
-                return (
-                  <article key={key} className="bg-paper p-6 flex flex-col">
-                    <p className="flex items-center gap-2.5 mb-3">
-                      <span className={`${style.badge} w-2 h-2 rounded-full flex-shrink-0`} />
-                      <span className="font-bold text-ink text-[0.95rem] tracking-tight">
-                        {key.toUpperCase()}
-                      </span>
-                    </p>
-                    <h3 className="font-semibold text-ink text-[0.95rem] leading-snug mb-2">
-                      <Link href={modulePath(lang, key)} className="hover:text-accent transition-colors">
-                        {meta.fullName}
-                      </Link>
-                    </h3>
-                    <p className="text-ink-soft text-[0.82rem] leading-[1.85] mb-5">
-                      {meta.description}
-                    </p>
-
-                    <p className="text-[0.68rem] font-semibold text-ink-mute uppercase tracking-[0.08em] mb-2.5">
-                      {c.sectionsPeek}
-                    </p>
-                    <ul className="space-y-2 mb-6 flex-1">
-                      {mod.sections.slice(0, 4).map((s) => (
-                        <li key={s.id}>
-                          <Link
-                            href={sectionPath(lang, key, s.id)}
-                            className="text-[0.8rem] text-ink-soft hover:text-accent transition-colors leading-snug"
-                          >
-                            {s.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      href={modulePath(lang, key)}
-                      className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-accent hover:gap-2.5 transition-all"
-                    >
-                      {t.modules.learnMore}
-                      <Icon name="arrow-right" className="w-3.5 h-3.5" />
-                    </Link>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* ─── Columns (Japanese only) ─── */}
+        {/* Above the modules: most readers arrive from a search result, so the
+            columns are the entry point and the modules are where they go next. */}
         {columns.length > 0 && (
           <section className="border-t border-rule">
             <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-16">
@@ -254,17 +217,26 @@ export default function HomePage({ lang, termCount }: {
                 </Link>
               </div>
 
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 mt-8 border-t border-rule">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                 {columns.map((a) => (
-                  <li key={a.slug} className="py-5 border-b border-rule-soft">
-                    <p className="text-[0.72rem] text-ink-mute tracking-[0.06em] mb-1.5">
-                      {CATEGORY_LABELS[a.category]}
-                    </p>
+                  <li key={a.slug} className="flex">
                     <Link
                       href={articlePath(a.slug)}
-                      className="font-semibold text-ink text-[0.95rem] leading-snug hover:text-accent transition-colors"
+                      className="group flex flex-col w-full bg-paper border border-rule rounded-lg p-5 hover:border-ink-mute hover:bg-ground transition-colors"
                     >
-                      {a.title}
+                      <span className="self-start inline-flex items-center border border-rule rounded-full px-2.5 py-0.5 text-[0.68rem] text-ink-mute tracking-[0.04em]">
+                        {CATEGORY_LABELS[a.category]}
+                      </span>
+                      <h3 className="mt-3 font-bold text-ink text-[1rem] leading-snug group-hover:text-accent transition-colors">
+                        {cardTitle(a)}
+                      </h3>
+                      <p className="mt-2 text-[0.86rem] text-ink-soft leading-[1.8] line-clamp-2 flex-1">
+                        {a.summary}
+                      </p>
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-[0.78rem] font-semibold text-accent">
+                        読む
+                        <Icon name="arrow-right" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                      </span>
                     </Link>
                   </li>
                 ))}
@@ -272,6 +244,59 @@ export default function HomePage({ lang, termCount }: {
             </div>
           </section>
         )}
+
+        {/* ─── Modules ─── */}
+        <section id="modules" className="border-t border-rule bg-ground">
+          <div className="max-w-[80rem] mx-auto px-5 sm:px-8 py-16">
+            <h2 className="text-[1.5rem] sm:text-[1.8rem] font-bold text-ink tracking-tight">
+              {t.modules.sectionTitle}
+            </h2>
+            <p className="text-ink-mute text-[0.88rem] mt-2">{t.modules.sectionSubtitle}</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-px bg-rule mt-10 border border-rule">
+              {MODULE_KEYS.map((key) => {
+                const meta = t.modules.items[key];
+                const mod = getModule(key, lang);
+                const style = MODULE_STYLES[key];
+                return (
+                  <article key={key} className="group bg-paper flex flex-col">
+                    <div className="p-6 flex flex-col flex-1">
+                    {/* A short colour rule above the module code, not a
+                        full-width band: eight saturated bands side by side read
+                        as a rainbow and drown out the text they label. */}
+                    <span className={`${style.badge} h-[3px] w-8 block rounded-full mb-3`} />
+                    <p className="mb-3">
+                      <span className="font-bold text-ink text-[0.95rem] tracking-tight">
+                        {key.toUpperCase()}
+                      </span>
+                    </p>
+                    <h3 className="font-semibold text-ink text-[0.95rem] leading-snug mb-2">
+                      <Link href={modulePath(lang, key)} className="hover:text-accent transition-colors">
+                        {meta.fullName}
+                      </Link>
+                    </h3>
+                    <p className="text-ink-soft text-[0.86rem] leading-[1.85] mb-4 flex-1">
+                      {meta.description}
+                    </p>
+
+                    <p className="text-[0.72rem] text-ink-mute mb-4">
+                      {c.moduleScale.replace('{n}', String(mod.sections.length))}
+                    </p>
+
+                    <Link
+                      href={modulePath(lang, key)}
+                      className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-accent hover:gap-2.5 transition-all"
+                    >
+                      {t.modules.learnMore}
+                      <Icon name="arrow-right" className="w-3.5 h-3.5" />
+                    </Link>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
 
         {/* ─── How to use ─── */}
         <section className="border-t border-rule">

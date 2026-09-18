@@ -78,7 +78,7 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                   </figcaption>
                 )}
                 <div className={`border-y border-rule ${st ? 'sm:overflow-x-auto' : 'overflow-x-auto'}`}>
-                  <table className={`w-full text-[0.85rem] border-collapse [word-break:auto-phrase]${st ? ' max-sm:block' : ''}`}>
+                  <table className={`w-full text-[0.9rem] border-collapse [word-break:auto-phrase]${st ? ' max-sm:block' : ''}`}>
                     <thead className={st ? 'max-sm:hidden' : undefined}>
                       <tr>
                         {block.headers.map((h, j) => (
@@ -132,7 +132,7 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                   <Icon name={style.icon} className="w-3.5 h-3.5 flex-shrink-0" />
                   {block.title}
                 </p>
-                <p className="text-ink-soft text-[0.9rem] leading-[1.9] text-pretty">{block.text}</p>
+                <p className="text-ink-soft text-[0.92rem] leading-[1.9] text-pretty">{block.text}</p>
               </aside>
             );
           }
@@ -161,7 +161,7 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                   <Figure name={block.name} />
                 </div>
                 {block.note && (
-                  <p className="text-[0.82rem] text-ink-soft leading-[1.85] mt-2.5 text-pretty">{block.note}</p>
+                  <p className="text-[0.86rem] text-ink-soft leading-[1.85] mt-2.5 text-pretty">{block.note}</p>
                 )}
               </figure>
             );

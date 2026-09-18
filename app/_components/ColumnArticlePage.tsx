@@ -6,7 +6,7 @@ import ArticleBody from './ArticleBody';
 import Icon from './Icon';
 import { translations } from '../_lib/i18n';
 import { SITE_OPERATOR } from '../_lib/site-info';
-import { CATEGORY_LABELS, formatDate, getArticle, type ColumnArticle } from '../_lib/articles';
+import { CATEGORY_LABELS, cardTitle, formatDate, getArticle, type ColumnArticle } from '../_lib/articles';
 import { BASE_URL, homePath, articlePath, articlesPath, dictionaryPath } from '../_lib/routes';
 
 export default function ColumnArticlePage({ article }: { article: ColumnArticle }) {
@@ -42,7 +42,7 @@ export default function ColumnArticlePage({ article }: { article: ColumnArticle 
         <div className="max-w-[42rem] mx-auto">
           <Breadcrumbs
             lang="ja"
-            items={[{ label: 'コラム', href: articlesPath() }, { label: article.title }]}
+            items={[{ label: 'コラム', href: articlesPath() }, { label: cardTitle(article) }]}
           />
 
           {article.status === 'draft' && (
@@ -65,7 +65,7 @@ export default function ColumnArticlePage({ article }: { article: ColumnArticle 
             )}
           </p>
           <h1 className="text-[1.7rem] sm:text-[2.05rem] font-bold text-ink leading-[1.35] tracking-tight">
-            {article.title}
+            {cardTitle(article)}
           </h1>
           <p className="text-ink-soft leading-[1.9] mt-4 text-[0.95rem] sm:text-base">
             {article.summary}

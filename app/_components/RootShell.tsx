@@ -1,5 +1,5 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { geistSans, zenKaku } from '../_lib/fonts';
+import { geistSans, notoSansJp } from '../_lib/fonts';
 import { type Language } from '../_lib/i18n';
 import CookieBanner from './CookieBanner';
 
@@ -21,7 +21,7 @@ export default function RootShell({ lang, children }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang={lang} className={`${geistSans.variable} ${zenKaku.variable} h-full antialiased`}>
+    <html lang={lang} className={`${geistSans.variable} ${notoSansJp.variable} h-full antialiased`}>
       <head>
         <script
           async

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import SiteHeader from './SiteHeader';
 import SiteFooter from './SiteFooter';
 import Breadcrumbs from './Breadcrumbs';
-import { CATEGORY_LABELS, formatDate, visibleArticles } from '../_lib/articles';
+import { CATEGORY_LABELS, cardTitle, formatDate, visibleArticles } from '../_lib/articles';
 import { homePath, articlePath } from '../_lib/routes';
 
 export default function ColumnIndexPage() {
@@ -25,20 +25,28 @@ export default function ColumnIndexPage() {
 
           <hr className="border-rule my-10" />
 
-          <ul className="divide-y divide-rule-soft">
+          {/* Same card as the home page, so a reader arriving from either
+              place sees one shape for "an article". */}
+          <ul className="grid grid-cols-1 gap-4">
             {articles.map((a) => (
-              <li key={a.slug} className="py-6 first:pt-0">
-                <p className="text-[0.72rem] text-ink-mute tracking-[0.06em] mb-1.5">
-                  {CATEGORY_LABELS[a.category]}
-                  <span aria-hidden className="mx-2 text-rule">/</span>
-                  {a.status === 'published' ? formatDate(a.publishedAt) : '下書き'}
-                </p>
-                <Link href={articlePath(a.slug)} className="group">
-                  <h2 className="text-[1.05rem] sm:text-[1.15rem] font-bold text-ink leading-snug group-hover:text-accent transition-colors">
-                    {a.title}
+              <li key={a.slug} className="flex">
+                <Link
+                  href={articlePath(a.slug)}
+                  className="group flex flex-col w-full bg-paper border border-rule rounded-lg p-5 hover:border-ink-mute hover:bg-ground transition-colors"
+                >
+                  <p className="flex items-center gap-2.5">
+                    <span className="inline-flex items-center border border-rule rounded-full px-2.5 py-0.5 text-[0.68rem] text-ink-mute tracking-[0.04em]">
+                      {CATEGORY_LABELS[a.category]}
+                    </span>
+                    <span className="text-[0.72rem] text-ink-mute">
+                      {a.status === 'published' ? formatDate(a.publishedAt) : '下書き'}
+                    </span>
+                  </p>
+                  <h2 className="mt-3 text-[1.05rem] sm:text-[1.15rem] font-bold text-ink leading-snug group-hover:text-accent transition-colors">
+                    {cardTitle(a)}
                   </h2>
+                  <p className="mt-2 text-[0.9rem] text-ink-soft leading-[1.85]">{a.summary}</p>
                 </Link>
-                <p className="mt-2 text-[0.88rem] text-ink-soft leading-[1.85]">{a.summary}</p>
               </li>
             ))}
           </ul>
