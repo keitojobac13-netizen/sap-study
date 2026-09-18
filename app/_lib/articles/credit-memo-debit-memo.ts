@@ -6,6 +6,7 @@ export const creditMemoDebitMemo: ColumnArticle = {
   publishedAt: '2026-09-17',
   category: 'compare',
   title: 'クレジットメモとデビットメモの違いとは？意味・仕訳・SAPでの処理をわかりやすく解説',
+  cardTitle: 'クレジットメモとデビットメモの違い',
   summary:
     'クレジットメモとは請求額を減らす書類、デビットメモとは追加で請求する書類です。意味の違いと仕訳、SAPの販売（SD）・購買（MM）・会計（FI）での処理方法、取消との違いを解説します。',
   keywords: ['クレジットメモ', 'デビットメモ', 'Credit Memo', 'Debit Memo', 'クレジットメモ依頼', 'G2', 'L2'],

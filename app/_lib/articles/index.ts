@@ -7,6 +7,11 @@ import { ricefw } from './ricefw';
 import { sapModules } from './sap-modules';
 import { goodsIssueShipping } from './goods-issue-shipping';
 import { fiBeginnerPitfalls } from './fi-beginner-pitfalls';
+import { sapErrorTriage } from './sap-error-triage';
+import { bpCviError } from './bp-cvi-error';
+import { f110PaymentMedium } from './f110-payment-medium';
+import { ck24MarkRelease } from './ck24-mark-release';
+import { addonTracing } from './addon-tracing';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -31,7 +36,14 @@ export type RelatedLink = { label: string; href: string };
 
 type ArticleBase = {
   slug: string;
+  /** The full title: the article page heading, the `<title>` and the search result. */
   title: string;
+  /**
+   * Short title for list cards, where the full SEO title runs to three lines.
+   * Keep it under about 24 characters. Falls back to the part of `title`
+   * before the `｜` when not set.
+   */
+  cardTitle?: string;
   /** One or two sentences. Meta description and list card; keep under 155 characters. */
   summary: string;
   category: ArticleCategory;
@@ -51,6 +63,11 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  sapErrorTriage,
+  bpCviError,
+  f110PaymentMedium,
+  ck24MarkRelease,
+  addonTracing,
   fiBeginnerPitfalls,
   consignment,
   documentDatePostingDate,
@@ -88,6 +105,11 @@ export function publishedArticles() {
 
 export function getArticle(slug: string): ColumnArticle | undefined {
   return ARTICLES.find((a) => a.slug === slug && isVisible(a));
+}
+
+/** Title for list cards: the authored short title, else the part before `｜`. */
+export function cardTitle(article: ColumnArticle): string {
+  return article.cardTitle ?? article.title.split('｜')[0];
 }
 
 /** `2026-09-20` → `2026年9月20日` */

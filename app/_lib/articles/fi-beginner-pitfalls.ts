@@ -6,6 +6,7 @@ export const fiBeginnerPitfalls: ColumnArticle = {
   publishedAt: '2026-09-17',
   category: 'overview',
   title: '新人FIコンサルがつまずくポイント｜元帳・債権債務・固定資産の領域別に現役コンサルが解説',
+  cardTitle: '新人FIコンサルがつまずくポイント',
   summary:
     'SAP FIの新人コンサルタントがつまずきやすいポイントを、元帳・債権債務・固定資産の領域別に整理しました。FIコンサル4年の運営者が、実際に苦労した点と、元帳の目的と設定をつなげる考え方を紹介します。',
   keywords: ['FIコンサル', 'SAP FI', '新人', '元帳', '並行会計', '伝票分割', 'F110', '固定資産', '評価エリア'],

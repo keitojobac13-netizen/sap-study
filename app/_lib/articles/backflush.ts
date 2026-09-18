@@ -6,6 +6,7 @@ export const backflush: ColumnArticle = {
   publishedAt: '2026-09-17',
   category: 'term',
   title: 'バックフラッシュとは？生産管理での意味とSAPでの設定・エラー対応（COGI）を解説',
+  cardTitle: 'バックフラッシュとは',
   summary:
     'バックフラッシュとは、製品の完成を報告したときに、使った部品を部品表から逆算して自動で出庫する仕組みです。メリットと注意点、SAPでの設定箇所、COGIでのエラー処理まで解説します。',
   keywords: ['バックフラッシュ', 'Backflush', '自動出庫', 'CO11N', 'COGI', '移動タイプ261', '生産管理'],

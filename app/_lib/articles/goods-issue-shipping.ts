@@ -6,6 +6,7 @@ export const goodsIssueShipping: ColumnArticle = {
   publishedAt: '2026-09-17',
   category: 'compare',
   title: '出庫と出荷の違いとは？意味とSAPの出庫転記（Post Goods Issue）をわかりやすく解説',
+  cardTitle: '出庫と出荷の違い',
   summary:
     '出庫とは在庫を倉庫から出すこと、出荷とは商品を顧客へ送り出す業務のことです。2つの違いと、SAPの出庫転記（Post Goods Issue）で何が起きるか、取消の方法まで解説します。',
   keywords: ['出庫', '出荷', '出庫 意味', '出庫転記', 'Post Goods Issue', 'PGI', '移動タイプ601', 'VL02N'],

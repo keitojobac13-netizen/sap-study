@@ -6,6 +6,7 @@ export const sapModules: ColumnArticle = {
   publishedAt: '2026-09-17',
   category: 'overview',
   title: 'SAPのモジュール一覧｜FI・CO・SD・MM・PPなど主要モジュールの役割とつながりを解説',
+  cardTitle: 'SAPのモジュール一覧',
   summary:
     'SAPとは何か、FI・CO・SD・MM・PP・PSなど主要モジュールがそれぞれ何を管理し、受注から会計までどうつながるのかを一覧で解説します。S/4HANAでの変化にも触れます。',
   keywords: ['SAP モジュール', 'SAP モジュール 一覧', 'SAPとは', 'SAP 意味', 'FI', 'CO', 'SD', 'MM', 'PP'],

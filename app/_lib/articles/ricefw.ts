@@ -6,6 +6,7 @@ export const ricefw: ColumnArticle = {
   publishedAt: '2026-09-17',
   category: 'term',
   title: 'RICEFWとは？SAPのアドオン開発の6分類と使う技術・開発言語をわかりやすく解説',
+  cardTitle: 'RICEFWとは',
   summary:
     'RICEFWとは、SAPのアドオン開発をレポート・インターフェース・データ移行・機能拡張・帳票・ワークフローの6つに分類する言葉です。それぞれの例と使う技術、S/4HANAでの考え方を解説します。',
   keywords: ['RICEFW', 'RICEF', 'WRICEF', 'アドオン開発', 'SAP 開発', 'ABAP', 'クリーンコア'],
