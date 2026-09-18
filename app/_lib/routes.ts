@@ -28,6 +28,10 @@ export function dictionaryPath(lang: Language) {
   return `${localePrefix(lang)}/dictionary`;
 }
 
+export function searchPath(lang: Language) {
+  return `${localePrefix(lang)}/search`;
+}
+
 export function aboutPath(lang: Language) {
   return `${localePrefix(lang)}/about`;
 }

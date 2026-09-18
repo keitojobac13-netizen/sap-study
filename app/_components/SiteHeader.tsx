@@ -6,14 +6,27 @@ import {
   homePath,
   articlesPath,
   dictionaryPath,
+  searchPath,
   aboutPath,
   contactPath,
   OTHER_LANG,
 } from '../_lib/routes';
 
 const LABELS = {
-  ja: { nav: 'サイト内ナビゲーション', menu: 'メニュー', about: '運営者情報', contact: 'お問い合わせ' },
-  en: { nav: 'Site navigation', menu: 'Menu', about: 'About', contact: 'Contact' },
+  ja: {
+    nav: 'サイト内ナビゲーション',
+    menu: 'メニュー',
+    about: '運営者情報',
+    contact: 'お問い合わせ',
+    search: 'サイト内検索',
+  },
+  en: {
+    nav: 'Site navigation',
+    menu: 'Menu',
+    about: 'About',
+    contact: 'Contact',
+    search: 'Search',
+  },
 } as const;
 
 /**
@@ -74,6 +87,17 @@ export default function SiteHeader({ lang, switchPath }: {
           </nav>
 
           <div className="flex items-center gap-1.5 flex-shrink-0">
+            {/* Icon only: the header already carries five links, and search is
+                the one control people look for by its shape. */}
+            <Link
+              href={searchPath(lang)}
+              title={l.search}
+              className="flex items-center justify-center w-8 h-8 rounded border border-rule text-ink-soft hover:border-ink-mute hover:text-ink transition-colors"
+            >
+              <span className="sr-only">{l.search}</span>
+              <Icon name="search" className="w-4 h-4" />
+            </Link>
+
             <Link
               href={toggleHref}
               hrefLang={other}
