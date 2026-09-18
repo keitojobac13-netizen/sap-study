@@ -9,6 +9,7 @@ import { goodsIssueShipping } from './goods-issue-shipping';
 import { fiBeginnerPitfalls } from './fi-beginner-pitfalls';
 import { sapErrorTriage } from './sap-error-triage';
 import { bpCviError } from './bp-cvi-error';
+import { bpMaster } from './bp-master';
 import { f110PaymentMedium } from './f110-payment-medium';
 import { ck24MarkRelease } from './ck24-mark-release';
 import { addonTracing } from './addon-tracing';
@@ -64,6 +65,7 @@ export type ColumnArticle =
 
 const ARTICLES: ColumnArticle[] = [
   sapErrorTriage,
+  bpMaster,
   bpCviError,
   f110PaymentMedium,
   ck24MarkRelease,
