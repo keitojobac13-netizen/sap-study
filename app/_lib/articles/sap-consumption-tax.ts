@@ -4,7 +4,7 @@ export const sapConsumptionTax: ColumnArticle = {
   slug: 'sap-consumption-tax',
   status: 'draft',
   category: 'overview',
-  cardTitle: '税コードはどこから決まるか',
+  cardTitle: 'SAPの消費税と税コード',
   title: 'SAPの消費税と税コード｜「なぜこの税コードになったのか」を税分類・条件レコードから追う',
   summary:
     'SAPの消費税は、業務上の税区分、税コード、マスタの税分類、条件レコードがつながって決まります。税コードが想定どおりにならないときの確認順と、インボイス制度の経過措置（2026年10月から70%）や端数処理で気をつける点を整理しました。',
