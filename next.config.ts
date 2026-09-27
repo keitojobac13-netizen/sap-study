@@ -13,6 +13,15 @@ const nextConfig: NextConfig = {
     // The site used to select language with `?lang=`, which produced two URLs
     // for the same page. English now lives under /en; send the old links there.
     return [
+      // Vercel's default address serves the same site, and Google indexed it
+      // alongside sapstudy.jp. Send every page there to the real domain.
+      // Preview deployments have their own hosts and are left alone.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'sap-study-green.vercel.app' }],
+        destination: 'https://sapstudy.jp/:path*',
+        permanent: true,
+      },
       {
         source: '/',
         has: [{ type: 'query', key: 'lang', value: 'en' }],
