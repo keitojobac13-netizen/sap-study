@@ -45,7 +45,8 @@ export type FigureName =
   | 'standard-hub'
   | 'control-account'
   | 'auc-phases'
-  | 'depreciation-lanes';
+  | 'depreciation-lanes'
+  | 'clearing-groups';
 
 export type Section = {
   id: string;

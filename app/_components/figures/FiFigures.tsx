@@ -225,12 +225,95 @@ function DepreciationLanes() {
   );
 }
 
+/** Automatic clearing sums each group of matching items; only a zero balance clears. */
+function ClearingGroups() {
+  const items = [
+    { kind: '請求', key: 'INV-1001', amount: '100,000' },
+    { kind: '入金', key: 'INV-1001', amount: '−100,000' },
+    { kind: '請求', key: 'INV-1002', amount: '50,000' },
+    { kind: '入金', key: '1002', amount: '−50,000', odd: true },
+  ];
+  const groups = [
+    { key: 'INV-1001', rows: [['請求', '100,000'], ['入金', '−100,000']], balance: '0', cleared: true },
+    { key: 'INV-1002', rows: [['請求', '50,000']], balance: '50,000', cleared: false },
+    { key: '1002', rows: [['入金', '−50,000']], balance: '−50,000', cleared: false },
+  ];
+  const cell = 'py-1 text-[0.78rem] tabular-nums';
+  return (
+    <div>
+      <div className="border border-rule bg-paper mx-auto max-w-sm">
+        <p className="px-3 py-2 border-b border-rule text-[0.8rem] font-semibold text-ink text-center">
+          <Phrase text="得意先Aの|未決済明細" />
+        </p>
+        <table className="w-full">
+          <thead>
+            <tr className="text-[0.7rem] text-ink-mute">
+              <th className="pl-3 py-1 text-left font-normal">種類</th>
+              <th className="py-1 text-left font-normal">ソートキー</th>
+              <th className="pr-3 py-1 text-right font-normal">金額（円）</th>
+            </tr>
+          </thead>
+          <tbody className="text-ink-soft">
+            {items.map((it, i) => (
+              <tr key={i}>
+                <td className={`${cell} pl-3`}>{it.kind}</td>
+                <td className={`${cell} ${it.odd ? 'font-semibold text-accent' : ''}`}>{it.key}</td>
+                <td className={`${cell} pr-3 text-right`}>{it.amount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div aria-hidden className="flex flex-col items-center text-ink-mute py-2">
+        <span className="text-[0.72rem] leading-snug text-center mb-0.5">
+          <Phrase text="ソートキーごとに|グループに分ける" />
+        </span>
+        <span className="text-base leading-none">↓</span>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
+        {groups.map((g) => (
+          <div
+            key={g.key}
+            className={`border bg-paper flex flex-col ${g.cleared ? 'border-accent' : 'border-rule'}`}
+          >
+            <p className="px-3 py-2 border-b border-rule text-center">
+              <span className="block text-[0.7rem] text-ink-mute">グループ</span>
+              <span className="block text-[0.85rem] font-semibold text-ink">{g.key}</span>
+            </p>
+            <ul className="px-3 py-1.5 flex-1">
+              {g.rows.map(([kind, amount]) => (
+                <li key={kind} className="flex justify-between py-0.5 text-[0.78rem] text-ink-soft tabular-nums">
+                  <span>{kind}</span>
+                  <span>{amount}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="px-3 py-2 border-t border-rule flex items-center justify-between gap-2">
+              <span className="text-[0.78rem] text-ink tabular-nums">残高 {g.balance}</span>
+              <span
+                className={`inline-block px-2 py-0.5 text-[0.72rem] font-semibold ${
+                  g.cleared ? 'bg-accent-soft text-accent' : 'bg-ground text-ink-mute'
+                }`}
+              >
+                {g.cleared ? '消し込まれる' : '残る'}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const FIGURES: Record<FigureName, () => ReactNode> = {
   'ledger-stack': LedgerStack,
   'standard-hub': StandardHub,
   'control-account': ControlAccount,
   'auc-phases': AucPhases,
   'depreciation-lanes': DepreciationLanes,
+  'clearing-groups': ClearingGroups,
 };
 
 export default function Figure({ name }: { name: FigureName }) {
