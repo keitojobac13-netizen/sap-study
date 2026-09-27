@@ -89,6 +89,7 @@ const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string>>> = {
   },
   co: { 'co-product-costing': 'ck24-mark-release' },
   sd: {
+    pricing: 'sap-consumption-tax',
     'returns-credit': 'credit-memo-debit-memo',
     'shipping-billing': 'goods-issue-shipping',
     'customer-master': 'bp-master',

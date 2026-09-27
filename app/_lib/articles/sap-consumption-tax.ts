@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const sapConsumptionTax: ColumnArticle = {
   slug: 'sap-consumption-tax',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-28',
   category: 'overview',
   cardTitle: 'SAPの消費税と税コード',
   title: 'SAPの消費税と税コード｜「なぜこの税コードになったのか」を税分類・条件レコードから追う',
