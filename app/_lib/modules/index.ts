@@ -85,7 +85,7 @@ const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string>>> = {
     'fi-overview': 'fi-beginner-pitfalls',
     'fi-journal': 'document-date-posting-date',
     'fi-ap': 'f110-payment-medium',
-    'fi-ar': 'bp-cvi-error',
+    'fi-ar': 'auto-clearing-f13',
   },
   co: { 'co-product-costing': 'ck24-mark-release' },
   sd: {

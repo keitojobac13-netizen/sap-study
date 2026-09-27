@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const autoClearingF13: ColumnArticle = {
   slug: 'auto-clearing-f13',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-28',
   category: 'term',
   cardTitle: '自動消込で消えない明細',
   title: 'SAPの自動消込（F.13）で消し込まれない原因｜OB74のグルーピング条件と差額の考え方',
