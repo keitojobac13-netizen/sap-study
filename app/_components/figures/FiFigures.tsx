@@ -307,6 +307,67 @@ function ClearingGroups() {
   );
 }
 
+/** In SD, the customer and material tax classes together pick one tax code. */
+function TaxCodeMatrix() {
+  const materials = [
+    { value: '1', label: '標準税率' },
+    { value: '2', label: '軽減税率' },
+    { value: '0', label: '非課税' },
+  ];
+  const cols =
+    'grid grid-cols-[4.5rem_repeat(3,minmax(0,1fr))] sm:grid-cols-[8rem_repeat(3,minmax(0,1fr))] gap-1 sm:gap-1.5';
+  const rowHead = 'flex flex-col justify-center text-[0.72rem] sm:text-[0.78rem] font-semibold text-ink leading-snug';
+  const code = 'flex flex-col items-center justify-center border px-1 py-2.5 text-center';
+  return (
+    <div className="space-y-1.5">
+      <p className="text-center text-[0.72rem] text-ink-mute">
+        <Phrase text="品目税分類|（品目マスタ）" />
+      </p>
+      <div className={cols}>
+        <span className="text-[0.68rem] sm:text-[0.72rem] text-ink-mute leading-snug self-end">
+          <Phrase text="得意先税分類|（BP）" />
+        </span>
+        {materials.map((m) => (
+          <div key={m.value} className="text-center pb-1.5 border-b-2 border-ink">
+            <span className="block text-[0.7rem] text-ink-mute tabular-nums">{m.value}</span>
+            <span className="block text-[0.75rem] sm:text-[0.8rem] font-semibold text-ink">{m.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className={cols}>
+        <div className={rowHead}>
+          <span className="text-[0.7rem] font-normal text-ink-mute tabular-nums">1</span>
+          <span>課税</span>
+        </div>
+        <div className={`${code} border-rule bg-paper text-ink`}>
+          <span className={title}><Phrase text="売上|10%" /></span>
+        </div>
+        <div className={`${code} border-accent bg-accent-soft text-accent`}>
+          <span className={title}><Phrase text="売上|8%" /></span>
+          <span className="block text-[0.68rem] leading-snug mt-0.5">軽減</span>
+        </div>
+        <div className={`${code} border-rule bg-paper text-ink`}>
+          <span className={title}><Phrase text="非課税|売上" /></span>
+        </div>
+      </div>
+
+      <div className={cols}>
+        <div className={rowHead}>
+          <span className="text-[0.7rem] font-normal text-ink-mute tabular-nums">0</span>
+          <span>免税</span>
+        </div>
+        <div className={`${code} col-span-3 border-rule bg-ground text-ink`}>
+          <span className={title}>免税売上</span>
+          <span className="block text-[0.68rem] text-ink-mute leading-snug mt-0.5">
+            <Phrase text="品目の区分に|かかわらず" />
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const FIGURES: Record<FigureName, () => ReactNode> = {
   'ledger-stack': LedgerStack,
   'standard-hub': StandardHub,
@@ -314,6 +375,7 @@ const FIGURES: Record<FigureName, () => ReactNode> = {
   'auc-phases': AucPhases,
   'depreciation-lanes': DepreciationLanes,
   'clearing-groups': ClearingGroups,
+  'tax-code-matrix': TaxCodeMatrix,
 };
 
 export default function Figure({ name }: { name: FigureName }) {

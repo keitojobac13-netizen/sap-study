@@ -14,6 +14,7 @@ import { f110PaymentMedium } from './f110-payment-medium';
 import { ck24MarkRelease } from './ck24-mark-release';
 import { addonTracing } from './addon-tracing';
 import { autoClearingF13 } from './auto-clearing-f13';
+import { sapConsumptionTax } from './sap-consumption-tax';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -65,6 +66,7 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  sapConsumptionTax,
   autoClearingF13,
   sapErrorTriage,
   bpMaster,
