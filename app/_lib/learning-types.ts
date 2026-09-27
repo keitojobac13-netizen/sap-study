@@ -47,7 +47,7 @@ export type FigureName =
   | 'auc-phases'
   | 'depreciation-lanes'
   | 'clearing-groups'
-  | 'tax-code-matrix';
+  | 'tax-code-lookup';
 
 export type Section = {
   id: string;

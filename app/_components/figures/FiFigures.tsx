@@ -307,62 +307,72 @@ function ClearingGroups() {
   );
 }
 
-/** In SD, the customer and material tax classes together pick one tax code. */
-function TaxCodeMatrix() {
-  const materials = [
-    { value: '1', label: '標準税率' },
-    { value: '2', label: '軽減税率' },
-    { value: '0', label: '非課税' },
+/** An SD item gets its tax code by looking up the two master tax classes in the condition records. */
+function TaxCodeLookup() {
+  const step = 'flex items-baseline gap-2 text-[0.78rem] font-semibold text-ink mb-1.5';
+  const num = 'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ink text-paper text-[0.68rem]';
+  const records = [
+    { cust: '1 課税', mat: '1 標準税率', code: '売上10%' },
+    { cust: '1 課税', mat: '2 軽減税率', code: '売上8%', hit: true },
+    { cust: '1 課税', mat: '0 非課税', code: '非課税売上' },
+    { cust: '0 免税', mat: '（どれでも）', code: '免税売上' },
   ];
-  const cols =
-    'grid grid-cols-[4.5rem_repeat(3,minmax(0,1fr))] sm:grid-cols-[8rem_repeat(3,minmax(0,1fr))] gap-1 sm:gap-1.5';
-  const rowHead = 'flex flex-col justify-center text-[0.72rem] sm:text-[0.78rem] font-semibold text-ink leading-snug';
-  const code = 'flex flex-col items-center justify-center border px-1 py-2.5 text-center';
+  const down = (
+    <div aria-hidden className="text-center text-ink-mute text-base leading-none py-1.5">↓</div>
+  );
   return (
-    <div className="space-y-1.5">
-      <p className="text-center text-[0.72rem] text-ink-mute">
-        <Phrase text="品目税分類|（品目マスタ）" />
-      </p>
-      <div className={cols}>
-        <span className="text-[0.68rem] sm:text-[0.72rem] text-ink-mute leading-snug self-end">
-          <Phrase text="得意先税分類|（BP）" />
-        </span>
-        {materials.map((m) => (
-          <div key={m.value} className="text-center pb-1.5 border-b-2 border-ink">
-            <span className="block text-[0.7rem] text-ink-mute tabular-nums">{m.value}</span>
-            <span className="block text-[0.75rem] sm:text-[0.8rem] font-semibold text-ink">{m.label}</span>
-          </div>
-        ))}
+    <div className="mx-auto max-w-md">
+      <p className={step}><span className={num}>1</span>受注の明細</p>
+      <div className={`${box} border-rule bg-paper text-ink`}>
+        <span className={title}><Phrase text="得意先：A商店|　品目：ペットボトルのお茶" /></span>
+        <span className={sub}><Phrase text="税コードは|入力していない" /></span>
       </div>
+      {down}
 
-      <div className={cols}>
-        <div className={rowHead}>
-          <span className="text-[0.7rem] font-normal text-ink-mute tabular-nums">1</span>
-          <span>課税</span>
+      <p className={step}><span className={num}>2</span><span><Phrase text="それぞれのマスタから|税分類を読む" /></span></p>
+      <div className="grid grid-cols-2 gap-2">
+        <div className={`${box} border-rule bg-paper text-ink`}>
+          <span className={sub.replace(' mt-1', '')}><Phrase text="A商店の|BP" /></span>
+          <span className={sub}>得意先税分類</span>
+          <span className={`${title} mt-0.5`}>1 課税</span>
         </div>
-        <div className={`${code} border-rule bg-paper text-ink`}>
-          <span className={title}><Phrase text="売上|10%" /></span>
-        </div>
-        <div className={`${code} border-accent bg-accent-soft text-accent`}>
-          <span className={title}><Phrase text="売上|8%" /></span>
-          <span className="block text-[0.68rem] leading-snug mt-0.5">軽減</span>
-        </div>
-        <div className={`${code} border-rule bg-paper text-ink`}>
-          <span className={title}><Phrase text="非課税|売上" /></span>
+        <div className={`${box} border-rule bg-paper text-ink`}>
+          <span className={sub.replace(' mt-1', '')}><Phrase text="お茶の|品目マスタ" /></span>
+          <span className={sub}>品目税分類</span>
+          <span className={`${title} mt-0.5`}>2 軽減税率</span>
         </div>
       </div>
+      {down}
 
-      <div className={cols}>
-        <div className={rowHead}>
-          <span className="text-[0.7rem] font-normal text-ink-mute tabular-nums">0</span>
-          <span>免税</span>
-        </div>
-        <div className={`${code} col-span-3 border-rule bg-ground text-ink`}>
-          <span className={title}>免税売上</span>
-          <span className="block text-[0.68rem] text-ink-mute leading-snug mt-0.5">
-            <Phrase text="品目の区分に|かかわらず" />
-          </span>
-        </div>
+      <p className={step}><span className={num}>3</span><span><Phrase text="条件レコードから、|同じ組み合わせの行を探す" /></span></p>
+      <div className="border border-rule bg-paper">
+        <table className="w-full text-[0.75rem] sm:text-[0.78rem]">
+          <thead>
+            <tr className="text-[0.68rem] sm:text-[0.7rem] text-ink-mute border-b border-rule">
+              <th className="pl-2 sm:pl-3 py-1.5 text-left font-normal">得意先税分類</th>
+              <th className="py-1.5 text-left font-normal">品目税分類</th>
+              <th className="pr-2 sm:pr-3 py-1.5 text-right font-normal">税コード</th>
+            </tr>
+          </thead>
+          <tbody>
+            {records.map((r) => (
+              <tr
+                key={r.code}
+                className={r.hit ? 'bg-accent-soft text-accent font-semibold' : 'text-ink-soft'}
+              >
+                <td className="pl-2 sm:pl-3 py-1.5">{r.cust}</td>
+                <td className="py-1.5">{r.mat}</td>
+                <td className="pr-2 sm:pr-3 py-1.5 text-right">{r.code}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {down}
+
+      <p className={step}><span className={num}>4</span><span><Phrase text="見つかった税コードが|明細に入る" /></span></p>
+      <div className={`${box} border-accent bg-accent-soft text-accent`}>
+        <span className={title}><Phrase text="税コード：|売上8%" /></span>
       </div>
     </div>
   );
@@ -375,7 +385,7 @@ const FIGURES: Record<FigureName, () => ReactNode> = {
   'auc-phases': AucPhases,
   'depreciation-lanes': DepreciationLanes,
   'clearing-groups': ClearingGroups,
-  'tax-code-matrix': TaxCodeMatrix,
+  'tax-code-lookup': TaxCodeLookup,
 };
 
 export default function Figure({ name }: { name: FigureName }) {
