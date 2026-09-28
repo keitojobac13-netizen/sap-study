@@ -48,7 +48,8 @@ export type FigureName =
   | 'depreciation-lanes'
   | 'clearing-groups'
   | 'tax-code-lookup'
-  | 'settlement-steps';
+  | 'settlement-steps'
+  | 'withholding-payment';
 
 export type Section = {
   id: string;

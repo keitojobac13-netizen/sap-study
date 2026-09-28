@@ -445,6 +445,57 @@ function SettlementSteps() {
   );
 }
 
+/**
+ * One fee invoice followed to payment: nothing is withheld at the invoice,
+ * and at payment the net fee is taxed in two bands.
+ */
+function WithholdingPayment() {
+  const step = 'flex items-baseline gap-2 text-[0.78rem] font-semibold text-ink mb-1.5';
+  const num = 'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ink text-paper text-[0.68rem]';
+  const row = 'flex justify-between gap-3 px-2 sm:px-3 py-1.5 text-[0.75rem] sm:text-[0.78rem]';
+  const down = (
+    <div aria-hidden className="text-center text-ink-mute text-base leading-none py-1.5">↓</div>
+  );
+  return (
+    <div className="mx-auto max-w-md">
+      <p className={step}><span className={num}>1</span><span><Phrase text="請求書を転記する|（源泉徴収税はまだ計算しない）" /></span></p>
+      <div className="border border-rule bg-paper text-ink-soft">
+        <div className={row}><span>報酬</span><span className="tabular-nums">1,200,000円</span></div>
+        <div className={row}><span>消費税</span><span className="tabular-nums">120,000円</span></div>
+        <div className={`${row} border-t border-rule text-ink font-semibold`}><span>仕入先への債務</span><span className="tabular-nums">1,320,000円</span></div>
+      </div>
+      {down}
+
+      <p className={step}><span className={num}>2</span><span><Phrase text="支払のときに、|税抜の報酬を基準額にする" /></span></p>
+      <div className={`${box} border-rule bg-paper text-ink`}>
+        <span className={title}>基準額 1,200,000円</span>
+        <span className={sub}><Phrase text="消費税が区分されているので、|報酬だけが対象" /></span>
+      </div>
+      {down}
+
+      <p className={step}><span className={num}>3</span><span><Phrase text="100万円までと、|超える部分で税率を分ける" /></span></p>
+      <div className="border border-rule bg-paper text-ink-soft">
+        <div className={row}><span>1,000,000円 × 10.21%</span><span className="tabular-nums">102,100円</span></div>
+        <div className={row}><span>200,000円 × 20.42%</span><span className="tabular-nums">40,840円</span></div>
+        <div className={`${row} border-t border-rule text-ink font-semibold`}><span>源泉徴収税</span><span className="tabular-nums">142,940円</span></div>
+      </div>
+      {down}
+
+      <p className={step}><span className={num}>4</span><span><Phrase text="支払を転記する" /></span></p>
+      <div className="grid grid-cols-2 gap-2">
+        <div className={`${box} border-accent bg-accent-soft text-accent`}>
+          <span className="block text-[0.72rem] leading-snug">仕入先へ振込</span>
+          <span className={`${title} mt-0.5 tabular-nums`}>1,177,060円</span>
+        </div>
+        <div className={`${box} border-rule bg-paper text-ink`}>
+          <span className={sub.replace(' mt-1', '')}><Phrase text="源泉徴収税の|勘定（預り金）へ" /></span>
+          <span className={`${title} mt-0.5 tabular-nums`}>142,940円</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const FIGURES: Record<FigureName, () => ReactNode> = {
   'ledger-stack': LedgerStack,
   'standard-hub': StandardHub,
@@ -454,6 +505,7 @@ const FIGURES: Record<FigureName, () => ReactNode> = {
   'clearing-groups': ClearingGroups,
   'tax-code-lookup': TaxCodeLookup,
   'settlement-steps': SettlementSteps,
+  'withholding-payment': WithholdingPayment,
 };
 
 export default function Figure({ name }: { name: FigureName }) {
