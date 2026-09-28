@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import ColumnArticlePage from '@/app/_components/ColumnArticlePage';
 import { getArticle, visibleArticles } from '@/app/_lib/articles';
 import { BASE_URL, articlePath } from '@/app/_lib/routes';
-import { OG_IMAGES } from '@/app/_lib/og-image';
+import { sharingMetadata } from '@/app/_lib/page-metadata';
 
 export const dynamicParams = false;
 
@@ -25,15 +25,13 @@ export async function generateMetadata({ params }: {
     // Japanese only: a canonical and no hreflang pair.
     alternates: { canonical: `${BASE_URL}${articlePath(slug)}` },
     ...(article.status === 'draft' ? { robots: { index: false, follow: false } } : {}),
-    openGraph: {
-      type: 'article',
-      locale: 'ja_JP',
-      siteName: 'SAP学習ポータル',
+    ...sharingMetadata({
+      lang: 'ja',
+      path: articlePath(slug),
       title: article.title,
       description: article.summary,
-      images: OG_IMAGES,
-    },
-    twitter: { card: 'summary_large_image', title: article.title, description: article.summary, images: OG_IMAGES },
+      type: 'article',
+    }),
   };
 }
 

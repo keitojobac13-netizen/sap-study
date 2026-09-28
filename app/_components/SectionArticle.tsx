@@ -8,11 +8,11 @@ import WaitlistForm from './WaitlistForm';
 import Icon from './Icon';
 import PageTerms from './PageTerms';
 import { translations, type Language, type ModuleKey } from '../_lib/i18n';
-import { getSection } from '../_lib/modules';
+import { getSection, sectionUpdated } from '../_lib/modules';
 import type { GlossaryModule } from '../_lib/glossary';
 import { sectionBlocks, sectionSummary } from '../_lib/learning-types';
 import { MODULE_STYLES } from '../_lib/module-style';
-import { SITE_OPERATOR, ARTICLES_UPDATED } from '../_lib/site-info';
+import { SITE_OPERATOR, ARTICLES_UPDATED, MODULE_CONTENT_UPDATED } from '../_lib/site-info';
 import {
   BASE_URL,
   homePath,
@@ -71,7 +71,8 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
     isAccessibleForFree: true,
     articleSection: mod.title,
     datePublished: ARTICLES_UPDATED,
-    dateModified: ARTICLES_UPDATED,
+    // English sections carry no column links, so only the module's own edits count.
+    dateModified: lang === 'ja' ? sectionUpdated(moduleKey, sectionId) : MODULE_CONTENT_UPDATED[moduleKey],
     author: { '@type': 'Person', name: SITE_OPERATOR[lang].name },
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     publisher: {

@@ -35,7 +35,7 @@ const CONTENT: Record<Language, {
         heading: '運営者について',
         paragraphs: [
           '運営者の kei は、SAP FI（財務会計）のコンサルタントとして、4年間実務に携わっています。',
-          'FIのページとコラムには、実務で経験したことや、現場でよく受ける質問への答えを順次反映していきます。FI以外のモジュールは専門外のため、SAPの公式ドキュメントと標準的な業務プロセスを確認しながら執筆しています。',
+          'FI・CO・PS は実務の経験をもとに、そのほかのモジュールは SAP の公式ドキュメントで確認しながら書いています。コラムには、現場でつまずきやすい点や、よく受ける質問への答えを順次加えていきます。',
         ],
       },
       {
@@ -43,7 +43,7 @@ const CONTENT: Record<Language, {
         paragraphs: [
           'SAPは導入企業が多い一方で、体系的に学べる日本語の入門資料が驚くほど少ない領域です。公式のドキュメントは正確ですが分量が多く、前提知識がないと読み進めるのが難しい。かといって断片的なブログ記事だけでは、モジュール間のつながりが見えてきません。',
           'このサイトは、その中間を埋めることを目的にしています。1セクションを5〜10分で読み切れる分量に区切り、読んだ直後に確認問題で定着させる。それを10セクション積み上げると、そのモジュールの全体像がひととおり掴めている——という構成にしました。',
-          'また、SAPの現場では英語の資料や用語に触れる機会が多いため、すべてのページを日本語と英語の両方で用意しています。同じ内容を読み比べることで、英語の用語がそのまま業務で使える形で身につくようにしました。',
+          'また、SAPの現場では英語の資料や用語に触れる機会が多いため、モジュールの解説と用語辞典は日本語と英語の両方で用意しています（コラムは日本語だけです）。同じ内容を読み比べることで、英語の用語がそのまま業務で使える形で身につくようにしました。',
         ],
       },
       {
@@ -98,7 +98,7 @@ const CONTENT: Record<Language, {
         heading: 'About the operator',
         paragraphs: [
           'The site is run by kei, who has worked for four years as an SAP FI (Financial Accounting) consultant.',
-          'Lessons from that work, and answers to questions that often come up on projects, are being added to the FI pages and the Japanese columns over time. The other modules are outside that specialism, so they are written against SAP documentation and standard business processes.',
+          'FI, CO and PS are written from hands-on project work; the other modules are checked against SAP’s official documentation as they are written. The Japanese columns add, one topic at a time, the points where people tend to get stuck and answers to questions that often come up on projects.',
         ],
       },
       {
@@ -106,7 +106,7 @@ const CONTENT: Record<Language, {
         paragraphs: [
           'SAP is used by a very large number of companies, yet structured introductory material — particularly in Japanese — is surprisingly scarce. Official documentation is accurate but voluminous, and hard to work through without prior context. Scattered blog posts, on the other hand, rarely show how the modules connect.',
           'This site aims at the space in between. Each section is a five to ten minute read, followed immediately by practice questions that check what you retained. Ten sections in, you should have a working picture of the whole module.',
-          'Because SAP work regularly crosses between English and Japanese material, every page exists in both languages. Reading the same explanation in both is a practical way to pick up the English terminology you will actually meet on a project.',
+          'Because SAP work regularly crosses between English and Japanese material, the module sections and the glossary exist in both languages (the columns are in Japanese only). Reading the same explanation in both is a practical way to pick up the English terminology you will actually meet on a project.',
         ],
       },
       {

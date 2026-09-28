@@ -5,6 +5,7 @@ import Breadcrumbs from './Breadcrumbs';
 import ArticleBody from './ArticleBody';
 import Icon from './Icon';
 import PageTerms from './PageTerms';
+import WaitlistForm from './WaitlistForm';
 import { translations } from '../_lib/i18n';
 import { SITE_OPERATOR } from '../_lib/site-info';
 import { CATEGORY_LABELS, cardTitle, formatDate, getArticle, type ColumnArticle } from '../_lib/articles';
@@ -106,6 +107,10 @@ export default function ColumnArticlePage({ article }: { article: ColumnArticle 
           )}
 
           <PageTerms blocks={article.body} lang="ja" />
+
+          <div className="mt-12">
+            <WaitlistForm lang="ja" source={`articles/${article.slug}`} />
+          </div>
         </div>
       </main>
 

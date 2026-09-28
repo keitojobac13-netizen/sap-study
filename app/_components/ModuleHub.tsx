@@ -4,7 +4,8 @@ import SiteFooter from './SiteFooter';
 import Breadcrumbs from './Breadcrumbs';
 import Icon from './Icon';
 import { translations, type Language, type ModuleKey } from '../_lib/i18n';
-import { getModule } from '../_lib/modules';
+import { getModule, moduleArticles } from '../_lib/modules';
+import { cardTitle } from '../_lib/articles';
 import { sectionSummary } from '../_lib/learning-types';
 import { MODULE_STYLES } from '../_lib/module-style';
 import {
@@ -13,8 +14,14 @@ import {
   modulePath,
   sectionPath,
   dictionaryPath,
+  articlePath,
   OTHER_LANG,
 } from '../_lib/routes';
+
+const COLUMNS_LABEL = {
+  title: 'このモジュールのコラム',
+  lead: '実務でつまずきやすい点や、似た機能の使い分けを1テーマずつ掘り下げています。',
+} as const;
 
 const LABELS = {
   ja: {
@@ -58,6 +65,8 @@ export default function ModuleHub({ moduleKey, lang }: {
   const intro = mod.intro ?? [mod.description];
 
   const otherModules = (Object.keys(t.modules.items) as ModuleKey[]).filter((k) => k !== moduleKey);
+  // Columns are Japanese only, so the English hub lists none.
+  const columns = lang === 'ja' ? moduleArticles(moduleKey) : [];
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -167,6 +176,33 @@ export default function ModuleHub({ moduleKey, lang }: {
             ))}
           </ol>
         </section>
+
+        {/* ─── Columns: the practical articles, linked back from the hub ─── */}
+        {columns.length > 0 && (
+          <section className="border-t border-rule">
+            <div className="max-w-[52rem] mx-auto px-5 sm:px-8 py-12">
+              <h2 className="text-[1.1rem] font-bold text-ink tracking-tight">{COLUMNS_LABEL.title}</h2>
+              <p className="text-[0.85rem] text-ink-mute mt-2 mb-6">{COLUMNS_LABEL.lead}</p>
+              <ul className="border-t border-rule">
+                {columns.map((a) => (
+                  <li key={a.slug}>
+                    <Link
+                      href={articlePath(a.slug)}
+                      className="group block py-4 border-b border-rule hover:bg-ground transition-colors -mx-3 px-3"
+                    >
+                      <span className="block font-semibold text-ink text-[0.95rem] leading-snug [word-break:auto-phrase] group-hover:text-accent transition-colors">
+                        {cardTitle(a)}
+                      </span>
+                      <span className="block text-[0.85rem] text-ink-soft leading-[1.85] mt-1.5">
+                        {a.summary}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {/* ─── Related ─── */}
         <section className="border-t border-rule bg-ground">

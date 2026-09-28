@@ -52,7 +52,7 @@ const COPY = {
     aboutCta: 'このサイトについて',
     bilingualTitle: '日本語と英語で読める',
     bilingualText:
-      'すべてのページに英語版があります。SAPプロジェクトでは英語の資料や用語に触れる機会が多いため、同じ内容を日英で読み比べられるようにしました。ページ右上の言語切り替えボタンで、読んでいるページのまま切り替わります。',
+      'モジュールの解説と用語辞典には英語版があります。SAPプロジェクトでは英語の資料や用語に触れる機会が多いため、同じ内容を日英で読み比べられるようにしました。ページ右上の言語切り替えボタンで、読んでいるページのまま切り替わります。コラムは日本語だけです。',
   },
   en: {
     howTitle: 'How to use this site',
@@ -87,7 +87,7 @@ const COPY = {
     aboutCta: 'About this site',
     bilingualTitle: 'Written in English and Japanese',
     bilingualText:
-      'Every page exists in both languages. SAP work regularly crosses between English and Japanese documentation, so the same explanation is available side by side. The toggle in the header keeps you on the page you are reading.',
+      'The module sections and the glossary exist in both languages. SAP work regularly crosses between English and Japanese documentation, so the same explanation is available side by side. The toggle in the header keeps you on the page you are reading. The columns are in Japanese only.',
   },
 } as const;
 

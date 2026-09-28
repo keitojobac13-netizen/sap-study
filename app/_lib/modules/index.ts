@@ -1,7 +1,8 @@
 import type { ModuleContent, ModuleEnrichment, Quiz } from '../learning-types';
 import { enrichModule } from '../learning-types';
 import type { Language, ModuleKey } from '../i18n';
-import { cardTitle, getArticle } from '../articles';
+import { cardTitle, getArticle, type ColumnArticle } from '../articles';
+import { MODULE_CONTENT_UPDATED } from '../site-info';
 import { articlePath } from '../routes';
 import { fiContent } from './fi-content';
 import { coContent } from './co-content';
@@ -165,6 +166,38 @@ export function getSection(key: ModuleKey, lang: Language, sectionId: string) {
     prev: index > 0 ? mod.sections[index - 1] : null,
     next: index < mod.sections.length - 1 ? mod.sections[index + 1] : null,
   };
+}
+
+function linkedArticles(key: ModuleKey, sectionIds: string[]): ColumnArticle[] {
+  const links = SECTION_ARTICLES[key] ?? {};
+  const slugs = [...new Set(sectionIds.flatMap((id) => [links[id] ?? []].flat()))];
+  return slugs.map(getArticle).filter((a) => a !== undefined);
+}
+
+/** Columns linked from any section of the module, in section order. Japanese only. */
+export function moduleArticles(key: ModuleKey): ColumnArticle[] {
+  return linkedArticles(key, getSectionIds(key));
+}
+
+function latest(dates: string[]): string {
+  return dates.reduce((a, b) => (a > b ? a : b));
+}
+
+function publishedDates(articles: ColumnArticle[]): string[] {
+  return articles.flatMap((a) => (a.status === 'published' ? [a.updatedAt ?? a.publishedAt] : []));
+}
+
+/**
+ * When a section page last changed: its module's content, or a column it
+ * links to being published, whichever is later.
+ */
+export function sectionUpdated(key: ModuleKey, sectionId: string): string {
+  return latest([MODULE_CONTENT_UPDATED[key], ...publishedDates(linkedArticles(key, [sectionId]))]);
+}
+
+/** When a module hub last changed, including the columns it now lists. */
+export function moduleUpdated(key: ModuleKey): string {
+  return latest([MODULE_CONTENT_UPDATED[key], ...publishedDates(moduleArticles(key))]);
 }
 
 /** Every (module, section) pair, for sitemap and static params generation. */
