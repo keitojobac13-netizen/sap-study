@@ -546,6 +546,45 @@ function CostObjectChoice() {
   );
 }
 
+/**
+ * One sales order followed through its documents. Each arrow names the field
+ * that leads to the next document, which is what a reader needs at SE16N.
+ */
+function SalesTableFlow() {
+  const steps = [
+    { doc: '受注', no: '1000123', tables: 'VBAK・VBAP', link: 'LIPS-VGBEL ＝ 受注番号|（VBFAにも記録）' },
+    { doc: '出荷', no: '80001234', tables: 'LIKP・LIPS', link: 'VBFAに、後続の|入出庫伝票として記録' },
+    { doc: '出庫', no: '4900005678', tables: 'MATDOC', link: 'VBRP-VGBEL ＝ 出荷番号|VBRP-AUBEL ＝ 受注番号', side: '出庫の会計伝票は|AWTYP ＝ MKPF' },
+    { doc: '請求', no: '90001234', tables: 'VBRK・VBRP', link: 'BKPF-AWTYP ＝ VBRK|BKPF-AWKEY ＝ 90001234' },
+    { doc: '会計伝票', no: '100000456', tables: 'BKPF・ACDOCA（BSEG）', accent: true },
+  ];
+  return (
+    <div className="mx-auto max-w-md">
+      {steps.map((s) => (
+        <div key={s.doc}>
+          <div className={`${box} ${s.accent ? 'border-accent bg-accent-soft text-accent' : 'border-rule bg-paper text-ink'}`}>
+            <span className={title}>{s.doc} <span className="font-normal tabular-nums">{s.no}</span></span>
+            <span className={`block text-[0.72rem] leading-snug mt-1 font-mono ${s.accent ? '' : 'text-ink-soft'}`}>{s.tables}</span>
+            {s.side && (
+              <span className={sub}><Phrase text={s.side} /></span>
+            )}
+          </div>
+          {s.link && (
+            <div className="flex items-center justify-center gap-2 py-1.5">
+              <span aria-hidden className="text-ink-mute text-base leading-none">↓</span>
+              <span className="text-[0.72rem] leading-snug text-ink-mute font-mono">
+                {s.link.split('|').map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
+              </span>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 const FIGURES: Record<FigureName, () => ReactNode> = {
   'ledger-stack': LedgerStack,
   'standard-hub': StandardHub,
@@ -557,6 +596,7 @@ const FIGURES: Record<FigureName, () => ReactNode> = {
   'settlement-steps': SettlementSteps,
   'withholding-payment': WithholdingPayment,
   'cost-object-choice': CostObjectChoice,
+  'sales-table-flow': SalesTableFlow,
 };
 
 export default function Figure({ name }: { name: FigureName }) {

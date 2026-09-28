@@ -18,6 +18,7 @@ import { sapConsumptionTax } from './sap-consumption-tax';
 import { wbsSettlementError } from './wbs-settlement-error';
 import { withholdingTaxSetup } from './withholding-tax-setup';
 import { costObjectChoice } from './cost-object-choice';
+import { s4hanaTableFlow } from './s4hana-table-flow';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -69,6 +70,7 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  s4hanaTableFlow,
   costObjectChoice,
   withholdingTaxSetup,
   wbsSettlementError,

@@ -50,7 +50,8 @@ export type FigureName =
   | 'tax-code-lookup'
   | 'settlement-steps'
   | 'withholding-payment'
-  | 'cost-object-choice';
+  | 'cost-object-choice'
+  | 'sales-table-flow';
 
 export type Section = {
   id: string;
