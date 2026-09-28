@@ -496,6 +496,56 @@ function WithholdingPayment() {
   );
 }
 
+/**
+ * Two questions sort four real cases into cost center, internal order and
+ * WBS. The machine replacement is an investment yet lands on internal order.
+ */
+function CostObjectChoice() {
+  const question = 'border border-ink bg-paper text-ink px-2 sm:px-3 py-2.5 text-center text-[0.8rem] sm:text-[0.85rem] font-semibold leading-snug';
+  const branch = 'block text-center text-[0.72rem] text-ink-mute leading-snug py-1.5';
+  const result = (name: string, examples: { text: string; mark?: boolean }[], accent = false) => (
+    <div className={`${box} ${accent ? 'border-accent bg-accent-soft text-accent' : 'border-rule bg-paper text-ink'}`}>
+      <span className={title}>{name}</span>
+      {examples.map((e) => (
+        <span
+          key={e.text}
+          className={`block text-[0.72rem] leading-snug mt-1 ${e.mark ? 'font-semibold text-accent' : accent ? '' : 'text-ink-mute'}`}
+        >
+          <Phrase text={e.text} />
+        </span>
+      ))}
+    </div>
+  );
+  return (
+    <div className="mx-auto max-w-md">
+      <div className={question}><Phrase text="終わりが|決まっている活動か" /></div>
+      <div className="grid grid-cols-2 gap-2">
+        <div>
+          <span className={branch}>いいえ ↓</span>
+          {result('原価センタ', [{ text: '情報システム部の|運用費' }])}
+        </div>
+        <div>
+          <span className={branch}>はい ↓</span>
+          <div className={question}><Phrase text="階層・複数の作業・|日程の管理が|必要か" /></div>
+          <div className="grid grid-cols-1 gap-2">
+            <div>
+              <span className={branch}>いいえ ↓</span>
+              {result('内部指図', [
+                { text: '展示会の出展|（2か月）' },
+                { text: '機械1台の更新|（設備投資）', mark: true },
+              ])}
+            </div>
+            <div>
+              <span className={branch}>はい ↓</span>
+              {result('WBS', [{ text: '新工場の建設|（3年、建屋・設備・IT）' }], true)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const FIGURES: Record<FigureName, () => ReactNode> = {
   'ledger-stack': LedgerStack,
   'standard-hub': StandardHub,
@@ -506,6 +556,7 @@ const FIGURES: Record<FigureName, () => ReactNode> = {
   'tax-code-lookup': TaxCodeLookup,
   'settlement-steps': SettlementSteps,
   'withholding-payment': WithholdingPayment,
+  'cost-object-choice': CostObjectChoice,
 };
 
 export default function Figure({ name }: { name: FigureName }) {

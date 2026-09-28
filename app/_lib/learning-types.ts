@@ -49,7 +49,8 @@ export type FigureName =
   | 'clearing-groups'
   | 'tax-code-lookup'
   | 'settlement-steps'
-  | 'withholding-payment';
+  | 'withholding-payment'
+  | 'cost-object-choice';
 
 export type Section = {
   id: string;
