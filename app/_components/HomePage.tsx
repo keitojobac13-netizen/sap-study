@@ -227,7 +227,7 @@ export default function HomePage({ lang, termCount }: {
                       <span className="self-start inline-flex items-center border border-rule rounded-full px-2.5 py-0.5 text-[0.68rem] text-ink-mute tracking-[0.04em]">
                         {CATEGORY_LABELS[a.category]}
                       </span>
-                      <h3 className="mt-3 font-bold text-ink text-[1rem] leading-snug group-hover:text-accent transition-colors">
+                      <h3 className="mt-3 font-bold text-ink text-[1rem] leading-snug [word-break:auto-phrase] group-hover:text-accent transition-colors">
                         {cardTitle(a)}
                       </h3>
                       <p className="mt-2 text-[0.86rem] text-ink-soft leading-[1.8] line-clamp-2 flex-1">

@@ -42,7 +42,7 @@ export default function ColumnIndexPage() {
                       {a.status === 'published' ? formatDate(a.publishedAt) : '下書き'}
                     </span>
                   </p>
-                  <h2 className="mt-3 text-[1.05rem] sm:text-[1.15rem] font-bold text-ink leading-snug group-hover:text-accent transition-colors">
+                  <h2 className="mt-3 text-[1.05rem] sm:text-[1.15rem] font-bold text-ink leading-snug [word-break:auto-phrase] group-hover:text-accent transition-colors">
                     {cardTitle(a)}
                   </h2>
                   <p className="mt-2 text-[0.9rem] text-ink-soft leading-[1.85]">{a.summary}</p>

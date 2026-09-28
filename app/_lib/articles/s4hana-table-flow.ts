@@ -4,7 +4,7 @@ export const s4hanaTableFlow: ColumnArticle = {
   slug: 's4hana-table-flow',
   status: 'draft',
   category: 'overview',
-  cardTitle: '主要テーブルを流れで追う',
+  cardTitle: '受注から会計伝票まで、SAPのテーブルを追う',
   title: 'SAP S/4HANAの主要テーブルを業務の流れで追う｜受注から会計伝票、発注から支払まで',
   summary:
     '受注・出荷・請求の伝票が、どのテーブルに入り、どの項目で次の伝票や会計伝票につながるのか。1件の取引を追いながら、S/4HANAの主要テーブルとつなぎ方を整理しました。購買から支払までの流れもまとめています。',

@@ -65,7 +65,7 @@ export default function ColumnArticlePage({ article }: { article: ColumnArticle 
               </>
             )}
           </p>
-          <h1 className="text-[1.7rem] sm:text-[2.05rem] font-bold text-ink leading-[1.35] tracking-tight">
+          <h1 className="text-[1.7rem] sm:text-[2.05rem] font-bold text-ink leading-[1.35] tracking-tight [word-break:auto-phrase]">
             {cardTitle(article)}
           </h1>
           <p className="text-ink-soft leading-[1.9] mt-4 text-[0.95rem] sm:text-base">
