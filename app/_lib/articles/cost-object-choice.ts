@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const costObjectChoice: ColumnArticle = {
   slug: 'cost-object-choice',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-09-28',
   category: 'compare',
   cardTitle: '原価センタ・内部指図・WBSの使い分け',
   title: 'SAPの原価センタ・内部指図・WBSの使い分け｜「設備投資だからWBS」ではない判断基準',

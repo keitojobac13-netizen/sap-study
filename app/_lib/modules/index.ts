@@ -88,7 +88,7 @@ const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string | string
     'fi-ap': ['f110-payment-medium', 'withholding-tax-setup'],
     'fi-ar': 'auto-clearing-f13',
   },
-  co: { 'co-product-costing': 'ck24-mark-release' },
+  co: { 'co-product-costing': 'ck24-mark-release', 'co-internal-order': 'cost-object-choice' },
   sd: {
     pricing: 'sap-consumption-tax',
     'returns-credit': 'credit-memo-debit-memo',
@@ -99,7 +99,7 @@ const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string | string
   pp: { 'production-confirmation': 'backflush' },
   abap: { 'abap-overview': 'ricefw', 'abap-debugging-error': 'addon-tracing' },
   basis: { 'basis-user-auth': 'sap-error-triage' },
-  ps: { 'ps-settlement': 'wbs-settlement-error' },
+  ps: { 'ps-settlement': 'wbs-settlement-error', 'ps-wbs': 'cost-object-choice' },
 };
 
 function withArticleLinks(
