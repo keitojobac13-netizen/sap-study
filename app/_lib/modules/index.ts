@@ -78,13 +78,14 @@ function withExtraQuizzes(mod: ModuleContent, extra: ExtraQuizzes | undefined): 
 /**
  * Columns that go deeper on a topic a section only touches. Japanese only,
  * like the columns themselves. The link is appended to the end of the section
- * body, and skipped while the column is still a draft.
+ * body, and skipped while the column is still a draft. A section may list
+ * several columns; they are linked in the order given.
  */
-const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string>>> = {
+const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string | string[]>>> = {
   fi: {
     'fi-overview': 'fi-beginner-pitfalls',
     'fi-journal': 'document-date-posting-date',
-    'fi-ap': 'f110-payment-medium',
+    'fi-ap': ['f110-payment-medium', 'withholding-tax-setup'],
     'fi-ar': 'auto-clearing-f13',
   },
   co: { 'co-product-costing': 'ck24-mark-release' },
@@ -101,17 +102,27 @@ const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string>>> = {
   ps: { 'ps-settlement': 'wbs-settlement-error' },
 };
 
-function withArticleLinks(mod: ModuleContent, links: Record<string, string> | undefined): ModuleContent {
+function withArticleLinks(
+  mod: ModuleContent,
+  links: Record<string, string | string[]> | undefined
+): ModuleContent {
   if (!links) return mod;
   return {
     ...mod,
     sections: mod.sections.map((section) => {
-      const slug = links[section.id];
-      const article = slug ? getArticle(slug) : undefined;
-      if (!article || !section.body) return section;
+      const slugs = [links[section.id] ?? []].flat();
+      const articles = slugs.map(getArticle).filter((a) => a !== undefined);
+      if (articles.length === 0 || !section.body) return section;
       return {
         ...section,
-        body: [...section.body, { type: 'link', href: articlePath(article.slug), label: cardTitle(article) }],
+        body: [
+          ...section.body,
+          ...articles.map((article) => ({
+            type: 'link' as const,
+            href: articlePath(article.slug),
+            label: cardTitle(article),
+          })),
+        ],
       };
     }),
   };
