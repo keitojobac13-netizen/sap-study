@@ -98,6 +98,7 @@ const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string>>> = {
   pp: { 'production-confirmation': 'backflush' },
   abap: { 'abap-overview': 'ricefw', 'abap-debugging-error': 'addon-tracing' },
   basis: { 'basis-user-auth': 'sap-error-triage' },
+  ps: { 'ps-settlement': 'wbs-settlement-error' },
 };
 
 function withArticleLinks(mod: ModuleContent, links: Record<string, string> | undefined): ModuleContent {
