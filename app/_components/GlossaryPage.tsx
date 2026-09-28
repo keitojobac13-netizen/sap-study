@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import {
   glossaryTerms,
   getKanaRow,
@@ -70,6 +70,22 @@ export default function GlossaryPage({ lang }: Props) {
   const [activeModule, setActiveModule] = useState<GlossaryModule | null>(null);
   const [activeLetter, setActiveLetter] = useState<string | null>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  // Links from articles point at /dictionary#term-id. Open that entry, or the
+  // reader lands on a collapsed row and has to find it in the list.
+  useEffect(() => {
+    const openFromHash = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      const el = id ? document.getElementById(id) : null;
+      if (el instanceof HTMLDetailsElement) {
+        el.open = true;
+        el.scrollIntoView({ block: 'start' });
+      }
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+    return () => window.removeEventListener('hashchange', openFromHash);
+  }, []);
 
   const filtered = glossaryTerms.filter((term) => {
     const q = query.toLowerCase();

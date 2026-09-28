@@ -4,10 +4,11 @@ import SiteFooter from './SiteFooter';
 import Breadcrumbs from './Breadcrumbs';
 import ArticleBody from './ArticleBody';
 import Icon from './Icon';
+import PageTerms from './PageTerms';
 import { translations } from '../_lib/i18n';
 import { SITE_OPERATOR } from '../_lib/site-info';
 import { CATEGORY_LABELS, cardTitle, formatDate, getArticle, type ColumnArticle } from '../_lib/articles';
-import { BASE_URL, homePath, articlePath, articlesPath, dictionaryPath } from '../_lib/routes';
+import { BASE_URL, homePath, articlePath, articlesPath } from '../_lib/routes';
 
 export default function ColumnArticlePage({ article }: { article: ColumnArticle }) {
   const t = translations.ja;
@@ -104,12 +105,7 @@ export default function ColumnArticlePage({ article }: { article: ColumnArticle 
             </nav>
           )}
 
-          <p className="mt-12 pt-5 border-t border-rule-soft text-[0.8rem] text-ink-mute flex items-start gap-2">
-            <Icon name="book" className="w-4 h-4 mt-0.5 flex-shrink-0" />
-            <Link href={dictionaryPath('ja')} className="text-accent hover:underline underline-offset-2">
-              わからない用語は SAP用語辞典 で調べられます。
-            </Link>
-          </p>
+          <PageTerms blocks={article.body} lang="ja" />
         </div>
       </main>
 

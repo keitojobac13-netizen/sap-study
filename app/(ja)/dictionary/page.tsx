@@ -6,8 +6,8 @@ import { glossaryTerms } from '@/app/_lib/glossary';
 import { dictionaryPath, alternatesFor } from '@/app/_lib/routes';
 
 export const metadata: Metadata = {
-  title: { absolute: `SAP用語辞典（${glossaryTerms.length}語）| SAP学習ポータル` },
-  description: `FI・CO・SD・MM・PPを中心としたSAPの主要用語${glossaryTerms.length}語を、日本語と英語の対訳つきで解説。あいうえお順・アルファベット順で引け、モジュール別の絞り込みにも対応しています。`,
+  title: { absolute: `SAP用語辞典（${glossaryTerms.length}語）｜意味を日本語と英語で解説 | SAP学習ポータル` },
+  description: `転記キー、伝票タイプ、原価センタ、MRP、PGI（出荷確定）など、SAPの主要用語${glossaryTerms.length}語の意味を日本語と英語の対訳つきで解説。あいうえお順・モジュール別に引けます。`,
   alternates: alternatesFor('ja', dictionaryPath),
 };
 

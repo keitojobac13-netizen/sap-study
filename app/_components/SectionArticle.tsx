@@ -6,8 +6,10 @@ import ArticleBody from './ArticleBody';
 import SectionQuizzes from './SectionQuizzes';
 import WaitlistForm from './WaitlistForm';
 import Icon from './Icon';
+import PageTerms from './PageTerms';
 import { translations, type Language, type ModuleKey } from '../_lib/i18n';
 import { getSection } from '../_lib/modules';
+import type { GlossaryModule } from '../_lib/glossary';
 import { sectionBlocks, sectionSummary } from '../_lib/learning-types';
 import { MODULE_STYLES } from '../_lib/module-style';
 import { SITE_OPERATOR, ARTICLES_UPDATED } from '../_lib/site-info';
@@ -16,7 +18,6 @@ import {
   homePath,
   modulePath,
   sectionPath,
-  dictionaryPath,
   OTHER_LANG,
 } from '../_lib/routes';
 
@@ -28,7 +29,6 @@ const LABELS = {
     prev: '前のセクション',
     next: '次のセクション',
     backToModule: 'モジュールの目次へ戻る',
-    dictionary: 'わからない用語は SAP用語辞典 で調べられます。',
   },
   en: {
     toc: 'Sections in this module',
@@ -37,7 +37,6 @@ const LABELS = {
     prev: 'Previous',
     next: 'Next',
     backToModule: 'Back to module contents',
-    dictionary: 'Unfamiliar term? Look it up in the SAP glossary.',
   },
 } as const;
 
@@ -162,12 +161,11 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
                 <ArticleBody blocks={blocks} />
               </article>
 
-              <p className="mt-12 pt-5 border-t border-rule-soft text-[0.8rem] text-ink-mute flex items-start gap-2">
-                <Icon name="book" className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <Link href={dictionaryPath(lang)} className="text-accent hover:underline underline-offset-2">
-                  {l.dictionary}
-                </Link>
-              </p>
+              <PageTerms
+                blocks={blocks}
+                lang={lang}
+                moduleKey={moduleKey.toUpperCase() as GlossaryModule}
+              />
             </div>
 
             {/* ─── Quizzes ─── */}

@@ -6,8 +6,8 @@ import { glossaryTerms } from '../../_lib/glossary';
 import { dictionaryPath, alternatesFor } from '../../_lib/routes';
 
 export const metadata: Metadata = {
-  title: { absolute: `SAP Glossary (${glossaryTerms.length} terms) | SAP Study Portal` },
-  description: `${glossaryTerms.length} core SAP terms across FI, CO, SD, MM and PP, each defined in English and Japanese. Searchable alphabetically and filterable by module.`,
+  title: { absolute: `SAP Glossary (${glossaryTerms.length} terms): Meanings in English and Japanese | SAP Study Portal` },
+  description: `What posting key, document type, cost center, MRP, PGI and ${glossaryTerms.length - 5} other SAP terms mean, defined in English and Japanese. Covers FI, CO, SD, MM, PP, ABAP, Basis and PS, A to Z or by module.`,
   alternates: alternatesFor('en', dictionaryPath),
 };
 
