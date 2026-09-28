@@ -378,6 +378,73 @@ function TaxCodeLookup() {
   );
 }
 
+/**
+ * One WBS element followed through CJ88. Each step is also a place where the
+ * run can stop, tagged with the check in the article that covers it.
+ */
+function SettlementSteps() {
+  const step = 'flex items-baseline gap-2 text-[0.78rem] font-semibold text-ink mb-1.5';
+  const num = 'inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ink text-paper text-[0.68rem]';
+  const stop = 'mt-1.5 text-[0.72rem] leading-snug text-ink-mute';
+  const tag = 'inline-block font-semibold text-accent mr-1';
+  const down = (
+    <div aria-hidden className="text-center text-ink-mute text-base leading-none py-1.5">↓</div>
+  );
+  return (
+    <div className="mx-auto max-w-md">
+      <p className={step}><span className={num}>1</span><span><Phrase text="WBS要素に|実績原価がたまる" /></span></p>
+      <div className={`${box} border-rule bg-paper text-ink`}>
+        <span className={sub.replace(' mt-1', '')}>WBS要素 P-1001-01</span>
+        <span className={`${title} mt-0.5`}>社内システム改修</span>
+        <span className={sub}><Phrase text="外注費80万円＋|社内作業20万円＝|100万円" /></span>
+      </div>
+      <p className={stop}><span className={tag}>確認1</span><Phrase text="原価がない、|または決済済みだと|決済するものがない" /></p>
+      {down}
+
+      <p className={step}><span className={num}>2</span><span><Phrase text="決済ルールで|行き先を決める" /></span></p>
+      <div className={`${box} border-rule bg-paper text-ink`}>
+        <span className={title}><Phrase text="原価センタ 4100|（情報システム部）へ|100%" /></span>
+      </div>
+      <p className={stop}><span className={tag}>確認2</span><Phrase text="ルールがないと|ここで止まる" /></p>
+      {down}
+
+      <p className={step}><span className={num}>3</span><span><Phrase text="ステータスが|決済を許すか" /></span></p>
+      <div className="grid grid-cols-2 gap-2">
+        <div className={`${box} border-accent bg-accent-soft text-accent`}>
+          <span className={title}>決済できる</span>
+          <span className="block text-[0.72rem] leading-snug mt-1"><Phrase text="REL（リリース）|TECO（技術的完了）" /></span>
+        </div>
+        <div className={`${box} border-rule bg-paper text-ink`}>
+          <span className={title}>決済できない</span>
+          <span className={sub}><Phrase text="CRTD（作成済）|CLSD（クローズ）" /></span>
+        </div>
+      </div>
+      <p className={stop}><span className={tag}>確認3</span><Phrase text="ユーザーステータスで|止めていることもある" /></p>
+      {down}
+
+      <p className={step}><span className={num}>4</span><span><Phrase text="配分構造で、|決済に使う原価要素を決める" /></span></p>
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-1.5">
+        <div className={`${box} border-rule bg-paper text-ink`}>
+          <span className={sub.replace(' mt-1', '')}>外注費</span>
+          <span className={sub}>社内作業費</span>
+        </div>
+        <span aria-hidden className="text-ink-mute text-base">→</span>
+        <div className={`${box} border-rule bg-paper text-ink`}>
+          <span className={title}><Phrase text="決済用の|原価要素" /></span>
+        </div>
+      </div>
+      <p className={stop}><span className={tag}>確認5</span><Phrase text="どこにも割り当てられて|いない原価要素があると|KD503で止まる" /></p>
+      {down}
+
+      <p className={step}><span className={num}>5</span><span><Phrase text="決済先へ転記する" /></span></p>
+      <div className={`${box} border-accent bg-accent-soft text-accent`}>
+        <span className={title}><Phrase text="WBS要素 −100万円|→ 原価センタ 4100 ＋100万円" /></span>
+      </div>
+      <p className={stop}><span className={tag}>確認4</span><Phrase text="決済先がロック中・|有効期間外だと|受け取れない" /></p>
+    </div>
+  );
+}
+
 const FIGURES: Record<FigureName, () => ReactNode> = {
   'ledger-stack': LedgerStack,
   'standard-hub': StandardHub,
@@ -386,6 +453,7 @@ const FIGURES: Record<FigureName, () => ReactNode> = {
   'depreciation-lanes': DepreciationLanes,
   'clearing-groups': ClearingGroups,
   'tax-code-lookup': TaxCodeLookup,
+  'settlement-steps': SettlementSteps,
 };
 
 export default function Figure({ name }: { name: FigureName }) {

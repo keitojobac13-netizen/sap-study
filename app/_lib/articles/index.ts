@@ -15,6 +15,7 @@ import { ck24MarkRelease } from './ck24-mark-release';
 import { addonTracing } from './addon-tracing';
 import { autoClearingF13 } from './auto-clearing-f13';
 import { sapConsumptionTax } from './sap-consumption-tax';
+import { wbsSettlementError } from './wbs-settlement-error';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -66,6 +67,7 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  wbsSettlementError,
   sapConsumptionTax,
   autoClearingF13,
   sapErrorTriage,
