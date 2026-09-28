@@ -92,10 +92,10 @@ const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string | string
   sd: {
     pricing: 'sap-consumption-tax',
     'returns-credit': 'credit-memo-debit-memo',
-    'shipping-billing': 'goods-issue-shipping',
+    'shipping-billing': ['goods-issue-shipping', 's4hana-table-flow'],
     'customer-master': 'bp-master',
   },
-  mm: { 'special-procurement': 'consignment', 'vendor-master': 'bp-master' },
+  mm: { 'special-procurement': 'consignment', 'vendor-master': 'bp-master', 'goods-receipt-invoice': 's4hana-table-flow' },
   pp: { 'production-confirmation': 'backflush' },
   abap: { 'abap-overview': 'ricefw', 'abap-debugging-error': 'addon-tracing' },
   basis: { 'basis-user-auth': 'sap-error-triage' },
