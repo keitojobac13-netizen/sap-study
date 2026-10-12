@@ -56,7 +56,7 @@ export const MODULE_CONTENT_UPDATED: Record<ModuleKey, string> = {
 
 /** When the glossary, the about page and the other standalone pages last changed. */
 export const PAGE_UPDATED = {
-  dictionary: '2026-09-28',
+  dictionary: '2026-10-12',
   about: '2026-09-28',
   contact: '2026-09-08',
   privacy: '2026-09-08',

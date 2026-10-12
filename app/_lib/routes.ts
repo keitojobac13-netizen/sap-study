@@ -28,6 +28,14 @@ export function dictionaryPath(lang: Language) {
   return `${localePrefix(lang)}/dictionary`;
 }
 
+/**
+ * Where a glossary term is explained. Japanese terms have a page of their
+ * own; English terms are still entries on the one-page glossary.
+ */
+export function termPath(lang: Language, id: string) {
+  return lang === 'ja' ? `/dictionary/${id}` : `${dictionaryPath(lang)}#${id}`;
+}
+
 export function searchPath(lang: Language) {
   return `${localePrefix(lang)}/search`;
 }

@@ -8,18 +8,10 @@ import {
   type GlossaryModule,
 } from '../_lib/glossary';
 import type { Language } from '../_lib/i18n';
+import Link from 'next/link';
 import Icon from './Icon';
-
-const MODULE_COLORS: Record<GlossaryModule, string> = {
-  FI: 'text-blue-700 border-blue-200 bg-blue-50/60',
-  CO: 'text-emerald-700 border-emerald-200 bg-emerald-50/60',
-  SD: 'text-orange-700 border-orange-200 bg-orange-50/60',
-  MM: 'text-purple-700 border-purple-200 bg-purple-50/60',
-  PP: 'text-cyan-700 border-cyan-200 bg-cyan-50/60',
-  ABAP: 'text-red-700 border-red-200 bg-red-50/60',
-  BASIS: 'text-amber-700 border-amber-200 bg-amber-50/60',
-  PS: 'text-teal-700 border-teal-200 bg-teal-50/60',
-};
+import { GLOSSARY_MODULE_COLORS as MODULE_COLORS } from '../_lib/module-style';
+import { termPath } from '../_lib/routes';
 
 const ALL_MODULES: GlossaryModule[] = ['FI', 'CO', 'SD', 'MM', 'PP', 'ABAP', 'BASIS', 'PS'];
 
@@ -333,6 +325,15 @@ export default function GlossaryPage({ lang }: Props) {
                                 </span>
                                 {lang === 'ja' ? term.en.definition : term.ja.definition}
                               </p>
+                              {lang === 'ja' && (
+                                <Link
+                                  href={termPath('ja', term.id)}
+                                  className="mt-4 inline-flex items-center gap-1.5 text-[0.8rem] text-accent hover:underline underline-offset-2"
+                                >
+                                  この用語が出てくるページと関連用語
+                                  <Icon name="arrow-right" className="w-3.5 h-3.5" />
+                                </Link>
+                              )}
                             </div>
                           </details>
                         );

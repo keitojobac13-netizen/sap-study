@@ -2,7 +2,7 @@ import type { Language } from './i18n';
 import { MODULE_KEYS, getModule } from './modules';
 import { glossaryTerms } from './glossary';
 import { visibleArticles, cardTitle, CATEGORY_LABELS } from './articles';
-import { sectionPath, articlePath, dictionaryPath } from './routes';
+import { sectionPath, articlePath, termPath } from './routes';
 
 export type SearchKind = 'section' | 'article' | 'term';
 
@@ -77,7 +77,6 @@ export function buildSearchIndex(lang: Language): SearchEntry[] {
     }
   }
 
-  const dictionary = dictionaryPath(lang);
   for (const term of glossaryTerms) {
     const self = lang === 'ja' ? term.ja : term.en;
     const other = lang === 'ja' ? term.en : term.ja;
@@ -85,7 +84,7 @@ export function buildSearchIndex(lang: Language): SearchEntry[] {
       t: self.term,
       g: term.modules.join('・'),
       s: trim(self.definition),
-      h: `${dictionary}#${term.id}`,
+      h: termPath(lang, term.id),
       k: 'term',
       // The other language and the reading are matched but not shown: someone
       // who only knows "payment terms" should still find 支払条件.

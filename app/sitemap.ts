@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { MODULE_KEYS, allSectionPaths, moduleUpdated, sectionUpdated } from './_lib/modules';
 import { publishedArticles } from './_lib/articles';
 import { PAGE_UPDATED } from './_lib/site-info';
+import { TERM_PAGES } from './_lib/glossary-pages';
 import type { Language } from './_lib/i18n';
 import {
   BASE_URL,
@@ -14,6 +15,7 @@ import {
   privacyPath,
   articlesPath,
   articlePath,
+  termPath,
 } from './_lib/routes';
 
 type PathFn = (lang: Language) => string;
@@ -73,6 +75,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // Only terms with a longer explanation; the rest are noindex.
+  const terms: MetadataRoute.Sitemap = Object.entries(TERM_PAGES).map(([id, page]) => ({
+    url: `${BASE_URL}${termPath('ja', id)}`,
+    lastModified: new Date(page.updated),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
   const localized = entries.flatMap(({ path, updated, priority, changeFrequency }) =>
     (['ja', 'en'] as const).map((lang) => ({
       url: `${BASE_URL}${path(lang)}`,
@@ -89,5 +99,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...localized, ...columns];
+  return [...localized, ...columns, ...terms];
 }

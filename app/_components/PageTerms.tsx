@@ -4,7 +4,7 @@ import type { Language } from '../_lib/i18n';
 import type { Block } from '../_lib/learning-types';
 import type { GlossaryModule } from '../_lib/glossary';
 import { termsInBlocks } from '../_lib/glossary-links';
-import { dictionaryPath } from '../_lib/routes';
+import { dictionaryPath, termPath } from '../_lib/routes';
 
 const LABELS = {
   ja: {
@@ -53,7 +53,7 @@ export default function PageTerms({ blocks, lang, moduleKey }: {
         {terms.map((term) => (
           <li key={term.id}>
             <Link
-              href={`${dictionary}#${term.id}`}
+              href={termPath(lang, term.id)}
               className="inline-block text-[0.8rem] text-ink-soft border border-rule rounded px-2 py-1 hover:text-accent hover:border-accent transition-colors"
             >
               {term[lang].term}
