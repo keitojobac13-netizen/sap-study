@@ -8,7 +8,13 @@ export type GlossaryModule = 'FI' | 'CO' | 'SD' | 'MM' | 'PP' | 'ABAP' | 'BASIS'
 export type GlossaryTerm = {
   id: string;
   modules: GlossaryModule[];
-  ja: { term: string; reading: string; definition: string };
+  ja: {
+    term: string;
+    reading: string;
+    definition: string;
+    /** Other spellings the site's Japanese text uses, so its pages link here (GR/IR勘定). */
+    aliases?: string[];
+  };
   en: { term: string; definition: string };
 };
 
@@ -184,6 +190,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '与信エリア',
       reading: 'よしんえりあ',
+      aliases: ['与信管理領域'],
       definition: '与信管理の組織単位。複数の会社コードにまたがった与信管理が可能で、得意先グループ全体の与信限度を一元管理できる。与信エリア内に複数の得意先を属させ、与信限度額の共有・管理を行う。FD32で得意先ごとに与信エリアと与信限度額を設定する。',
     },
     en: {
@@ -726,6 +733,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: 'GR/IR照合勘定',
       reading: 'じーあーるあいあーるしょうごうかんじょう',
+      aliases: ['GR/IR勘定', 'GR/IR'],
       definition: 'Goods Receipt/Invoice Receipt Clearing Account。入庫（GR）から請求書照合（MIRO）完了までの間、未処理残高を一時的に保持するGL勘定。入庫時に貸方計上され、MIRO完了時に借方でクリアされる。月次処理ではMR11でGR/IR残高の整理を行う。GRのみ・MIROのみの場合は残高が残り、期末調整が必要となる。',
     },
     en: {
@@ -817,6 +825,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: 'GL勘定（総勘定元帳勘定）',
       reading: 'じーえるかんじょう',
+      aliases: ['G/L勘定'],
       definition: 'General Ledger Account。財務会計（FI）のすべての取引が集計される会計上の分類コード。FSS0またはFS00で作成し、勘定タイプ（貸借対照表・損益計算書）・勘定グループ・転記管理コードを設定する。すべてのSAP転記（仕訳）はGL勘定を通じて記録され、財務諸表を構成する。CO原価要素とGL勘定はS/4HANAで統合されている。',
     },
     en: {

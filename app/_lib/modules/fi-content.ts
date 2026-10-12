@@ -925,7 +925,7 @@ export const fiContent: Record<Language, ModuleEnrichment> = {
             rows: [
               ['総勘定元帳', 'FAGLGVTR', 'B/S科目の残高繰越とP/L科目の利益剰余金への振替'],
               ['仕入先・得意先', 'F.07', '補助元帳の残高繰越'],
-              ['固定資産', 'AJRW', '資産の年度切替'],
+              ['固定資産', 'AJRW（ECC）', '資産の年度切替。S/4HANAの新しい固定資産会計ではFAGLGVTRの中で行われ、AJRWは不要'],
             ],
           },
           {
@@ -1959,7 +1959,7 @@ export const fiContent: Record<Language, ModuleEnrichment> = {
             rows: [
               ['General ledger', 'FAGLGVTR', 'Carry forward balance sheet accounts and transfer P&L to retained earnings'],
               ['Vendors and customers', 'F.07', 'Carry forward sub-ledger balances'],
-              ['Fixed assets', 'AJRW', 'Change the asset fiscal year'],
+              ['Fixed assets', 'AJRW (ECC)', 'Change the asset fiscal year. In S/4HANA new Asset Accounting this happens within FAGLGVTR and AJRW is not needed'],
             ],
           },
           {

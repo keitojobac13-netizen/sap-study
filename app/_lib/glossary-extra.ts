@@ -181,11 +181,11 @@ export const extraTerms: GlossaryTerm[] = [
     ja: {
       term: '残高繰越',
       reading: 'ざんだかくりこし',
-      definition: '年度末に残高を翌年度へ繰り越す処理。貸借対照表科目は残高がそのまま翌年度の期首残高となり、損益計算書科目は残高がゼロにリセットされたうえで当期損益が利益剰余金勘定へ振り替えられる。総勘定元帳はFAGLGVTR、補助元帳はF.07、固定資産はAJRWで実行する。繰越後に前年度へ転記した場合、その差額は自動的に反映される。',
+      definition: '年度末に残高を翌年度へ繰り越す処理。貸借対照表科目は残高がそのまま翌年度の期首残高となり、損益計算書科目は残高がゼロにリセットされたうえで当期損益が利益剰余金勘定へ振り替えられる。総勘定元帳はFAGLGVTR、補助元帳はF.07で実行する。固定資産の年度切替はECCではAJRWで行うが、S/4HANAの新しい固定資産会計ではFAGLGVTRの中で行われる。繰越後に前年度へ転記した場合、その差額は自動的に反映される。',
     },
     en: {
       term: 'Balance Carry-Forward',
-      definition: 'Carrying balances into the next fiscal year at year end. Balance sheet accounts carry their balance forward as the opening balance, while P&L accounts reset to zero with the result transferred to retained earnings. It is run with FAGLGVTR for the general ledger, F.07 for sub-ledgers and AJRW for fixed assets. Postings made to the prior year afterwards update the carried balance automatically.',
+      definition: 'Carrying balances into the next fiscal year at year end. Balance sheet accounts carry their balance forward as the opening balance, while P&L accounts reset to zero with the result transferred to retained earnings. It is run with FAGLGVTR for the general ledger and F.07 for sub-ledgers. ECC changes the asset fiscal year separately with AJRW; in S/4HANA new Asset Accounting that happens within FAGLGVTR. Postings made to the prior year afterwards update the carried balance automatically.',
     },
   },
   {
@@ -220,6 +220,7 @@ export const extraTerms: GlossaryTerm[] = [
     ja: {
       term: '伝票取消（逆仕訳）',
       reading: 'でんぴょうとりけし',
+      aliases: ['伝票の取消'],
       definition: '転記済みの会計伝票は金額や勘定科目を上書き修正できないため、誤りはFB08で取り消す。取消を行うと元伝票と逆の仕訳が新しい伝票として起票され、両者が相互に紐づけられる。消込済みの伝票はFBRAで消込を解除してからでないと取り消せず、クローズされた期間への取消もその期間を再オープンしない限りできない。',
     },
     en: {

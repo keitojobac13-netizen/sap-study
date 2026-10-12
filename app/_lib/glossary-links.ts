@@ -83,13 +83,13 @@ function escapeRegExp(s: string) {
  * with lowercase letters ignore case, so "Posting Key" finds "posting key";
  * all-caps abbreviations do not, so "PS" skips "ps".
  */
-function indexIn(text: string, name: string): number {
-  if (/^[\x20-\x7E]+$/.test(name)) {
-    const flags = /[a-z]/.test(name) ? 'i' : '';
-    const re = new RegExp(`(?<![A-Za-z0-9])${escapeRegExp(name)}(?![A-Za-z0-9])`, flags);
-    return text.search(re);
-  }
-  return text.indexOf(name);
+function spansIn(text: string, name: string): [number, number][] {
+  const latin = /^[\x20-\x7E]+$/.test(name);
+  const flags = 'g' + (latin && /[a-z]/.test(name) ? 'i' : '');
+  const re = latin
+    ? new RegExp(`(?<![A-Za-z0-9])${escapeRegExp(name)}(?![A-Za-z0-9])`, flags)
+    : new RegExp(escapeRegExp(name), flags);
+  return [...text.matchAll(re)].map((m) => [m.index, m.index + name.length]);
 }
 
 function blockText(block: Block): string {
@@ -125,7 +125,7 @@ export function termsInBlocks(
   limit = 12,
 ): GlossaryTerm[] {
   const text = blocks.map(blockText).join('\n');
-  const found: { term: GlossaryTerm; at: number }[] = [];
+  const matches: { term: GlossaryTerm; spans: [number, number][] }[] = [];
   for (const term of glossaryTerms) {
     const { names, qualifier } = namesOf(term[lang].term);
     if (qualifier && qualifier !== moduleKey) continue;
@@ -134,9 +134,20 @@ export function termsInBlocks(
       const onOwnModule = !!moduleKey && term.modules.includes(moduleKey);
       if (!(everyday.ownModule && onOwnModule)) continue;
     }
-    const hits = names.map((n) => indexIn(text, n)).filter((i) => i >= 0);
-    if (hits.length > 0) found.push({ term, at: Math.min(...hits) });
+    const aliases = lang === 'ja' ? term.ja.aliases ?? [] : [];
+    const spans = [...names, ...aliases].flatMap((n) => spansIn(text, n));
+    if (spans.length > 0) matches.push({ term, spans });
   }
+
+  // "管理領域" inside "与信管理領域" is another term's word, not this one.
+  const inLonger = (id: string, [s, e]: [number, number]) =>
+    matches.some(({ term, spans }) =>
+      term.id !== id && spans.some(([os, oe]) => os <= s && e <= oe && oe - os > e - s)
+    );
+  const found = matches.flatMap(({ term, spans }) => {
+    const own = spans.filter((span) => !inLonger(term.id, span));
+    return own.length > 0 ? [{ term, at: Math.min(...own.map(([s]) => s)) }] : [];
+  });
   return found
     .sort((a, b) => a.at - b.at)
     .slice(0, limit)

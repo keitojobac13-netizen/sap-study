@@ -44,7 +44,7 @@ export const ARTICLES_UPDATED = '2026-09-07';
  * column links are dated automatically from the columns themselves.
  */
 export const MODULE_CONTENT_UPDATED: Record<ModuleKey, string> = {
-  fi: '2026-09-17',
+  fi: '2026-10-12',
   co: '2026-09-16',
   sd: '2026-09-14',
   mm: '2026-09-16',
