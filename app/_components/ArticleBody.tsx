@@ -181,17 +181,22 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
           case 'affiliate':
             if (!block.href) return null;
             return (
-              <aside key={i} className="relative border border-rule bg-ground px-4 py-3.5 my-2">
+              <aside key={i} className="relative border border-rule bg-ground px-4 py-4 sm:px-5 my-2">
                 <p className="text-[0.68rem] font-semibold text-ink-mute tracking-[0.08em] mb-1">PR</p>
+                <p className="text-ink font-bold text-[1.02rem]">{block.label}</p>
+                <p className="text-ink-soft text-[0.9rem] leading-[1.85] mt-1.5 text-pretty">{block.text}</p>
+                {block.audience && (
+                  <p className="text-ink-mute text-[0.8rem] leading-[1.7] mt-1.5 text-pretty">対象：{block.audience}</p>
+                )}
                 <a
                   href={block.href}
                   target="_blank"
                   rel="sponsored noopener"
-                  className="text-accent font-semibold underline underline-offset-4 decoration-accent/40 hover:decoration-accent"
+                  className="mt-3.5 inline-flex items-center justify-center gap-2 max-sm:w-full px-5 h-11 bg-accent hover:opacity-90 text-white text-[0.88rem] font-semibold rounded transition-opacity"
                 >
-                  {block.label}
+                  {block.cta}
+                  <Icon name="arrow-right" className="w-4 h-4" />
                 </a>
-                <p className="text-ink-soft text-[0.9rem] leading-[1.85] mt-1.5 text-pretty">{block.text}</p>
                 {block.pixel && (
                   // A8.net counts impressions with this 1×1 image; next/image would proxy and break it.
                   // eslint-disable-next-line @next/next/no-img-element

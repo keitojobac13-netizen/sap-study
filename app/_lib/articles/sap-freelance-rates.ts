@@ -117,7 +117,9 @@ export const sapFreelanceRates: ColumnArticle = {
       href: 'https://px.a8.net/svt/ejp?a8mat=4BCLW2+G6VE0I+4SXU+HV7V6',
       pixel: 'https://www14.a8.net/0.gif?a8mat=4BCLW2+G6VE0I+4SXU+HV7V6',
       label: 'IT Consultant Bank',
-      text: 'フリーのIT・SAPコンサルタント向けの案件紹介サービス。コンサル出身の担当者が案件を紹介する。対象は、コンサルティングファームかSIerでの勤務経験がある45歳未満の人。',
+      text: 'フリーのIT・SAPコンサルタント向けの案件紹介サービス。コンサル出身の担当者が案件を紹介する。',
+      audience: 'コンサルティングファームかSIerでの勤務経験がある45歳未満の人',
+      cta: '案件を見てみる',
     },
     {
       type: 'p',
@@ -128,7 +130,9 @@ export const sapFreelanceRates: ColumnArticle = {
       href: 'https://px.a8.net/svt/ejp?a8mat=4BCLW3+3MDY9E+4SXU+NU729',
       pixel: 'https://www19.a8.net/0.gif?a8mat=4BCLW3+3MDY9E+4SXU+NU729',
       label: 'Groovement Agent',
-      text: 'コンサルティングファーム・DX・スタートアップの転職に特化したエージェント。対象は大卒以上で24〜34歳の正社員転職。',
+      text: 'コンサルティングファーム・DX・スタートアップの転職に特化したエージェント。',
+      audience: '大卒以上で24〜34歳、正社員での転職を考えている人',
+      cta: '無料で相談してみる',
     },
 
     { type: 'h', text: 'この記事に出てきた名前' },

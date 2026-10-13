@@ -41,9 +41,18 @@ export type Block =
    * An affiliate link from the A8.net "広告リンク作成" text-link code: `href`
    * is the px.a8.net URL and `pixel` the 1×1 impression image. Only for
    * articles with `hasAffiliateLinks`. An empty `href` (link code not pasted
-   * yet) renders nothing.
+   * yet) renders nothing. `audience` states the advertiser's conditions so
+   * readers who would be rejected don't click; `cta` is the button wording.
    */
-  | { type: 'affiliate'; href: string; pixel?: string; label: string; text: string }
+  | {
+      type: 'affiliate';
+      href: string;
+      pixel?: string;
+      label: string;
+      text: string;
+      audience?: string;
+      cta: string;
+    }
   /** A hand-drawn figure from `_components/figures`. Write `|` in the caption at the allowed line breaks. */
   | { type: 'figure'; name: FigureName; caption: string; note?: string };
 
