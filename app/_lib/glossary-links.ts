@@ -107,6 +107,8 @@ function blockText(block: Block): string {
       return `${block.title}\n${block.text}`;
     case 'link':
       return `${block.label}\n${block.text ?? ''}`;
+    case 'affiliate':
+      return block.text;
     case 'figure':
       return block.caption;
   }

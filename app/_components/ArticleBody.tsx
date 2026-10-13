@@ -177,6 +177,28 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                 </Link>
               </p>
             );
+
+          case 'affiliate':
+            if (!block.href) return null;
+            return (
+              <aside key={i} className="relative border border-rule bg-ground px-4 py-3.5 my-2">
+                <p className="text-[0.68rem] font-semibold text-ink-mute tracking-[0.08em] mb-1">PR</p>
+                <a
+                  href={block.href}
+                  target="_blank"
+                  rel="sponsored noopener"
+                  className="text-accent font-semibold underline underline-offset-4 decoration-accent/40 hover:decoration-accent"
+                >
+                  {block.label}
+                </a>
+                <p className="text-ink-soft text-[0.9rem] leading-[1.85] mt-1.5 text-pretty">{block.text}</p>
+                {block.pixel && (
+                  // A8.net counts impressions with this 1×1 image; next/image would proxy and break it.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={block.pixel} width={1} height={1} alt="" className="absolute w-px h-px opacity-0" />
+                )}
+              </aside>
+            );
         }
       })}
     </div>

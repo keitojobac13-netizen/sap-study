@@ -19,6 +19,8 @@ import { wbsSettlementError } from './wbs-settlement-error';
 import { withholdingTaxSetup } from './withholding-tax-setup';
 import { costObjectChoice } from './cost-object-choice';
 import { s4hanaTableFlow } from './s4hana-table-flow';
+import { consultantVsInhouseSe } from './consultant-vs-inhouse-se';
+import { sapFreelanceRates } from './sap-freelance-rates';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -31,12 +33,13 @@ import { s4hanaTableFlow } from './s4hana-table-flow';
  * one-line change: set `status: 'published'` and a `publishedAt` date.
  */
 
-export type ArticleCategory = 'term' | 'compare' | 'overview';
+export type ArticleCategory = 'term' | 'compare' | 'overview' | 'career';
 
 export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
   term: '用語解説',
   compare: '違いの比較',
   overview: '全体像',
+  career: 'キャリア',
 };
 
 export type RelatedLink = { label: string; href: string };
@@ -70,6 +73,8 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  consultantVsInhouseSe,
+  sapFreelanceRates,
   s4hanaTableFlow,
   costObjectChoice,
   withholdingTaxSetup,
