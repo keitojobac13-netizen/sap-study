@@ -23,6 +23,7 @@ import { consultantVsInhouseSe } from './consultant-vs-inhouse-se';
 import { sapFreelanceRates } from './sap-freelance-rates';
 import { balanceVsOpenItemMigration } from './balance-vs-open-item-migration';
 import { sapConsultantEnglish } from './sap-consultant-english';
+import { sapCertificationValue } from './sap-certification-value';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -75,6 +76,7 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  sapCertificationValue,
   sapConsultantEnglish,
   balanceVsOpenItemMigration,
   consultantVsInhouseSe,
