@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const sapConsultantEnglish: ColumnArticle = {
   slug: 'sap-consultant-english',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-10-28',
   category: 'career',
   cardTitle: 'SAPコンサルに必要な英語力',
   title: 'SAPコンサルに英語力はどれくらい必要か｜国内案件なら困らない、でも選べる案件が変わる',
