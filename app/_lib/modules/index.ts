@@ -87,7 +87,7 @@ const SECTION_ARTICLES: Partial<Record<ModuleKey, Record<string, string | string
     'fi-overview': 'fi-beginner-pitfalls',
     'fi-journal': 'document-date-posting-date',
     'fi-ap': ['f110-payment-medium', 'withholding-tax-setup'],
-    'fi-ar': 'auto-clearing-f13',
+    'fi-ar': ['auto-clearing-f13', 'balance-vs-open-item-migration'],
   },
   co: { 'co-product-costing': 'ck24-mark-release', 'co-internal-order': 'cost-object-choice' },
   sd: {
