@@ -8,7 +8,14 @@ import PageTerms from './PageTerms';
 import WaitlistForm from './WaitlistForm';
 import { translations } from '../_lib/i18n';
 import { SITE_OPERATOR } from '../_lib/site-info';
-import { CATEGORY_LABELS, cardTitle, formatDate, getArticle, type ColumnArticle } from '../_lib/articles';
+import {
+  CATEGORY_LABELS,
+  cardTitle,
+  formatDate,
+  getArticle,
+  visibleArticles,
+  type ColumnArticle,
+} from '../_lib/articles';
 import { BASE_URL, homePath, articlePath, articlesPath } from '../_lib/routes';
 
 export default function ColumnArticlePage({ article }: { article: ColumnArticle }) {
@@ -19,6 +26,10 @@ export default function ColumnArticlePage({ article }: { article: ColumnArticle 
   const related = (article.related ?? []).filter(
     ({ href }) => !href.startsWith(`${articlesPath()}/`) || getArticle(href.split('/').pop() ?? '')
   );
+  // Affiliate links live only in the career columns, so technical articles
+  // point there instead of carrying ads (and the PR notice) themselves.
+  const careerArticles =
+    article.category === 'career' ? [] : visibleArticles().filter((a) => a.category === 'career');
 
   const jsonLd = published && {
     '@context': 'https://schema.org',
@@ -99,6 +110,28 @@ export default function ColumnArticlePage({ article }: { article: ColumnArticle 
                     >
                       <Icon name="arrow-right" className="w-3.5 h-3.5 flex-shrink-0" />
                       {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          {careerArticles.length > 0 && (
+            <nav aria-label="キャリアを考えている人へ" className="mt-10 border border-rule bg-ground px-5 py-4">
+              <h2 className="text-[0.85rem] font-semibold text-ink mb-1">キャリアを考えている人へ</h2>
+              <p className="text-[0.8rem] text-ink-mute leading-relaxed mb-3">
+                SAPの経験を活かした働き方を、コラムで整理しています。
+              </p>
+              <ul className="space-y-2">
+                {careerArticles.map((a) => (
+                  <li key={a.slug}>
+                    <Link
+                      href={articlePath(a.slug)}
+                      className="flex items-center gap-2 text-[0.9rem] text-ink-soft hover:text-accent transition-colors"
+                    >
+                      <Icon name="arrow-right" className="w-3.5 h-3.5 flex-shrink-0" />
+                      {cardTitle(a)}
                     </Link>
                   </li>
                 ))}
