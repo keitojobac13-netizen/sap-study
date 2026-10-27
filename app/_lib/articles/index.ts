@@ -21,6 +21,7 @@ import { costObjectChoice } from './cost-object-choice';
 import { s4hanaTableFlow } from './s4hana-table-flow';
 import { consultantVsInhouseSe } from './consultant-vs-inhouse-se';
 import { sapFreelanceRates } from './sap-freelance-rates';
+import { balanceVsOpenItemMigration } from './balance-vs-open-item-migration';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -73,6 +74,7 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  balanceVsOpenItemMigration,
   consultantVsInhouseSe,
   sapFreelanceRates,
   s4hanaTableFlow,

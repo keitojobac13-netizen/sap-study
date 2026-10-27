@@ -67,7 +67,8 @@ export type FigureName =
   | 'settlement-steps'
   | 'withholding-payment'
   | 'cost-object-choice'
-  | 'sales-table-flow';
+  | 'sales-table-flow'
+  | 'migration-clearing';
 
 export type Section = {
   id: string;

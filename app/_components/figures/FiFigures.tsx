@@ -585,6 +585,97 @@ function SalesTableFlow() {
   );
 }
 
+/**
+ * Balances and open items are posted against one migration clearing account;
+ * when every route has been loaded, that account nets to zero.
+ */
+function MigrationClearing() {
+  const routes = [
+    {
+      name: '総勘定元帳の|残高',
+      rows: [
+        ['現金預金', '借', '3,000'],
+        ['純資産', '貸', '4,000'],
+      ],
+      total: null,
+      offset: ['借', '1,000'],
+    },
+    {
+      name: '得意先の|未消込明細',
+      rows: [
+        ['A社 請求101', '借', '1,200'],
+        ['A社 請求102', '借', '800'],
+        ['B社 請求205', '借', '3,000'],
+      ],
+      total: '売掛金 借 5,000 は|3件の合計',
+      offset: ['貸', '5,000'],
+    },
+    {
+      name: '仕入先の|未消込明細',
+      rows: [
+        ['X社 請求88', '貸', '2,500'],
+        ['Y社 請求31', '貸', '1,500'],
+      ],
+      total: '買掛金 貸 4,000 は|2件の合計',
+      offset: ['借', '4,000'],
+    },
+  ];
+  const cell = 'py-0.5 text-[0.78rem] tabular-nums';
+  return (
+    <div>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
+        {routes.map((r) => (
+          <div key={r.name} className="border border-rule bg-paper flex flex-col">
+            <p className="px-3 py-2 border-b border-rule text-center text-[0.8rem] font-semibold text-ink">
+              <Phrase text={r.name} />
+            </p>
+            <div className="flex-1 px-3 py-1.5">
+              <table className="w-full">
+                <tbody className="text-ink-soft">
+                  {r.rows.map(([label, side, amount]) => (
+                    <tr key={label}>
+                      <td className={cell}>{label}</td>
+                      <td className={`${cell} text-ink-mute px-1`}>{side}</td>
+                      <td className={`${cell} text-right`}>{amount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {r.total && (
+              <p className="px-3 pb-1.5 text-[0.72rem] text-ink-mute leading-snug">
+                <Phrase text={r.total} />
+              </p>
+            )}
+            <div className="px-3 py-2 border-t border-rule flex justify-between text-[0.78rem] text-ink tabular-nums">
+              <span>移行仮勘定</span>
+              <span>
+                {r.offset[0]} {r.offset[1]}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div aria-hidden className="flex flex-col items-center text-ink-mute py-2">
+        <span className="text-[0.72rem] leading-snug text-center mb-0.5">
+          <Phrase text="移行仮勘定を|合計する" />
+        </span>
+        <span className="text-base leading-none">↓</span>
+      </div>
+
+      <div className={`${box} border-accent bg-accent-soft text-accent mx-auto max-w-sm`}>
+        <span className={title}>
+          <Phrase text="借 5,000 − 貸 5,000 ＝ |残高 0" />
+        </span>
+        <span className="block text-[0.72rem] leading-snug mt-1">
+          <Phrase text="ゼロにならなければ、|どこかに移し漏れか|二重の移行がある" />
+        </span>
+      </div>
+    </div>
+  );
+}
+
 const FIGURES: Record<FigureName, () => ReactNode> = {
   'ledger-stack': LedgerStack,
   'standard-hub': StandardHub,
@@ -597,6 +688,7 @@ const FIGURES: Record<FigureName, () => ReactNode> = {
   'withholding-payment': WithholdingPayment,
   'cost-object-choice': CostObjectChoice,
   'sales-table-flow': SalesTableFlow,
+  'migration-clearing': MigrationClearing,
 };
 
 export default function Figure({ name }: { name: FigureName }) {
