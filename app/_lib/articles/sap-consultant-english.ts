@@ -20,6 +20,7 @@ export const sapConsultantEnglish: ColumnArticle = {
     '翻訳',
     'キャリア',
   ],
+  hasAffiliateLinks: true,
   related: [
     { label: 'SAPコンサルと社内SEの違い', href: '/articles/consultant-vs-inhouse-se' },
     { label: 'SAPフリーランスの単価と働き方', href: '/articles/sap-freelance-rates' },
@@ -130,6 +131,19 @@ export const sapConsultantEnglish: ColumnArticle = {
     {
       type: 'p',
       text: '①は、SAP用語に慣れて、翻訳ツールやAIを使いこなせば、多くの人が到達できます。②から③に進むには、実際に話す練習が欠かせません。読み書きと違って、会話はツールで代わりがききにくいからです。',
+    },
+    {
+      type: 'p',
+      text: '話す練習は、ひとりで続けるのが難しい部分です。ビジネスの場面を想定した英会話のレッスンと、学習の進め方を見てくれるコーチを組み合わせたサービスを使うのも1つの方法です。',
+    },
+    {
+      type: 'affiliate',
+      href: 'https://px.a8.net/svt/ejp?a8mat=4BCLW2+DRCO36+2QEI+NTRMQ',
+      pixel: 'https://www18.a8.net/0.gif?a8mat=4BCLW2+DRCO36+2QEI+NTRMQ',
+      label: 'Bizmates Coaching',
+      text: 'ビジネス英語に特化したコーチングサービス。専属の日本人コンサルタントの学習管理と、オンライン英会話Bizmatesのレッスンがセットになっている。',
+      audience: '仕事で英語を話せるようになりたい人。Bizmatesを初めて使う人',
+      cta: '詳しく見てみる',
     },
 
     { type: 'h', text: 'まとめ' },
