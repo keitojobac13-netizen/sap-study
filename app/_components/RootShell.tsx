@@ -4,7 +4,7 @@ import { type Language } from '../_lib/i18n';
 import CookieBanner from './CookieBanner';
 
 const ADSENSE_CLIENT = 'ca-pub-4188335642202901';
-const GA_ID = 'G-9T111GXMXW';
+const GA_ID = 'G-53970RR8LZ';
 
 const SKIP_LABEL = {
   ja: '本文へスキップ',
