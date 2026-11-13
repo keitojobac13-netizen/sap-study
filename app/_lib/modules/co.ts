@@ -57,7 +57,7 @@ export const co: Record<'ja' | 'en', ModuleContent> = {
       },
       {
         id: 'co-cost-center',
-        title: '原価センタ',
+        title: '原価センタとは（階層・配賦と分配）',
         content: [
           '原価センタ（Cost Center）は、企業内で発生するコストを集計・管理するための組織単位です。部門・機能・場所などに基づいて設定され、間接費の配賦先として機能します。',
           '原価センタは管理領域（Controlling Area）という上位組織に属します。1つの管理領域に複数の原価センタを設定でき、原価センタ間の費用配賦も可能です。',

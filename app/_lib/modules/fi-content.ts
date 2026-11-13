@@ -113,7 +113,7 @@ export const fiContent: Record<Language, ModuleEnrichment> = {
 
       'fi-company-coa': {
         summary:
-          '会計単位である会社コードと、勘定科目マスタの2層構造（勘定科目表レベルと会社コードレベル）の考え方を解説します。',
+          '会社コードとは、SAPで1セットの財務諸表を作る独立した会計単位です。会社コードと勘定科目表の関係、勘定科目マスタの2層構造（勘定科目表レベルと会社コードレベル）を解説します。',
         keywords: ['会社コード', '勘定科目表', 'Chart of Accounts', '照合勘定', '組織構造'],
         body: [
           {

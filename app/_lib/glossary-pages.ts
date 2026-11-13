@@ -13,6 +13,14 @@ import type { Block } from './learning-types';
 export type TermPage = {
   /** The day the explanation last changed, for the sitemap. */
   updated: string;
+  /**
+   * The search title, without the site name, when the words people search
+   * for differ from the headword (繰越残高 for 残高繰越, 消込 英語 for 消込).
+   * Defaults to "<term>とは｜意味と関連するSAPの機能".
+   */
+  title?: string;
+  /** The search snippet, when the definition does not open with the answer. */
+  description?: string;
   body: Block[];
 };
 
@@ -64,8 +72,16 @@ export const TERM_PAGES: Record<string, TermPage> = {
   },
 
   'posting-period': {
-    updated: '2026-10-12',
+    updated: '2026-11-13',
+    title: '転記期間とは｜転記日付で決まる会計期間とOB52の開け閉め',
+    description:
+      '転記期間とは、伝票の転記日付から決まる会計期間（期間1〜12と特別期間13〜16）のことです。OB52で期間を開け閉めし、締めた月への転記を止めます。転記日付そのものの意味は、伝票日付との違いの記事で解説しています。',
     body: [
+      {
+        type: 'link',
+        href: '/articles/document-date-posting-date',
+        label: '転記日付とは？伝票日付・入力日付との違い',
+      },
       { type: 'h', text: '3月決算の会社で9月を締める例' },
       {
         type: 'p',
@@ -200,7 +216,10 @@ export const TERM_PAGES: Record<string, TermPage> = {
   },
 
   acdoca: {
-    updated: '2026-10-12',
+    updated: '2026-11-13',
+    title: 'ACDOCAとは｜S/4HANAのユニバーサルジャーナルの中身とBSEGとの違い',
+    description:
+      'ACDOCAとは、S/4HANAで会計の明細を1つにまとめたテーブル（ユニバーサルジャーナル）です。1行に勘定・原価センタ・利益センタ・セグメント・3つの通貨の金額が入り、ECCのBSEG・COEPに分かれていた明細を置き換えます。主な項目と見方を解説します。',
     body: [
       { type: 'h', text: '1行に何が入っているか' },
       {
@@ -291,7 +310,10 @@ export const TERM_PAGES: Record<string, TermPage> = {
   },
 
   clearing: {
-    updated: '2026-10-12',
+    updated: '2026-11-13',
+    title: '消込とは｜英語ではClearing。SAPの消込の仕組みと画面',
+    description:
+      '消込は英語でClearing（クリアリング）、消し込むはclearと言います。SAPの消込とは、入金や支払を対応する未決済明細と突き合わせてクローズする処理です。振込手数料を引かれた入金の例で、消込の方法と画面（F-28・F-32・F.13）を解説します。',
     body: [
       { type: 'h', text: '振込手数料を引かれた入金を消し込む例' },
       {
@@ -659,7 +681,10 @@ export const TERM_PAGES: Record<string, TermPage> = {
   },
 
   'balance-carryforward': {
-    updated: '2026-10-12',
+    updated: '2026-11-13',
+    title: '繰越残高とは｜SAPの残高繰越（FAGLGVTR・F.07）の仕組み',
+    description:
+      '繰越残高とは、前年度末の残高を翌年度の期首残高として引き継いだ金額です。SAPでは年度末に残高繰越（総勘定元帳はFAGLGVTR、補助元帳はF.07）を実行し、貸借対照表の勘定は残高を繰り越し、損益の勘定は利益剰余金へ振り替えます。',
     body: [
       { type: 'h', text: '3月決算の年度末を繰り越す例' },
       {

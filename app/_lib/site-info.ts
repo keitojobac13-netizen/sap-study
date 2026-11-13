@@ -44,8 +44,8 @@ export const ARTICLES_UPDATED = '2026-09-07';
  * column links are dated automatically from the columns themselves.
  */
 export const MODULE_CONTENT_UPDATED: Record<ModuleKey, string> = {
-  fi: '2026-10-12',
-  co: '2026-09-16',
+  fi: '2026-11-13',
+  co: '2026-11-13',
   sd: '2026-09-14',
   mm: '2026-09-16',
   pp: '2026-09-14',
@@ -56,7 +56,7 @@ export const MODULE_CONTENT_UPDATED: Record<ModuleKey, string> = {
 
 /** When the glossary, the about page and the other standalone pages last changed. */
 export const PAGE_UPDATED = {
-  dictionary: '2026-10-12',
+  dictionary: '2026-11-13',
   about: '2026-09-28',
   contact: '2026-09-08',
   privacy: '2026-09-08',

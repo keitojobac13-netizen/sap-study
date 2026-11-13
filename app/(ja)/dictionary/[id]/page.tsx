@@ -22,8 +22,9 @@ export async function generateMetadata({ params }: {
   const { id } = await params;
   const term = findTerm(id);
   if (!term) return {};
-  const title = `${term.ja.term}とは｜意味と関連するSAPの機能 | SAP学習ポータル`;
-  const def = term.ja.definition;
+  const page = getTermPage(id);
+  const title = `${page?.title ?? `${term.ja.term}とは｜意味と関連するSAPの機能`} | SAP学習ポータル`;
+  const def = page?.description ?? term.ja.definition;
   const description = def.length > 155 ? `${def.slice(0, 154)}…` : def;
   const path = termPath('ja', id);
   return {
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: {
     alternates: { canonical: `${BASE_URL}${path}` },
     // A page with only the one-paragraph definition is too thin for search;
     // it is indexed once glossary-pages.ts gives it a longer explanation.
-    ...(getTermPage(id) ? {} : { robots: { index: false, follow: true } }),
+    ...(page ? {} : { robots: { index: false, follow: true } }),
     ...sharingMetadata({ lang: 'ja', path, title, description, type: 'article' }),
   };
 }

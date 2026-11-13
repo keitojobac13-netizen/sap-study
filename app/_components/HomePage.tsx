@@ -115,6 +115,8 @@ export default function HomePage({ lang, termCount }: {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: t.siteName,
+    // The domain is what people type when they look the site up by name.
+    alternateName: ['sapstudy', 'sapstudy.jp'],
     url: `${BASE_URL}${homePath(lang)}`,
     inLanguage: lang === 'ja' ? 'ja-JP' : 'en-US',
     description: t.hero.subtitle,

@@ -105,7 +105,7 @@ export const coContent: Record<Language, ModuleEnrichment> = {
 
       'co-cost-center': {
         summary:
-          '原価センタの役割と階層構造、標準階層の考え方、部門間で原価をやり取りする配賦と分配の違いを解説します。',
+          '原価センタ（原価センター、Cost Center）とは、部門ごとに費用を集めて管理するCOの単位です。役割と標準階層の考え方、部門間で原価をやり取りする配賦と分配の違いを解説します。',
         keywords: ['原価センタ', 'Cost Center', '標準階層', '配賦', '分配', 'KS01', 'KSU5'],
         body: [
           {

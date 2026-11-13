@@ -5,7 +5,7 @@ export const documentDatePostingDate: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-17',
   category: 'compare',
-  title: '転記日付と伝票日付の違いとは？SAPの3つの日付（入力日付を含む）をわかりやすく解説',
+  title: '転記日付とは？伝票日付・入力日付との違いとSAPでの使い分けをわかりやすく解説',
   cardTitle: '転記日付と伝票日付の違い',
   summary:
     '転記日付とは会計帳簿に載せる日付、伝票日付とは請求書など元の書類の日付です。入力日付を含めた3つの違い、どの日付が何に影響するか、「転記済み」の意味まで解説します。',
