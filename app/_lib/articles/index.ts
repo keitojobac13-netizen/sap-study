@@ -27,6 +27,13 @@ import { sapCertificationValue } from './sap-certification-value';
 import { sapPartnerExcellence2026 } from './sap-partner-excellence-2026';
 import { sapCompanyTypes } from './sap-company-types';
 import { accentureAbeamSap } from './accenture-abeam-sap';
+import { sapCompanyAxes } from './sap-company-axes';
+import { accentureSap } from './accenture-sap';
+import { abeamSap } from './abeam-sap';
+import { nttdataGslSap } from './nttdata-gsl-sap';
+import { pwcSap } from './pwc-sap';
+import { deloitteSap } from './deloitte-sap';
+import { sigmaxyzSap } from './sigmaxyz-sap';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -79,6 +86,13 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  sapCompanyAxes,
+  accentureSap,
+  abeamSap,
+  nttdataGslSap,
+  pwcSap,
+  deloitteSap,
+  sigmaxyzSap,
   sapPartnerExcellence2026,
   sapCompanyTypes,
   accentureAbeamSap,

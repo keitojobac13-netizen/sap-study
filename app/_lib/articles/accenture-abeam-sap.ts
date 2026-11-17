@@ -32,6 +32,7 @@ export const accentureAbeamSap: ColumnArticle = {
   ],
   hasAffiliateLinks: true,
   related: [
+    { label: 'SAPの会社を8つの観点で比べる', href: '/articles/sap-company-axes' },
     { label: 'SAPパートナー表彰2026を読む', href: '/articles/sap-partner-excellence-2026' },
     { label: 'SAPの仕事は会社の種類で変わる', href: '/articles/sap-company-types' },
     { label: 'SAPコンサルと社内SEの違い', href: '/articles/consultant-vs-inhouse-se' },

@@ -111,6 +111,8 @@ function blockText(block: Block): string {
       return block.text;
     case 'figure':
       return block.caption;
+    case 'links':
+      return [block.title, ...block.items.map((item) => `${item.label}\n${item.text ?? ''}`)].join('\n');
   }
 }
 

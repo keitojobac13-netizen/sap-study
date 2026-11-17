@@ -3,6 +3,7 @@ import Icon, { type IconName } from './Icon';
 import Figure from './figures/FiFigures';
 import Phrase from './Phrase';
 import type { Block } from '../_lib/learning-types';
+import { getArticle } from '../_lib/articles';
 
 const NOTE_STYLES: Record<string, { rule: string; icon: IconName; tint: string }> = {
   tip:  { rule: 'border-l-accent',    icon: 'tip',  tint: 'text-accent' },
@@ -20,6 +21,16 @@ const NOTE_STYLES: Record<string, { rule: string; icon: IconName; tint: string }
  */
 function isShortCode(cell: string): boolean {
   return cell.length <= 14 && /^[A-Za-z0-9/._()-]+$/.test(cell);
+}
+
+/**
+ * A link to a column that this build does not show (a draft in production)
+ * would 404, so `links` blocks drop it. The company pages link to each other
+ * before every one of them is published.
+ */
+function isReachable(href: string): boolean {
+  const m = href.match(/^\/articles\/([^/#?]+)/);
+  return !m || getArticle(m[1]) !== undefined;
 }
 
 /**
@@ -177,6 +188,29 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                 </Link>
               </p>
             );
+
+          case 'links': {
+            const items = block.items.filter((item) => isReachable(item.href));
+            if (items.length === 0) return null;
+            return (
+              <nav key={i} aria-label={block.title} className="border-l-2 border-l-accent pl-4 py-1 my-2">
+                <p className="text-[0.72rem] font-semibold text-ink-mute tracking-[0.06em] mb-2">{block.title}</p>
+                <ul className="space-y-3">
+                  {items.map((item, j) => (
+                    <li key={j} className="text-[0.9rem] leading-[1.8]">
+                      <Link
+                        href={item.href}
+                        className="text-accent font-semibold underline underline-offset-4 decoration-accent/40 hover:decoration-accent"
+                      >
+                        {item.label}
+                      </Link>
+                      {item.text && <span className="block text-ink-soft text-[0.86rem] text-pretty">{item.text}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            );
+          }
 
           case 'affiliate':
             if (!block.href) return null;

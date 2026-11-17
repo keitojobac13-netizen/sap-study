@@ -38,6 +38,7 @@ export const sapPartnerExcellence2026: ColumnArticle = {
   ],
   hasAffiliateLinks: true,
   related: [
+    { label: 'SAPの会社を8つの観点で比べる', href: '/articles/sap-company-axes' },
     { label: 'SAPコンサルと社内SEの違い', href: '/articles/consultant-vs-inhouse-se' },
     { label: 'SAP認定資格は役に立つか', href: '/articles/sap-certification-value' },
     { label: 'SAPフリーランスの単価と働き方', href: '/articles/sap-freelance-rates' },

@@ -54,7 +54,9 @@ export type Block =
       cta: string;
     }
   /** A hand-drawn figure from `_components/figures`. Write `|` in the caption at the allowed line breaks. */
-  | { type: 'figure'; name: FigureName; caption: string; note?: string };
+  | { type: 'figure'; name: FigureName; caption: string; note?: string }
+  /** A short list of links to other pages, each with one line on why to read it. */
+  | { type: 'links'; title: string; items: { href: string; label: string; text?: string }[] };
 
 export type FigureName =
   | 'ledger-stack'
