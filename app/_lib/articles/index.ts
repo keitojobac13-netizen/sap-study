@@ -24,6 +24,9 @@ import { sapFreelanceRates } from './sap-freelance-rates';
 import { balanceVsOpenItemMigration } from './balance-vs-open-item-migration';
 import { sapConsultantEnglish } from './sap-consultant-english';
 import { sapCertificationValue } from './sap-certification-value';
+import { sapPartnerExcellence2026 } from './sap-partner-excellence-2026';
+import { sapCompanyTypes } from './sap-company-types';
+import { accentureAbeamSap } from './accenture-abeam-sap';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -76,6 +79,9 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  sapPartnerExcellence2026,
+  sapCompanyTypes,
+  accentureAbeamSap,
   sapCertificationValue,
   sapConsultantEnglish,
   balanceVsOpenItemMigration,
