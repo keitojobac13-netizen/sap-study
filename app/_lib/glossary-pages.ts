@@ -1,10 +1,10 @@
 import type { Block } from './learning-types';
+import type { TermPageId } from './term-page-ids';
 
 /**
- * Longer explanations for glossary terms, keyed by term id. Every term has a
- * page at /dictionary/<id>, but a page with only the one-paragraph definition
- * is too thin to stand on its own in search, so only the terms listed here
- * are indexed and go into the sitemap. The rest are `noindex, follow`.
+ * Longer explanations for glossary terms, keyed by term id. Only these terms
+ * have a page at /dictionary/<id>; the list of ids lives in term-page-ids.ts,
+ * which types this record, so add a new id there first.
  *
  * Do not write a page for a term a section or column already answers as its
  * main subject (原価センタ, 伝票タイプ, 内部指図, BP, ...): the two pages would
@@ -24,7 +24,7 @@ export type TermPage = {
   body: Block[];
 };
 
-export const TERM_PAGES: Record<string, TermPage> = {
+export const TERM_PAGES: Record<TermPageId, TermPage> = {
   'reconciliation-account': {
     updated: '2026-10-12',
     body: [
@@ -1395,5 +1395,5 @@ export const TERM_PAGES: Record<string, TermPage> = {
 };
 
 export function getTermPage(id: string): TermPage | undefined {
-  return TERM_PAGES[id];
+  return (TERM_PAGES as Record<string, TermPage | undefined>)[id];
 }

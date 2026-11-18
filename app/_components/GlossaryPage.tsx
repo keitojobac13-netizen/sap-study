@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Icon from './Icon';
 import { GLOSSARY_MODULE_COLORS as MODULE_COLORS } from '../_lib/module-style';
 import { termPath } from '../_lib/routes';
+import { hasTermPage } from '../_lib/term-page-ids';
 
 const ALL_MODULES: GlossaryModule[] = ['FI', 'CO', 'SD', 'MM', 'PP', 'ABAP', 'BASIS', 'PS'];
 
@@ -325,7 +326,7 @@ export default function GlossaryPage({ lang }: Props) {
                                 </span>
                                 {lang === 'ja' ? term.en.definition : term.ja.definition}
                               </p>
-                              {lang === 'ja' && (
+                              {lang === 'ja' && hasTermPage(term.id) && (
                                 <Link
                                   href={termPath('ja', term.id)}
                                   className="mt-4 inline-flex items-center gap-1.5 text-[0.8rem] text-accent hover:underline underline-offset-2"

@@ -1,4 +1,6 @@
 import type { NextConfig } from 'next';
+import { glossaryTerms } from './app/_lib/glossary';
+import { hasTermPage } from './app/_lib/term-page-ids';
 
 const MODULES = 'fi|co|sd|mm|pp|abap|basis|ps';
 
@@ -40,6 +42,16 @@ const nextConfig: NextConfig = {
         destination: '/en/dictionary',
         permanent: true,
       },
+      // Every term used to have a page, most with only the one-paragraph
+      // definition. Those thin pages are gone; send their URLs to the term's
+      // entry on the glossary, which opens it from the fragment.
+      ...glossaryTerms
+        .filter((t) => !hasTermPage(t.id))
+        .map((t) => ({
+          source: `/dictionary/${t.id}`,
+          destination: `/dictionary#${t.id}`,
+          permanent: true,
+        })),
     ];
   },
 };

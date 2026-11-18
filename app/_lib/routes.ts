@@ -1,4 +1,5 @@
 import type { Language, ModuleKey } from './i18n';
+import { hasTermPage } from './term-page-ids';
 
 export const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://sapstudy.jp';
@@ -29,11 +30,12 @@ export function dictionaryPath(lang: Language) {
 }
 
 /**
- * Where a glossary term is explained. Japanese terms have a page of their
- * own; English terms are still entries on the one-page glossary.
+ * Where a glossary term is explained. Japanese terms with a longer
+ * explanation have a page of their own; every other term, and every English
+ * term, is an entry on the one-page glossary.
  */
 export function termPath(lang: Language, id: string) {
-  return lang === 'ja' ? `/dictionary/${id}` : `${dictionaryPath(lang)}#${id}`;
+  return lang === 'ja' && hasTermPage(id) ? `/dictionary/${id}` : `${dictionaryPath(lang)}#${id}`;
 }
 
 export function searchPath(lang: Language) {
