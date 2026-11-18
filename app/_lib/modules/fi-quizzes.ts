@@ -59,9 +59,9 @@ export const fiQuizzes: Record<Language, Record<string, Quiz[]>> = {
       },
       {
         type: 'ox',
-        question: '勘定科目が貸借対照表科目か損益計算書科目かの区分は、勘定科目表レベルで指定する。',
+        question: '勘定科目が貸借対照表科目か損益計算書科目かの区分は、勘定コード表レベルで指定する。',
         correct: true,
-        explanation: '正しいです。B/S科目かP/L科目かは勘定科目表レベルで決まり、P/L科目には年度末の繰越処理で使う利益剰余金勘定を紐づけます。',
+        explanation: '正しいです。B/S科目かP/L科目かは勘定コード表レベルで決まり、P/L科目には年度末の繰越処理で使う利益剰余金勘定を紐づけます。',
       },
     ],
     'fi-document-types': [
