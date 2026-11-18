@@ -340,20 +340,20 @@ export const COMPANIES: Company[] = [
     tags: [],
     axes: {
       position: {
-        short: 'Big4の総合ファーム',
+        short: 'Big4の総合ファーム、SAP事業を拡大中',
         text: '世界的な会計事務所グループ（Big4）であるKPMGのコンサルティング会社で、社員は2,447名です（2026年7月1日時点、同社サイト）。SAPの専門部門（ES-SAP）は2017年10月に立ち上がりました。KPMGはSAP社の監査を担当していたため支援できる範囲に制約がありましたが、2023年夏に監査契約が満了し、SAPの事業を広げている段階だとしています（公式求人）。2026年2月には、KPMGがSAPのパートナープログラムで最上位にあたる「SAP Global Strategic Service Partner」の契約を結びました（KPMG全体での契約）。',
       },
       products: {
-        short: '人事・SAP Business AI・製造業の基幹',
-        text: '2026年は、ヨネックスの人事システム導入（Project Excellence）と、SAP Business AIの売上（SAP Business AI部門）の2部門で選ばれました。2025年の表彰には名前がありません。同じ2026年3月には、アジア太平洋地域で新しくSAPのパートナーになった会社に贈られる「Rising Star」（2026年SAP Partner Awards）も受賞しています。',
+        short: 'SuccessFactors・SAP Business AI・S/4HANA Cloud',
+        text: '2026年は、ヨネックスの人事システム導入（Project Excellence）と、SAP Business AIの売上（SAP Business AI部門）の2部門で選ばれました。2025年の表彰には名前がありません。AIについては、SAPの導入を担当するコンサルタント向けのAIアシスタント「SAP Joule for Consultants」を早期アクセスプログラムで使い始めていて（同社サイト）、ヨネックスの導入でもこれを使って生産性と品質を両立させた点が評価されています。同じ2026年3月には、アジア太平洋地域で新しくSAPのパートナーになった会社に贈られる「Rising Star」（2026年SAP Partner Awards）も受賞しています。',
       },
       scope: {
         short: '構想策定から定着・拡張まで',
         text: '公式サイトでは、構想策定（アセスメント・PoC）、導入と移行、国内外の子会社への展開と機能の拡張までを提供サービスに挙げています。2026年4月の幹部インタビューでは、構想策定から稼働後の定着・拡張まで、同じメンバーが一貫して関わる体制を掲げています。開発・保守は、海外のKPMGメンバーファームや国内の協力会社と組んで進めるとしています（2024年9月の採用インタビュー）。',
       },
       projects: {
-        short: '製造業（自動車部品など）が中心',
-        text: '公開された案件は、自動車部品のベルソニカ（S/4HANA Cloudを国内3工場に14ヵ月で導入し、稼働2ヵ月後に自社主導の運用へ移行）、ヨネックス（人事システム、7ヵ月で稼働）、NOK（グローバルの人材情報基盤）です。公式サイトでも、製造業、とくに自動車部品業界向けの導入支援を打ち出しています。2024年9月の採用インタビューでは、10〜20名規模のプロジェクトを複数手がけているとしています。',
+        short: '製造業の基幹システム・人材管理で公開事例',
+        text: '公開された案件は、自動車部品のベルソニカ（S/4HANA Cloudを国内3工場に14ヵ月で導入し、稼働2ヵ月後に自社主導の運用へ移行）、ヨネックス（人事システム、7ヵ月で稼働）、NOK（グローバルの人材情報基盤）で、いずれも製造業です。公式サイトでも、製造業、とくに自動車部品業界向けの導入支援をサービスに挙げています。ただし、SAP案件全体のうち製造業がどれだけを占めるかは公開されていません。2024年9月の採用インタビューでは、10〜20名規模のプロジェクトを複数手がけているとしています。',
       },
       global: {
         short: '海外のKPMGと連携、ロールイン・ロールアウト',
@@ -364,12 +364,12 @@ export const COMPANIES: Company[] = [
         text: '採用ページでは、SAP社の学習環境を使えることと、勉強会やソリューションの研究活動が頻繁にあることを紹介しています。2024年9月の採用インタビューでは、社内のeラーニングとSAP認定資格の取得支援を挙げています。SAP部門の体系的な研修カリキュラムの公開は確認できませんでした。',
       },
       roles: {
-        short: 'チーム別のアプリケーションコンサル・Basis',
-        text: '公式の中途採用ページの募集職種は、SAPアプリケーションコンサルタントの5チーム（経営管理・財務会計等、SCM、Finance、HCM/HXM、Technology）です。職務は、構想策定・業務設計から、システム構築、拡張機能（アドオン）の設計、ユーザー側の支援（PMOを含む）、ロールイン・ロールアウトまでです。ES-SAP部門の人数は、2024年9月の採用インタビューで約70名でした（当時の目標は3年後に300名規模）。',
+        short: '業務領域別のアプリケーションコンサル・Basis',
+        text: '公式の中途採用ページの募集職種は、SAPアプリケーションコンサルタントの5チーム（経営管理・財務会計等、SCM、Finance、HCM/HXM、Technology）です。このうちTechnologyチームが、SAPのシステム基盤を担当するBasisコンサルタントの募集です。職務は、構想策定・業務設計から、システム構築、拡張機能（アドオン）の設計、ユーザー側の支援（PMOを含む）、ロールイン・ロールアウトまでです。ES-SAP部門の人数は、2024年9月の採用インタビューで約70名でした（当時の目標は3年後に300名規模）。',
       },
       pay: {
-        short: '公式求人で年収595万円以上（基本給）、フレックス',
-        text: '公式の求人（HCM/HXMチーム）では、給与は「年収595万円以上」で、これは基本給（シニアコンサルタント以下は50時間分の固定残業手当を含む）で、賞与は別です。シニアコンサルタント以下はフレックスタイム制（コアタイムは9時〜17時のうち3時間）です。転職サイトに載っていたBasisコンサルタントの求人では、年収800万〜1,500万円でした（ビズリーチ、2024年9月更新）。在宅勤務についての記載は確認できませんでした。',
+        short: '公式求人で年収595万円以上（基本給・賞与別）、フレックス',
+        text: '公式の求人（HCM/HXMチーム）では、給与は「年収595万円以上」で、これは基本給（シニアコンサルタント以下は50時間分の固定残業手当を含む）で、賞与は別です。シニアコンサルタント以下はフレックスタイム制（コアタイムは9時〜17時のうち3時間）です。転職サイトに載っていたBasisコンサルタントの求人では、年収800万〜1,500万円でした（ビズリーチ、2024年9月更新）。会社全体の制度としては、回数に上限のないリモートワーク勤務制度があり、2022年9月には、介護などの事情がある社員の勤務場所を自宅に限る「Work from Home Program」制度とワーケーション制度の導入を発表しています。一方、公式求人には業務によって地方を含む顧客先に常駐する場合があると書かれていて、SAP部門の案件でリモート勤務をどの程度使えるかは確認できませんでした。',
       },
     },
   },
@@ -892,6 +892,7 @@ const DETAILS: Record<CompanyId, Detail> = {
       ['PM・PMO', 'システム導入でのユーザー側の支援（PMOを含む）'],
       ['グローバル', 'グローバルERPプロジェクトのロールイン・ロールアウト'],
     ],
+    workNote: '応募の必須条件は、公式求人ではSCM・Finance・HCM/HXMのチームがSAP導入の経験4年以上、Technology（Basis）のチームが2年以上です。どのチームもビジネスレベル以上の日本語が必須で、SAP認定資格・英語・グローバルプロジェクトの経験は歓迎条件です。',
     compare: [
       { id: 'pwc', point: 'Big4どうしで、人事（SuccessFactors）の案件とSAPの専門組織を比べるなら' },
       { id: 'deloitte', point: 'Big4どうしで、扱う製品の幅とグローバル導入を比べるなら' },
@@ -913,6 +914,11 @@ const DETAILS: Record<CompanyId, Detail> = {
       { label: 'KPMGコンサルティング「SAP×AIで描く次の成長」（幹部インタビュー）', href: 'https://kpmg.com/jp/ja/insights/2026/04/kc-interview-sap.html', note: '2026年4月' },
       { label: 'KPMGコンサルティング ES-SAP中途採用情報', href: 'https://recruit.kpmg-consulting.jp/info/es-sap', note: '募集職種・育成・グローバル連携' },
       { label: 'KPMGコンサルティング 公式求人「SAPアプリケーションコンサルタント（HCM/HXMチーム）」', href: 'https://js01.jposting.net/kpmgkc/u/mid_careers/job.phtml?job_code=486', note: '職務・給与・勤務制度' },
+      { label: 'KPMGコンサルティング 公式求人「SAPアプリケーションコンサルタント（Financeチーム）」', href: 'https://js01.jposting.net/kpmgkc/u/mid_careers/job.phtml?job_code=485', note: '応募条件' },
+      { label: 'KPMGコンサルティング 公式求人「SAPアプリケーションコンサルタント（SCMチーム）」', href: 'https://js01.jposting.net/kpmgkc/u/mid_careers/job.phtml?job_code=484', note: '応募条件' },
+      { label: 'KPMGコンサルティング 公式求人「SAPアプリケーションコンサルタント（Technologyチーム・Basis）」', href: 'https://js01.jposting.net/kpmgkc/u/mid_careers/job.phtml?job_code=487', note: '応募条件' },
+      { label: 'KPMGジャパン「SAP Business AIを活用した業務変革支援」', href: 'https://kpmg.com/jp/ja/services/alliances/sap/sap-business-ai.html', note: 'SAP Joule for Consultantsの早期アクセス' },
+      { label: 'KPMGコンサルティング 新たな勤務制度の導入（プレスリリース）', href: 'https://kpmg.com/jp/ja/home/media/press-releases/2022/09/kc-work-style.html', note: '2022年9月28日。リモートワーク・Work from Home Program・ワーケーション' },
       { label: 'JAC Recruitment「KPMGコンサルティング採用インタビュー」', href: 'https://www.jac-recruitment.jp/company/kpmg/interview03/', note: '2024年9月実施。部門の人数・案件規模・育成' },
       { label: 'KPMGコンサルティング 会社概要', href: 'https://kpmg.com/jp/ja/about/kc/corporate-profile.html', note: '従業員数' },
       { label: 'ビズリーチ掲載のSAP Basisコンサルタント求人', note: '中途の年収。2024年9月更新' },

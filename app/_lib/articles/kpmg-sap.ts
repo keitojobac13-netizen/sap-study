@@ -23,10 +23,14 @@ export const kpmgSap: ColumnArticle = {
       type: 'p',
       text: 'KPMGコンサルティングは、Big4と呼ばれる世界的な会計事務所グループの1つ、KPMGのコンサルティング会社です。この記事では、SAPの仕事として見たときのKPMGを、8つの観点で整理します。',
     },
-    { type: 'h', text: '一言でいうと、2026年にSAPとの関係を一段深めたBig4' },
+    { type: 'h', text: '一言でいうと、SAP事業を拡大しているBig4' },
     {
       type: 'p',
-      text: 'KPMGはSAP社の監査を担当していたため、SAPの導入支援には制約がありました。2023年夏に監査契約が満了してからSAPの事業を広げていて、2026年にはSAPのパートナープログラムで最上位の契約を結び、SAPジャパンの表彰でも人事システムの導入とSAP Business AIの2部門で選ばれています。',
+      text: 'KPMGはSAP社の監査を担当していたため、SAPの導入支援には制約がありました。2023年夏に監査契約が満了してからSAPの事業を広げていて、2026年にはKPMG全体でSAPのパートナープログラムの最上位にあたる「SAP Global Strategic Service Partner」の契約を結びました。国内でも、SAPジャパンの表彰で、人事システムの導入プロジェクトとSAP Business AIの2部門に選ばれています。',
+    },
+    {
+      type: 'p',
+      text: '公開事例では、ヨネックスとNOKのSAP SuccessFactors導入、ベルソニカのSAP S/4HANA Cloud導入が確認できます。人事の領域だけでなく、製造業の基幹システムの刷新にも取り組んでいることが分かります。',
     },
   ]),
 };
