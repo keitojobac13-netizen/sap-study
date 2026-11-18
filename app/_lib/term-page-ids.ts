@@ -41,6 +41,16 @@ export const TERM_PAGE_IDS = [
   'material-type',
   'milestone',
   'costing-variant',
+  'system-status',
+  'document-splitting',
+  'financial-statement-version',
+  'exchange-rate-type',
+  'functional-area',
+  'asset-class',
+  'depreciation-key',
+  'dunning',
+  'availability-control',
+  'business-area',
 ] as const;
 
 export type TermPageId = (typeof TERM_PAGE_IDS)[number];
