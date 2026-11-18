@@ -412,11 +412,11 @@ function SettlementSteps() {
       <div className="grid grid-cols-2 gap-2">
         <div className={`${box} border-accent bg-accent-soft text-accent`}>
           <span className={title}>決済できる</span>
-          <span className="block text-[0.72rem] leading-snug mt-1"><Phrase text="REL（リリース）|TECO（技術的完了）" /></span>
+          <span className="block text-[0.72rem] leading-snug mt-1"><Phrase text="REL（リリース済）|TECO（技術的完了）" /></span>
         </div>
         <div className={`${box} border-rule bg-paper text-ink`}>
           <span className={title}>決済できない</span>
-          <span className={sub}><Phrase text="CRTD（作成済）|CLSD（クローズ）" /></span>
+          <span className={sub}><Phrase text="CRTD（登録済）|CLSD（完了）" /></span>
         </div>
       </div>
       <p className={stop}><span className={tag}>確認3</span><Phrase text="ユーザーステータスで|止めていることもある" /></p>

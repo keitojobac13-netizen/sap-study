@@ -217,13 +217,13 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
             type: 'four-choice',
             question: '製造指図の技術的完了（TECO）後の状態はどれですか？',
             choices: [
-              'CRTD（作成済）',
+              'CRTD（登録済）',
               'REL（リリース済）',
               'TECO（技術的完了）',
-              'CLSD（クローズ）',
+              'CLSD（完了）',
             ],
             correctIndex: 2,
-            explanation: 'TECOステータスは技術的完了を示し、その後CLSDでクローズされます。',
+            explanation: 'TECOステータスは技術的完了を示し、その後CLSD（完了）になります。',
           },
           {
             type: 'ordering',
@@ -476,7 +476,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
         id: 'production-order-lifecycle',
         title: '製造指図のライフサイクル',
         content: [
-          '製造指図はCRTD（作成済）→REL（リリース済）→PCNF（部分確認済）→CNF（完全確認済）→TECO（技術的完了）→CLSD（クローズ）のステータスで進みます。',
+          '製造指図はCRTD（登録済）→REL（リリース済）→PCNF（一部確認済）→CNF（確認済）→TECO（技術的完了）→CLSD（完了）のステータスで進みます。',
           'リリース（REL）により材料出庫・能力確認が有効化され、製造作業が開始できます。',
           'CO02で製造指図を変更し、数量・日付・コンポーネントを修正できます。',
           'TECOにすると未処理の予約・購買依頼・能力所要量が削除され、指図はMRPの対象外になります。標準では入出庫や確認はTECO後も転記でき、止めたい場合はステータスプロファイルなどで制御します。',
@@ -510,11 +510,11 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
               '以降は一切の転記ができなくなる',
             ],
             correctIndex: 2,
-            explanation: 'TECOで残りの予約・購買依頼・能力所要量が削除され、MRPの対象外になります。決済は別途CO88で行い、転記を一切止めるのはクローズ（CLSD）です。',
+            explanation: 'TECOで残りの予約・購買依頼・能力所要量が削除され、MRPの対象外になります。決済は別途CO88で行い、転記を一切止めるのは完了（CLSD）です。',
           },
           {
             type: 'ox',
-            question: 'CLSD（クローズ）ステータスになると製造指図は変更も決済もできなくなる。',
+            question: 'CLSD（完了）ステータスになると製造指図は変更も決済もできなくなる。',
             correct: true,
             explanation: 'CLSDは最終ステータスであり、それ以降の変更・決済は一切できません。',
           },
@@ -528,7 +528,7 @@ export const pp: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'ordering',
             question: '製造指図のライフサイクルを正しい順序に並べてください。',
-            items: ['TECO（技術的完了）', 'REL（リリース）', 'CLSD（クローズ）', 'CRTD（作成済）', 'CNF（確認済）'],
+            items: ['TECO（技術的完了）', 'REL（リリース済）', 'CLSD（完了）', 'CRTD（登録済）', 'CNF（確認済）'],
             correctOrder: [3, 1, 4, 0, 2],
             explanation: 'CRTD→REL→CNF→TECO→CLSDの順です。',
           },

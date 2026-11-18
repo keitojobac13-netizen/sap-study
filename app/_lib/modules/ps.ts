@@ -360,16 +360,16 @@ export const ps: Record<'ja' | 'en', ModuleContent> = {
         id: 'ps-status',
         title: 'ステータス管理',
         content: [
-          'PSにはシステムステータスとユーザーステータスの2種類があります。システムステータスはSAPが自動的に管理するステータスで、CRTD（作成済）・REL（リリース済）・TECO（技術的完了）・CLSD（締め済）などがあります。各ステータスによって実行可能な業務処理が制御されます。',
+          'PSにはシステムステータスとユーザーステータスの2種類があります。システムステータスはSAPが自動的に管理するステータスで、CRTD（登録済）・REL（リリース済）・TECO（技術的完了）・CLSD（完了）などがあります。各ステータスによって実行可能な業務処理が制御されます。',
           'ユーザーステータスは企業独自のステータスをステータスプロファイルで定義し、業務プロセスに応じた追加の制御を行います。例えば「承認待ち」「承認済み」「保留」などのステータスを定義できます。リリース（REL）されたWBS要素やネットワークにのみ実績計上が可能になるなど、ステータスは業務処理の制御に重要な役割を果たします。',
         ],
         quizzes: [
           {
             type: 'four-choice',
-            question: 'SAPが自動管理し、「リリース済み」を意味するシステムステータスはどれか。',
+            question: 'SAPが自動管理し、「リリース済」を意味するシステムステータスはどれか。',
             choices: ['CRTD', 'REL', 'TECO', 'CLSD'],
             correctIndex: 1,
-            explanation: 'REL（Released / リリース済み）はプロジェクトやWBS要素が実行可能な状態になったことを示すシステムステータスです。CRTDは作成済み、TECOは技術的完了、CLSDは締め済みです。',
+            explanation: 'REL（Released / リリース済）はプロジェクトやWBS要素が実行可能な状態になったことを示すシステムステータスです。CRTDは登録済、TECOは技術的完了、CLSDは完了です。',
           },
           {
             type: 'ox',
@@ -386,13 +386,13 @@ export const ps: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'ox',
-            question: 'CRTD（作成済み）ステータスのWBS要素に実績原価を計上できる。',
+            question: 'CRTD（登録済）ステータスのWBS要素に実績原価を計上できる。',
             correct: false,
-            explanation: '不正解です。実績原価の計上にはWBS要素がREL（リリース済み）ステータスである必要があります。CRTD状態では計画作業のみ可能です。',
+            explanation: '不正解です。実績原価の計上にはWBS要素がREL（リリース済）ステータスである必要があります。CRTD状態では計画作業のみ可能です。',
           },
           {
             type: 'four-choice',
-            question: 'CLSD（締め済み）ステータスの説明として正しいものはどれか。',
+            question: 'CLSD（完了）ステータスの説明として正しいものはどれか。',
             choices: ['計画作業が可能', '実績計上が可能', '決済処理が可能', 'すべての業務処理が完了し締め切られた状態'],
             correctIndex: 3,
             explanation: 'CLSDはプロジェクトが完全に締め切られた状態を示し、実績計上も決済もできません。アーカイブ対象となります。',
@@ -400,9 +400,9 @@ export const ps: Record<'ja' | 'en', ModuleContent> = {
           {
             type: 'ordering',
             question: 'プロジェクトの一般的なシステムステータスの遷移を並べてください。',
-            items: ['CRTD（作成済み）', 'REL（リリース済み）', 'TECO（技術的完了）', 'CLSD（締め済み）'],
+            items: ['CRTD（登録済）', 'REL（リリース済）', 'TECO（技術的完了）', 'CLSD（完了）'],
             correctOrder: [0, 1, 2, 3],
-            explanation: 'プロジェクトは作成（CRTD）→リリース（REL）→技術的完了（TECO）→締め（CLSD）の順にステータスが遷移します。',
+            explanation: 'プロジェクトは登録済（CRTD）→リリース済（REL）→技術的完了（TECO）→完了（CLSD）の順にステータスが遷移します。',
           },
         ],
       },

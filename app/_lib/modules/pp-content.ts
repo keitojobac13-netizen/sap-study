@@ -930,7 +930,7 @@ export const ppContent: Record<Language, ModuleEnrichment> = {
 
       'production-order-lifecycle': {
         summary:
-          '製造指図が作成からクローズまでにたどるステータスの変遷と、各段階で可能な操作、可用性チェックを解説します。',
+          '製造指図が登録から完了（CLSD）までにたどるステータスの変遷と、各段階で可能な操作、可用性チェックを解説します。',
         keywords: ['製造指図', 'ステータス', 'リリース', 'TECO', 'CLSD', '可用性チェック', 'CO01', 'CO02'],
         body: [
           {
@@ -943,7 +943,7 @@ export const ppContent: Record<Language, ModuleEnrichment> = {
             caption: '製造指図の主なステータス',
             headers: ['ステータス', '略号', '意味', 'この時点で可能なこと'],
             rows: [
-              ['作成済', 'CRTD', '指図が作られた状態', '内容の変更、削除'],
+              ['登録済', 'CRTD', '指図が作られた状態', '内容の変更、削除'],
               ['リリース済', 'REL', '現場に指示が出た状態', '出庫、確認、入庫'],
               ['一部確認済', 'PCNF', '一部の工程が確認された', '残りの確認'],
               ['確認済', 'CNF', 'すべての工程が確認された', '入庫、締め処理'],

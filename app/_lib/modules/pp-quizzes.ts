@@ -261,7 +261,7 @@ export const ppQuizzes: Record<Language, Record<string, Quiz[]>> = {
         question: 'リリース前（CRTD）の製造指図で、まだ実行できない処理はどれか。',
         choices: ['確認と部品の出庫', '指図の変更', '可用性チェック', '日程計算'],
         correctIndex: 0,
-        explanation: 'CRTDは作成済みの段階で、現場での実行はまだ許可されていません。確認や出庫はリリース（REL）後に行えるようになります。',
+        explanation: 'CRTDは登録済の段階で、現場での実行はまだ許可されていません。確認や出庫はリリース（REL）後に行えるようになります。',
       },
       {
         type: 'ox',
