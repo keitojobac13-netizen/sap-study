@@ -33,6 +33,7 @@ import { abeamSap } from './abeam-sap';
 import { nttdataGslSap } from './nttdata-gsl-sap';
 import { pwcSap } from './pwc-sap';
 import { deloitteSap } from './deloitte-sap';
+import { kpmgSap } from './kpmg-sap';
 import { sigmaxyzSap } from './sigmaxyz-sap';
 
 /**
@@ -92,6 +93,7 @@ const ARTICLES: ColumnArticle[] = [
   nttdataGslSap,
   pwcSap,
   deloitteSap,
+  kpmgSap,
   sigmaxyzSap,
   sapPartnerExcellence2026,
   sapCompanyTypes,

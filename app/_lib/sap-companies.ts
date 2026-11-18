@@ -73,7 +73,7 @@ type Entry = {
   text: string;
 };
 
-export type CompanyId = 'accenture' | 'abeam' | 'nttdata-gsl' | 'pwc' | 'deloitte' | 'sigmaxyz';
+export type CompanyId = 'accenture' | 'abeam' | 'nttdata-gsl' | 'pwc' | 'deloitte' | 'kpmg' | 'sigmaxyz';
 
 export type Company = {
   id: CompanyId;
@@ -84,6 +84,8 @@ export type Company = {
   oneLine: string;
   products: { id: ProductId; evidence: string }[];
   tags: Tag[];
+  /** When this company's facts were checked, if not CHECKED_ON. */
+  checkedOn?: string;
   axes: Record<AxisId, Entry>;
 };
 
@@ -326,6 +328,52 @@ export const COMPANIES: Company[] = [
     },
   },
   {
+    id: 'kpmg',
+    name: 'KPMGコンサルティング',
+    slug: 'kpmg-sap',
+    oneLine: '2026年にSAPと最上位のパートナー契約を結んだBig4。人事とSAP Business AIで選出',
+    checkedOn: '2026年11月18日',
+    products: [
+      { id: 'hr', evidence: 'ヨネックスの統合人財管理システムを7ヵ月で稼働（2026年 Project Excellence）、NOKのグローバル人材情報基盤（2026年2月発表）' },
+      { id: 'finance', evidence: 'ベルソニカのS/4HANA Cloud導入（財務会計・管理会計を含む5領域、国内3工場に14ヵ月、2025年12月発表）' },
+    ],
+    tags: [],
+    axes: {
+      position: {
+        short: 'Big4の総合ファーム',
+        text: '世界的な会計事務所グループ（Big4）であるKPMGのコンサルティング会社で、社員は2,447名です（2026年7月1日時点、同社サイト）。SAPの専門部門（ES-SAP）は2017年10月に立ち上がりました。KPMGはSAP社の監査を担当していたため支援できる範囲に制約がありましたが、2023年夏に監査契約が満了し、SAPの事業を広げている段階だとしています（公式求人）。2026年2月には、KPMGがSAPのパートナープログラムで最上位にあたる「SAP Global Strategic Service Partner」の契約を結びました（KPMG全体での契約）。',
+      },
+      products: {
+        short: '人事・SAP Business AI・製造業の基幹',
+        text: '2026年は、ヨネックスの人事システム導入（Project Excellence）と、SAP Business AIの売上（SAP Business AI部門）の2部門で選ばれました。2025年の表彰には名前がありません。同じ2026年3月には、アジア太平洋地域で新しくSAPのパートナーになった会社に贈られる「Rising Star」（2026年SAP Partner Awards）も受賞しています。',
+      },
+      scope: {
+        short: '構想策定から定着・拡張まで',
+        text: '公式サイトでは、構想策定（アセスメント・PoC）、導入と移行、国内外の子会社への展開と機能の拡張までを提供サービスに挙げています。2026年4月の幹部インタビューでは、構想策定から稼働後の定着・拡張まで、同じメンバーが一貫して関わる体制を掲げています。開発・保守は、海外のKPMGメンバーファームや国内の協力会社と組んで進めるとしています（2024年9月の採用インタビュー）。',
+      },
+      projects: {
+        short: '製造業（自動車部品など）が中心',
+        text: '公開された案件は、自動車部品のベルソニカ（S/4HANA Cloudを国内3工場に14ヵ月で導入し、稼働2ヵ月後に自社主導の運用へ移行）、ヨネックス（人事システム、7ヵ月で稼働）、NOK（グローバルの人材情報基盤）です。公式サイトでも、製造業、とくに自動車部品業界向けの導入支援を打ち出しています。2024年9月の採用インタビューでは、10〜20名規模のプロジェクトを複数手がけているとしています。',
+      },
+      global: {
+        short: '海外のKPMGと連携、ロールイン・ロールアウト',
+        text: '採用ページでは、グローバルで6,000名以上のSAPコンサルタントと連携できる体制だとしています。ベルソニカでは海外3工場への展開を支援中で（2025年12月時点）、NOKでは各国の個人情報保護規制への対応も並行して支援しました。求人の職務には、グローバルERPプロジェクトのロールイン・ロールアウトが挙がっています。',
+      },
+      talent: {
+        short: 'SAPの学習環境・eラーニング・資格取得支援',
+        text: '採用ページでは、SAP社の学習環境を使えることと、勉強会やソリューションの研究活動が頻繁にあることを紹介しています。2024年9月の採用インタビューでは、社内のeラーニングとSAP認定資格の取得支援を挙げています。SAP部門の体系的な研修カリキュラムの公開は確認できませんでした。',
+      },
+      roles: {
+        short: 'チーム別のアプリケーションコンサル・Basis',
+        text: '公式の中途採用ページの募集職種は、SAPアプリケーションコンサルタントの5チーム（経営管理・財務会計等、SCM、Finance、HCM/HXM、Technology）です。職務は、構想策定・業務設計から、システム構築、拡張機能（アドオン）の設計、ユーザー側の支援（PMOを含む）、ロールイン・ロールアウトまでです。ES-SAP部門の人数は、2024年9月の採用インタビューで約70名でした（当時の目標は3年後に300名規模）。',
+      },
+      pay: {
+        short: '公式求人で年収595万円以上（基本給）、フレックス',
+        text: '公式の求人（HCM/HXMチーム）では、給与は「年収595万円以上」で、これは基本給（シニアコンサルタント以下は50時間分の固定残業手当を含む）で、賞与は別です。シニアコンサルタント以下はフレックスタイム制（コアタイムは9時〜17時のうち3時間）です。転職サイトに載っていたBasisコンサルタントの求人では、年収800万〜1,500万円でした（ビズリーチ、2024年9月更新）。在宅勤務についての記載は確認できませんでした。',
+      },
+    },
+  },
+  {
     id: 'sigmaxyz',
     name: 'シグマクシス',
     slug: 'sigmaxyz-sap',
@@ -464,7 +512,7 @@ const NEW_GRAD_PAY: CompanyId[] = ['abeam', 'nttdata-gsl', 'deloitte', 'sigmaxyz
 
 /** The short pay note for one company page; the hub uses PAY_NOTE. */
 function companyPayNote(id: CompanyId): Block {
-  const base = `掲載した金額は、${CHECKED_ON}時点で確認したSAP関連の求人に基づきます。会社全体の平均年収や、SAPコンサルタントの一般的な年収を示すものではありません。実際の提示額は、経験・職位・募集職種によって変わります。`;
+  const base = `掲載した金額は、${getCompany(id).checkedOn ?? CHECKED_ON}時点で確認したSAP関連の求人に基づきます。会社全体の平均年収や、SAPコンサルタントの一般的な年収を示すものではありません。実際の提示額は、経験・職位・募集職種によって変わります。`;
   const grad = '新卒の金額は募集要項の記載で、月給（時間外手当を含むものがある）と年俸など、会社によって基準が違います。';
   return {
     type: 'note',
@@ -536,13 +584,14 @@ export const SAP_TENSHOKU_BLOCK = SAP_TENSHOKU;
  */
 export function companyArticleBody(id: CompanyId, intro: Block[], extra: Block[] = []): Block[] {
   const c = getCompany(id);
+  const checked = c.checkedOn ?? CHECKED_ON;
   return [
     ...intro,
     {
       type: 'note',
       variant: 'info',
       title: 'この記事の決まりごと',
-      text: `SAPジャパンの表彰（2025年のSAP AWARD OF EXCELLENCEは「受賞」、2026年から名前が変わったSAP Appreciation for Partner Excellenceは「選出」と書いています）、会社とSAPの公式発表、公式の採用ページ、求人に載っている条件など、公開情報だけで書いています（${CHECKED_ON}時点）。評判・口コミ・社内の様子は扱いません。会社の優劣をつけるものではなく、確認できなかったことは「強みがない」という意味ではありません。ほかの会社の記事も同じ8つの観点でそろえています。`,
+      text: `SAPジャパンの表彰（2025年のSAP AWARD OF EXCELLENCEは「受賞」、2026年から名前が変わったSAP Appreciation for Partner Excellenceは「選出」と書いています）、会社とSAPの公式発表、公式の採用ページ、求人に載っている条件など、公開情報だけで書いています（${checked}時点）。評判・口コミ・社内の様子は扱いません。会社の優劣をつけるものではなく、確認できなかったことは「強みがない」という意味ではありません。ほかの会社の記事も同じ8つの観点でそろえています。`,
     },
     overviewBlock(id),
     ...axisDetailBlocks(id),
@@ -627,7 +676,7 @@ export function companyArticleBody(id: CompanyId, intro: Block[], extra: Block[]
     { type: 'h', text: '主な情報源' },
     {
       type: 'p',
-      text: `この記事の内容は、${CHECKED_ON}時点で次の情報源から確認しました。`,
+      text: `この記事の内容は、${checked}時点で次の情報源から確認しました。`,
     },
     {
       type: 'links',
@@ -643,7 +692,7 @@ export function companyArticleBody(id: CompanyId, intro: Block[], extra: Block[]
         ]
       : []),
     { type: 'h', text: 'この記事に出てきた名前' },
-    NAMES_TABLE,
+    namesTable(id),
   ];
 }
 
@@ -661,6 +710,8 @@ type Detail = {
   /** Who might consider this company, from public records only. */
   fit: string[];
   sources: { label: string; href?: string; note?: string }[];
+  /** Names only this company's page mentions, added to the shared table. */
+  names?: string[][];
 };
 
 const SAP_AWARDS_2026 = {
@@ -834,6 +885,45 @@ const DETAILS: Record<CompanyId, Detail> = {
       { label: '就職情報サイト掲載の2027年卒の募集要項', note: '新卒の基準給与' },
     ],
   },
+  kpmg: {
+    work: [
+      ['業務・SAPコンサル', '現状分析と構想策定、業務設計、アーキテクチャデザイン（公式求人）。経営管理・財務会計、SCM、Finance、HCM/HXMのチームごとに募集'],
+      ['技術・開発', 'Technologyチーム（Basis）：インフラ設計、アーキテクチャデザイン、移行、拡張機能（アドオン）の設計。採用ページではBTPを活用した支援も挙げています'],
+      ['PM・PMO', 'システム導入でのユーザー側の支援（PMOを含む）'],
+      ['グローバル', 'グローバルERPプロジェクトのロールイン・ロールアウト'],
+    ],
+    compare: [
+      { id: 'pwc', point: 'Big4どうしで、人事（SuccessFactors）の案件とSAPの専門組織を比べるなら' },
+      { id: 'deloitte', point: 'Big4どうしで、扱う製品の幅とグローバル導入を比べるなら' },
+    ],
+    fit: [
+      '製造業、とくに自動車部品業界のSAP導入に関わりたい人：公式サイトで打ち出していて、ベルソニカの事例があります',
+      '人事（SuccessFactors）の案件に関わりたい人：2026年にヨネックスの人事システム導入で選出され、NOKの事例もあります',
+      'SAPとAIを組み合わせた仕事に関わりたい人：2026年にSAP Business AIの部門で選出され、ヨネックスの導入ではSAP Joule for Consultantsを使っています',
+      '拡大中の組織で担当範囲を広げたい人：2024年9月の採用インタビューで、チームが小さいため要件定義からテストまで担当範囲が広くなると説明しています',
+    ],
+    sources: [
+      SAP_AWARDS_2026,
+      { label: 'KPMGコンサルティング「SAP Appreciation for Partner Excellence 2026」の2部門に選出', href: 'https://kpmg.com/jp/ja/media/press-releases/2026/03/kc-sap-partnerexcellence.html', note: '2026年3月10日' },
+      { label: 'KPMGコンサルティング、2026年SAP Partner AwardsのRising Starを受賞', href: 'https://kpmg.com/jp/ja/media/press-releases/2026/03/kc-sap-partnerawards.html', note: '2026年3月' },
+      { label: 'KPMGとSAP、「SAP Global Strategic Service Partner」契約を締結', href: 'https://kpmg.com/jp/ja/media/press-releases/2026/03/kc-sap-gssp.html', note: '2026年3月4日（元の発表は2026年2月10日）' },
+      { label: 'KPMGジャパン「SAP」', href: 'https://kpmg.com/jp/ja/home/about/sap.html', note: '提供サービス・事例' },
+      { label: 'KPMGコンサルティング、ベルソニカのSAP S/4HANA Cloud導入を支援', href: 'https://kpmg.com/jp/ja/media/press-releases/2025/12/kc-sap-bellsonica.html', note: '2025年12月17日' },
+      { label: 'KPMGコンサルティング、NOKのSAP SuccessFactors導入を支援', href: 'https://kpmg.com/jp/ja/media/press-releases/2026/02/kc-sap-successfactors.html', note: '2026年2月16日' },
+      { label: 'KPMGコンサルティング「SAP×AIで描く次の成長」（幹部インタビュー）', href: 'https://kpmg.com/jp/ja/insights/2026/04/kc-interview-sap.html', note: '2026年4月' },
+      { label: 'KPMGコンサルティング ES-SAP中途採用情報', href: 'https://recruit.kpmg-consulting.jp/info/es-sap', note: '募集職種・育成・グローバル連携' },
+      { label: 'KPMGコンサルティング 公式求人「SAPアプリケーションコンサルタント（HCM/HXMチーム）」', href: 'https://js01.jposting.net/kpmgkc/u/mid_careers/job.phtml?job_code=486', note: '職務・給与・勤務制度' },
+      { label: 'JAC Recruitment「KPMGコンサルティング採用インタビュー」', href: 'https://www.jac-recruitment.jp/company/kpmg/interview03/', note: '2024年9月実施。部門の人数・案件規模・育成' },
+      { label: 'KPMGコンサルティング 会社概要', href: 'https://kpmg.com/jp/ja/about/kc/corporate-profile.html', note: '従業員数' },
+      { label: 'ビズリーチ掲載のSAP Basisコンサルタント求人', note: '中途の年収。2024年9月更新' },
+    ],
+    names: [
+      ['SAP Global Strategic Service Partner', 'パートナー契約', 'SAPのパートナープログラムで最上位に位置づけられる契約'],
+      ['SAP Business AI', 'AI', 'SAPの業務アプリに組み込まれたAI機能の総称'],
+      ['SAP Joule for Consultants', 'AI', 'SAPの導入を担当するコンサルタント向けのAIアシスタント'],
+      ['ES-SAP', '部門', 'KPMGコンサルティングのSAP専門部門（Enterprise Solutions - SAP）'],
+    ],
+  },
   sigmaxyz: {
     work: [
       ['業務・SAPコンサル', 'パブリック・クラウド（Public Edition等）を活用し、徹底したFit to Standardで基幹システムを刷新。経営分析や事業予測ができる経営基盤の構築と、その運営の支援'],
@@ -859,6 +949,13 @@ const DETAILS: Record<CompanyId, Detail> = {
     ],
   },
 };
+
+function namesTable(id: CompanyId): Block {
+  const extra = DETAILS[id].names;
+  if (!extra) return NAMES_TABLE;
+  const base = NAMES_TABLE as Extract<Block, { type: 'table' }>;
+  return { ...base, rows: [...base.rows, ...extra] };
+}
 
 const NAMES_TABLE: Block = {
   type: 'table',
