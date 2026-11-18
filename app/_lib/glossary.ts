@@ -72,7 +72,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '勘定決定',
       reading: 'かんじょうけってい',
-      definition: 'SDの請求処理やMMの在庫移動時に、転記先のGL勘定を自動的に決定する仕組み。条件テクニックを使用し、売上組織・勘定設定グループ・勘定キー等の組み合わせで売上勘定・消費税勘定・在庫勘定などを自動決定する。SDではKOFI（売上勘定）などの条件タイプが使用される。',
+      definition: 'SDの請求処理やMMの在庫移動時に、転記先のG/L勘定を自動的に決定する仕組み。条件テクニックを使用し、売上組織・勘定設定グループ・勘定キー等の組み合わせで売上勘定・消費税勘定・在庫勘定などを自動決定する。SDではKOFI（売上勘定）などの条件タイプが使用される。',
     },
     en: {
       term: 'Account Determination',
@@ -125,7 +125,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '原価要素',
       reading: 'げんかようそ',
-      definition: 'CO管理会計における原価・収益の分類単位。一次原価要素（Primary）はFIのGL勘定に対応し、材料費・人件費・減価償却費などを分類する。二次原価要素（Secondary）はCO内部の配賦・活動配賦・製造指図決済に使用される。S/4HANAではGL勘定と原価要素が統合されている。',
+      definition: 'CO管理会計における原価・収益の分類単位。一次原価要素（Primary）はFIのG/L勘定に対応し、材料費・人件費・減価償却費などを分類する。二次原価要素（Secondary）はCO内部の配賦・活動配賦・製造指図決済に使用される。S/4HANAではG/L勘定と原価要素が統合されている。',
     },
     en: {
       term: 'Cost Element',
@@ -508,7 +508,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: 'マスタデータ',
       reading: 'ますたでーた',
-      definition: 'SAPシステムで比較的変化が少なく、伝票処理の基礎となるデータの総称。品目マスタ・得意先マスタ・仕入先マスタ・原価センタ・GL勘定などが代表例。トランザクションデータ（伝票）と対比して使われる。マスタデータの正確性は伝票処理の自動化・精度に直結するため、データガバナンスが重要。',
+      definition: 'SAPシステムで比較的変化が少なく、伝票処理の基礎となるデータの総称。品目マスタ・得意先マスタ・仕入先マスタ・原価センタ・G/L勘定などが代表例。トランザクションデータ（伝票）と対比して使われる。マスタデータの正確性は伝票処理の自動化・精度に直結するため、データガバナンスが重要。',
     },
     en: {
       term: 'Master Data',
@@ -588,7 +588,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '照合勘定',
       reading: 'しょうごうかんじょう',
-      definition: '補助元帳（売掛金・買掛金・資産等）と総勘定元帳（GL）を連動させるためのGL勘定。得意先マスタでは売掛金照合勘定、仕入先マスタでは買掛金照合勘定として設定する。補助元帳への転記が発生すると、設定された照合勘定に自動的にGL転記が行われ、両元帳の合計が常に一致する。',
+      definition: '補助元帳（売掛金・買掛金・資産等）と総勘定元帳（GL）を連動させるためのG/L勘定。得意先マスタでは売掛金照合勘定、仕入先マスタでは買掛金照合勘定として設定する。補助元帳への転記が発生すると、設定された照合勘定に自動的にGL転記が行われ、両元帳の合計が常に一致する。',
     },
     en: {
       term: 'Reconciliation Account',
@@ -616,7 +616,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '請求処理',
       reading: 'せいきゅうしょり',
-      definition: 'SDの出荷確定（PGI）後に、得意先へ請求書を発行するプロセス。VF01で個別作成、VF04（Billing Due List）で一括作成できる。請求書タイプF1（標準請求）により、FIの売掛金勘定へ自動転記が行われる。VF11で請求書をキャンセルすると逆仕訳が自動実行される。勘定決定により売上・税金のGL勘定が自動決定される。',
+      definition: 'SDの出荷確定（PGI）後に、得意先へ請求書を発行するプロセス。VF01で個別作成、VF04（Billing Due List）で一括作成できる。請求書タイプF1（標準請求）により、FIの売掛金勘定へ自動転記が行われる。VF11で請求書をキャンセルすると逆仕訳が自動実行される。勘定決定により売上・税金のG/L勘定が自動決定される。',
     },
     en: {
       term: 'Billing',
@@ -655,7 +655,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '評価クラス',
       reading: 'ひょうかくらす',
-      definition: '品目マスタに設定するコードで、在庫移動・入出庫時のGL勘定を自動決定する勘定決定（Automatic Account Determination）の基準となる。品目タイプに紐付いた評価クラスの設定により、原材料・製品・半製品等の在庫がそれぞれ異なるGL勘定に転記される。OBYCで勘定決定をカスタマイズする。',
+      definition: '品目マスタに設定するコードで、在庫移動・入出庫時のG/L勘定を自動決定する勘定決定（Automatic Account Determination）の基準となる。品目タイプに紐付いた評価クラスの設定により、原材料・製品・半製品等の在庫がそれぞれ異なるG/L勘定に転記される。OBYCで勘定決定をカスタマイズする。',
     },
     en: {
       term: 'Valuation Class',
@@ -707,7 +707,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '内部指図',
       reading: 'ないぶさしず',
-      definition: 'CO管理会計における特定プロジェクト・イベント・設備の原価を収集・追跡するオブジェクト。KO01で作成し、予算管理（アベイラビリティコントロール）・承認フロー・決済先（原価センタ・利益センタ・GL勘定）の設定が可能。ステータス管理により「作成済（CRTD）→リリース（REL）→技術的完了（TECO）→クローズ（CLSD）」の段階で管理される。',
+      definition: 'CO管理会計における特定プロジェクト・イベント・設備の原価を収集・追跡するオブジェクト。KO01で作成し、予算管理（アベイラビリティコントロール）・承認フロー・決済先（原価センタ・利益センタ・G/L勘定）の設定が可能。ステータス管理により「作成済（CRTD）→リリース（REL）→技術的完了（TECO）→クローズ（CLSD）」の段階で管理される。',
     },
     en: {
       term: 'Internal Order',
@@ -734,7 +734,7 @@ const coreTerms: GlossaryTerm[] = [
       term: 'GR/IR照合勘定',
       reading: 'じーあーるあいあーるしょうごうかんじょう',
       aliases: ['GR/IR勘定', 'GR/IR'],
-      definition: 'Goods Receipt/Invoice Receipt Clearing Account。入庫（GR）から請求書照合（MIRO）完了までの間、未処理残高を一時的に保持するGL勘定。入庫時に貸方計上され、MIRO完了時に借方でクリアされる。月次処理ではMR11でGR/IR残高の整理を行う。GRのみ・MIROのみの場合は残高が残り、期末調整が必要となる。',
+      definition: 'Goods Receipt/Invoice Receipt Clearing Account。入庫（GR）から請求書照合（MIRO）完了までの間、未処理残高を一時的に保持するG/L勘定。入庫時に貸方計上され、MIRO完了時に借方でクリアされる。月次処理ではMR11でGR/IR残高の整理を行う。GRのみ・MIROのみの場合は残高が残り、期末調整が必要となる。',
     },
     en: {
       term: 'GR/IR Clearing Account',
@@ -823,10 +823,10 @@ const coreTerms: GlossaryTerm[] = [
     id: 'gl-account',
     modules: ['FI', 'CO'],
     ja: {
-      term: 'GL勘定（総勘定元帳勘定）',
+      term: 'G/L勘定（勘定コード）',
       reading: 'じーえるかんじょう',
       aliases: ['G/L勘定'],
-      definition: 'General Ledger Account。財務会計（FI）のすべての取引が集計される会計上の分類コード。FSS0またはFS00で作成し、勘定タイプ（貸借対照表・損益計算書）・勘定グループ・転記管理コードを設定する。すべてのSAP転記（仕訳）はGL勘定を通じて記録され、財務諸表を構成する。CO原価要素とGL勘定はS/4HANAで統合されている。',
+      definition: 'General Ledger Account。財務会計（FI）のすべての取引が集計される会計上の分類コード。FSS0またはFS00で作成し、勘定タイプ（貸借対照表・損益計算書）・勘定グループ・転記管理コードを設定する。すべてのSAP転記（仕訳）はG/L勘定を通じて記録され、財務諸表を構成する。CO原価要素とG/L勘定はS/4HANAで統合されている。',
     },
     en: {
       term: 'GL Account (General Ledger Account)',
@@ -891,7 +891,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '資産会計',
       reading: 'しさんかいけい',
-      definition: 'FIの固定資産管理サブモジュール（FI-AA）。固定資産の取得・減価償却・廃棄・売却を管理する。AS01で資産マスタを作成し、減価償却キー（Dep. Key）・耐用年数・簿価を設定する。AFAB（減価償却実行）で定期的に減価償却を計上し、FIのGL勘定に自動転記する。S/4HANAではAFABはバックグラウンドジョブとして実行される。',
+      definition: 'FIの固定資産管理サブモジュール（FI-AA）。固定資産の取得・減価償却・廃棄・売却を管理する。AS01で資産マスタを作成し、減価償却キー（Dep. Key）・耐用年数・簿価を設定する。AFAB（減価償却実行）で定期的に減価償却を計上し、FIのG/L勘定に自動転記する。S/4HANAではAFABはバックグラウンドジョブとして実行される。',
     },
     en: {
       term: 'Asset Accounting (FI-AA)',
@@ -1009,7 +1009,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '勘定科目表',
       reading: 'かんじょうかもくひょう',
-      definition: '会社で使用するすべてのGL勘定科目を定義したリスト。クライアントレベルで管理され、複数の会社コードで共有できる（運営勘定科目表）。個別の会社コードに対する代替勘定科目表（Country Chart of Accounts）を別途定義することも可能。勘定グループにより勘定科目の性質（貸借対照表・損益）と採番範囲を制御する。',
+      definition: '会社で使用するすべてのG/L勘定科目を定義したリスト。クライアントレベルで管理され、複数の会社コードで共有できる（運営勘定科目表）。個別の会社コードに対する代替勘定科目表（Country Chart of Accounts）を別途定義することも可能。勘定グループにより勘定科目の性質（貸借対照表・損益）と採番範囲を制御する。',
     },
     en: {
       term: 'Chart of Accounts',
@@ -1230,7 +1230,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '品目タイプ',
       reading: 'ひんもくたいぷ',
-      definition: '品目マスタの基本分類コード。在庫管理の有無・評価方法・表示されるマスタデータビューを制御する。代表的な品目タイプ：ROH（原材料）・HALB（半製品）・FERT（完成品）・NLAG（非在庫品）・DIEN（サービス）。品目タイプは評価クラスと連動し、在庫のGL勘定決定にも影響する。',
+      definition: '品目マスタの基本分類コード。在庫管理の有無・評価方法・表示されるマスタデータビューを制御する。代表的な品目タイプ：ROH（原材料）・HALB（半製品）・FERT（完成品）・NLAG（非在庫品）・DIEN（サービス）。品目タイプは評価クラスと連動し、在庫のG/L勘定決定にも影響する。',
     },
     en: {
       term: 'Material Type',

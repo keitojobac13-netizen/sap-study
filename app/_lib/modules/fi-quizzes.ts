@@ -109,15 +109,15 @@ export const fiQuizzes: Record<Language, Record<string, Quiz[]>> = {
       {
         type: 'four-choice',
         question: '転記せずに伝票番号を付けて保存し、別の担当者が内容を確認してから転記できる伝票はどれか。',
-        choices: ['保留伝票（Parked Document）', '保持伝票（Held Document）', '定期伝票（Recurring Entry）', '逆転記伝票'],
+        choices: ['未転記伝票（Parked Document）', '仮伝票（Held Document）', '定期伝票（Recurring Entry）', '逆転記伝票'],
         correctIndex: 0,
-        explanation: '保留伝票です。保存時に伝票番号が採番され、他の担当者が照会・修正したうえで転記できるため、承認フローに使われます。保持伝票は入力途中の一時保存で、作成者本人が続きを入力するためのものです。',
+        explanation: '未転記伝票です。保存時に伝票番号が採番され、他の担当者が照会・修正したうえで転記できるため、承認フローに使われます。仮伝票は入力途中の一時保存（仮保存）で、あとで続きを入力するためのものです。',
       },
       {
         type: 'ox',
-        question: '保持伝票（Held Document）は、保存した時点で正式な伝票番号が採番され、他のユーザーからも照会できる。',
+        question: '仮伝票（Held Document）は、保存した時点で正式な伝票番号が採番され、他のユーザーからも照会できる。',
         correct: false,
-        explanation: '誤りです。保持伝票は入力途中の内容を一時的に保存するもので、正式な伝票番号は採番されません。承認のために他の担当者へ回すなら保留伝票を使います。',
+        explanation: '誤りです。仮伝票は入力途中の内容を一時的に保存するもので、正式な伝票番号は採番されません。承認のために他の担当者へ回すなら未転記伝票を使います。',
       },
       {
         type: 'four-choice',
@@ -179,7 +179,7 @@ export const fiQuizzes: Record<Language, Record<string, Quiz[]>> = {
       {
         type: 'four-choice',
         question: '仕入先への前渡金を、通常の買掛金と区別して管理するための仕組みはどれか。',
-        choices: ['特殊仕訳（Special G/L Transaction）', '定期伝票', '保留伝票', '分割支払条件'],
+        choices: ['特殊仕訳（Special G/L Transaction）', '定期伝票', '未転記伝票', '分割支払条件'],
         correctIndex: 0,
         explanation: '特殊仕訳です。特殊仕訳表示を付けて転記すると、通常の照合勘定ではなく前渡金用の代替照合勘定に計上されます。前渡金は資産なので、負債である買掛金と相殺表示しないために必要です。',
       },

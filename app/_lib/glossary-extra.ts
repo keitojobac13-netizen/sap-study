@@ -205,13 +205,14 @@ export const extraTerms: GlossaryTerm[] = [
     id: 'parked-document',
     modules: ['FI'],
     ja: {
-      term: '保留伝票／保持伝票',
-      reading: 'ほりゅうでんぴょう',
-      definition: '入力途中の伝票を一時保存する2つの方法。保留伝票は伝票番号が採番され、他のユーザーからも参照・編集できるため承認ワークフローに向く（FBV0で照会・転記）。保持伝票は伝票番号が採番されず他のユーザーからは見えない、入力者本人のためのメモに近い機能。入力担当者と承認担当者を分ける要件には保留伝票を使う。',
+      term: '未転記伝票／仮伝票',
+      reading: 'みてんきでんぴょう',
+      aliases: ['未転記伝票', '仮伝票', '仮保存'],
+      definition: '入力途中の伝票を、転記せずに保存する2つの方法。未転記伝票（Park）は伝票番号が採番され、他のユーザーも変更・転記できるため承認ワークフローに向く（FV50・FV60 などで登録し、FBV0 で変更・転記）。仮伝票（Hold）は入力画面の「仮保存」で作る一時保存で、伝票番号は採番されず、評価やレポートにも使われない。入力担当者と承認担当者を分ける要件には未転記伝票を使う。S/4HANA Cloud の Fiori アプリでは「保留仕訳」と表示される。',
     },
     en: {
       term: 'Parked / Held Document',
-      definition: 'Two ways of saving an unfinished document. A parked document receives a number and can be viewed and edited by others, which suits an approval workflow; it is displayed and posted with FBV0. A held document receives no number and is invisible to others, closer to a personal scratchpad. Separating the person who enters from the person who approves calls for parking.',
+      definition: 'Two ways of saving an unfinished document. A parked document receives a number and can be viewed and edited by others, which suits an approval workflow; it is displayed and posted with FBV0. A held document receives no number and cannot be used in evaluations; it only lets you interrupt entry and continue later. Separating the person who enters from the person who approves calls for parking.',
     },
   },
   {

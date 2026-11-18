@@ -896,7 +896,7 @@ export const sdContent: Record<Language, ModuleEnrichment> = {
             type: 'note',
             variant: 'warn',
             title: '請求ブロックを外す権限は分離する',
-            text: 'クレジットメモ依頼を登録する権限と、請求ブロックを解除する権限を同一人物が持つと、統制が機能しません。職務分離（Segregation of Duties）の観点から、権限設計の際に必ず分けるべき組み合わせです。監査で指摘される典型的な項目でもあります。',
+            text: 'クレジットメモ依頼を登録する権限と、請求ブロックを解除する権限を同一人物が持つと、統制が機能しません。職務分掌（Segregation of Duties）の観点から、権限設計の際に必ず分けるべき組み合わせです。監査で指摘される典型的な項目でもあります。',
           },
           { type: 'h', text: '理由コード' },
           {

@@ -116,7 +116,7 @@ export const mmQuizzes: Record<Language, Record<string, Quiz[]>> = {
         question: '請求書を転記せずに保存（パーク）し、後で確認してから転記するためのトランザクションコードはどれか。',
         choices: ['MIR7', 'MIRO', 'MRBR', 'MIGO'],
         correctIndex: 0,
-        explanation: 'MIR7は請求書の保留（パーク）です。保存した請求書は、担当者が内容を確認したうえで転記できます。',
+        explanation: 'MIR7は請求書の未転記入力（パーク）です。保存した請求書は、担当者が内容を確認したうえで転記できます。',
       },
     ],
     'inventory-valuation': [

@@ -559,8 +559,8 @@ export const techTerms: GlossaryTerm[] = [
     id: 'segregation-of-duties',
     modules: ['BASIS', 'FI'],
     ja: {
-      term: '職務分離（SoD）',
-      reading: 'しょくむぶんり',
+      term: '職務分掌（SoD）',
+      reading: 'しょくむぶんしょう',
       definition: '1人の担当者が不正を完結できないよう、相反する権限を分離する内部統制の考え方。仕入先マスタ登録と支払実行、購買発注登録と入庫転記、クレジットメモ登録と請求ブロック解除、ユーザー作成とロール付与といった組み合わせが典型例。監査で必ず確認される項目であり、権限設計の段階で分離を織り込む必要がある。',
     },
     en: {
