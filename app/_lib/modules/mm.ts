@@ -74,7 +74,7 @@ export const mm: Record<'ja' | 'en', ModuleContent> = {
         content: [
           '品目マスタはMM01で作成し、基本データ・購買データ・MRPデータ・在庫管理データ等の画面で構成されます。',
           '品目タイプ（ROH：原材料、FERT：製品、HALB：半製品等）が在庫管理や評価方法を決定します。',
-          '評価クラス（Valuation Class）は品目タイプと連動し、在庫のG/L勘定決定に使用されます。',
+          '評価クラス（Valuation Class）は品目タイプと連動し、在庫のG/L勘定を決める自動勘定設定に使用されます。',
           '在庫管理単位（基本単位）と発注単位が異なる場合、変換係数を設定します。',
         ],
         quizzes: [
@@ -87,7 +87,7 @@ export const mm: Record<'ja' | 'en', ModuleContent> = {
           },
           {
             type: 'ox',
-            question: '評価クラス（Valuation Class）は在庫のG/L勘定決定に使用される。',
+            question: '評価クラス（Valuation Class）は在庫のG/L勘定を決める自動勘定設定に使用される。',
             correct: true,
             explanation: '評価クラスはAuto Account Determinationを通じて在庫・消費等のG/L勘定を決定します。',
           },

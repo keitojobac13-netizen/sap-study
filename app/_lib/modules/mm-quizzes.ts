@@ -122,7 +122,7 @@ export const mmQuizzes: Record<Language, Record<string, Quiz[]>> = {
     'inventory-valuation': [
       {
         type: 'four-choice',
-        question: '在庫移動の転記先G/L勘定を決める勘定決定を設定するトランザクションコードはどれか。',
+        question: '在庫移動の転記先G/L勘定を決める自動勘定設定を行うトランザクションコードはどれか。',
         choices: ['OBYC', 'OB52', 'MMPV', 'OMSY'],
         correctIndex: 0,
         explanation: 'OBYCです。取引キー（BSXなど）と評価クラスの組み合わせで、在庫勘定や価格差異勘定などを決めます。',
@@ -145,7 +145,7 @@ export const mmQuizzes: Record<Language, Record<string, Quiz[]>> = {
         question: '移動タイプが決定しないものはどれか。',
         choices: ['在庫数量の増減', '転記先勘定を決める取引キー', '入力画面で使う項目', '仕入先の支払条件'],
         correctIndex: 3,
-        explanation: '支払条件は仕入先マスタや発注で決まります。移動タイプは在庫の増減、勘定決定の取引キー、入力項目などを決めます。',
+        explanation: '支払条件は仕入先マスタや発注で決まります。移動タイプは在庫の増減、自動勘定設定の取引キー、入力項目などを決めます。',
       },
     ],
     'vendor-master': [

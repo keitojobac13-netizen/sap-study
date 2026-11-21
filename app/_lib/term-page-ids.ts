@@ -51,6 +51,13 @@ export const TERM_PAGE_IDS = [
   'dunning',
   'availability-control',
   'business-area',
+  'account-determination',
+  'user-status',
+  'segregation-of-duties',
+  'account-assignment-category',
+  'release-strategy',
+  'depreciation-area',
+  'statistical-key-figure',
 ] as const;
 
 export type TermPageId = (typeof TERM_PAGE_IDS)[number];

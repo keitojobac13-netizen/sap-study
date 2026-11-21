@@ -70,9 +70,10 @@ const coreTerms: GlossaryTerm[] = [
     id: 'account-determination',
     modules: ['SD', 'MM'],
     ja: {
-      term: '勘定決定',
-      reading: 'かんじょうけってい',
-      definition: 'SDの請求処理やMMの在庫移動時に、転記先のG/L勘定を自動的に決定する仕組み。条件テクニックを使用し、売上組織・勘定設定グループ・勘定キー等の組み合わせで売上勘定・消費税勘定・在庫勘定などを自動決定する。SDではKOFI（売上勘定）などの条件タイプが使用される。',
+      term: '自動勘定設定',
+      aliases: ['勘定決定'],
+      reading: 'じどうかんじょうせってい',
+      definition: 'MMの在庫移動やSDの請求のときに、転記先のG/L勘定をSAPが自動で決める仕組み。MMではOBYCで、取引キー（BSX・WRX・GBBなど）と評価クラスの組み合わせごとに勘定を登録する。SDでは収益勘定決定と呼び、VKOAで販売組織・勘定設定グループ・勘定キーの組み合わせから売上や値引の勘定を決める（条件タイプKOFI）。',
     },
     en: {
       term: 'Account Determination',
@@ -495,7 +496,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '品目マスタ',
       reading: 'ひんもくますた',
-      definition: 'SAPで管理するすべての品目（材料・製品・半製品・サービス等）の基本情報を保持するマスタデータ。MM01で作成し、基本データ・購買データ・MRPデータ・在庫管理データ・評価データ・販売データ等の複数のビューで構成される。品目タイプ（ROH・FERT・HALB等）と評価クラスが在庫評価・勘定決定を決定する。',
+      definition: 'SAPで管理するすべての品目（材料・製品・半製品・サービス等）の基本情報を保持するマスタデータ。MM01で作成し、基本データ・購買データ・MRPデータ・在庫管理データ・評価データ・販売データ等の複数のビューで構成される。品目タイプ（ROH・FERT・HALB等）と評価クラスが在庫評価と自動勘定設定を左右する。',
     },
     en: {
       term: 'Material Master',
@@ -655,7 +656,7 @@ const coreTerms: GlossaryTerm[] = [
     ja: {
       term: '評価クラス',
       reading: 'ひょうかくらす',
-      definition: '品目マスタに設定するコードで、在庫移動・入出庫時のG/L勘定を自動決定する勘定決定（Automatic Account Determination）の基準となる。品目タイプに紐付いた評価クラスの設定により、原材料・製品・半製品等の在庫がそれぞれ異なるG/L勘定に転記される。OBYCで勘定決定をカスタマイズする。',
+      definition: '品目マスタに設定するコードで、在庫移動・入出庫時のG/L勘定を決める自動勘定設定（Automatic Account Determination、OBYC）の基準となる。品目タイプに紐付いた評価クラスの設定により、原材料・製品・半製品等の在庫がそれぞれ異なるG/L勘定に転記される。OBYCで勘定決定をカスタマイズする。',
     },
     en: {
       term: 'Valuation Class',

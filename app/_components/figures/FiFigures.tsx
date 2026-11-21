@@ -419,7 +419,7 @@ function SettlementSteps() {
           <span className={sub}><Phrase text="CRTD（登録済）|CLSD（完了）" /></span>
         </div>
       </div>
-      <p className={stop}><span className={tag}>確認3</span><Phrase text="ユーザーステータスで|止めていることもある" /></p>
+      <p className={stop}><span className={tag}>確認3</span><Phrase text="ユーザステータスで|止めていることもある" /></p>
       {down}
 
       <p className={step}><span className={num}>4</span><span><Phrase text="配分構造で、|決済に使う原価要素を決める" /></span></p>
