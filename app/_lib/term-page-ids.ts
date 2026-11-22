@@ -58,6 +58,9 @@ export const TERM_PAGE_IDS = [
   'release-strategy',
   'depreciation-area',
   'statistical-key-figure',
+  'open-item-management',
+  'split-valuation',
+  'rfq',
 ] as const;
 
 export type TermPageId = (typeof TERM_PAGE_IDS)[number];
