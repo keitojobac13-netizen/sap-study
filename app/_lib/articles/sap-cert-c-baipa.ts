@@ -5,8 +5,8 @@ export const sapCertCBaipa: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-22',
   category: 'career',
-  cardTitle: 'SAP Business AI認定（C_BAIPA）',
-  title: 'SAP Business AI Platform認定（C_BAIPA）を日本語で受けた｜Joule・AIエージェントの設計を問う試験',
+  cardTitle: 'SAP Business AI認定資格（C_BAIPA）',
+  title: 'SAP Business AI Platform認定資格（C_BAIPA）を日本語で受けた｜Joule・AIエージェントの設計を問う試験',
   summary:
     'SAP Business AI Platform の認定試験（C_BAIPA）を、AIロールプレイ形式・日本語で受けて70%で合格しました。試験の形式と範囲、Joule Studio や AI Agent Hub など整理しておくとよい製品、向いている人と業務での生かし方をまとめます。',
   keywords: [
@@ -21,9 +21,9 @@ export const sapCertCBaipa: ColumnArticle = {
   ],
   related: [
     { label: 'SAP認定資格は役に立つか', href: '/articles/sap-certification-value' },
-    { label: 'SAP Activate認定（C_ACT）', href: '/articles/sap-cert-c-act' },
-    { label: 'SAP Analytics Cloud認定（C_SAC）', href: '/articles/sap-cert-c-sac' },
-    { label: 'RISE with SAP Transformation認定（C_SIGVT）', href: '/articles/sap-cert-c-sigvt' },
+    { label: 'SAP Activate認定資格（C_ACT）', href: '/articles/sap-cert-c-act' },
+    { label: 'SAP Analytics Cloud認定資格（C_SAC）', href: '/articles/sap-cert-c-sac' },
+    { label: 'RISE with SAP Transformation認定資格（C_SIGVT）', href: '/articles/sap-cert-c-sigvt' },
   ],
   body: [
     {

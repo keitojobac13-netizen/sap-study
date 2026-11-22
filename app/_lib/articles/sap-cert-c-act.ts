@@ -5,8 +5,8 @@ export const sapCertCAct: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-22',
   category: 'career',
-  cardTitle: 'SAP Activate認定（C_ACT）',
-  title: 'SAP Activate認定（C_ACT）を日本語で受けた｜試験の形式・範囲と、向いている人',
+  cardTitle: 'SAP Activate認定資格（C_ACT）',
+  title: 'SAP Activate認定資格（C_ACT）を日本語で受けた｜試験の形式・範囲と、向いている人',
   summary:
     'SAP Activate の認定試験（C_ACT）を、AIロールプレイ形式・日本語で受けて80%で合格しました。試験の形式と範囲、事前に整理しておくとよいこと、向いている人、導入・移行案件でどう生かせるかをまとめます。',
   keywords: [
@@ -21,9 +21,9 @@ export const sapCertCAct: ColumnArticle = {
   ],
   related: [
     { label: 'SAP認定資格は役に立つか', href: '/articles/sap-certification-value' },
-    { label: 'RISE with SAP Transformation認定（C_SIGVT）', href: '/articles/sap-cert-c-sigvt' },
-    { label: 'SAP Business AI Platform認定（C_BAIPA）', href: '/articles/sap-cert-c-baipa' },
-    { label: 'SAP Analytics Cloud認定（C_SAC）', href: '/articles/sap-cert-c-sac' },
+    { label: 'RISE with SAP Transformation認定資格（C_SIGVT）', href: '/articles/sap-cert-c-sigvt' },
+    { label: 'SAP Business AI Platform認定資格（C_BAIPA）', href: '/articles/sap-cert-c-baipa' },
+    { label: 'SAP Analytics Cloud認定資格（C_SAC）', href: '/articles/sap-cert-c-sac' },
   ],
   body: [
     {

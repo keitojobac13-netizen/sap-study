@@ -5,8 +5,8 @@ export const sapCertCSigvt: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-22',
   category: 'career',
-  cardTitle: 'RISE with SAP認定（C_SIGVT）',
-  title: 'RISE with SAP Transformation認定（C_SIGVT）を日本語で受けた｜LeanIX・Signavio・Cloud ALMのつながり',
+  cardTitle: 'RISE with SAP認定資格（C_SIGVT）',
+  title: 'RISE with SAP Transformation認定資格（C_SIGVT）を日本語で受けた｜LeanIX・Signavio・Cloud ALMのつながり',
   summary:
     'RISE with SAP Transformation の認定試験（C_SIGVT）を、AIロールプレイ形式・日本語で受けて70%で合格しました。試験の形式と範囲、LeanIX・Signavio・Cloud ALM・WalkMe の役割の整理、向いている人と導入・移行案件での生かし方をまとめます。',
   keywords: [
@@ -21,9 +21,9 @@ export const sapCertCSigvt: ColumnArticle = {
   ],
   related: [
     { label: 'SAP認定資格は役に立つか', href: '/articles/sap-certification-value' },
-    { label: 'SAP Activate認定（C_ACT）', href: '/articles/sap-cert-c-act' },
-    { label: 'SAP Business AI Platform認定（C_BAIPA）', href: '/articles/sap-cert-c-baipa' },
-    { label: 'SAP Analytics Cloud認定（C_SAC）', href: '/articles/sap-cert-c-sac' },
+    { label: 'SAP Activate認定資格（C_ACT）', href: '/articles/sap-cert-c-act' },
+    { label: 'SAP Business AI Platform認定資格（C_BAIPA）', href: '/articles/sap-cert-c-baipa' },
+    { label: 'SAP Analytics Cloud認定資格（C_SAC）', href: '/articles/sap-cert-c-sac' },
   ],
   body: [
     {

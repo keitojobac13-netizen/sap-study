@@ -109,25 +109,25 @@ export const sapCertificationValue: ColumnArticle = {
     {
       type: 'link',
       href: '/articles/sap-cert-c-act',
-      label: 'SAP Activate認定（C_ACT）',
+      label: 'SAP Activate認定資格（C_ACT）',
       text: '導入プロジェクトの進め方を問う試験。導入案件に直接つながる。',
     },
     {
       type: 'link',
       href: '/articles/sap-cert-c-sigvt',
-      label: 'RISE with SAP Transformation認定（C_SIGVT）',
+      label: 'RISE with SAP Transformation認定資格（C_SIGVT）',
       text: 'LeanIX・Signavio・Cloud ALM などのツールのつながりを問う試験。',
     },
     {
       type: 'link',
       href: '/articles/sap-cert-c-sac',
-      label: 'SAP Analytics Cloud認定（C_SAC）',
+      label: 'SAP Analytics Cloud認定資格（C_SAC）',
       text: '分析と計画の試験。FI・COの人が分析の領域に広げるのに向く。',
     },
     {
       type: 'link',
       href: '/articles/sap-cert-c-baipa',
-      label: 'SAP Business AI Platform認定（C_BAIPA）',
+      label: 'SAP Business AI Platform認定資格（C_BAIPA）',
       text: 'Joule やAIエージェントを使ったソリューションの設計を問う試験。',
     },
     {

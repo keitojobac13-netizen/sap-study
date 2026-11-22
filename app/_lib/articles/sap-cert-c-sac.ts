@@ -5,8 +5,8 @@ export const sapCertCSac: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-22',
   category: 'career',
-  cardTitle: 'SAP Analytics Cloud認定（C_SAC）',
-  title: 'SAP Analytics Cloud認定（C_SAC）を日本語で受けた｜FI・COの人が分析に広げるための資格',
+  cardTitle: 'SAP Analytics Cloud認定資格（C_SAC）',
+  title: 'SAP Analytics Cloud認定資格（C_SAC）を日本語で受けた｜FI・COの人が分析に広げるための資格',
   summary:
     'SAP Analytics Cloud の認定試験（C_SAC）を、AIロールプレイ形式・日本語で受けて80%で合格しました。試験の形式と範囲、Smart Insights や Smart Predict など似た機能の整理のしかた、向いている人と業務での生かし方をまとめます。',
   keywords: [
@@ -21,9 +21,9 @@ export const sapCertCSac: ColumnArticle = {
   ],
   related: [
     { label: 'SAP認定資格は役に立つか', href: '/articles/sap-certification-value' },
-    { label: 'SAP Activate認定（C_ACT）', href: '/articles/sap-cert-c-act' },
-    { label: 'SAP Business AI Platform認定（C_BAIPA）', href: '/articles/sap-cert-c-baipa' },
-    { label: 'RISE with SAP Transformation認定（C_SIGVT）', href: '/articles/sap-cert-c-sigvt' },
+    { label: 'SAP Activate認定資格（C_ACT）', href: '/articles/sap-cert-c-act' },
+    { label: 'SAP Business AI Platform認定資格（C_BAIPA）', href: '/articles/sap-cert-c-baipa' },
+    { label: 'RISE with SAP Transformation認定資格（C_SIGVT）', href: '/articles/sap-cert-c-sigvt' },
   ],
   body: [
     {
