@@ -24,6 +24,10 @@ import { sapFreelanceRates } from './sap-freelance-rates';
 import { balanceVsOpenItemMigration } from './balance-vs-open-item-migration';
 import { sapConsultantEnglish } from './sap-consultant-english';
 import { sapCertificationValue } from './sap-certification-value';
+import { sapCertCAct } from './sap-cert-c-act';
+import { sapCertCBaipa } from './sap-cert-c-baipa';
+import { sapCertCSac } from './sap-cert-c-sac';
+import { sapCertCSigvt } from './sap-cert-c-sigvt';
 import { sapPartnerExcellence2026 } from './sap-partner-excellence-2026';
 import { sapCompanyTypes } from './sap-company-types';
 import { accentureAbeamSap } from './accenture-abeam-sap';
@@ -98,6 +102,10 @@ const ARTICLES: ColumnArticle[] = [
   sapPartnerExcellence2026,
   sapCompanyTypes,
   accentureAbeamSap,
+  sapCertCAct,
+  sapCertCBaipa,
+  sapCertCSac,
+  sapCertCSigvt,
   sapCertificationValue,
   sapConsultantEnglish,
   balanceVsOpenItemMigration,
