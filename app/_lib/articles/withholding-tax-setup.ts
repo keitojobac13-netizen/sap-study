@@ -24,7 +24,7 @@ export const withholdingTaxSetup: ColumnArticle = {
   ],
   related: [
     { label: '買掛金管理（FI-AP）', href: '/fi/fi-ap' },
-    { label: 'SAPの消費税と税コード', href: '/articles/sap-consumption-tax' },
+    { label: 'SAPの税コードと消費税', href: '/articles/sap-consumption-tax' },
     { label: 'F110でDMEが出ないとき', href: '/articles/f110-payment-medium' },
   ],
   body: [
