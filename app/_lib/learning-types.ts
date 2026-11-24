@@ -70,7 +70,8 @@ export type FigureName =
   | 'withholding-payment'
   | 'cost-object-choice'
   | 'sales-table-flow'
-  | 'migration-clearing';
+  | 'migration-clearing'
+  | 'implementation-cost';
 
 export type Section = {
   id: string;

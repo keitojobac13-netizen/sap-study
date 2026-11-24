@@ -676,6 +676,54 @@ function MigrationClearing() {
   );
 }
 
+/**
+ * One sample project, priced line by line: people × monthly rate × months.
+ * The point is that the total is just this multiplication, so the reader can
+ * see which line moves it (members, and how long everyone stays).
+ */
+function ImplementationCost() {
+  const lines = [
+    { role: 'リーダー', who: 'PM・業務リーダー', people: 2, rate: 300, months: 12 },
+    { role: 'コンサル', who: 'FI・CO・SD・MMの担当', people: 6, rate: 200, months: 12 },
+    { role: '開発者', who: 'アドオンの設計・実装', people: 4, rate: 120, months: 8 },
+  ];
+  const yen = (man: number) =>
+    man >= 10000 ? `${Math.floor(man / 10000)}億${man % 10000 ? `${(man % 10000).toLocaleString()}万` : ''}円` : `${man.toLocaleString()}万円`;
+  const total = lines.reduce((s, l) => s + l.people * l.rate * l.months, 0);
+  return (
+    <div className="mx-auto max-w-md">
+      <p className="text-[0.75rem] text-ink-mute leading-snug mb-2">
+        <Phrase text="前提：中堅の製造業が、|FI・CO・SD・MMの4モジュールを、|要件定義から稼働まで12か月で導入" />
+      </p>
+      <div className="border border-rule bg-paper">
+        {lines.map((l) => (
+          <div key={l.role} className="flex items-center justify-between gap-3 px-2 sm:px-3 py-2 border-b border-rule last:border-b-0">
+            <span className="min-w-0">
+              <span className="block text-[0.8rem] font-semibold text-ink leading-snug">{l.role}</span>
+              <span className="block text-[0.7rem] text-ink-mute leading-snug">
+                <Phrase text={l.who} />
+              </span>
+            </span>
+            <span className="text-right shrink-0">
+              <span className="block text-[0.72rem] text-ink-soft tabular-nums leading-snug">
+                {l.people}人 × {l.rate}万円 × {l.months}か月
+              </span>
+              <span className="block text-[0.82rem] font-semibold text-ink tabular-nums leading-snug">
+                {yen(l.people * l.rate * l.months)}
+              </span>
+            </span>
+          </div>
+        ))}
+      </div>
+      <div aria-hidden className="text-center text-ink-mute text-base leading-none py-1.5">↓</div>
+      <div className={`${box} border-accent bg-accent-soft text-accent`}>
+        <span className="block text-[0.72rem] leading-snug">導入作業費の合計</span>
+        <span className={`${title} mt-0.5 tabular-nums`}>{yen(total)}（約2.5億円）</span>
+      </div>
+    </div>
+  );
+}
+
 const FIGURES: Record<FigureName, () => ReactNode> = {
   'ledger-stack': LedgerStack,
   'standard-hub': StandardHub,
@@ -689,6 +737,7 @@ const FIGURES: Record<FigureName, () => ReactNode> = {
   'cost-object-choice': CostObjectChoice,
   'sales-table-flow': SalesTableFlow,
   'migration-clearing': MigrationClearing,
+  'implementation-cost': ImplementationCost,
 };
 
 export default function Figure({ name }: { name: FigureName }) {

@@ -21,6 +21,7 @@ import { costObjectChoice } from './cost-object-choice';
 import { s4hanaTableFlow } from './s4hana-table-flow';
 import { consultantVsInhouseSe } from './consultant-vs-inhouse-se';
 import { sapFreelanceRates } from './sap-freelance-rates';
+import { sapImplementationCost } from './sap-implementation-cost';
 import { balanceVsOpenItemMigration } from './balance-vs-open-item-migration';
 import { sapConsultantEnglish } from './sap-consultant-english';
 import { sapCertificationValue } from './sap-certification-value';
@@ -91,6 +92,7 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  sapImplementationCost,
   sapCompanyAxes,
   accentureSap,
   abeamSap,
