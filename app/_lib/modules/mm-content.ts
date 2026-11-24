@@ -815,7 +815,7 @@ export const mmContent: Record<Language, ModuleEnrichment> = {
 
       'special-procurement': {
         summary:
-          'コンサインメントとは、仕入先の在庫を自社で預かり、使った分だけ支払う調達方式です。入庫時に会計伝票が立たない理由と、外注加工・在庫転送オーダーの扱いを解説します。',
+          '特殊調達とは、通常の「買って在庫にして使う」に当てはまらない調達のことです。外注加工・在庫転送オーダー・コンサインメント在庫の3つについて、在庫と会計の扱いの違いを解説します。',
         keywords: ['コンサインメント', '外注加工', 'STO', '在庫転送オーダー', '特殊在庫', '支給品'],
         body: [
           {
@@ -826,6 +826,12 @@ export const mmContent: Record<Language, ModuleEnrichment> = {
           {
             type: 'p',
             text: 'コンサインメント（Consignment）は、仕入先の在庫を自社の倉庫に置いておき、使った分だけ支払う方式です。預り在庫とも呼ばれます。',
+          },
+          {
+            type: 'link',
+            href: '/articles/consignment',
+            label: 'コンサイメント（コンサインメント）とは',
+            text: '一般的な意味・契約のポイント・MRKOによる決済まで、くわしくは記事で解説しています。',
           },
           {
             type: 'p',

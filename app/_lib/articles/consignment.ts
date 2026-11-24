@@ -4,11 +4,12 @@ export const consignment: ColumnArticle = {
   slug: 'consignment',
   status: 'published',
   publishedAt: '2026-09-17',
+  updatedAt: '2026-11-24',
   category: 'term',
-  title: 'コンサインメントとは？意味・在庫と会計の流れ・SAPでの処理をわかりやすく解説',
-  cardTitle: 'コンサインメントとは',
+  title: 'コンサイメント（コンサインメント）とは？意味・委託在庫の流れ・SAPでの処理をわかりやすく解説',
+  cardTitle: 'コンサイメント（コンサインメント）とは',
   summary:
-    'コンサインメントとは、仕入先の在庫を自社で預かり、使った分だけ支払う取引です。意味と契約のポイント、SAPでの在庫と会計の流れ、MRKOによる決済までを解説します。',
+    'コンサイメント（コンサインメント）とは、仕入先の在庫を自社で預かり、使った分だけ支払う取引です。委託在庫とも呼びます。意味と契約のポイント、SAPでの在庫と会計の流れ、MRKOによる決済まで解説します。',
   keywords: ['コンサインメント', 'コンサイメント', '仕入先受託品', '委託在庫', 'Consignment', 'MRKO', '特殊在庫K'],
   related: [
     { label: '特殊調達（外注加工・在庫転送オーダー）', href: '/mm/special-procurement' },

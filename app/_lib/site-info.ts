@@ -47,7 +47,7 @@ export const MODULE_CONTENT_UPDATED: Record<ModuleKey, string> = {
   fi: '2026-11-13',
   co: '2026-11-13',
   sd: '2026-09-14',
-  mm: '2026-09-16',
+  mm: '2026-11-24',
   pp: '2026-09-14',
   abap: '2026-09-14',
   basis: '2026-09-14',
