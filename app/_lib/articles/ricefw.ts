@@ -12,6 +12,7 @@ export const ricefw: ColumnArticle = {
   keywords: ['RICEFW', 'RICEF', 'WRICEF', 'アドオン開発', 'SAP 開発', 'ABAP', 'クリーンコア'],
   related: [
     { label: 'ABAPとは', href: '/abap/abap-overview' },
+    { label: 'SAPの導入費用は何で決まるか', href: '/articles/sap-implementation-cost' },
     { label: 'ABAP開発環境', href: '/abap/abap-dev-environment' },
     { label: 'ALVレポート', href: '/abap/abap-alv' },
     { label: 'SAPのモジュール一覧', href: '/articles/sap-modules' },

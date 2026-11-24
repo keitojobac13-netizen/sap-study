@@ -2,7 +2,8 @@ import type { ColumnArticle } from './index';
 
 export const sapImplementationCost: ColumnArticle = {
   slug: 'sap-implementation-cost',
-  status: 'draft',
+  status: 'published',
+  publishedAt: '2026-11-24',
   category: 'overview',
   title: 'SAPの導入費用（コスト）は何で決まる？見積もりを「人数×単価×期間」で読む｜規模別の試算例',
   cardTitle: 'SAPの導入費用は何で決まるか',

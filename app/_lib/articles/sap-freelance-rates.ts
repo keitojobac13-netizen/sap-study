@@ -25,6 +25,7 @@ export const sapFreelanceRates: ColumnArticle = {
   hasAffiliateLinks: true,
   related: [
     { label: 'SAPコンサルと社内SE（情シス）の違い', href: '/articles/consultant-vs-inhouse-se' },
+    { label: 'SAPの導入費用は何で決まるか', href: '/articles/sap-implementation-cost' },
     { label: 'RICEFWとは', href: '/articles/ricefw' },
     { label: 'SAPのモジュール一覧', href: '/articles/sap-modules' },
   ],
