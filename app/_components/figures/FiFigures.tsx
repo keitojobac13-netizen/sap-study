@@ -684,7 +684,7 @@ function MigrationClearing() {
 function ImplementationCost() {
   const lines = [
     { role: 'リーダー', who: 'PM・業務リーダー', people: 2, rate: 300, months: 12 },
-    { role: 'コンサル', who: 'FI・CO・SD・MMの担当', people: 6, rate: 200, months: 12 },
+    { role: 'コンサル', who: 'FI・CO・SD・MMの担当|（1モジュール2〜3人）', people: 10, rate: 200, months: 12 },
     { role: '開発者', who: 'アドオンの設計・実装', people: 4, rate: 120, months: 8 },
   ];
   const yen = (man: number) =>
@@ -693,7 +693,7 @@ function ImplementationCost() {
   return (
     <div className="mx-auto max-w-md">
       <p className="text-[0.75rem] text-ink-mute leading-snug mb-2">
-        <Phrase text="前提：中堅の製造業が、|FI・CO・SD・MMの4モジュールを、|要件定義から稼働まで12か月で導入" />
+        <Phrase text="前提：中堅の製造業が、|FI・CO・SD・MMの4モジュールを、|アドオンも作りながら、|要件定義から稼働まで12か月で導入" />
       </p>
       <div className="border border-rule bg-paper">
         {lines.map((l) => (
@@ -718,7 +718,7 @@ function ImplementationCost() {
       <div aria-hidden className="text-center text-ink-mute text-base leading-none py-1.5">↓</div>
       <div className={`${box} border-accent bg-accent-soft text-accent`}>
         <span className="block text-[0.72rem] leading-snug">導入作業費の合計</span>
-        <span className={`${title} mt-0.5 tabular-nums`}>{yen(total)}（約2.5億円）</span>
+        <span className={`${title} mt-0.5 tabular-nums`}>{yen(total)}（約3.5億円）</span>
       </div>
     </div>
   );
