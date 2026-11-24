@@ -73,7 +73,7 @@ type Entry = {
   text: string;
 };
 
-export type CompanyId = 'accenture' | 'abeam' | 'nttdata-gsl' | 'pwc' | 'deloitte' | 'kpmg' | 'sigmaxyz';
+export type CompanyId = 'accenture' | 'abeam' | 'nttdata-gsl' | 'pwc' | 'deloitte' | 'kpmg' | 'sigmaxyz' | 'fujitsu';
 
 export type Company = {
   id: CompanyId;
@@ -418,6 +418,52 @@ export const COMPANIES: Company[] = [
       },
     },
   },
+  {
+    id: 'fujitsu',
+    name: '富士通',
+    slug: 'fujitsu-sap',
+    oneLine: '日本企業で初めてのRISE with SAPプレミアムサプライヤー。自社導入と保険業のSAPで表彰',
+    checkedOn: '2026年11月24日',
+    products: [
+      { id: 'erp-private', evidence: '日本企業で初めてRISE with SAPのプレミアムサプライヤーに（2023年9月発表）、自社の基幹システム刷新「OneERP+」で国内6万人超にS/4HANAを中核とする複数製品を一斉導入（2025年 プロジェクト表彰）' },
+      { id: 'spend', evidence: '古河電気工業の販売・会計・購買をS/4HANAとSAP Aribaで刷新（2022年の公開事例）' },
+    ],
+    tags: ['run'],
+    axes: {
+      position: {
+        short: '大手SIer、自社もSAPの大規模ユーザー',
+        text: '連結の従業員が9万9,000人（2026年3月末、同社サイト）のITサービス企業です。SAPの事業は、SAP・Salesforce・ServiceNow（社内では「3S」）を扱うEBAS（Enterprise Business Application Services）事業本部が担っています（2026年11月の採用イベントページ）。2024年に立ち上げたコンサルティング事業のブランド「Uvance Wayfinders」では、SAP事業をテクノロジーコンサルティングの中核に位置づけています（2025年1月の採用インタビュー）。自社でもSAPを使っていて、グローバルの基幹システム刷新「OneERP+」をFit to Standardで進めました。',
+      },
+      products: {
+        short: 'RISE with SAP・自社導入・保険業のSAP',
+        text: '2025年は、カスタマーサクセス（クラウド製品の契約更新や追加提案）とSAP Services Collaboration（中央省庁で初めてのERP案件で、日本初の業界ソリューションを採用）の2部門で受賞し、自社の「OneERP+」でもプロジェクト表彰を受けました。2026年は、東京海上日動火災保険の保険募集システムに日本で初めてSAP for Insuranceを導入した案件で選ばれています。2023年9月には、日本企業として初めてRISE with SAPのプレミアムサプライヤー（RISE with SAPの構築から運用までを担う役割）になったと発表しました。',
+      },
+      scope: {
+        short: '構想策定から導入・運用・保守まで',
+        text: '採用インタビュー（2026年1月）では、SAPを含む3Sの導入から運用・保守までを一貫して担うとしています。プレミアムサプライヤーとしてRISE with SAPの構築と運用を引き受けるほか、構想立案のコンサルティング、S/4HANAへのコンバージョン（独自の手法「BLUEFIELDコンバージョン」を含む）、クラウド移行のアセスメントを提供サービスに挙げています。求人には、AMS（稼働後のアプリケーション運用サービス）の事業を率いるディレクターの募集もあります。',
+      },
+      projects: {
+        short: '大企業・公共の大規模案件',
+        text: '2025年1月の採用インタビューでは、各業界のリーディングカンパニーが顧客に多く、数十億から数百億円規模のプロジェクトも多いこと、業界は製造・流通・公共など幅広いことを紹介しています。公開された案件は、東京海上日動火災保険（保険募集システム）、中央省庁のERP案件、森永製菓（BLUEFIELDコンバージョンでS/4HANAへ移行し、データ移行を48時間以内に完了、2026年10月の公開事例）、古河電気工業（S/4HANAとSAP Ariba）などです。',
+      },
+      global: {
+        short: '自社導入の海外展開、海外のデリバリーチームと連携',
+        text: '自社の「OneERP+」は海外への展開も進めていると、2025年の表彰で評価されています。富士通の求人サイトには、フィリピン・インド・シンガポール・米国などのSAPの求人も載っています。国内のBasisコンサルタントの求人では、インドを中心としたグローバルデリバリーチームと連携すると書かれています。プレミアムサプライヤーのサービスは、日本で始めてから順次海外へ広げる計画でした（2023年9月の発表）。',
+      },
+      talent: {
+        short: '研修制度・資格取得、SAPの専門家チーム',
+        text: '公式の求人では、プロジェクトや研修制度を通して未経験分野への挑戦を後押しするとし、SAPのプロジェクト経験と資格取得で市場競争力のある人材を目指せるとしています。社内で特に経験の深いSAPコンサルタントを集めた「SAP SME」チームがあり、2025年1月時点で7名、2年で約50名に増やす計画でした。SAP部門の体系的な研修カリキュラムの公開は確認できませんでした。',
+      },
+      roles: {
+        short: 'SAPコンサル・CSM・SEC・アーキテクト・Basis・AMS',
+        text: '公式の求人（2026年6〜8月掲載）は、SAPコンサルタント（リーダークラスからシニアディレクター相当まで）、SAP SMEチームのCSM（特定の顧客のSAPデリバリー責任者）とSEC（業務領域の専門家として商談・構想・構築を担う）、SAP Architect Consultant（アドオンの設計・開発とAIを前提にした開発プロセス）、Basisコンサルタント、AMSのディレクターです。2025年10月には、3SのデリバリーにAIを使うAIチームも発足しています。',
+      },
+      pay: {
+        short: '公式求人で年収780万円〜（担当クラス）、フレックス',
+        text: '公式の求人では、年収の下限が担当クラスで780万円、リーダークラスで960万円、マネージャー相当で1,240万円、シニアマネージャー相当で1,250万〜1,360万円、シニアディレクター相当で1,700万円で、いずれも「職責に応じさらに高い処遇を設定」とあります。SAP SMEチームの求人では、残業は月平均20時間（繁忙期30〜40時間）で、フレックス勤務とテレワーク勤務制度があります。新卒は、入社後早期から自律的に働く職務で月額31万5,000円、育成期間が必要な職務で月額29万4,000円（いずれも諸手当を除き、時間外手当は別。2026年4月時点の予定、公式の募集要項）です。',
+      },
+    },
+  },
 ];
 
 export function getCompany(id: CompanyId): Company {
@@ -508,7 +554,7 @@ export function axisDetailBlocks(id: CompanyId): Block[] {
 }
 
 /** Companies whose pay text quotes a new-graduate figure. */
-const NEW_GRAD_PAY: CompanyId[] = ['abeam', 'nttdata-gsl', 'deloitte', 'sigmaxyz'];
+const NEW_GRAD_PAY: CompanyId[] = ['abeam', 'nttdata-gsl', 'deloitte', 'sigmaxyz', 'fujitsu'];
 
 /** The short pay note for one company page; the hub uses PAY_NOTE. */
 function companyPayNote(id: CompanyId): Block {
@@ -952,6 +998,51 @@ const DETAILS: Record<CompanyId, Detail> = {
       { label: 'IT Leaders「日本郵船、グループ350社の会計システムを『SAP S/4HANA Cloud』に移行」', href: 'https://it.impress.co.jp/articles/-/28668', note: '2025年11月27日、アドオンの削減' },
       { label: 'シグマクシス・ホールディングス 有価証券報告書（2026年3月期）', note: '連結の社員数' },
       { label: '就職情報サイト掲載の募集要項', note: '新卒の年俸の参考額' },
+    ],
+  },
+  fujitsu: {
+    work: [
+      ['業務・SAPコンサル', 'SAPコンサルタント（Function Consultant）：導入フェーズから担当して領域をリードし、顧客をFit to Standardに導く。SEC：商談・構想策定・構築、プロジェクトの立て直しまで（公式求人・採用ページ）'],
+      ['技術・開発', 'SAP Architect Consultant：アドオンの設計・開発と、AIを前提にした開発プロセス。Basisコンサルタント：設計・構築・運用の基盤領域と、AI・自動化を使った運用の標準化'],
+      ['PM・PMO', 'CSM：特定の顧客のSAPデリバリー責任者として、Fit to Standardの進み具合の管理を含むプロジェクト全体をマネジメント'],
+      ['グローバル', 'インドを中心としたグローバルデリバリーチームとの連携（Basisの求人）、海外チームとの連携（SAPコンサルタントの求人）'],
+      ['運用・改善', 'AMSのディレクター：既存の保守の標準化、AI・RPAを使った運用の効率化、AMS事業の戦略策定'],
+    ],
+    workNote: '確認した公式求人の多くは、SAPコンサルタントの認定資格が必須条件です（CSMは大規模プロジェクトのPM経験者も応募でき、AMSのディレクターは資格の記載なし）。リーダークラスのSAPコンサルタントでは、資格に加えて、機能モジュール（FI・CO・SD・MMなど）の導入経験2件以上か、プロジェクト管理・リーダー経験1年以上が必要です。英語は歓迎条件です。',
+    compare: [
+      { id: 'nttdata-gsl', point: 'SIer系の会社どうしで、導入から運用・保守までの職種の分かれ方を比べるなら' },
+      { id: 'accenture', point: '大規模案件と、稼働後の運用まで手がける会社どうしで比べるなら' },
+    ],
+    fit: [
+      'RISE with SAP（Private Edition）の構築・運用に関わりたい人：日本企業で初めてのプレミアムサプライヤーです',
+      '大企業・公共の大規模なSAP案件に関わりたい人：数十億から数百億円規模のプロジェクトも多いと採用インタビューで紹介しています',
+      '保険など、業種ごとのSAPソリューションに関わりたい人：2026年に日本初のSAP for Insuranceの導入で選ばれています',
+      '導入後の運用・保守まで関わりたい人：導入から運用・保守まで一貫して担うとしていて、AMSの求人もあります',
+      'SAPとAIを組み合わせた仕事に関わりたい人：デリバリーにAIを使うAIチームがあり、AIを前提にした求人が出ています',
+    ],
+    sources: [
+      SAP_AWARDS_2026,
+      SAP_AWARDS_2025,
+      { label: '富士通「日本企業初の『RISE with SAP』のプレミアムサプライヤーとして企業のサステナブルな変革を支援する新オファリングを提供」', href: 'https://info.archives.global.fujitsu/jp/news/2023/09/19.html', note: '2023年9月19日' },
+      { label: '富士通「SAPソリューション」', href: 'https://global.fujitsu/ja-JP/capabilities/business-applications/sap', note: '提供サービス・事例' },
+      { label: '富士通 お客様事例「森永製菓株式会社 様」', href: 'https://global.fujitsu/ja-JP/customer-stories/cs-morinaga-20261020', note: '2026年10月20日、BLUEFIELDコンバージョン' },
+      { label: '富士通 お客様事例「古河電気工業株式会社 様」', href: 'https://global.fujitsu/ja-JP/customer-stories/cs-furukawa-electric-20220930', note: '2022年9月30日' },
+      { label: '富士通 キャリア採用「SAP SME」', href: 'https://fujitsu.recruiting.jp.fujitsu.com/career/3s/sap-sme/', note: 'CSMとSECの役割' },
+      { label: '富士通 キャリア採用「世界最高峰のSAPコンサルティングチーム、始動」', href: 'https://fujitsu.recruiting.jp.fujitsu.com/career/special/feature07/20250210-2/', note: '2025年1月の採用インタビュー。案件規模・SAP SMEチームの人数' },
+      { label: '富士通 キャリア採用「AIでデリバリーの『ゼロタッチ化』を目指す前例なき挑戦」', href: 'https://fujitsu.recruiting.jp.fujitsu.com/career/special/feature07/202603-01/', note: '2026年1月の採用インタビュー。担当工程・AIチーム' },
+      { label: '富士通 採用イベント「社員が語る！富士通SAPビジネスの現場とリアル」', href: 'https://fujitsu.recruiting.jp.fujitsu.com/event/sap_ebas_202611/', note: '2026年11月10日開催。EBAS事業本部' },
+      { label: '富士通 求人検索（SAP）', href: 'https://www.jobs.global.fujitsu.com/search/?q=SAP&locale=ja_JP', note: '職務・応募条件・年収・勤務制度（求人ID 8019・8020・8673・8677・8872・9279・9423・9767・11794・11795）' },
+      { label: '富士通 新卒採用「募集要項」', href: 'https://fujitsu.recruiting.jp.fujitsu.com/recruit/', note: '新卒の給与' },
+      { label: '富士通 会社概要「プロフィール」', href: 'https://global.fujitsu/ja-JP/about/corporate/facts', note: '従業員数' },
+    ],
+    names: [
+      ['RISE with SAP プレミアムサプライヤー', 'パートナーの役割', 'RISE with SAPのクラウド環境の構築と運用を、SAPと組んで引き受けるパートナー'],
+      ['OneERP+', '自社プロジェクト', '富士通がグローバルで進めた自社の基幹システム刷新'],
+      ['SAP for Insurance', '業種ソリューション', '保険会社向けのSAPの業種ソリューション'],
+      ['BLUEFIELDコンバージョン', '移行手法', '既存のSAP ERPを、データや機能を選びながらS/4HANAへ移す手法'],
+      ['SAP SME（CSM・SEC）', '社内チーム', '富士通で特に経験の深いSAPコンサルタントを集めたチーム。CSMは顧客ごとのデリバリー責任者、SECは業務領域の専門家'],
+      ['AMS（Application Management Services）', 'サービス', '稼働後のアプリケーションの保守・運用・改善を引き受けるサービス'],
+      ['Uvance Wayfinders', 'ブランド', '富士通が2024年に立ち上げたコンサルティング事業のブランド'],
     ],
   },
 };

@@ -40,6 +40,7 @@ import { pwcSap } from './pwc-sap';
 import { deloitteSap } from './deloitte-sap';
 import { kpmgSap } from './kpmg-sap';
 import { sigmaxyzSap } from './sigmaxyz-sap';
+import { fujitsuSap } from './fujitsu-sap';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -101,6 +102,7 @@ const ARTICLES: ColumnArticle[] = [
   deloitteSap,
   kpmgSap,
   sigmaxyzSap,
+  fujitsuSap,
   sapPartnerExcellence2026,
   sapCompanyTypes,
   accentureAbeamSap,
