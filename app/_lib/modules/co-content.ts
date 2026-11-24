@@ -211,7 +211,7 @@ export const coContent: Record<Language, ModuleEnrichment> = {
 
       'co-profit-center': {
         summary:
-          '利益センタが原価センタと何が違うのか、擬似的な損益計算書をどう作るのか、S/4HANAでの位置づけまでを解説します。',
+          '利益センタ（利益センター、Profit Center）とは、事業部や製品ラインごとに損益を見るためのCOの単位です。原価センタとの違い、伝票への割当、S/4HANAでの位置づけまでを解説します。',
         keywords: ['利益センタ', 'Profit Center', 'EC-PCA', 'セグメント', '内部振替価格'],
         body: [
           {

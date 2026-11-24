@@ -107,7 +107,7 @@ export const co: Record<'ja' | 'en', ModuleContent> = {
       },
       {
         id: 'co-profit-center',
-        title: '利益センタ',
+        title: '利益センタとは（原価センタとの違い・割当・S/4HANAでの位置づけ）',
         content: [
           '利益センタ（Profit Center）は、損益を管理するための内部組織単位です。製品ライン・地域・事業部門などに基づいて設定され、各利益センタの収益性を分析できます。',
           '原価センタが費用の集計に特化しているのに対し、利益センタは収益と費用の両方を管理します。SAP ERP 6.0以降では利益センタ会計は「新GL（New General Ledger）」に統合されています。',
