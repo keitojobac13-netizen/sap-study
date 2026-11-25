@@ -5,6 +5,7 @@ export const sapCertCAct: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-22',
   category: 'career',
+  topic: 'career',
   cardTitle: 'SAP Activate認定資格（C_ACT）',
   title: 'SAP Activate認定資格（C_ACT）を日本語で受けた｜試験の形式・範囲と、向いている人',
   summary:

@@ -16,7 +16,26 @@ import {
   visibleArticles,
   type ColumnArticle,
 } from '../_lib/articles';
+import type { Block } from '../_lib/learning-types';
 import { BASE_URL, homePath, articlePath, articlesPath } from '../_lib/routes';
+
+/**
+ * The ads used to sit only near the end, where few readers get to. Repeat the
+ * article's first ad as a one-line box just before the second heading, where
+ * a reader has finished the opening section and is still on the page.
+ */
+function withEarlyAd(article: ColumnArticle): Block[] {
+  const body = article.body;
+  if (!article.hasAffiliateLinks) return body;
+  const adIndex = body.findIndex((b) => b.type === 'affiliate' && b.href);
+  const at = body.flatMap((b, i) => (b.type === 'h' ? [i] : []))[1];
+  if (adIndex < 0 || at === undefined) return body;
+  // Right next to the full ad, a repeat only reads as pushy.
+  if (adIndex - at < 6) return body;
+  const ad = body[adIndex];
+  if (ad.type !== 'affiliate') return body;
+  return [...body.slice(0, at), { ...ad, compact: true }, ...body.slice(at)];
+}
 
 export default function ColumnArticlePage({ article }: { article: ColumnArticle }) {
   const t = translations.ja;
@@ -93,7 +112,7 @@ export default function ColumnArticlePage({ article }: { article: ColumnArticle 
           <hr className="border-rule my-10" />
 
           <article>
-            <ArticleBody blocks={article.body} />
+            <ArticleBody blocks={withEarlyAd(article)} />
           </article>
 
           {related.length > 0 && (

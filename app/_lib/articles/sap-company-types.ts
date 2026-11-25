@@ -8,6 +8,7 @@ export const sapCompanyTypes: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-17',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPの仕事は会社の種類で変わる',
   title:
     'SAPコンサルの会社の種類と仕事の違い｜ファーム・SIer・SAP専門会社で、FIの担当範囲はどう変わるか',

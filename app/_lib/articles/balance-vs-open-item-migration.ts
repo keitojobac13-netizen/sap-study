@@ -5,6 +5,7 @@ export const balanceVsOpenItemMigration: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-10-27',
   category: 'compare',
+  topic: 'system',
   cardTitle: '残高移行と未消込明細移行の違い',
   title: 'SAP移行の「残高移行」と「未消込明細移行」の違い｜売掛金・買掛金を明細で移す理由と切替日の考え方',
   summary:

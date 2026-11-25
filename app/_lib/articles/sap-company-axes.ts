@@ -14,6 +14,7 @@ export const sapCompanyAxes: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-17',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPの会社を8つの観点で比べる',
   title: 'SAPの会社を8つの観点で比べる｜SAP領域・担当工程・育成・担当業務・待遇を公開情報で一覧に',
   summary:

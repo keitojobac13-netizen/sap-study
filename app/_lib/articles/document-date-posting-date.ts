@@ -5,6 +5,7 @@ export const documentDatePostingDate: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-17',
   category: 'compare',
+  topic: 'fico',
   title: '転記日付とは？伝票日付・入力日付との違いとSAPでの使い分けをわかりやすく解説',
   cardTitle: '転記日付と伝票日付の違い',
   summary:

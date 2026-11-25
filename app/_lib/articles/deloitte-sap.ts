@@ -6,6 +6,7 @@ export const deloitteSap: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-17',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPの文脈で見るデロイト',
   title: 'SAPの文脈で見るデロイト トーマツ｜調達・人事・会計・グローバル案件を8つの観点で整理',
   summary:

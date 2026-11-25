@@ -5,6 +5,7 @@ export const sapCertCBaipa: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-22',
   category: 'career',
+  topic: 'career',
   cardTitle: 'SAP Business AI認定資格（C_BAIPA）',
   title: 'SAP Business AI Platform認定資格（C_BAIPA）を日本語で受けた｜Joule・AIエージェントの設計を問う試験',
   summary:

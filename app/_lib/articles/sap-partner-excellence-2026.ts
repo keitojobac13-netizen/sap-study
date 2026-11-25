@@ -11,6 +11,7 @@ export const sapPartnerExcellence2026: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-17',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPパートナー表彰2026を読む',
   title:
     'SAPパートナー表彰2026から読む、各社の得意領域｜アクセンチュア・アビーム・NTTデータ・Big4ほか',

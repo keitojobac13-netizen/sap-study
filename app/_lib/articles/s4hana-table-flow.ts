@@ -5,6 +5,7 @@ export const s4hanaTableFlow: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-28',
   category: 'overview',
+  topic: 'system',
   cardTitle: '受注から会計伝票まで、SAPのテーブルを追う',
   title: 'SAP S/4HANAの主要テーブルを業務の流れで追う｜受注から会計伝票、発注から支払まで',
   summary:

@@ -14,6 +14,7 @@ export const accentureAbeamSap: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-17',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'アクセンチュアとアビームのSAP',
   title: 'アクセンチュアとアビームのSAPの違い｜公開情報で比べる規模・得意領域・導入の進め方',
   summary:

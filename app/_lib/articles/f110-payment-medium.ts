@@ -5,6 +5,7 @@ export const f110PaymentMedium: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-18',
   category: 'overview',
+  topic: 'fico',
   title: 'F110で支払データやDMEファイルが出ないときの確認順序｜REGUH・REGUPから原因をたどる',
   cardTitle: 'F110でDMEが出ないとき',
   summary:

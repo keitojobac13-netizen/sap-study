@@ -6,6 +6,7 @@ export const sapConsumptionTax: ColumnArticle = {
   publishedAt: '2026-09-28',
   updatedAt: '2026-11-22',
   category: 'overview',
+  topic: 'fico',
   cardTitle: 'SAPの税コードと消費税',
   title: 'SAPの税コードとは｜消費税の区分の一覧と、税コードが決まる仕組み（税分類・条件レコード）',
   summary:

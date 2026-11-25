@@ -5,6 +5,7 @@ export const creditMemoDebitMemo: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-17',
   category: 'compare',
+  topic: 'fico',
   title: 'クレジットメモとデビットメモの違いとは？意味・仕訳・SAPでの処理をわかりやすく解説',
   cardTitle: 'クレジットメモとデビットメモの違い',
   summary:

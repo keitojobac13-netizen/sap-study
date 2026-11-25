@@ -5,6 +5,7 @@ export const sapCertCSigvt: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-22',
   category: 'career',
+  topic: 'career',
   cardTitle: 'RISE with SAP認定資格（C_SIGVT）',
   title: 'RISE with SAP Transformation認定資格（C_SIGVT）を日本語で受けた｜LeanIX・Signavio・Cloud ALMのつながり',
   summary:

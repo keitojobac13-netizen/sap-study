@@ -52,6 +52,8 @@ export type Block =
       text: string;
       audience?: string;
       cta: string;
+      /** The short copy the article page repeats after the first section. Set by the page, not by hand. */
+      compact?: boolean;
     }
   /** A hand-drawn figure from `_components/figures`. Write `|` in the caption at the allowed line breaks. */
   | { type: 'figure'; name: FigureName; caption: string; note?: string }

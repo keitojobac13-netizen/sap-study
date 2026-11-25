@@ -5,6 +5,7 @@ export const sapErrorTriage: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-18',
   category: 'overview',
+  topic: 'system',
   title: 'SAPのエラーは「設定不足・データ不足・権限不足」に分けると原因が早く見つかる｜検証環境でつまずいた実例で解説',
   cardTitle: 'SAPのエラーを3種類に分ける',
   summary:

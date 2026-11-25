@@ -6,6 +6,7 @@ export const pwcSap: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-17',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPの文脈で見るPwC',
   title: 'SAPの文脈で見るPwCコンサルティング｜人事・ERP刷新・育成・待遇を8つの観点で整理',
   summary:

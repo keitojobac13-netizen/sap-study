@@ -5,6 +5,7 @@ export const withholdingTaxSetup: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-28',
   category: 'term',
+  topic: 'fico',
   cardTitle: '源泉徴収税の設定とテスト',
   title: 'SAPの源泉徴収税（報酬・料金）の設定とテスト｜支払時の計算、100万円超の税率、計算されないときの確認順',
   summary:

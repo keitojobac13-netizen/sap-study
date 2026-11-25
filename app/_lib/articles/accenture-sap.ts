@@ -6,6 +6,7 @@ export const accentureSap: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-17',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPの文脈で見るアクセンチュア',
   title: 'SAPの文脈で見るアクセンチュア｜SAPでの強み・担当工程・人材育成・待遇を8つの観点で整理',
   summary:

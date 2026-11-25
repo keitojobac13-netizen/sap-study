@@ -5,6 +5,7 @@ export const costObjectChoice: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-28',
   category: 'compare',
+  topic: 'fico',
   cardTitle: '原価センタ・内部指図・WBSの使い分け',
   title: 'SAPの原価センタ・内部指図・WBSの使い分け｜「設備投資だからWBS」ではない判断基準',
   summary:

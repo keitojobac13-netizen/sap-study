@@ -5,6 +5,7 @@ export const bpCviError: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-18',
   category: 'term',
+  topic: 'system',
   title: 'BP登録の「グルーピングは得意先勘定グループに割り当てられていません」を解決する｜CVI設定と番号範囲の確認順序',
   cardTitle: 'BP登録のグルーピングエラー',
   summary:

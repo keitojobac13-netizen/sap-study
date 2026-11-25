@@ -5,6 +5,7 @@ export const goodsIssueShipping: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-17',
   category: 'compare',
+  topic: 'logistics',
   title: '出庫と出荷の違いとは？意味とSAPの出庫転記（Post Goods Issue）をわかりやすく解説',
   cardTitle: '出庫と出荷の違い',
   summary:

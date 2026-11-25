@@ -5,6 +5,7 @@ export const autoClearingF13: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-28',
   category: 'term',
+  topic: 'fico',
   cardTitle: '自動消込で消えない明細',
   title: 'SAPの自動消込（F.13）で消し込まれない原因｜OB74のグルーピング条件と差額の考え方',
   summary:

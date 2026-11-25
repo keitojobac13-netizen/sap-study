@@ -5,6 +5,7 @@ export const fiBeginnerPitfalls: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-17',
   category: 'overview',
+  topic: 'fico',
   title: '新人FIコンサルがつまずくポイント｜元帳・債権債務・固定資産の領域別に現役コンサルが解説',
   cardTitle: '新人FIコンサルがつまずくポイント',
   summary:

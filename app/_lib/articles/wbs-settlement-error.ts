@@ -5,6 +5,7 @@ export const wbsSettlementError: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-28',
   category: 'term',
+  topic: 'fico',
   cardTitle: 'CJ88の決済が止まるとき',
   title: 'SAPのプロジェクト決済（CJ88）が通らないときの確認順｜実績原価・決済ルール・ステータス・配分構造',
   summary:

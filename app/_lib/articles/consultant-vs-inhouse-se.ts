@@ -5,6 +5,7 @@ export const consultantVsInhouseSe: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-10-13',
   category: 'career',
+  topic: 'career',
   cardTitle: 'SAPコンサルと社内SEの違い',
   title: 'SAPコンサルと社内SE（情シス）の違い｜責任の持ち方と、現場で運用できるかという視点',
   summary:

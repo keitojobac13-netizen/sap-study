@@ -5,6 +5,7 @@ export const ck24MarkRelease: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-18',
   category: 'term',
+  topic: 'fico',
   title: 'CK24で「マークを行う権限がありません」と出たら｜原因はロールではなくマーク許可',
   cardTitle: 'CK24のマーク許可エラー',
   summary:

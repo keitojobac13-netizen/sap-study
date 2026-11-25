@@ -5,6 +5,7 @@ export const sapModules: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-17',
   category: 'overview',
+  topic: 'basics',
   title: 'SAPのモジュール一覧｜FI・CO・SD・MM・PPなど主要モジュールの役割とつながりを解説',
   cardTitle: 'SAPのモジュール一覧',
   summary:

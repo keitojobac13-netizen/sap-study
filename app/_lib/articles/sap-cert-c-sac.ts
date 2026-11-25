@@ -5,6 +5,7 @@ export const sapCertCSac: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-22',
   category: 'career',
+  topic: 'career',
   cardTitle: 'SAP Analytics Cloud認定資格（C_SAC）',
   title: 'SAP Analytics Cloud認定資格（C_SAC）を日本語で受けた｜FI・COの人が分析に広げるための資格',
   summary:

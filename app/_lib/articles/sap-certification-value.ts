@@ -6,6 +6,7 @@ export const sapCertificationValue: ColumnArticle = {
   publishedAt: '2026-10-28',
   updatedAt: '2026-11-22',
   category: 'career',
+  topic: 'career',
   cardTitle: 'SAP認定資格は役に立つか',
   title: 'SAP認定資格は役に立つ？新形式のシナリオ試験を受けてわかったこと｜旧形式との違いと、取る意味',
   summary:

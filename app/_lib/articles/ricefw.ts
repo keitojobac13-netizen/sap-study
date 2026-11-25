@@ -5,6 +5,7 @@ export const ricefw: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-17',
   category: 'term',
+  topic: 'basics',
   title: 'RICEFWとは？SAPのアドオン開発の6分類と使う技術・開発言語をわかりやすく解説',
   cardTitle: 'RICEFWとは',
   summary:

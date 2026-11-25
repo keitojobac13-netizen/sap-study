@@ -5,6 +5,7 @@ export const addonTracing: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-18',
   category: 'overview',
+  topic: 'system',
   title: '標準に見えてアドオンだった｜SAPのアドオン処理を追う方法（SE93・BDC・Report Writer）',
   cardTitle: 'アドオンの処理を追う方法',
   summary:

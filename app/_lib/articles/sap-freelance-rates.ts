@@ -5,6 +5,7 @@ export const sapFreelanceRates: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-10-13',
   category: 'career',
+  topic: 'career',
   cardTitle: 'SAPフリーランスの単価と働き方',
   title: 'SAPフリーランスの単価と働き方｜契約単価の目安と、手取りとの差',
   summary:

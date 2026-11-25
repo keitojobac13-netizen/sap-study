@@ -5,6 +5,7 @@ export const backflush: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-17',
   category: 'term',
+  topic: 'logistics',
   title: 'バックフラッシュとは？生産管理での意味とSAPでの設定・エラー対応（COGI）を解説',
   cardTitle: 'バックフラッシュとは',
   summary:

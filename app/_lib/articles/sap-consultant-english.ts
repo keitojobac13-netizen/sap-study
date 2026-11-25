@@ -5,6 +5,7 @@ export const sapConsultantEnglish: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-10-28',
   category: 'career',
+  topic: 'career',
   cardTitle: 'SAPコンサルに必要な英語力',
   title: 'SAPコンサルに英語力はどれくらい必要か｜国内案件なら困らない、でも選べる案件が変わる',
   summary:

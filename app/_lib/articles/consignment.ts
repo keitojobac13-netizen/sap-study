@@ -6,6 +6,7 @@ export const consignment: ColumnArticle = {
   publishedAt: '2026-09-17',
   updatedAt: '2026-11-24',
   category: 'term',
+  topic: 'logistics',
   title: 'コンサイメント（コンサインメント）とは？意味・委託在庫の流れ・SAPでの処理をわかりやすく解説',
   cardTitle: 'コンサイメント（コンサインメント）とは',
   summary:

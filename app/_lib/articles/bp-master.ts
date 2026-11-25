@@ -5,6 +5,7 @@ export const bpMaster: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-09-18',
   category: 'term',
+  topic: 'logistics',
   cardTitle: 'BPマスタの全体像',
   title: 'SAPのビジネスパートナ（BP）とは｜得意先・仕入先との関係とロール・グルーピングをわかりやすく解説',
   summary:

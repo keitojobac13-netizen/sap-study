@@ -6,6 +6,7 @@ export const sigmaxyzSap: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-17',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPの文脈で見るシグマクシス',
   title: 'SAPの文脈で見るシグマクシス｜2年連続の最優秀プロジェクトとPublic Editionでの会計刷新',
   summary:

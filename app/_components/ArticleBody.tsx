@@ -214,6 +214,28 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
 
           case 'affiliate':
             if (!block.href) return null;
+            if (block.compact)
+              return (
+                <aside key={i} className="relative border border-rule border-l-2 border-l-accent bg-ground px-4 py-3 my-2 flex flex-col sm:flex-row sm:items-center gap-3">
+                  <p className="min-w-0 flex-1 text-[0.86rem] text-ink-soft leading-[1.75] text-pretty">
+                    <span className="mr-2 text-[0.66rem] font-semibold text-ink-mute tracking-[0.08em]">PR</span>
+                    <span className="font-bold text-ink">{block.label}</span>：{block.text}
+                  </p>
+                  <a
+                    href={block.href}
+                    target="_blank"
+                    rel="sponsored noopener"
+                    className="shrink-0 inline-flex items-center justify-center gap-1.5 px-4 h-10 bg-accent hover:opacity-90 text-white text-[0.82rem] font-semibold rounded transition-opacity"
+                  >
+                    {block.cta}
+                    <Icon name="arrow-right" className="w-3.5 h-3.5" />
+                  </a>
+                  {block.pixel && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={block.pixel} width={1} height={1} alt="" className="absolute w-px h-px opacity-0" />
+                  )}
+                </aside>
+              );
             return (
               <aside key={i} className="relative border border-rule bg-ground px-4 py-4 sm:px-5 my-2">
                 <p className="text-[0.68rem] font-semibold text-ink-mute tracking-[0.08em] mb-1">PR</p>

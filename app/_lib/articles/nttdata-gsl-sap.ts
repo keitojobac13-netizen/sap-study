@@ -6,6 +6,7 @@ export const nttdataGslSap: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-17',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPの文脈で見るNTTデータGSL',
   title: 'SAPの文脈で見るNTTデータ グローバルソリューションズ｜中堅企業・導入後の支援・待遇を8つの観点で整理',
   summary:

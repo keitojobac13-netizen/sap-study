@@ -62,6 +62,35 @@ export const CATEGORY_LABELS: Record<ArticleCategory, string> = {
   career: 'キャリア',
 };
 
+/**
+ * What the article is about, for grouping the list page. `category` says what
+ * kind of article it is (a term, a comparison…); `topic` says where a reader
+ * would look for it.
+ */
+export type ArticleTopic = 'fico' | 'logistics' | 'system' | 'basics' | 'career' | 'companies';
+
+/** List-page sections, in the order they appear. */
+export const TOPICS: { id: ArticleTopic; label: string; lead: string }[] = [
+  { id: 'fico', label: '会計（FI・CO・PS）', lead: '消費税・源泉徴収・支払・原価・決済など、会計まわりの実務' },
+  { id: 'logistics', label: '購買・在庫・販売', lead: '在庫の持ち方、出庫と出荷、取引先マスタなど' },
+  { id: 'system', label: '移行・開発・トラブル対応', lead: 'テーブル、データ移行、エラーやアドオンの調べ方' },
+  { id: 'basics', label: 'SAPの全体像・導入', lead: 'モジュールの全体像、開発の種類、導入費用' },
+  { id: 'career', label: 'キャリア・資格', lead: '働き方、単価、英語、新形式のSAP認定資格' },
+  { id: 'companies', label: 'SAPに強い会社', lead: '会社の種類と選び方、各社をSAPの文脈で見る' },
+];
+
+/**
+ * 「よく読まれている記事」, most-read first. Hand-picked from Search Console
+ * clicks (last 28 days as of 2026-11-25); refresh every month or two.
+ */
+const POPULAR_SLUGS = [
+  'sap-consumption-tax',
+  's4hana-table-flow',
+  'document-date-posting-date',
+  'cost-object-choice',
+  'withholding-tax-setup',
+];
+
 export type RelatedLink = { label: string; href: string };
 
 type ArticleBase = {
@@ -77,6 +106,7 @@ type ArticleBase = {
   /** One or two sentences. Meta description and list card; keep under 155 characters. */
   summary: string;
   category: ArticleCategory;
+  topic: ArticleTopic;
   keywords?: string[];
   body: Block[];
   /** Site pages to read next, shown below the article. */
@@ -160,6 +190,13 @@ export function publishedArticles() {
   return ARTICLES.filter(
     (a): a is Extract<ColumnArticle, { status: 'published' }> => a.status === 'published'
   ).sort(byDate);
+}
+
+/** The 「よく読まれている記事」 list, skipping any slug not visible in this build. */
+export function popularArticles(): ColumnArticle[] {
+  return POPULAR_SLUGS.map((slug) => getArticle(slug)).filter(
+    (a): a is ColumnArticle => a !== undefined
+  );
 }
 
 export function getArticle(slug: string): ColumnArticle | undefined {

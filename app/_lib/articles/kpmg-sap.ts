@@ -6,6 +6,7 @@ export const kpmgSap: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-18',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPの文脈で見るKPMG',
   title: 'SAPの文脈で見るKPMGコンサルティング｜人事・SAP Business AI・製造業の導入・待遇を8つの観点で整理',
   summary:

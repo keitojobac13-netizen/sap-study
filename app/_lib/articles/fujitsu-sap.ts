@@ -6,6 +6,7 @@ export const fujitsuSap: ColumnArticle = {
   status: 'published',
   publishedAt: '2026-11-24',
   category: 'career',
+  topic: 'companies',
   cardTitle: 'SAPの文脈で見る富士通',
   title: 'SAPの文脈で見る富士通｜RISE with SAP・自社導入OneERP+・保険業のSAP・待遇を8つの観点で整理',
   summary:
