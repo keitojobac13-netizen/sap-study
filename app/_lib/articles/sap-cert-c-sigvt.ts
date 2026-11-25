@@ -7,7 +7,7 @@ export const sapCertCSigvt: ColumnArticle = {
   category: 'career',
   topic: 'career',
   cardTitle: 'RISE with SAP認定資格（C_SIGVT）',
-  title: 'RISE with SAP Transformation認定資格（C_SIGVT）を日本語で受けた｜LeanIX・Signavio・Cloud ALMのつながり',
+  title: 'RISE with SAP認定資格（C_SIGVT）を日本語で受けた｜LeanIX・Signavio・Cloud ALM',
   summary:
     'RISE with SAP Transformation の認定試験（C_SIGVT）を、AIロールプレイ形式・日本語で受けて70%で合格しました。試験の形式と範囲、LeanIX・Signavio・Cloud ALM・WalkMe の役割の整理、向いている人と導入・移行案件での生かし方をまとめます。',
   keywords: [

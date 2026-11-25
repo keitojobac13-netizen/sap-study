@@ -6,7 +6,7 @@ export const bpCviError: ColumnArticle = {
   publishedAt: '2026-09-18',
   category: 'term',
   topic: 'system',
-  title: 'BP登録の「グルーピングは得意先勘定グループに割り当てられていません」を解決する｜CVI設定と番号範囲の確認順序',
+  title: 'BP登録の「グルーピングは得意先勘定グループに割り当てられていません」の解決｜CVIの確認順',
   cardTitle: 'BP登録のグルーピングエラー',
   summary:
     'S/4HANAでBPを登録したときに出る「グルーピングが得意先勘定グループに割り当てられていません」の原因と、CVI（得意先・仕入先統合）の設定・番号範囲を確認する順序を、実際に詰まった順にまとめました。',

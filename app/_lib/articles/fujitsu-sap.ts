@@ -8,7 +8,7 @@ export const fujitsuSap: ColumnArticle = {
   category: 'career',
   topic: 'companies',
   cardTitle: 'SAPの文脈で見る富士通',
-  title: 'SAPの文脈で見る富士通｜RISE with SAP・自社導入OneERP+・保険業のSAP・待遇を8つの観点で整理',
+  title: 'SAPの文脈で見る富士通｜RISE with SAP・OneERP+・待遇を8つの観点で整理',
   summary:
     '富士通のSAP事業を、実績が目立つSAP領域・担当する工程・顧客と案件・グローバル案件・人材育成・担当業務・待遇など8つの観点で整理しました。SAPジャパンの表彰（2025年・2026年）と公式発表・採用ページ・公式求人など、公開情報だけで書いています。',
   keywords: ['富士通 SAP', '富士通 SAPコンサル', 'RISE with SAP', 'プレミアムサプライヤー', 'OneERP+', 'SAP for Insurance', 'SIer', '年収', '転職'],

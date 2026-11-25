@@ -6,7 +6,7 @@ export const sapErrorTriage: ColumnArticle = {
   publishedAt: '2026-09-18',
   category: 'overview',
   topic: 'system',
-  title: 'SAPのエラーは「設定不足・データ不足・権限不足」に分けると原因が早く見つかる｜検証環境でつまずいた実例で解説',
+  title: 'SAPのエラーは「設定不足・データ不足・権限不足」に分けると原因が早く見つかる',
   cardTitle: 'SAPのエラーを3種類に分ける',
   summary:
     'SAPのエラーメッセージは、設定不足・データ不足・権限不足の3つに分けると原因を追いやすくなります。BP登録、支払実行、外貨評価、標準原価計算で実際に出たエラーを例に、切り分けの順番を解説します。',

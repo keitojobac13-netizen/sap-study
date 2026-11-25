@@ -24,6 +24,15 @@ function isShortCode(cell: string): boolean {
 }
 
 /**
+ * Three or more columns with sentences in them don't fit a phone: each cell
+ * shrank to a few characters a line, or the right column ran off the screen.
+ * Such a table is stacked into cards unless the block sets `stack: false`.
+ */
+function autoStack(headers: string[], rows: string[][]): boolean {
+  return headers.length >= 3 && rows.some((row) => row.slice(1).some((cell) => cell.length > 15));
+}
+
+/**
  * A link to a column that this build does not show (a draft in production)
  * would 404, so `links` blocks drop it. The company pages link to each other
  * before every one of them is published.
@@ -80,7 +89,7 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
           case 'table': {
             // On a phone a stacked table drops its header row and sets each
             // row as a card: the first cell as a title, the rest labelled.
-            const st = block.stack;
+            const st = block.stack ?? autoStack(block.headers, block.rows);
             return (
               <figure key={i} className="space-y-2 py-2">
                 {block.caption && (

@@ -7,7 +7,7 @@ export const sapCertCBaipa: ColumnArticle = {
   category: 'career',
   topic: 'career',
   cardTitle: 'SAP Business AI認定資格（C_BAIPA）',
-  title: 'SAP Business AI Platform認定資格（C_BAIPA）を日本語で受けた｜Joule・AIエージェントの設計を問う試験',
+  title: 'SAP Business AI認定資格（C_BAIPA）を日本語で受けた｜Joule・AIエージェントの設計',
   summary:
     'SAP Business AI Platform の認定試験（C_BAIPA）を、AIロールプレイ形式・日本語で受けて70%で合格しました。試験の形式と範囲、Joule Studio や AI Agent Hub など整理しておくとよい製品、向いている人と業務での生かし方をまとめます。',
   keywords: [

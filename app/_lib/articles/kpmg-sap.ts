@@ -8,7 +8,7 @@ export const kpmgSap: ColumnArticle = {
   category: 'career',
   topic: 'companies',
   cardTitle: 'SAPの文脈で見るKPMG',
-  title: 'SAPの文脈で見るKPMGコンサルティング｜人事・SAP Business AI・製造業の導入・待遇を8つの観点で整理',
+  title: 'SAPの文脈で見るKPMGコンサルティング｜人事・AI・製造業・待遇を8つの観点で整理',
   summary:
     'KPMGコンサルティングのSAP事業を、実績が目立つSAP領域・担当する工程・顧客と案件・グローバル案件・人材育成・担当業務・待遇など8つの観点で整理しました。SAPジャパンの表彰（2026年）と公式発表・採用ページなど、公開情報だけで書いています。',
   keywords: ['KPMG SAP', 'KPMGコンサルティング SAP', 'ES-SAP', 'SuccessFactors', 'SAP Business AI', 'Big4', '年収', '転職'],

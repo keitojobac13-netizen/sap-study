@@ -7,6 +7,7 @@ import SectionQuizzes from './SectionQuizzes';
 import WaitlistForm from './WaitlistForm';
 import Icon from './Icon';
 import PageTerms from './PageTerms';
+import ReadNext from './ReadNext';
 import { translations, type Language, type ModuleKey } from '../_lib/i18n';
 import { getSection, sectionUpdated } from '../_lib/modules';
 import type { GlossaryModule } from '../_lib/glossary';
@@ -178,6 +179,10 @@ export default function SectionArticle({ moduleKey, sectionId, lang }: {
                 sectionId={sectionId}
               />
             </div>
+
+            {/* Columns are Japanese only. Without this, the most-visited pages
+                had no way on to the columns and the career pages. */}
+            {lang === 'ja' && <ReadNext />}
 
             <div className="mt-12">
               <WaitlistForm lang={lang} source={`${moduleKey}/${sectionId}`} />
