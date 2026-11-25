@@ -5,7 +5,14 @@ import Icon from './Icon';
 import { translations, type Language } from '../_lib/i18n';
 import { MODULE_KEYS, getModule } from '../_lib/modules';
 import { MODULE_STYLES } from '../_lib/module-style';
-import { CATEGORY_LABELS, cardTitle, visibleArticles } from '../_lib/articles';
+import {
+  CATEGORY_LABELS,
+  TOPICS,
+  cardTitle,
+  formatDate,
+  popularArticles,
+  visibleArticles,
+} from '../_lib/articles';
 import {
   BASE_URL,
   homePath,
@@ -99,7 +106,14 @@ export default function HomePage({ lang, termCount }: {
   const c = COPY[lang];
 
   // Columns are Japanese only.
-  const columns = lang === 'ja' ? visibleArticles().slice(0, 4) : [];
+  const columns = lang === 'ja' ? visibleArticles() : [];
+  const popular = lang === 'ja' ? popularArticles() : [];
+  const popularSlugs = new Set(popular.map((a) => a.slug));
+  // The newest ones not already in the most-read list, so no title shows twice.
+  const latest = columns.filter((a) => !popularSlugs.has(a.slug)).slice(0, 5);
+  const topics = TOPICS.map((t) => ({ ...t, count: columns.filter((a) => a.topic === t.id).length })).filter(
+    (t) => t.count > 0
+  );
 
   const totals = MODULE_KEYS.reduce(
     (acc, key) => {
@@ -207,7 +221,7 @@ export default function HomePage({ lang, termCount }: {
                     コラム
                   </h2>
                   <p className="text-ink-mute text-[0.88rem] mt-2">
-                    現場でよく調べられる用語や、混同しやすい用語の違いを1テーマずつ解説しています。
+                    現場でつまずきやすい疑問や用語の違い、SAPの仕事・キャリアを1テーマずつ解説しています。
                   </p>
                 </div>
                 <Link
@@ -219,30 +233,73 @@ export default function HomePage({ lang, termCount }: {
                 </Link>
               </div>
 
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-                {columns.map((a) => (
-                  <li key={a.slug} className="flex">
-                    <Link
-                      href={articlePath(a.slug)}
-                      className="group flex flex-col w-full bg-paper border border-rule rounded-lg p-5 hover:border-ink-mute hover:bg-ground transition-colors"
-                    >
-                      <span className="self-start inline-flex items-center border border-rule rounded-full px-2.5 py-0.5 text-[0.68rem] text-ink-mute tracking-[0.04em]">
-                        {CATEGORY_LABELS[a.category]}
-                      </span>
-                      <h3 className="mt-3 font-bold text-ink text-[1rem] leading-snug [word-break:auto-phrase] group-hover:text-accent transition-colors">
-                        {cardTitle(a)}
-                      </h3>
-                      <p className="mt-2 text-[0.86rem] text-ink-soft leading-[1.8] line-clamp-2 flex-1">
-                        {a.summary}
-                      </p>
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-[0.78rem] font-semibold text-accent">
-                        読む
-                        <Icon name="arrow-right" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-8">
+                {popular.length > 0 && (
+                  <div className="bg-ground border border-rule rounded-lg p-5 sm:p-6">
+                    <h3 className="text-[1.05rem] font-bold text-ink">よく読まれている記事</h3>
+                    <ol className="mt-2 divide-y divide-rule">
+                      {popular.map((a, i) => (
+                        <li key={a.slug}>
+                          <Link href={articlePath(a.slug)} className="group flex items-baseline gap-3.5 py-3">
+                            <span className="w-5 shrink-0 text-right text-[1.05rem] font-bold text-accent tabular-nums">
+                              {i + 1}
+                            </span>
+                            <span className="min-w-0">
+                              <span className="block text-[0.95rem] font-bold text-ink leading-snug [word-break:auto-phrase] group-hover:text-accent transition-colors">
+                                {cardTitle(a)}
+                              </span>
+                              <span className="block mt-1 text-[0.72rem] text-ink-mute">
+                                {CATEGORY_LABELS[a.category]}
+                              </span>
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+
+                <div>
+                  <h3 className="text-[1.05rem] font-bold text-ink md:pt-6">新着</h3>
+                  <ul className="mt-2 divide-y divide-rule border-b border-rule">
+                    {latest.map((a) => (
+                      <li key={a.slug}>
+                        <Link href={articlePath(a.slug)} className="group block py-3">
+                          <span className="block text-[0.95rem] font-bold text-ink leading-snug [word-break:auto-phrase] group-hover:text-accent transition-colors">
+                            {cardTitle(a)}
+                          </span>
+                          <span className="block mt-1 text-[0.72rem] text-ink-mute">
+                            {CATEGORY_LABELS[a.category]}
+                            {a.status === 'published' && (
+                              <>
+                                <span aria-hidden className="mx-1.5 text-rule">/</span>
+                                {formatDate(a.publishedAt)}
+                              </>
+                            )}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* The same topics as the list page, so a reader can go straight to theirs. */}
+              <nav aria-label="コラムのテーマ" className="mt-8">
+                <ul className="flex flex-wrap gap-2">
+                  {topics.map((t) => (
+                    <li key={t.id}>
+                      <Link
+                        href={`${articlesPath()}#${t.id}`}
+                        className="inline-flex items-center gap-1.5 border border-rule rounded-full px-3 py-1.5 text-[0.82rem] text-ink-soft hover:border-ink-mute hover:text-ink transition-colors"
+                      >
+                        {t.label}
+                        <span className="text-[0.72rem] text-ink-mute">{t.count}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
           </section>
         )}

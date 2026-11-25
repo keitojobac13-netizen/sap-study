@@ -31,7 +31,7 @@ export const translations: Record<Language, Translation> = {
     hero: {
       badge: '無料学習サイト',
       title: 'SAPコンサルタントのための学習ポータル',
-      subtitle: 'FI・CO・SD・MM・PP・ABAP・Basis・PSの基礎から実務知識まで、体系的に学べます。日英対応の用語辞典も完備。',
+      subtitle: 'FI・CO・SD・MM・PP・ABAP・Basis・PSの基礎を体系的に学べるほか、現場でつまずきやすい疑問やSAPの仕事・キャリアをコラムで解説しています。日英対応の用語辞典も完備。',
       ctaPrimary: '学習を始める',
       ctaSecondary: '用語辞典を見る',
     },
