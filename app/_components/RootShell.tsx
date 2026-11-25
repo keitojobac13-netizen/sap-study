@@ -2,6 +2,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { geistSans, notoSansJp } from '../_lib/fonts';
 import { type Language } from '../_lib/i18n';
 import CookieBanner from './CookieBanner';
+import AffiliateClickTracker from './AffiliateClickTracker';
 
 const ADSENSE_CLIENT = 'ca-pub-4188335642202901';
 const GA_ID = 'G-53970RR8LZ';
@@ -49,6 +50,7 @@ export default function RootShell({ lang, children }: {
         {children}
         <CookieBanner lang={lang} />
         <GoogleAnalytics gaId={GA_ID} />
+        <AffiliateClickTracker />
       </body>
     </html>
   );

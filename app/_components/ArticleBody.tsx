@@ -234,6 +234,8 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                     href={block.href}
                     target="_blank"
                     rel="sponsored noopener"
+                    data-ad-name={block.label}
+                    data-ad-slot="early"
                     className="shrink-0 inline-flex items-center justify-center gap-1.5 px-4 h-10 bg-accent hover:opacity-90 text-white text-[0.82rem] font-semibold rounded transition-opacity"
                   >
                     {block.cta}
@@ -257,6 +259,8 @@ export default function ArticleBody({ blocks }: { blocks: Block[] }) {
                   href={block.href}
                   target="_blank"
                   rel="sponsored noopener"
+                    data-ad-name={block.label}
+                    data-ad-slot="body"
                   className="mt-3.5 inline-flex items-center justify-center gap-2 max-sm:w-full px-5 h-11 bg-accent hover:opacity-90 text-white text-[0.88rem] font-semibold rounded transition-opacity"
                 >
                   {block.cta}
