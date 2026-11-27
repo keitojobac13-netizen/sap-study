@@ -623,6 +623,19 @@ const SAP_TENSHOKU: Block = {
 
 export const SAP_TENSHOKU_BLOCK = SAP_TENSHOKU;
 
+export const MYVISION_BLOCK: Block = {
+  type: 'affiliate',
+  href: 'https://px.a8.net/svt/ejp?a8mat=4BGTLP+FUYPWY+5B0Y+5YJRM',
+  pixel: 'https://www19.a8.net/0.gif?a8mat=4BGTLP+FUYPWY+5B0Y+5YJRM',
+  label: 'MyVision',
+  text: 'コンサルティングファームへの転職に特化したエージェント。模擬面接やケース面接の対策も無料で受けられる。',
+  audience: '24〜39歳で、コンサルへの転職を考えている人（コンサル未経験の人も対象）',
+  cta: '無料で相談してみる',
+};
+
+/** Consulting firms, where an agent for firm-to-firm moves fits the page. */
+const CONSULTING_FIRMS: CompanyId[] = ['accenture', 'abeam', 'pwc', 'deloitte', 'kpmg', 'sigmaxyz'];
+
 /**
  * The shared body of a company page. `intro` is the hand-written opening
  * (two or three paragraphs and the one-line summary); everything after it is
@@ -707,6 +720,15 @@ export function companyArticleBody(id: CompanyId, intro: Block[], extra: Block[]
       text: '年収の提示や、自分の経験がどの職位で評価されそうかは、SAPの仕事を知っている転職エージェントに聞くと、求人票より具体的に分かります。',
     },
     SAP_TENSHOKU,
+    ...(CONSULTING_FIRMS.includes(id)
+      ? ([
+          {
+            type: 'p',
+            text: `${c.name}を含めて、ほかのコンサルティングファームとも比べたい場合は、コンサル転職に特化したエージェントも選択肢になります。`,
+          },
+          MYVISION_BLOCK,
+        ] as Block[])
+      : []),
     { type: 'h', text: 'SAPの仕事をもっと知る' },
     {
       type: 'links',

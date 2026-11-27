@@ -1,4 +1,5 @@
 import type { ColumnArticle } from './index';
+import { MYVISION_BLOCK } from '../sap-companies';
 
 export const consultantVsInhouseSe: ColumnArticle = {
   slug: 'consultant-vs-inhouse-se',
@@ -143,15 +144,7 @@ export const consultantVsInhouseSe: ColumnArticle = {
       audience: 'エンジニア職（ITコンサルを含む）の経験がある45歳未満の人。勤務地が関東・関西・北海道',
       cta: '無料で相談してみる',
     },
-    {
-      type: 'affiliate',
-      href: 'https://px.a8.net/svt/ejp?a8mat=4BCLW3+3MDY9E+4SXU+NU729',
-      pixel: 'https://www19.a8.net/0.gif?a8mat=4BCLW3+3MDY9E+4SXU+NU729',
-      label: 'Groovement Agent',
-      text: 'コンサルティングファーム・DX・スタートアップの転職に特化したエージェント。事業会社だけでなく、別のファームへ移る選択肢も相談できる。',
-      audience: '大卒以上で24〜34歳、正社員での転職を考えている人',
-      cta: '無料で相談してみる',
-    },
+    MYVISION_BLOCK,
 
     { type: 'h', text: 'この記事に出てきた名前' },
     {

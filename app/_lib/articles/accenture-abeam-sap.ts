@@ -1,4 +1,5 @@
 import type { ColumnArticle } from './index';
+import { MYVISION_BLOCK } from '../sap-companies';
 
 /**
  * Public sources only (checked 2026-11-17):
@@ -192,6 +193,11 @@ export const accentureAbeamSap: ColumnArticle = {
       audience: 'SAPのコンサルかエンジニアの経験がある、国内在住の40歳以下の人',
       cta: '無料で相談してみる',
     },
+    {
+      type: 'p',
+      text: '2社に限らず、ほかのコンサルティングファームとも比べたい場合は、コンサル転職に特化したエージェントも選択肢になります。',
+    },
+    MYVISION_BLOCK,
 
     { type: 'h', text: 'この記事に出てきた名前' },
     {

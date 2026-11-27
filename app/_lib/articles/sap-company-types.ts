@@ -1,4 +1,5 @@
 import type { ColumnArticle } from './index';
+import { MYVISION_BLOCK } from '../sap-companies';
 
 /**
  * Tendencies, not rules: every row below is written as "多い／なりやすい".
@@ -199,14 +200,10 @@ export const sapCompanyTypes: ColumnArticle = {
       cta: '無料で相談してみる',
     },
     {
-      type: 'affiliate',
-      href: 'https://px.a8.net/svt/ejp?a8mat=4BCCJC+CDXOVM+5N98+5YJRM',
-      pixel: 'https://www16.a8.net/0.gif?a8mat=4BCCJC+CDXOVM+5N98+5YJRM',
-      label: 'SAPフリーランスバンク',
-      text: 'SAPに特化したフリーランス案件の紹介サービス。',
-      audience: 'SAPプロジェクトでコンサル・エンジニア・PM・PMOの経験がある50歳未満の人（副業目的は対象外）',
-      cta: '案件を見てみる',
+      type: 'p',
+      text: 'SIerや事業会社からファームへ移りたい場合や、ファームどうしで比べたい場合は、コンサル転職に特化したエージェントも選択肢になります。',
     },
+    MYVISION_BLOCK,
 
     { type: 'h', text: 'この記事に出てきた名前' },
     {

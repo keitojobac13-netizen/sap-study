@@ -1,4 +1,5 @@
 import type { ColumnArticle } from './index';
+import { MYVISION_BLOCK } from '../sap-companies';
 
 export const sapFreelanceRates: ColumnArticle = {
   slug: 'sap-freelance-rates',
@@ -127,15 +128,7 @@ export const sapFreelanceRates: ColumnArticle = {
       type: 'p',
       text: 'まだ独立の前で、正社員としてコンサルの経験を積み直したい場合は、ファームへの転職も選択肢になります。',
     },
-    {
-      type: 'affiliate',
-      href: 'https://px.a8.net/svt/ejp?a8mat=4BCLW3+3MDY9E+4SXU+NU729',
-      pixel: 'https://www19.a8.net/0.gif?a8mat=4BCLW3+3MDY9E+4SXU+NU729',
-      label: 'Groovement Agent',
-      text: 'コンサルティングファーム・DX・スタートアップの転職に特化したエージェント。',
-      audience: '大卒以上で24〜34歳、正社員での転職を考えている人',
-      cta: '無料で相談してみる',
-    },
+    MYVISION_BLOCK,
 
     { type: 'h', text: 'この記事に出てきた名前' },
     {
