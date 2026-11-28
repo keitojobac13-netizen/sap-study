@@ -41,6 +41,7 @@ import { deloitteSap } from './deloitte-sap';
 import { kpmgSap } from './kpmg-sap';
 import { sigmaxyzSap } from './sigmaxyz-sap';
 import { fujitsuSap } from './fujitsu-sap';
+import { fb08FbraReversal } from './fb08-fbra-reversal';
 
 /**
  * Standalone columns that answer one search question each — a term, a
@@ -123,6 +124,7 @@ export type ColumnArticle =
   | (ArticleBase & { status: 'published'; publishedAt: string; updatedAt?: string });
 
 const ARTICLES: ColumnArticle[] = [
+  fb08FbraReversal,
   sapImplementationCost,
   sapCompanyAxes,
   accentureSap,

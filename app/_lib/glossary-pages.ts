@@ -629,6 +629,17 @@ export const TERM_PAGES: Record<TermPageId, TermPage> = {
         text: '消込済みの明細を含む伝票は、先に FBRA で消込を解除しないと取り消せません。支払プログラムで作った支払伝票も同じです。',
       },
       {
+        type: 'links',
+        title: '取り消せないときは',
+        items: [
+          {
+            href: '/articles/fb08-fbra-reversal',
+            label: 'SAPで伝票取消できない原因と対処法｜FB08とFBRAの違い',
+            text: '原因の切り分けと、FBRAでのリセットの手順',
+          },
+        ],
+      },
+      {
         type: 'link',
         href: '/fi/fi-journal',
         label: '仕訳伝票の入力',
